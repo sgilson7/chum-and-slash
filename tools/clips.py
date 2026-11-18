@@ -247,7 +247,10 @@ def dog():
         d(66, "inout"),
     ), root=[[0, 0, 0], [18, -150, -120], [30, 2600, 300], [36, 3000, 0], [66, 3000, 0]],
         events={"hit": [30, 35], "phases": [18, 36, 46]})
-    c["dog_hurt"] = clip(14, merge(d(0), d(3, "out", neck=(-30, 0, 0), head=(-25, 0, 0), chest=(0, 0, 8)), d(14)))
+    # Round 2 (the animator): the recoil is keyed on the tick of contact and
+    # entered as a cut, so the hit-stop holds a dog that has taken the blow
+    c["dog_hurt"] = clip(14, merge(d(0, "linear", neck=(-30, 0, 0), head=(-25, 0, 0), chest=(0, 0, 8)), d(14, "out")),
+                         events={"cuts": [0, 1]})
     wob = dict(fl_hip=(-10, 0, 15), fr_hip=(-10, 0, -15), bl_hip=(10, 0, 15), br_hip=(10, 0, -15),
                fl_knee=(-30, 0, 0), fr_knee=(-30, 0, 0), bl_knee=(-40, 0, 0), br_knee=(-40, 0, 0), tail=(40, 0, 0))
     c["dog_stunned"] = clip(40, merge(

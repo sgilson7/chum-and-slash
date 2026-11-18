@@ -537,6 +537,10 @@ pub fn blend_for(clip: &str) -> u32 {
     if clip == "launcher" {
         return 8;
     }
+    // a hit reaction is a cut: it shows on the tick of contact (round 2)
+    if clip == "dog_hurt" {
+        return 0;
+    }
     let attack = [
         "light",
         "heavy",

@@ -1194,7 +1194,7 @@ impl World {
                 e.in_string = !spec.ability && !espec.injured;
             }
             if spec.stagger > espec.poise {
-                e.anim.play(&self.clips, &dm, "dog_hurt", 6);
+                e.anim.play(&self.clips, &dm, "dog_hurt", clip::blend_for("dog_hurt"));
                 e.reaction = "staggers";
             } else {
                 e.shake = shake_ticks;
