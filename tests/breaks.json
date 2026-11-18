@@ -233,8 +233,8 @@
   {
     "name": "round 1: an early jump is dropped",
     "file": "crates/core/src/world.rs",
-    "find": "            self.hero.jump_buffer = if age >= self.rules.combo.buffer { None } else { Some(age + 1) };",
-    "replace": "            self.hero.jump_buffer = if age >= 0 { None } else { Some(age + 1) };",
+    "find": "            self.hero.jump_buffer = if age >= self.rules.combo.buffer {",
+    "replace": "            self.hero.jump_buffer = if age >= 0 {",
     "test": "an_early_jump_waits_for_the_cancel"
   },
   {
@@ -268,22 +268,22 @@
   {
     "name": "round 3: hits do not shake",
     "file": "crates/core/src/world.rs",
-    "find": "            e.shake = spec.shake;\n            e.shake_mm = model::mm(spec.shake_mm);",
-    "replace": "            e.shake = 0;\n            e.shake_mm = 0;",
+    "find": "        e.shake = spec.shake;\n        e.shake_mm = model::mm(spec.shake_mm);",
+    "replace": "        e.shake = 0;\n        e.shake_mm = 0;",
     "test": "every_hit_shakes_its_target_by_the_move"
   },
   {
     "name": "round 4: hits do not flinch",
     "file": "crates/core/src/world.rs",
-    "find": "            e.flinch_left = self.rules.flinch_fade;",
-    "replace": "            e.flinch_left = 0;",
+    "find": "        e.flinch_deg = spec.flinch_deg;\n        e.flinch_left = self.rules.flinch_fade;\n        if died {",
+    "replace": "        e.flinch_deg = spec.flinch_deg;\n        e.flinch_left = 0;\n        if died {",
     "test": "every_hit_flinches_its_target_and_the_flinch_fades"
   },
   {
     "name": "round 5: kills do not react",
     "file": "crates/core/src/world.rs",
-    "find": "        e.flinch_deg = spec.flinch_deg;\n        e.flinch_left = self.rules.flinch_fade;",
-    "replace": "        e.flinch_deg = if died { 0 } else { spec.flinch_deg };\n        e.flinch_left = self.rules.flinch_fade;",
+    "find": "        e.flinch_deg = spec.flinch_deg;\n        e.flinch_left = self.rules.flinch_fade;\n        if died {",
+    "replace": "        e.flinch_deg = if died { 0 } else { spec.flinch_deg };\n        e.flinch_left = self.rules.flinch_fade;\n        if died {",
     "test": "a_killing_blow_reacts_too"
   },
   {
