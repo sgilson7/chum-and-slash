@@ -80,6 +80,18 @@ pub struct Look {
     pub fog_m: [i32; 2],
     pub stripe_count: i32,
     pub stripe_brown: [i32; 3],
+    pub camera: CameraSpec,
+}
+
+/// The fight camera (T1): up and to the hero's side, far enough back for a
+/// landscape view of the hero, the swing and the target.
+#[derive(Debug, Clone, Deserialize)]
+pub struct CameraSpec {
+    pub distance_mm: i32,
+    pub side_mm: i32,
+    pub height_mm: i32,
+    pub fov_deg: i32,
+    pub lock_lean_pct: i32,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -573,19 +585,28 @@ impl Game {
                 up: v3(0, ONE, 0),
             };
         }
-        let mut look_at = chest;
+        let c = &self.look.camera;
+        // the pivot sits to the hero's right, so the hero stands left of
+        // centre with the swing and the target in view (T1)
+        let flat = facing(w.cam_yaw, 0);
+        let right = v3(-flat.z, 0, flat.x);
+        let pivot = chest.add(right.scale(mm(c.side_mm)));
+        let mut look_at = pivot;
         if let Some(t) = w.hero.lock.and_then(|id| w.enemy(id)) {
             let tp = t.prev_pos.lerp(t.pos, self.alpha).add(v3(0, mm(800), 0));
-            look_at = chest.lerp(tp, ONE * 3 / 10);
+            look_at = pivot.lerp(tp, ONE * c.lock_lean_pct / 100);
         }
         let back = facing(w.cam_yaw, w.cam_pitch);
         let knock = w.prev_knock.lerp(w.knock, self.alpha);
-        let eye = chest.sub(back.scale(mm(4800))).add(v3(0, mm(700), 0)).add(knock);
+        let eye = pivot
+            .sub(back.scale(mm(c.distance_mm)))
+            .add(v3(0, mm(c.height_mm), 0))
+            .add(knock);
         let fwd = look_at.sub(eye).norm();
         Camera {
             eye,
             fwd,
-            fov: fx::deg(60),
+            fov: fx::deg(c.fov_deg),
             far: fx::int(16000),
             up: v3(0, ONE, 0),
         }
@@ -850,6 +871,46 @@ mod tests {
         b[3] = true; // Triangle / Y
         g.pad(b, vec![0; 4], "xbox");
         assert_ne!(g.bits() & B_HEAVY, 0);
+    }
+
+    /// T1, worked by hand: at the origin facing -z (camera yaw 0, pitch 0
+    /// for the check), the pivot is 1.2 m to the right (+x) and the eye is
+    /// 6 m behind it (+z) and 1.5 m above the 1.5 m chest.
+    #[test]
+    fn the_camera_sits_up_and_to_the_side() {
+        let mut g = Game::new();
+        g.act("sandbox", "").unwrap();
+        g.world.cam_yaw = 0;
+        g.world.cam_pitch = 0;
+        let cam = g.camera();
+        assert_eq!(cam.eye.x, mm(1200));
+        assert_eq!(cam.eye.z, mm(6000));
+        assert_eq!(cam.eye.y, mm(1500) + mm(1500));
+    }
+
+    /// T1: the mouse or right stick turns the camera even while locked on;
+    /// lock-on steers it back only after `camera_follow_after` quiet ticks.
+    #[test]
+    fn look_input_holds_the_camera_against_lock_on() {
+        let mut g = Game::new();
+        g.act("sandbox", "").unwrap();
+        g.world.spawn("dog", v3(fx::int(8), 0, 0), 0).unwrap();
+        g.world.cam_yaw = 0;
+        let turned = fx::deg(-40);
+        g.step(Input {
+            look_yaw: turned,
+            ..Input::default()
+        });
+        let after = g.world.cam_yaw;
+        let quiet = g.world.rules.camera_follow_after;
+        for _ in 0..quiet - 2 {
+            g.step(Input::default());
+        }
+        assert_eq!(g.world.cam_yaw, after, "the player's turn holds");
+        for _ in 0..60 {
+            g.step(Input::default());
+        }
+        assert_ne!(g.world.cam_yaw, after, "then lock-on brings the target back");
     }
 
     fn fight(g: &mut Game) {

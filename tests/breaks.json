@@ -285,5 +285,19 @@
     "find": "        e.flinch_deg = spec.flinch_deg;\n        e.flinch_left = self.rules.flinch_fade;",
     "replace": "        e.flinch_deg = if died { 0 } else { spec.flinch_deg };\n        e.flinch_left = self.rules.flinch_fade;",
     "test": "a_killing_blow_reacts_too"
+  },
+  {
+    "name": "T1: lock-on overrides the player's camera",
+    "file": "crates/core/src/world.rs",
+    "find": "let player_steers = self.look_idle < self.rules.camera_follow_after;",
+    "replace": "let player_steers = false;",
+    "test": "look_input_holds_the_camera_against_lock_on"
+  },
+  {
+    "name": "T1: the camera sits behind the hero's back",
+    "file": "crates/core/src/game.rs",
+    "find": "let pivot = chest.add(right.scale(mm(c.side_mm)));",
+    "replace": "let pivot = chest;",
+    "test": "the_camera_sits_up_and_to_the_side"
   }
 ]

@@ -247,5 +247,7 @@
  },
  "_round3": "Round 3 (the animator, the newcomer): every hit shakes the target, sized by the move.",
  "flinch_fade": 8,
- "_round4": "Round 4 (the animator, the veteran): every hit bends the target's spine, neck and hips over whatever clip plays, held through hit-stop, then fading over flinch_fade ticks."
+ "_round4": "Round 4 (the animator, the veteran): every hit bends the target's spine, neck and hips over whatever clip plays, held through hit-stop, then fading over flinch_fade ticks.",
+ "camera_follow_after": 90,
+ "_camera_follow": "T1: lock-on turns the camera toward the target only after this many ticks without mouse or right-stick input."
 }

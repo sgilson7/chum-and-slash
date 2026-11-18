@@ -6,4 +6,4 @@ Compare at least one result with a case worked out by hand. **Severity** is *blo
 
 | # | Request, in the person's words | Expected | What happened | Severity | Cost | Disposition |
 | --- | --- | --- | --- | --- | --- | --- |
-| T1 | | | | | | |
+| T1 | "currently the over the shoulder view as it is pinned right now obfuscates the dog and your attack motions, you cant really see your character swing, try and move the character up and to the side of the character to give more of a landscape view of the character and let them control the camera with the right stick of the controller or the mouse on keyboard" | The hero seen from up and to the side, the swing and the dog in view; the right stick or mouse turns the camera | The camera sat 4.8 m straight behind the hero's back; lock-on turned it toward the target every tick, overriding the mouse and right stick | wrong | small | done: camera 6 m back, 1.2 m to the side, 1.5 m up (`data/look.json`); lock-on steers only after 90 ticks without camera input (`camera_follow_after`); tests `the_camera_sits_up_and_to_the_side`, `look_input_holds_the_camera_against_lock_on` |

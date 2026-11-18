@@ -125,6 +125,8 @@ pub struct Rules {
     pub stun: StunSpec,
     pub hero: HeroSpec,
     pub push_ticks: u32,
+    /// ticks without camera input before lock-on steers the camera (T1)
+    pub camera_follow_after: u32,
     pub flinch_fade: u32,
     pub enemies: BTreeMap<String, EnemySpec>,
 }
@@ -418,6 +420,8 @@ pub struct World {
     /// game speed (Q16): the tutorial slows it; 0 is paused
     pub speed: i32,
     pub speed_acc: i32,
+    /// ticks since the player last turned the camera (T1)
+    pub look_idle: u32,
     pub rumble_until: u32,
     pub rumble_rank: u32,
     /// the pack's attack tokens (M4.4)
@@ -464,12 +468,13 @@ impl World {
             next_id: 1,
             serial: 0,
             cam_yaw: 0,
-            cam_pitch: -fx::deg(12),
+            cam_pitch: -fx::deg(6),
             knock: V3::ZERO,
             prev_knock: V3::ZERO,
             floor_radius: fx::int(24),
             speed: ONE,
             speed_acc: 0,
+            look_idle: u32::MAX / 2,
             rumble_until: 0,
             rumble_rank: 0,
             pack: pilot::Pack::default(),
@@ -574,6 +579,11 @@ impl World {
         let pressed = input.bits & !self.hero.prev_bits;
         self.hero.prev_bits = input.bits;
         self.cam_yaw = fx::wrap(self.cam_yaw + input.look_yaw);
+        if input.look_yaw != 0 || input.look_pitch != 0 {
+            self.look_idle = 0;
+        } else {
+            self.look_idle = self.look_idle.saturating_add(1);
+        }
         self.cam_pitch = (self.cam_pitch + input.look_pitch).clamp(-fx::deg(40), fx::deg(20));
         self.lock_on(pressed);
         self.hero_moves(input, pressed);
@@ -626,8 +636,15 @@ impl World {
                 .min()
                 .map(|(_, id)| id);
         }
-        if let Some(t) = self.hero.lock.and_then(|id| self.enemy(id)) {
-            // the camera swings round behind the hero to face the target
+        let player_steers = self.look_idle < self.rules.camera_follow_after;
+        if let Some(t) = self
+            .hero
+            .lock
+            .and_then(|id| self.enemy(id))
+            .filter(|_| !player_steers)
+        {
+            // the camera swings round behind the hero to face the target,
+            // unless the player has turned it lately (T1)
             let to = t.pos.sub(self.hero.pos);
             let want = yaw_of(to);
             let d = fx::wrap(want - self.cam_yaw);
