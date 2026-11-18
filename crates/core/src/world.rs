@@ -1207,12 +1207,12 @@ impl World {
         let stunned_before = e.stunned_like();
         // every hit shakes the target, sized by the move (round 3): light
         // small and short, launcher the largest
-        if !died {
-            e.shake = spec.shake;
-            e.shake_mm = model::mm(spec.shake_mm);
-            e.flinch_deg = spec.flinch_deg;
-            e.flinch_left = self.rules.flinch_fade;
-        }
+        // a killing blow reacts like any hit, and more visibly than most
+        // (round 5: all three playtesters)
+        e.shake = spec.shake;
+        e.shake_mm = model::mm(spec.shake_mm);
+        e.flinch_deg = spec.flinch_deg;
+        e.flinch_left = self.rules.flinch_fade;
         if died {
             e.state = State::Dead;
             e.anim.play(&self.clips, &dm, "dog_dead", 12);

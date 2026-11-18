@@ -578,3 +578,22 @@ fn every_hit_flinches_its_target_and_the_flinch_fades() {
         assert_eq!(e.flinch_left, 0, "{kind}: the flinch has faded");
     }
 }
+
+/// Round 5: the killing blow shakes and flinches its target like any hit
+/// (the launcher that ends the first combo: 10 ticks, 45 degrees).
+#[test]
+fn a_killing_blow_reacts_too() {
+    let (mut w, id) = with("big_dog", 2200);
+    string(&mut w, &[B_LIGHT, B_HEAVY, B_LIGHT, B_LIGHT, B_HEAVY]);
+    w.tick(Input::bits(B_LAUNCH));
+    let mut died = false;
+    for _ in 0..60 {
+        if w.tick(Input::bits(0)).iter().any(|e| e.kind == "die") {
+            died = true;
+            break;
+        }
+    }
+    assert!(died);
+    let e = w.enemy(id).unwrap();
+    assert_eq!((e.shake, e.flinch_deg), (10, 45));
+}
