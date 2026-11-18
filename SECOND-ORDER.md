@@ -31,6 +31,8 @@ One row per assumption, surprise or open item. **Kind** is *divergence* (what wa
 | R2.5 | divergence | The injured large dog is an ordinary enemy that does not attack | Round 2's before run: it stood up into the idle clip, and with its poise it was never stunned, so the launcher could never lift it | It lies stunned for good; hits never shorten that stun | `the_injured_dog_stays_down_and_stunned` | done |
 | R2.6 | finding | Each break isolates one guard | After R2.1 and R2.5, the injured dog and the one-lunge rule each have two guards (a lasting stun and a tree without a lunge; the pack's holder and the token gate) | Two breaks retired; the remaining breaks target the core gates | `tests/breaks.json` | done |
 | R2.7 | finding | Dogs decide on a token they hold | With reaction delay, a dog acted on a token seen 12 ticks ago, after the pack had moved it: two dogs lunged at once | A dog lunges only on a token it holds now | `pack_gives_one_token_normally` | done |
+| R3.1 | finding | The text harness shows what a feel change changes | Round 2's change moved only joint angles; the harness printed clip names and frames, so before and after were byte-identical and all three playtesters said so. I had also told one that transitions were printed, which was false | Each body's line names its three most-turned joints, and the flinch is printed beside the shake | the harness (`World::describe`) | done |
+| R3.2 | finding | A buffered press lasts its 8 ticks | It aged before it was tried, so a press made exactly 8 ticks before a cancel tick was dropped on the tick it could start (the lesson's launcher) | Tried first, then aged | `a_press_the_buffer_length_early_still_comes_out` | done |
 
 ## Strings written by the agent
 
