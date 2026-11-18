@@ -42,6 +42,11 @@ pub struct MoveSpec {
     pub stamina: i32,
     #[serde(default)]
     pub stuns: bool,
+    /// the target's shake: how many ticks and how far, mm (round 3)
+    #[serde(default)]
+    pub shake: u32,
+    #[serde(default)]
+    pub shake_mm: i32,
 }
 
 #[derive(Debug, Clone, Deserialize)]
@@ -117,7 +122,6 @@ pub struct Rules {
     pub stun: StunSpec,
     pub hero: HeroSpec,
     pub push_ticks: u32,
-    pub shake_ticks: u32,
     pub enemies: BTreeMap<String, EnemySpec>,
 }
 
@@ -317,6 +321,7 @@ pub struct Enemy {
     pub prev_yaw: i32,
     pub hitstop: u32,
     pub shake: u32,
+    pub shake_mm: i32,
     pub float: u32,
     pub knock: V3,
     pub knock_ticks: u32,
@@ -475,6 +480,7 @@ impl World {
             prev_yaw: yaw,
             hitstop: 0,
             shake: 0,
+            shake_mm: 0,
             float: 0,
             knock: V3::ZERO,
             knock_ticks: 0,
@@ -857,7 +863,11 @@ impl World {
             self.hero.jump_buffer = Some(0);
         }
         if let Some(age) = self.hero.jump_buffer {
-            self.hero.jump_buffer = if age >= self.rules.combo.buffer { None } else { Some(age + 1) };
+            self.hero.jump_buffer = if age >= self.rules.combo.buffer {
+                None
+            } else {
+                Some(age + 1)
+            };
         }
         if self.hero.jump_buffer.is_some() && self.hero.grounded && self.hero.combo.recovery == 0 {
             let cancel_ok = match &self.hero.act {
@@ -1118,7 +1128,7 @@ impl World {
     fn land(&mut self, i: usize, act: &Act, spec: &MoveSpec) {
         let stun = self.rules.stun.clone();
         let cap = self.rules.hitstop_cap;
-        let (push_ticks, shake_ticks) = (self.rules.push_ticks, self.rules.shake_ticks);
+        let push_ticks = self.rules.push_ticks;
         let dm = self.models["dog"].clone();
         let combo_index = self.hero.combo.presses.len() as i32;
         let finishing = self
@@ -1165,6 +1175,12 @@ impl World {
             e.health = 1;
         }
         let stunned_before = e.stunned_like();
+        // every hit shakes the target, sized by the move (round 3): light
+        // small and short, launcher the largest
+        if !died {
+            e.shake = spec.shake;
+            e.shake_mm = model::mm(spec.shake_mm);
+        }
         if died {
             e.state = State::Dead;
             e.anim.play(&self.clips, &dm, "dog_dead", 12);
@@ -1197,10 +1213,10 @@ impl World {
                 e.in_string = !spec.ability && !espec.injured;
             }
             if spec.stagger > espec.poise {
-                e.anim.play(&self.clips, &dm, "dog_hurt", clip::blend_for("dog_hurt"));
+                e.anim
+                    .play(&self.clips, &dm, "dog_hurt", clip::blend_for("dog_hurt"));
                 e.reaction = "staggers";
             } else {
-                e.shake = shake_ticks;
                 e.reaction = "shakes";
             }
         }
@@ -1285,7 +1301,11 @@ impl World {
             .filter(|(d, _)| d.abs() >= 15)
             .collect();
         j.sort_by_key(|(d, n)| (-d.abs(), n.clone()));
-        j.into_iter().take(3).map(|(_, n)| n).collect::<Vec<_>>().join(" ")
+        j.into_iter()
+            .take(3)
+            .map(|(_, n)| n)
+            .collect::<Vec<_>>()
+            .join(" ")
     }
 
     pub fn describe(&self) -> String {
@@ -1316,7 +1336,10 @@ impl World {
             },
         );
         let hp = h.anim.pose(&self.clips, &self.models["hero"]);
-        s.push_str(&format!(" pose[{}]", World::pose_words(&self.models["hero"], &hp)));
+        s.push_str(&format!(
+            " pose[{}]",
+            World::pose_words(&self.models["hero"], &hp)
+        ));
         let dm = &self.models["dog"];
         for e in &self.enemies {
             let ep = e.anim.pose(&self.clips, dm);

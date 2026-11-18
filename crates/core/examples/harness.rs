@@ -75,13 +75,32 @@ fn main() {
         }
     }
     // the clip sheet: what each animation is, from the core's own data
-    for (name, c) in w.clips.iter().filter(|(n, _)| !n.starts_with("dog_") || n.as_str() != "") {
+    for (name, c) in w
+        .clips
+        .iter()
+        .filter(|(n, _)| !n.starts_with("dog_") || n.as_str() != "")
+    {
         let (f, u) = c.root_at(c.len);
         println!(
             "# clip {name} len{} {}{}{}{} forward{}mm up{}mm",
             c.len,
-            c.events.phases.map(|p| format!("anticipation0-{} strike{}-{} follow{}-{} recovery{}-{} ", p[0].saturating_sub(1), p[0], p[1].saturating_sub(1), p[1], p[2].saturating_sub(1), p[2], c.len)).unwrap_or_default(),
-            c.events.hit.map(|h| format!("hit{}-{} ", h[0], h[1])).unwrap_or_default(),
+            c.events
+                .phases
+                .map(|p| format!(
+                    "anticipation0-{} strike{}-{} follow{}-{} recovery{}-{} ",
+                    p[0].saturating_sub(1),
+                    p[0],
+                    p[1].saturating_sub(1),
+                    p[1],
+                    p[2].saturating_sub(1),
+                    p[2],
+                    c.len
+                ))
+                .unwrap_or_default(),
+            c.events
+                .hit
+                .map(|h| format!("hit{}-{} ", h[0], h[1]))
+                .unwrap_or_default(),
             c.events.cancel.map(|k| format!("cancel{k} ")).unwrap_or_default(),
             if c.looping { "loop " } else { "" },
             f * 1000 / tool_core::fx::ONE,
@@ -89,7 +108,10 @@ fn main() {
         );
     }
     for (name, m) in &w.rules.moves {
-        println!("# move {name} damage{} hitstop{} push{}mm reach{}mm arc{}deg stamina{}", m.damage, m.hitstop, m.push_mm, m.reach_mm, m.arc_deg, m.stamina);
+        println!(
+            "# move {name} damage{} hitstop{} push{}mm reach{}mm arc{}deg stamina{}",
+            m.damage, m.hitstop, m.push_mm, m.reach_mm, m.arc_deg, m.stamina
+        );
     }
     let mut steps = Vec::new();
     for t in 0..end {
@@ -122,8 +144,11 @@ fn main() {
     }
     if let Some(out) = json_out {
         // what the diagrams need, from the core: blends, trees, the combo table
-        let blends: serde_json::Map<String, serde_json::Value> =
-            w.clips.keys().map(|k| (k.clone(), serde_json::json!(tool_core::clip::blend_for(k)))).collect();
+        let blends: serde_json::Map<String, serde_json::Value> = w
+            .clips
+            .keys()
+            .map(|k| (k.clone(), serde_json::json!(tool_core::clip::blend_for(k))))
+            .collect();
         let trees: serde_json::Map<String, serde_json::Value> = tool_core::pilot::trees()
             .into_iter()
             .map(|(name, t)| {

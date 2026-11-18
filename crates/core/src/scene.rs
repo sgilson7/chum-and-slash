@@ -63,9 +63,9 @@ pub fn bodies(w: &World, alpha: i32, out: &mut Batch) {
         // a hit that does not stagger shakes the body in place (cue 123)
         let shake = if e.shake > 0 {
             if e.shake % 2 == 0 {
-                mm(25)
+                e.shake_mm
             } else {
-                -mm(25)
+                -e.shake_mm
             }
         } else {
             0

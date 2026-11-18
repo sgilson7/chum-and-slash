@@ -1,32 +1,238 @@
 {
  "about": "Combat numbers. Ticks at 60 a second; distances in mm; stamina in hundredths. Starting values are the reviews' estimates (PLAN.md, Starting numbers); the feel rounds change them.",
  "moves": {
-  "light_1": {"press": "light", "damage": 10, "hitstop": 4, "push_mm": 300, "reach_mm": 2000, "arc_deg": 150, "stagger": 1, "hit": "light"},
-  "light_2": {"press": "light", "damage": 10, "hitstop": 4, "push_mm": 300, "reach_mm": 2000, "arc_deg": 150, "stagger": 1, "hit": "light"},
-  "light_3": {"press": "light", "damage": 11, "hitstop": 4, "push_mm": 300, "reach_mm": 2000, "arc_deg": 140, "stagger": 1, "hit": "light"},
-  "light_4": {"press": "light", "damage": 14, "hitstop": 5, "push_mm": 450, "reach_mm": 2200, "arc_deg": 90, "stagger": 1, "hit": "light"},
-  "heavy_1": {"press": "heavy", "damage": 22, "hitstop": 7, "push_mm": 800, "reach_mm": 2200, "arc_deg": 120, "stagger": 2, "hit": "heavy"},
-  "heavy_2": {"press": "heavy", "damage": 22, "hitstop": 7, "push_mm": 800, "reach_mm": 2300, "arc_deg": 170, "stagger": 2, "hit": "heavy"},
-  "heavy_3": {"press": "heavy", "damage": 30, "hitstop": 8, "push_mm": 1000, "reach_mm": 2300, "arc_deg": 120, "stagger": 2, "hit": "heavy"},
-  "launcher": {"press": "launcher", "damage": 12, "hitstop": 10, "push_mm": 100, "reach_mm": 2000, "arc_deg": 120, "stagger": 2, "hit": "launch", "launches": true},
-  "air_light": {"press": "light", "air": true, "damage": 9, "hitstop": 4, "push_mm": 80, "reach_mm": 2000, "arc_deg": 160, "stagger": 1, "hit": "light", "stamina": 600},
-  "air_heavy": {"press": "heavy", "air": true, "damage": 20, "hitstop": 7, "push_mm": 200, "reach_mm": 2200, "arc_deg": 140, "stagger": 2, "hit": "heavy", "stamina": 1200},
-  "whirl": {"press": "light", "ability": true, "damage": 8, "hitstop": 5, "push_mm": 900, "reach_mm": 2700, "arc_deg": 360, "stagger": 2, "hit": "whirl", "stamina": 3000, "stuns": true}
+  "light_1": {
+   "press": "light",
+   "damage": 10,
+   "hitstop": 4,
+   "push_mm": 300,
+   "reach_mm": 2000,
+   "arc_deg": 150,
+   "stagger": 1,
+   "hit": "light",
+   "shake": 4,
+   "shake_mm": 15
+  },
+  "light_2": {
+   "press": "light",
+   "damage": 10,
+   "hitstop": 4,
+   "push_mm": 300,
+   "reach_mm": 2000,
+   "arc_deg": 150,
+   "stagger": 1,
+   "hit": "light",
+   "shake": 4,
+   "shake_mm": 15
+  },
+  "light_3": {
+   "press": "light",
+   "damage": 11,
+   "hitstop": 4,
+   "push_mm": 300,
+   "reach_mm": 2000,
+   "arc_deg": 140,
+   "stagger": 1,
+   "hit": "light",
+   "shake": 4,
+   "shake_mm": 15
+  },
+  "light_4": {
+   "press": "light",
+   "damage": 14,
+   "hitstop": 5,
+   "push_mm": 450,
+   "reach_mm": 2200,
+   "arc_deg": 90,
+   "stagger": 1,
+   "hit": "light",
+   "shake": 4,
+   "shake_mm": 15
+  },
+  "heavy_1": {
+   "press": "heavy",
+   "damage": 22,
+   "hitstop": 7,
+   "push_mm": 800,
+   "reach_mm": 2200,
+   "arc_deg": 120,
+   "stagger": 2,
+   "hit": "heavy",
+   "shake": 8,
+   "shake_mm": 35
+  },
+  "heavy_2": {
+   "press": "heavy",
+   "damage": 22,
+   "hitstop": 7,
+   "push_mm": 800,
+   "reach_mm": 2300,
+   "arc_deg": 170,
+   "stagger": 2,
+   "hit": "heavy",
+   "shake": 8,
+   "shake_mm": 35
+  },
+  "heavy_3": {
+   "press": "heavy",
+   "damage": 30,
+   "hitstop": 8,
+   "push_mm": 1000,
+   "reach_mm": 2300,
+   "arc_deg": 120,
+   "stagger": 2,
+   "hit": "heavy",
+   "shake": 8,
+   "shake_mm": 35
+  },
+  "launcher": {
+   "press": "launcher",
+   "damage": 12,
+   "hitstop": 10,
+   "push_mm": 100,
+   "reach_mm": 2000,
+   "arc_deg": 120,
+   "stagger": 2,
+   "hit": "launch",
+   "launches": true,
+   "shake": 10,
+   "shake_mm": 45
+  },
+  "air_light": {
+   "press": "light",
+   "air": true,
+   "damage": 9,
+   "hitstop": 4,
+   "push_mm": 80,
+   "reach_mm": 2000,
+   "arc_deg": 160,
+   "stagger": 1,
+   "hit": "light",
+   "stamina": 600,
+   "shake": 4,
+   "shake_mm": 15
+  },
+  "air_heavy": {
+   "press": "heavy",
+   "air": true,
+   "damage": 20,
+   "hitstop": 7,
+   "push_mm": 200,
+   "reach_mm": 2200,
+   "arc_deg": 140,
+   "stagger": 2,
+   "hit": "heavy",
+   "stamina": 1200,
+   "shake": 8,
+   "shake_mm": 35
+  },
+  "whirl": {
+   "press": "light",
+   "ability": true,
+   "damage": 8,
+   "hitstop": 5,
+   "push_mm": 900,
+   "reach_mm": 2700,
+   "arc_deg": 360,
+   "stagger": 2,
+   "hit": "whirl",
+   "stamina": 3000,
+   "stuns": true,
+   "shake": 6,
+   "shake_mm": 25
+  }
  },
- "combo": {"buffer": 8, "reset": 35, "recovery": 24, "cap_light": 4, "cap_heavy": 3, "cap_total": 6},
+ "combo": {
+  "buffer": 8,
+  "reset": 35,
+  "recovery": 24,
+  "cap_light": 4,
+  "cap_heavy": 3,
+  "cap_total": 6
+ },
  "combos": [
-  {"name": "first", "presses": ["light", "heavy", "light", "light", "heavy"]},
-  {"name": "first_launch", "presses": ["light", "heavy", "light", "light", "heavy", "launcher"]}
+  {
+   "name": "first",
+   "presses": [
+    "light",
+    "heavy",
+    "light",
+    "light",
+    "heavy"
+   ]
+  },
+  {
+   "name": "first_launch",
+   "presses": [
+    "light",
+    "heavy",
+    "light",
+    "light",
+    "heavy",
+    "launcher"
+   ]
+  }
  ],
  "hitstop_cap": 12,
- "stamina": {"max": 10000, "sprint_per_tick": 30, "regen_per_tick": 45, "regen_delay": 30},
- "stun": {"window": 90, "tail": 20, "air_float": 20, "air_gravity_pct": 25, "launch_mm": 3000, "landed": 40},
- "hero": {"run_mm_s": 4500, "sprint_mm_s": 7000, "jump_mm": 3200, "gravity_mm_s2": 20000, "radius_mm": 350, "lock_range_mm": 16000, "snap_mm": 2500, "health": 100, "turn_deg": 20},
+ "stamina": {
+  "max": 10000,
+  "sprint_per_tick": 30,
+  "regen_per_tick": 45,
+  "regen_delay": 30
+ },
+ "stun": {
+  "window": 90,
+  "tail": 20,
+  "air_float": 20,
+  "air_gravity_pct": 25,
+  "launch_mm": 3000,
+  "landed": 40
+ },
+ "hero": {
+  "run_mm_s": 4500,
+  "sprint_mm_s": 7000,
+  "jump_mm": 3200,
+  "gravity_mm_s2": 20000,
+  "radius_mm": 350,
+  "lock_range_mm": 16000,
+  "snap_mm": 2500,
+  "health": 100,
+  "turn_deg": 20
+ },
  "push_ticks": 6,
- "shake_ticks": 8,
  "enemies": {
-  "dog": {"model": "dog", "scale_pct": 100, "health": 60, "poise": 0, "radius_mm": 450, "push_pct": 100, "bite": 8, "attacks": true},
-  "pup": {"model": "dog", "scale_pct": 80, "health": 40, "poise": 0, "radius_mm": 380, "push_pct": 120, "bite": 5, "attacks": true},
-  "big_dog": {"model": "dog", "scale_pct": 220, "health": 400, "poise": 2, "radius_mm": 1000, "push_pct": 30, "bite": 0, "attacks": false, "dies_on_combo": "first_launch", "injured": true}
- }
+  "dog": {
+   "model": "dog",
+   "scale_pct": 100,
+   "health": 60,
+   "poise": 0,
+   "radius_mm": 450,
+   "push_pct": 100,
+   "bite": 8,
+   "attacks": true
+  },
+  "pup": {
+   "model": "dog",
+   "scale_pct": 80,
+   "health": 40,
+   "poise": 0,
+   "radius_mm": 380,
+   "push_pct": 120,
+   "bite": 5,
+   "attacks": true
+  },
+  "big_dog": {
+   "model": "dog",
+   "scale_pct": 220,
+   "health": 400,
+   "poise": 2,
+   "radius_mm": 1000,
+   "push_pct": 30,
+   "bite": 0,
+   "attacks": false,
+   "dies_on_combo": "first_launch",
+   "injured": true
+  }
+ },
+ "_round3": "Round 3 (the animator, the newcomer): every hit shakes the target, sized by the move."
 }

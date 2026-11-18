@@ -264,5 +264,12 @@
     "find": "        if self.hero.combo.recovery > 0 {\n            self.hero.combo.recovery -= 1;",
     "replace": "        if let Some((_, age)) = self.hero.combo.buffer.as_mut() {\n            *age += 1;\n        }\n        if self.hero.combo.recovery > 0 {\n            self.hero.combo.recovery -= 1;",
     "test": "a_press_the_buffer_length_early_still_comes_out"
+  },
+  {
+    "name": "round 3: hits do not shake",
+    "file": "crates/core/src/world.rs",
+    "find": "            e.shake = spec.shake;\n            e.shake_mm = model::mm(spec.shake_mm);",
+    "replace": "            e.shake = 0;\n            e.shake_mm = 0;",
+    "test": "every_hit_shakes_its_target_by_the_move"
   }
 ]

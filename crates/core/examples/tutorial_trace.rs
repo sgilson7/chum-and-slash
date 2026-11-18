@@ -22,7 +22,11 @@ fn main() {
         if paused {
             paused_for += 1;
         }
-        let bits = if paused && paused_for == 60 { asking.as_deref().map(bits_for).unwrap_or(0) } else { 0 };
+        let bits = if paused && paused_for == 60 {
+            asking.as_deref().map(bits_for).unwrap_or(0)
+        } else {
+            0
+        };
         g.step(Input::bits(bits));
         let phase = match g.tutorial.phase {
             Phase::Off => "off",
@@ -35,7 +39,13 @@ fn main() {
             "asking": asking, "pressed": bits != 0, "hero_clip": g.world.hero.anim.clip,
             "dog_clip": g.world.enemies.first().map(|e| e.anim.clip.clone()),
         }));
-        if paused_for > 60 && phase == "off" && steps.len() > 0 && g.world.hero.act.is_none() && t > 0 && paused_for > 120 {
+        if paused_for > 60
+            && phase == "off"
+            && steps.len() > 0
+            && g.world.hero.act.is_none()
+            && t > 0
+            && paused_for > 120
+        {
             break;
         }
         if paused_for >= 60 && phase == "off" {

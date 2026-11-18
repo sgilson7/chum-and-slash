@@ -148,7 +148,11 @@ fn launcher_lifts_only_a_stunned_enemy() {
     // a launcher as the first hit finds the dog unstunned: no lift
     let (mut w, id) = with("dog", 1600);
     string(&mut w, &[B_LAUNCH]);
-    assert_ne!(w.enemy(id).unwrap().state, State::Airborne, "unstunned: not lifted");
+    assert_ne!(
+        w.enemy(id).unwrap().state,
+        State::Airborne,
+        "unstunned: not lifted"
+    );
     let (mut w, id) = with("dog", 1600);
     string(&mut w, &[B_LIGHT]);
     assert_eq!(w.enemy(id).unwrap().state, State::Stunned, "one hit stuns a dog");
@@ -498,7 +502,10 @@ fn the_whirl_stops_the_hero_once() {
             stopped += 1;
         }
     }
-    assert!(stopped <= w.rules.moves["whirl"].hitstop, "stopped {stopped} ticks");
+    assert!(
+        stopped <= w.rules.moves["whirl"].hitstop,
+        "stopped {stopped} ticks"
+    );
 }
 
 /// Round 1 repair (R2.5): the injured dog stays down, stunned, and the
@@ -528,4 +535,20 @@ fn a_press_the_buffer_length_early_still_comes_out() {
     w.tick(Input::bits(B_LIGHT));
     run(&mut w, buffer + 2, 0);
     assert_eq!(w.hero.act.as_ref().map(|a| a.name.as_str()), Some("light_1"));
+}
+
+/// Round 3: every hit shakes its target, and a heavier move shakes it
+/// longer and further (data: light 4 ticks, 15 mm; heavy 8 ticks, 35 mm).
+#[test]
+fn every_hit_shakes_its_target_by_the_move() {
+    let mut shakes = Vec::new();
+    for button in [B_LIGHT, B_HEAVY] {
+        let (mut w, id) = with("dog", 1600);
+        w.tick(Input::bits(button));
+        while !w.tick(Input::bits(0)).iter().any(|e| e.kind == "hit") {}
+        let e = w.enemy(id).unwrap();
+        shakes.push((e.shake, e.shake_mm));
+    }
+    assert_eq!(shakes[0], (4, tool_core::model::mm(15)));
+    assert_eq!(shakes[1], (8, tool_core::model::mm(35)));
 }
