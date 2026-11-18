@@ -299,5 +299,12 @@
     "find": "let pivot = chest.add(right.scale(mm(c.side_mm)));",
     "replace": "let pivot = chest;",
     "test": "the_camera_sits_up_and_to_the_side"
+  },
+  {
+    "name": "T2: a capped move can be cancelled",
+    "file": "crates/core/src/world.rs",
+    "find": "            Some(a) if a.capped => false,\n            Some(a) => {",
+    "replace": "            Some(a) => {",
+    "test": "mashing_light_still_reaches_the_cap"
   }
 ]

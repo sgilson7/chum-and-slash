@@ -678,6 +678,9 @@ impl World {
         }
         let ready = match &self.hero.act {
             None => true,
+            // a capped move cannot be cancelled: it plays out, then the
+            // recovery runs (T2: mashing never reached the cap's recovery)
+            Some(a) if a.capped => false,
             Some(a) => {
                 let c = &self.clips[&a.name];
                 c.events.cancel.is_some_and(|k| self.hero.anim.tick >= k) || c.done(self.hero.anim.tick)
@@ -915,6 +918,7 @@ impl World {
         if self.hero.jump_buffer.is_some() && self.hero.grounded && self.hero.combo.recovery == 0 {
             let cancel_ok = match &self.hero.act {
                 None => true,
+                Some(a) if a.capped => false,
                 Some(a) => self.clips[&a.name]
                     .events
                     .cancel

@@ -597,3 +597,30 @@ fn a_killing_blow_reacts_too() {
     let e = w.enemy(id).unwrap();
     assert_eq!((e.shake, e.flinch_deg), (10, 45));
 }
+
+/// T2: mashing light as fast as possible still reaches the cap: at most
+/// four lights, then the 24-tick recovery, in which nothing starts. Worked
+/// by hand: light_1 to light_4 cancel at tick 12 (light_4 at 14), so the
+/// fourth starts by tick 36 and ends 28 ticks later; recovery follows.
+#[test]
+fn mashing_light_still_reaches_the_cap() {
+    let mut w = World::new();
+    let mut lights = 0;
+    let mut recoveries = 0;
+    let mut prev = String::new();
+    for t in 0..120u32 {
+        let b = if t % 3 == 0 { B_LIGHT } else { 0 };
+        let ev = w.tick(Input::bits(b));
+        recoveries += ev.iter().filter(|e| e.kind == "recovery").count();
+        let now = w.hero.act.as_ref().map(|a| a.name.clone()).unwrap_or_default();
+        if now != prev && now.starts_with("light") {
+            lights += 1;
+        }
+        prev = now;
+        if recoveries > 0 {
+            break;
+        }
+    }
+    assert_eq!(recoveries, 1, "the cap's recovery came");
+    assert_eq!(lights, 4, "four lights, no more, before it");
+}

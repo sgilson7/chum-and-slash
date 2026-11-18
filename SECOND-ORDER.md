@@ -33,6 +33,7 @@ One row per assumption, surprise or open item. **Kind** is *divergence* (what wa
 | R2.7 | finding | Dogs decide on a token they hold | With reaction delay, a dog acted on a token seen 12 ticks ago, after the pack had moved it: two dogs lunged at once | A dog lunges only on a token it holds now | `pack_gives_one_token_normally` | done |
 | R3.1 | finding | The text harness shows what a feel change changes | Round 2's change moved only joint angles; the harness printed clip names and frames, so before and after were byte-identical and all three playtesters said so. I had also told one that transitions were printed, which was false | Each body's line names its three most-turned joints, and the flinch is printed beside the shake | the harness (`World::describe`) | done |
 | R3.2 | finding | A buffered press lasts its 8 ticks | It aged before it was tried, so a press made exactly 8 ticks before a cancel tick was dropped on the tick it could start (the lesson's launcher) | Tried first, then aged | `a_press_the_buffer_length_early_still_comes_out` | done |
+| R4.1 | finding | The cap tests prove the cap | They pressed each button only after the move allowed it, so none mashed; mashing cancelled the capped fourth light and skipped the recovery for good (T2) | A capped move cannot be cancelled; a mashing test | `mashing_light_still_reaches_the_cap` | done |
 
 ## Strings written by the agent
 
