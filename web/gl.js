@@ -1,4 +1,5 @@
-// The WebGL 2 renderer (after Gatecrasher's). It uploads what the core
+// The WebGL 2 renderer, from Protection of the Spheres (MIT, Sam Gilson),
+// after Gatecrasher's. It uploads what the core
 // returns and draws it; every size, stride and offset comes from the core's
 // numbers(), so this file holds no layout of its own. Instances and meshes
 // are the core's Q16 integers, read as integer attributes and scaled in the
@@ -85,6 +86,18 @@ export function makeRenderer(canvas, N, shaders, meshData) {
         at += u.size;
       }
       clear = clearColor;
+    },
+    // a software renderer draws a few frames a second at full size, so the
+    // page draws smaller there (realtime kit, data/display.json)
+    software(names) {
+      const info = gl.getExtension("WEBGL_debug_renderer_info");
+      const name = info ? String(gl.getParameter(info.UNMASKED_RENDERER_WEBGL)) : "";
+      return names.some((s) => name.includes(s));
+    },
+    // the backdrop: uploaded once each time the core builds it
+    scenery(values) {
+      gl.bindBuffer(gl.ARRAY_BUFFER, buffers[N.buffers.scenery]);
+      gl.bufferData(gl.ARRAY_BUFFER, values, gl.STATIC_DRAW);
     },
     resize(width, height) {
       canvas.width = width;

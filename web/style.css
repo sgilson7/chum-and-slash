@@ -1,24 +1,51 @@
+/* Chum and Slash: the game fills the window; the overlay holds the card
+   (title, menus, cutscene lines), the gauges, the prompt and the combo
+   strip. Prompts carry the button's name and the move's name, never colour
+   alone. */
 :root {
-  --ink: #1d232a;
-  --paper: #ffffff;
-  --muted: #5a646e;
-  --accent: #9b1c1c;
-}
-@media (prefers-color-scheme: dark) {
-  :root { --ink: #e8eaed; --paper: #15181c; --muted: #a9b1ba; --accent: #f08c8c; }
+  --ink: #1d1a26;
+  --paper: #f6efe6;
+  --glow: #82ffe4;
+  --warm: #ffd27a;
+  --health: #e8577a;
+  --stamina: #8fe07a;
+  --shade: rgba(20, 16, 30, 0.72);
+  --body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 * { box-sizing: border-box; }
-/* A display rule elsewhere must not show what the page hid. */
 [hidden] { display: none !important; }
-body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font: 1rem/1.5 system-ui, sans-serif;
-}
-main { max-width: 44rem; margin: 0 auto; padding: 2rem 1rem; }
-h1 { font-size: 1.6rem; margin: 0 0 0.5rem; }
-#message:not(:empty) { color: var(--accent); }
-section { margin: 0 0 1rem; }
-button { font: inherit; padding: 0.3rem 0.8rem; margin: 0 0.5rem 0.5rem 0; }
-[data-term] { text-decoration: underline dotted; cursor: help; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: var(--ink); color: var(--paper); font: 16px/1.5 var(--body); }
+#view { position: fixed; inset: 0; width: 100%; height: 100%; display: block; cursor: crosshair; }
+#overlay { position: fixed; inset: 0; pointer-events: none; padding: 16px max(16px, env(safe-area-inset-right)) 16px max(16px, env(safe-area-inset-left)); }
+#overlay button { pointer-events: auto; }
+#card { position: absolute; left: 50%; bottom: 10%; transform: translateX(-50%); width: min(640px, calc(100% - 32px)); background: var(--shade); border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 6px; padding: 18px 22px; display: grid; gap: 12px; }
+body[data-screen="title"] #card, body[data-screen="menu"] #card { bottom: auto; top: 18%; }
+.game-title { margin: 0; font-size: clamp(34px, 7vw, 64px); line-height: 1; letter-spacing: 0.02em; color: var(--warm); }
+.heading { margin: 0; font-size: 22px; color: var(--glow); }
+.line { margin: 0; font-size: 18px; }
+.buttons { display: flex; flex-wrap: wrap; gap: 10px; }
+button { font: 600 15px var(--body); color: var(--ink); background: var(--paper); border: 0; border-radius: 4px; padding: 9px 16px; cursor: pointer; }
+button:focus-visible { outline: 3px solid var(--glow); outline-offset: 2px; }
+.skip-note { margin: 0; font-size: 13px; opacity: 0.8; }
+#hud { position: absolute; left: 16px; top: 16px; display: grid; gap: 6px; width: min(300px, 60vw); }
+.meter { display: grid; grid-template-columns: 80px 1fr; gap: 8px; align-items: center; font-size: 13px; }
+.meter-bar { height: 10px; background: rgba(255, 255, 255, 0.15); border-radius: 5px; overflow: hidden; }
+.meter-fill { display: block; height: 100%; background: var(--paper); }
+.health .meter-fill { background: var(--health); }
+.stamina .meter-fill { background: var(--stamina); }
+.skip .meter-fill { background: var(--glow); }
+.lock { font-size: 13px; color: var(--warm); }
+#tools { position: absolute; right: 16px; top: 16px; display: flex; flex-direction: column; gap: 8px; }
+#prompt { position: absolute; left: 50%; top: 58%; transform: translateX(-50%); display: grid; justify-items: center; gap: 4px; padding: 14px 22px; background: var(--shade); border: 2px solid var(--glow); border-radius: 8px; text-align: center; }
+#prompt.paused { border-color: var(--warm); }
+.prompt-button { font-size: 30px; font-weight: 800; color: var(--warm); }
+.prompt-label { font-size: 16px; }
+.prompt-hint { font-size: 14px; opacity: 0.85; }
+#strip { position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%); display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; max-width: calc(100% - 32px); }
+.step { display: grid; justify-items: center; padding: 6px 10px; background: var(--shade); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 4px; font-size: 12px; }
+.step b { font-size: 16px; }
+.step.done { opacity: 0.45; text-decoration: line-through; }
+.step.next { border: 2px solid var(--warm); }
+.strip-note { flex-basis: 100%; text-align: center; font-size: 14px; }
+#message { position: absolute; left: 16px; bottom: 16px; margin: 0; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }

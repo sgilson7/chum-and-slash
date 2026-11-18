@@ -86,7 +86,14 @@ fn done_by(action: &str, act: &str) -> bool {
 
 impl Tutorial {
     pub fn new(beats: Vec<Beat>, strip: Vec<String>, passed: BTreeSet<String>) -> Tutorial {
-        Tutorial { beats, phase: Phase::Off, current: None, passed, strip, fight_t: 0 }
+        Tutorial {
+            beats,
+            phase: Phase::Off,
+            current: None,
+            passed,
+            strip,
+            fight_t: 0,
+        }
     }
 
     pub fn none() -> Tutorial {
@@ -137,7 +144,10 @@ impl Tutorial {
             }
         }
         if self.phase == Phase::Off {
-            let next = self.beats.iter().position(|b| !self.passed.contains(&b.id) && self.triggered(b, w));
+            let next = self
+                .beats
+                .iter()
+                .position(|b| !self.passed.contains(&b.id) && self.triggered(b, w));
             if let Some(i) = next {
                 self.current = Some(i);
                 self.phase = Phase::Slowing(0);
@@ -156,12 +166,20 @@ impl Tutorial {
             }
             Phase::Slowing(age) => {
                 w.speed = ONE - (ONE - SLOW) * (age as i32 + 1) / RAMP as i32;
-                self.phase = if age + 1 >= RAMP { Phase::Holding(0) } else { Phase::Slowing(age + 1) };
+                self.phase = if age + 1 >= RAMP {
+                    Phase::Holding(0)
+                } else {
+                    Phase::Slowing(age + 1)
+                };
                 return w.tick(input);
             }
             Phase::Holding(age) => {
                 w.speed = SLOW;
-                self.phase = if age + 1 >= HOLD { Phase::Paused { age: 0, wrong: 0 } } else { Phase::Holding(age + 1) };
+                self.phase = if age + 1 >= HOLD {
+                    Phase::Paused { age: 0, wrong: 0 }
+                } else {
+                    Phase::Holding(age + 1)
+                };
                 return w.tick(input);
             }
             Phase::Paused { age, wrong } if !answered => {
@@ -177,7 +195,12 @@ impl Tutorial {
         // answered: time runs again and the same press performs the move
         if let Some(i) = self.current.take() {
             self.passed.insert(self.beats[i].id.clone());
-            events.push(crate::world::Event { kind: "tutorial", name: self.beats[i].id.clone(), a: ONE, b: ONE });
+            events.push(crate::world::Event {
+                kind: "tutorial",
+                name: self.beats[i].id.clone(),
+                a: ONE,
+                b: ONE,
+            });
         }
         self.phase = Phase::Off;
         w.speed = ONE;
@@ -207,7 +230,12 @@ mod tests {
     fn arena1() -> (World, Tutorial) {
         let mut w = World::new();
         w.spawn("dog", v3(0, 0, -mm(3500)), 0).unwrap();
-        let beats = vec![Beat { id: "a1.light".into(), action: "light".into(), trigger: Trigger::DogLeaps, volley_at: None }];
+        let beats = vec![Beat {
+            id: "a1.light".into(),
+            action: "light".into(),
+            trigger: Trigger::DogLeaps,
+            volley_at: None,
+        }];
         (w, Tutorial::new(beats, Vec::new(), BTreeSet::new()))
     }
 
@@ -235,7 +263,11 @@ mod tests {
         assert!(w.hero.act.is_none(), "the heavy did not start");
         t.tick(&mut w, Input::bits(B_LIGHT), B_LIGHT);
         assert_eq!(w.tick, tick + 1, "time runs again");
-        assert_eq!(w.hero.act.as_ref().map(|a| a.name.as_str()), Some("light_1"), "the press performed the light attack");
+        assert_eq!(
+            w.hero.act.as_ref().map(|a| a.name.as_str()),
+            Some("light_1"),
+            "the press performed the light attack"
+        );
         assert_eq!(t.phase, Phase::Off);
     }
 

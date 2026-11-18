@@ -1,0 +1,6 @@
+{
+ "_about": "Button names for prompts, by the device last used (accessibility: prompts name the button for the device in use).",
+ "keyboard": {"light": "Left click", "heavy": "Right click", "launcher": "E", "jump": "Space", "whirl": "Q + Left click", "lock": "Tab", "sprint": "Shift", "skip": "X"},
+ "playstation": {"light": "Square", "heavy": "Triangle", "launcher": "Circle", "jump": "Cross", "whirl": "L1 + Square", "lock": "R1", "sprint": "R2", "skip": "Options"},
+ "xbox": {"light": "X", "heavy": "Y", "launcher": "B", "jump": "A", "whirl": "LB + X", "lock": "RB", "sprint": "RT", "skip": "Menu"}
+}

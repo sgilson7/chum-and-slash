@@ -21,6 +21,8 @@ uniform float uEps;
 out vec3 vWorld;
 out vec3 vNormal;
 out vec4 vColor;
+// the mesh's own point, for patterns that follow the shape (the corduroy)
+out vec3 vLocal;
 void main() {
   vec3 a = iA.xyz * uQ;
   vec3 b = iB.xyz * uQ;
@@ -39,5 +41,6 @@ void main() {
   vNormal = a * (n.x / max(dot(a, a), uEps)) + b * (n.y / max(dot(b, b), uEps)) + c * (n.z / max(dot(c, c), uEps));
   vColor = iD * uQ;
   vWorld = world;
+  vLocal = aPos * uQ;
   gl_Position = uVP * vec4(world, 1.0);
 }

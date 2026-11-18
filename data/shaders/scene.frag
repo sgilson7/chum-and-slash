@@ -8,6 +8,7 @@ precision highp float;
 in vec3 vWorld;
 in vec3 vNormal;
 in vec4 vColor;
+in vec3 vLocal;
 uniform vec3 uEye;
 uniform vec3 uLightDir;
 uniform vec3 uSky;
@@ -22,6 +23,11 @@ uniform float uPass;
 uniform vec4 uPasses;
 // the glow style's number, and a half for comparing
 uniform vec2 uGlow;
+// the corduroy: the brown between the wales and how many wales go round;
+// the stripes style's number and a half; a full turn in radians
+uniform vec4 uStripe;
+uniform vec2 uStripeStyle;
+uniform float uTau;
 out vec4 outColor;
 
 void main() {
@@ -39,6 +45,14 @@ void main() {
   if (abs(vColor.a - uGlow.x) < uGlow.y) {
     outColor = vec4(mix(base, uFog, f), 1.0);
     return;
+  }
+  if (abs(vColor.a - uStripeStyle.x) < uStripeStyle.y) {
+    // vertical wales round the leg, fading to their mix where they would
+    // be finer than a pixel, so they do not shimmer
+    float u = atan(vLocal.z, vLocal.x) / uTau * uStripe.w;
+    float s = step(uStripeStyle.y, fract(u));
+    s = mix(s, uStripeStyle.y, clamp(fwidth(u), 0.0, 1.0));
+    base = mix(base, uStripe.rgb, s);
   }
   vec3 n = normalize(vNormal);
   // uBands: wrap, ramp start, ramp end, how much of the ramp; uGlow.y is a half

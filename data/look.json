@@ -1,0 +1,13 @@
+{
+ "_about": "The scene's light, fog and outline (uniforms). Colours 0-255; other numbers in hundredths. After Protection of the Spheres' look.",
+ "light_dir": [-40, 80, 35],
+ "light": [255, 236, 214],
+ "ink": [26, 22, 34],
+ "ink_size": [1, 2, 4],
+ "bands": [35, 30, 70, 40],
+ "ambient": [62, 66, 78],
+ "ground": [44, 38, 34],
+ "fog_m": [150, 14000],
+ "stripe_count": 44,
+ "stripe_brown": [124, 86, 54]
+}

@@ -36,7 +36,13 @@ fn root(prev: V3, now: V3, prev_yaw: i32, yaw: i32, alpha: i32, lift: i32) -> Af
 fn pose_between(a: &[[i32; 3]], b: &[[i32; 3]], alpha: i32) -> Vec<[i32; 3]> {
     a.iter()
         .zip(b.iter())
-        .map(|(p, q)| [fx::lerp_angle(p[0], q[0], alpha), fx::lerp_angle(p[1], q[1], alpha), fx::lerp_angle(p[2], q[2], alpha)])
+        .map(|(p, q)| {
+            [
+                fx::lerp_angle(p[0], q[0], alpha),
+                fx::lerp_angle(p[1], q[1], alpha),
+                fx::lerp_angle(p[2], q[2], alpha),
+            ]
+        })
         .collect()
 }
 
@@ -55,17 +61,36 @@ pub fn bodies(w: &World, alpha: i32, out: &mut Batch) {
         let now = e.anim.pose(&w.clips, dm);
         let pose = pose_between(&e.prev_pose, &now, alpha);
         // a hit that does not stagger shakes the body in place (cue 123)
-        let shake = if e.shake > 0 { if e.shake % 2 == 0 { mm(25) } else { -mm(25) } } else { 0 };
+        let shake = if e.shake > 0 {
+            if e.shake % 2 == 0 {
+                mm(25)
+            } else {
+                -mm(25)
+            }
+        } else {
+            0
+        };
         let c = &w.clips[&e.anim.clip];
         let (_, up) = c.root_at(e.anim.tick);
         let scale = e.scale(&w.rules);
         let lift = fx::mul(up, scale);
-        let r = root(e.prev_pos, e.pos, e.prev_yaw, e.yaw, alpha, lift).then(&Affine::translate(v3(shake, 0, 0)));
+        let r =
+            root(e.prev_pos, e.pos, e.prev_yaw, e.yaw, alpha, lift).then(&Affine::translate(v3(shake, 0, 0)));
         let dim = e.state == State::Dead;
         for (i, a) in dm.parts_at(&r, &pose, scale) {
             let p = &dm.parts[i];
-            let rgb = if dim { [p.rgb[0] / 2, p.rgb[1] / 2, p.rgb[2] / 2] } else { p.rgb };
-            out.push(LAYER_INKED, p.mesh, &a, rgb, if dim { STYLE_PLAIN } else { p.style });
+            let rgb = if dim {
+                [p.rgb[0] / 2, p.rgb[1] / 2, p.rgb[2] / 2]
+            } else {
+                p.rgb
+            };
+            out.push(
+                LAYER_INKED,
+                p.mesh,
+                &a,
+                rgb,
+                if dim { STYLE_PLAIN } else { p.style },
+            );
         }
     }
     // the lock-on mark: a ring on the ground under the target
@@ -109,8 +134,24 @@ pub fn backdrop(b: &Backdrop, out: &mut Batch) {
     let hill = rgb255(b.hill);
     let drop = m(b.drop_m);
     // ring 0: the park on its hilltop, the hill falling away to the lake
-    out.push(LAYER_PLAIN, Mesh::Cyl, &Affine::translate(v3(0, -m(1) / 2, 0)).then(&Affine::scale(v3(m(b.floor_m * 2 + 6), m(1), m(b.floor_m * 2 + 6)))), grass, STYLE_PLAIN);
-    out.push(LAYER_PLAIN, Mesh::Cone, &Affine::translate(v3(0, -m(1) - drop / 2, 0)).then(&Affine::scale(v3(m(320), drop, m(320)))), hill, STYLE_PLAIN);
+    out.push(
+        LAYER_PLAIN,
+        Mesh::Cyl,
+        &Affine::translate(v3(0, -m(1) / 2, 0)).then(&Affine::scale(v3(
+            m(b.floor_m * 2 + 6),
+            m(1),
+            m(b.floor_m * 2 + 6),
+        ))),
+        grass,
+        STYLE_PLAIN,
+    );
+    out.push(
+        LAYER_PLAIN,
+        Mesh::Cone,
+        &Affine::translate(v3(0, -m(1) - drop / 2, 0)).then(&Affine::scale(v3(m(320), drop, m(320)))),
+        hill,
+        STYLE_PLAIN,
+    );
     let trunk = rgb255(b.trees);
     let leaves = rgb255(b.leaves);
     for k in 0..28 {
@@ -123,17 +164,39 @@ pub fn backdrop(b: &Backdrop, out: &mut Batch) {
         let (x, z) = (fx::mul(fx::cos(a), r), fx::mul(fx::sin(a), r));
         let ground = -fx::mul(fx::div(r - m(b.floor_m), m(160)), drop).min(0).abs();
         let h = m(rng.between(5, 9));
-        out.push(LAYER_INKED, Mesh::Cyl, &standing(v3(x, -ground, z), v3(m(1) / 2, h, m(1) / 2)), trunk, STYLE_PLAIN);
+        out.push(
+            LAYER_INKED,
+            Mesh::Cyl,
+            &standing(v3(x, -ground, z), v3(m(1) / 2, h, m(1) / 2)),
+            trunk,
+            STYLE_PLAIN,
+        );
         let s = m(rng.between(4, 7));
-        out.push(LAYER_INKED, Mesh::Facet, &Affine::translate(v3(x, h - ground, z)).then(&Affine::scale(v3(s, s * 4 / 5, s))), leaves, STYLE_PLAIN);
+        out.push(
+            LAYER_INKED,
+            Mesh::Facet,
+            &Affine::translate(v3(x, h - ground, z)).then(&Affine::scale(v3(s, s * 4 / 5, s))),
+            leaves,
+            STYLE_PLAIN,
+        );
     }
     // ring 1: the lake, below the hill
     let water = rgb255(b.water);
-    out.push(LAYER_PLAIN, Mesh::Cyl, &Affine::translate(v3(0, -drop - m(1), 0)).then(&Affine::scale(v3(m(9000), m(1), m(9000)))), water, STYLE_PLAIN);
+    out.push(
+        LAYER_PLAIN,
+        Mesh::Cyl,
+        &Affine::translate(v3(0, -drop - m(1), 0)).then(&Affine::scale(v3(m(9000), m(1), m(9000)))),
+        water,
+        STYLE_PLAIN,
+    );
     // ring 2: the skyline across the water (Long Time Comin's rings)
     let city = fx::deg(b.city_deg);
     let arc = fx::deg(b.city_arc_deg);
-    let rings = [(m(2100), m(2600), 40), (m(2600), m(3600), 36), (m(3600), m(5000), 30)];
+    let rings = [
+        (m(2100), m(2600), 40),
+        (m(2600), m(3600), 36),
+        (m(3600), m(5000), 30),
+    ];
     for (lo, hi, n) in rings {
         for k in 0..n {
             let a = city - arc + (2 * arc / n) * k + fx::deg(rng.between(-4, 4));
@@ -146,17 +209,40 @@ pub fn backdrop(b: &Backdrop, out: &mut Batch) {
             let h = m(rng.between(30, 90)) + fx::mul(centre, m(rng.between(60, 200))) + (r - lo) / 12;
             let tone = b.towers[rng.below(b.towers.len() as u32) as usize];
             let c = rgb255(tone);
-            out.push(LAYER_PLAIN, Mesh::Cube, &standing(v3(x, -drop, z), v3(w, h, d)), c, STYLE_PLAIN);
+            out.push(
+                LAYER_PLAIN,
+                Mesh::Cube,
+                &standing(v3(x, -drop, z), v3(w, h, d)),
+                c,
+                STYLE_PLAIN,
+            );
             // its reflection in the lake, darker, upside down
-            out.push(LAYER_PLAIN, Mesh::Cube, &standing(v3(x, -drop - h, z), v3(w, h, d)), shade(c, 55), STYLE_PLAIN);
+            out.push(
+                LAYER_PLAIN,
+                Mesh::Cube,
+                &standing(v3(x, -drop - h, z), v3(w, h, d)),
+                shade(c, 55),
+                STYLE_PLAIN,
+            );
             if rng.chance(30, 100) {
                 let extra = m(rng.between(20, 80));
-                out.push(LAYER_PLAIN, Mesh::Cube, &standing(v3(x, -drop + h, z), v3(w * 6 / 10, extra, d * 6 / 10)), shade(c, 90), STYLE_PLAIN);
+                out.push(
+                    LAYER_PLAIN,
+                    Mesh::Cube,
+                    &standing(v3(x, -drop + h, z), v3(w * 6 / 10, extra, d * 6 / 10)),
+                    shade(c, 90),
+                    STYLE_PLAIN,
+                );
             }
         }
     }
     // the water over the reflections: a sheet just above them
-    out.tint(Mesh::Cyl, &Affine::translate(v3(0, -drop - m(1) / 2, 0)).then(&Affine::scale(v3(m(9000), m(1) / 4, m(9000)))), water, ONE * 7 / 10);
+    out.tint(
+        Mesh::Cyl,
+        &Affine::translate(v3(0, -drop - m(1) / 2, 0)).then(&Affine::scale(v3(m(9000), m(1) / 4, m(9000)))),
+        water,
+        ONE * 7 / 10,
+    );
     // ring 3: far hills all round
     let far = rgb255(b.far_hills);
     for k in 0..18 {
@@ -165,7 +251,13 @@ pub fn backdrop(b: &Backdrop, out: &mut Batch) {
         let (x, z) = (fx::mul(fx::sin(a), r), -fx::mul(fx::cos(a), r));
         let s = m(rng.between(2500, 5000));
         let h = m(rng.between(400, 1100));
-        out.push(LAYER_PLAIN, Mesh::Cone, &standing(v3(x, -drop, z), v3(s, h, s)), far, STYLE_PLAIN);
+        out.push(
+            LAYER_PLAIN,
+            Mesh::Cone,
+            &standing(v3(x, -drop, z), v3(s, h, s)),
+            far,
+            STYLE_PLAIN,
+        );
     }
 }
 

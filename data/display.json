@@ -1,0 +1,6 @@
+{
+ "_about": "Drawing less on a software renderer (realtime kit): renderer names to look for, and the scale to draw at.",
+ "software": ["SwiftShader", "llvmpipe", "Software", "Microsoft Basic Render"],
+ "software_scale": 0.5,
+ "most_dpr": 2
+}

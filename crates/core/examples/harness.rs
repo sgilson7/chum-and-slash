@@ -41,14 +41,22 @@ fn bits(s: &str) -> u32 {
 fn main() {
     let args: Vec<String> = std::env::args().collect();
     let path = args.get(1).expect("a scenario file");
-    let json_out = args.iter().position(|a| a == "--json").and_then(|i| args.get(i + 1)).cloned();
+    let json_out = args
+        .iter()
+        .position(|a| a == "--json")
+        .and_then(|i| args.get(i + 1))
+        .cloned();
     let text = fs::read_to_string(path).expect("read the scenario");
     let mut w = World::new();
     let mut presses: Vec<(u32, u32)> = Vec::new();
     let mut holds: Vec<(u32, u32, u32)> = Vec::new();
     let mut volleys: Vec<u32> = Vec::new();
     let mut end = 600;
-    for line in text.lines().map(str::trim).filter(|l| !l.is_empty() && !l.starts_with('#')) {
+    for line in text
+        .lines()
+        .map(str::trim)
+        .filter(|l| !l.is_empty() && !l.starts_with('#'))
+    {
         let p: Vec<&str> = line.split_whitespace().collect();
         let n = |i: usize| p[i].parse::<i32>().expect("a number");
         match p[0] {
@@ -68,14 +76,28 @@ fn main() {
     }
     let mut steps = Vec::new();
     for t in 0..end {
-        let mut b = presses.iter().filter(|(at, _)| *at == t).fold(0, |a, (_, b)| a | b);
-        b |= holds.iter().filter(|(f, to, _)| t >= *f && t <= *to).fold(0, |a, (_, _, b)| a | b);
+        let mut b = presses
+            .iter()
+            .filter(|(at, _)| *at == t)
+            .fold(0, |a, (_, b)| a | b);
+        b |= holds
+            .iter()
+            .filter(|(f, to, _)| t >= *f && t <= *to)
+            .fold(0, |a, (_, _, b)| a | b);
         if volleys.contains(&t) {
             w.pack.volley = true;
         }
         let ev = w.tick(Input::bits(b));
         let said: Vec<String> = ev.iter().map(|e| format!("{}:{}", e.kind, e.name)).collect();
-        let line = format!("{}{}", w.describe(), if said.is_empty() { String::new() } else { format!(" || {}", said.join(" ")) });
+        let line = format!(
+            "{}{}",
+            w.describe(),
+            if said.is_empty() {
+                String::new()
+            } else {
+                format!(" || {}", said.join(" "))
+            }
+        );
         println!("{line}");
         if json_out.is_some() {
             steps.push(w.snapshot(&ev));

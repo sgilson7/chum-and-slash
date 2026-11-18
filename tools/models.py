@@ -93,10 +93,10 @@ def hero():
         P("l_knee", "cube", [0, -450, -45], [115, 70, 250], "shoe"),
         # the utility tool: a haft held forward, a blade on one side, a pick
         # on the other, and a glowing edge (cues 33-37)
-        P("tool", "cyl", [0, 0, -230], [38, 520, 38], "tool_grey", "haft", turn=(90, 0, 0)),
-        P("tool", "wedge", [0, 70, -470], [36, 170, 230], "metal", "blade", turn=(90, 0, 0)),
-        P("tool", "cube", [0, 155, -470], [14, 14, 230], "glow_cyan", "tool_edge", "glow"),
-        P("tool", "cone", [0, -95, -470], [40, 150, 40], "metal", "pick", turn=(180, 0, 0)),
+        P("tool", "cyl", [0, -200, 0], [38, 520, 38], "tool_grey", "haft"),
+        P("tool", "wedge", [0, -430, -95], [36, 200, 170], "metal", "blade", turn=(0, 0, 0)),
+        P("tool", "cube", [0, -430, -182], [16, 200, 14], "glow_cyan", "tool_edge", "glow"),
+        P("tool", "cone", [0, -430, 75], [40, 150, 40], "metal", "pick", turn=(90, 0, 0)),
     ]
     return {"joints": joints, "parts": parts}
 

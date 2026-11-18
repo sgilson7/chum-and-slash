@@ -12,6 +12,7 @@
 pub mod api;
 pub mod clip;
 pub mod fx;
+pub mod game;
 pub mod geom;
 pub mod glossary;
 pub mod mesh;

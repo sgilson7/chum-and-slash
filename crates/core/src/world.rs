@@ -962,7 +962,11 @@ impl World {
         } else {
             Intent::Hold
         };
-        let intent = if self.enemies[i].state == State::Idle { thought } else { Intent::Hold };
+        let intent = if self.enemies[i].state == State::Idle {
+            thought
+        } else {
+            Intent::Hold
+        };
         let hero_pos = self.hero.pos;
         let clips = &self.clips;
         let e = &mut self.enemies[i];
