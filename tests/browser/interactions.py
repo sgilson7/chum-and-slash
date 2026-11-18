@@ -81,6 +81,15 @@ def run(page, check, engine):
         page.keyboard.up("KeyW")
     wait_probe(page, "tick", lambda t: t > 30, "the fight runs on its tick", check)
 
+    # T3: Escape pauses, and the pause card spawns without resuming
+    page.keyboard.press("Escape")
+    wait_screen(page, "paused")
+    page.click("#card button[data-act='spawn'][data-value='pup']")
+    wait_probe(page, "enemies", lambda n: n == 2, "the sandbox pause card spawns a dog", check)
+    check(page.get_attribute("body", "data-screen") == "paused", "spawning from the pause card keeps the game paused")
+    page.click("#card button[data-act='resume']")
+    wait_screen(page, "sandbox")
+
     # a scripted pad: Square is the light attack, and a landed hit rumbles
     page.add_init_script(FAKE_PAD)
     page.goto(base + "?pointer=free")

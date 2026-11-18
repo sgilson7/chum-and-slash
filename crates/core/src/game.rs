@@ -757,7 +757,19 @@ impl Game {
             }
             Screen::Paused => {
                 out["heading"] = json!(self.t("paused"));
-                out["buttons"] = json!([btn("resume", "resume", ""), btn("menu", "menu", "")]);
+                // T3: Escape frees the mouse and pauses, so the sandbox's
+                // spawn tools sit in the pause card where a free mouse can reach them.
+                let mut buttons = vec![btn("resume", "resume", "")];
+                if self.paused_from == Screen::Sandbox {
+                    buttons.extend([
+                        btn("sandbox.spawn_dog", "spawn", "dog"),
+                        btn("sandbox.spawn_pup", "spawn", "pup"),
+                        btn("sandbox.spawn_big", "spawn", "big_dog"),
+                        btn("sandbox.clear", "clear", ""),
+                    ]);
+                }
+                buttons.push(btn("menu", "menu", ""));
+                out["buttons"] = json!(buttons);
             }
         }
         out
@@ -871,6 +883,34 @@ mod tests {
         b[3] = true; // Triangle / Y
         g.pad(b, vec![0; 4], "xbox");
         assert_ne!(g.bits() & B_HEAVY, 0);
+    }
+
+    /// T3: Escape pauses and frees the mouse, so the sandbox's pause card
+    /// carries the spawn tools; spawning there keeps the game paused, and
+    /// the arena's pause card does not offer them.
+    #[test]
+    fn sandbox_pause_card_spawns() {
+        let mut g = Game::new();
+        g.act("sandbox", "").unwrap();
+        g.act("pause", "").unwrap();
+        let ui = g.ui();
+        let acts: Vec<&str> = ui["buttons"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|b| b["act"].as_str().unwrap())
+            .collect();
+        assert_eq!(acts, ["resume", "spawn", "spawn", "spawn", "clear", "menu"]);
+        let before = g.world.enemies.len();
+        g.act("spawn", "dog").unwrap();
+        assert_eq!(g.world.enemies.len(), before + 1);
+        assert_eq!(g.screen, Screen::Paused);
+        g.act("resume", "").unwrap();
+        assert_eq!(g.screen, Screen::Sandbox);
+        g.act("arena", "0").unwrap();
+        g.act("skip", "").unwrap();
+        g.act("pause", "").unwrap();
+        assert_eq!(g.ui()["buttons"].as_array().unwrap().len(), 2);
     }
 
     /// T1, worked by hand: at the origin facing -z (camera yaw 0, pitch 0

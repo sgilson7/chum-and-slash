@@ -55,6 +55,7 @@ Tokens (`tools/tokens.py`): | 2026-11-18 14:35 | 07850e6c | 254 calls | 155k at 
 ## After the first deploy
 
 - T1: the camera sits up and to the hero's side (6 m back, 1.2 m aside, 1.5 m up, `data/look.json`), and the mouse or right stick steers it; lock-on turns it toward the target only after 90 quiet ticks.
+- T3: the sandbox's spawn tools were out of reach of the locked mouse. Escape now opens a pause card that carries them; `sandbox_pause_card_spawns`.
 - T2: mashing light could not reach the cap's recovery (a capped move was cancellable). A capped move now plays out; `mashing_light_still_reaches_the_cap`.
 
 ## The next action

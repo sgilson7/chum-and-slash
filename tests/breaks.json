@@ -306,5 +306,12 @@
     "find": "            Some(a) if a.capped => false,\n            Some(a) => {",
     "replace": "            Some(a) => {",
     "test": "mashing_light_still_reaches_the_cap"
+  },
+  {
+    "name": "the sandbox pause card has no spawn tools",
+    "file": "crates/core/src/game.rs",
+    "find": "if self.paused_from == Screen::Sandbox {",
+    "replace": "if false {",
+    "test": "sandbox_pause_card_spawns"
   }
 ]
