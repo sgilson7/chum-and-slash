@@ -34,6 +34,8 @@ One row per assumption, surprise or open item. **Kind** is *divergence* (what wa
 | R3.1 | finding | The text harness shows what a feel change changes | Round 2's change moved only joint angles; the harness printed clip names and frames, so before and after were byte-identical and all three playtesters said so. I had also told one that transitions were printed, which was false | Each body's line names its three most-turned joints, and the flinch is printed beside the shake | the harness (`World::describe`) | done |
 | R3.2 | finding | A buffered press lasts its 8 ticks | It aged before it was tried, so a press made exactly 8 ticks before a cancel tick was dropped on the tick it could start (the lesson's launcher) | Tried first, then aged | `a_press_the_buffer_length_early_still_comes_out` | done |
 | R4.1 | finding | The cap tests prove the cap | They pressed each button only after the move allowed it, so none mashed; mashing cancelled the capped fourth light and skipped the recovery for good (T2) | A capped move cannot be cancelled; a mashing test | `mashing_light_still_reaches_the_cap` | done |
+| R5.1 | divergence | Arena 4's "large dog" is the kind Arena 3 already has | `big_dog` is Arena 3's injured dog: it never attacks, lies stunned and dies on the first launch. A large dog in a pack fight has to fight back | A new kind, `large_dog` (170% size, 200 health, poise 2, bite 14) with its own tree (slower reaction 24, lunges from further off). The sandbox's "Spawn a large dog" still spawns the injured `big_dog` | `data/combat.json`, `data/pilots.json`; `arena4_is_four_dogs_and_a_large_dog_at_once` Sam to say whether the sandbox button should spawn the fighting one | person |
+| R5.2 | finding | Five dogs at once is beatable | The scripted player clears Arena 4 in 1,201 ticks (20 s) with 48 of 100 health left; it loses none in Arenas 1 to 3. Only one dog holds the attack token at a time, so the five take turns | Nothing; the numbers are for Sam to judge in play | `bot_clears_each_arena` | done |
 
 ## Strings written by the agent
 
@@ -60,6 +62,10 @@ Each reader-visible string the agent wrote, with its key, for the person to read
 | `text.arena3.c1` | A guard waves you down toward the water. |
 | `text.arena3.c2` | "That big one is badly hurt and will not fight back. Light, heavy, light, light, heavy, then launch it." |
 | `text.arena3.c3` | Finish it with that string. |
+| `text.arena4.title` | The north gate |
+| `text.arena4.c1` | The last carts of the colony roll toward the north gate. |
+| `text.arena4.c2` | A pack has found the road: four dogs and a large one, all at once. |
+| `text.arena4.c3` | Hold the gate until the carts are through. |
 | `text.sandbox.title` | Sandbox |
 | `text.sandbox.spawn_dog` | Spawn a dog |
 | `text.sandbox.spawn_pup` | Spawn a young dog |
@@ -69,7 +75,7 @@ Each reader-visible string the agent wrote, with its key, for the person to read
 | `text.skip` | Hold to skip |
 | `text.next` | Go on |
 | `text.won` | The way is clear. |
-| `text.won.last` | The prologue's three fights are done. More of the city waits. |
+| `text.won.last` | The prologue's four fights are done. More of the city waits. |
 | `text.lost` | You fell. The fight starts again from the checkpoint. |
 | `text.retry` | Try again |
 | `text.continue` | Go on |

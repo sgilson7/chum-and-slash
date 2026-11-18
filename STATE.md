@@ -14,7 +14,7 @@ Rules CS-1..CS-20 (CLAUDE.md). All questions on defaults; CS-Q23-25 answered A. 
 
 ## What is next
 
-T1 (camera up and to the side; player steers it) T2 (a capped move cannot be cancelled, so mashing reaches the recovery) and T3 (the sandbox pause card carries the spawn tools) done.
+T1 (camera up and to the side; player steers it) T2 (a capped move cannot be cancelled, so mashing reaches the recovery) T3 (the sandbox pause card carries the spawn tools) and T4 (Arena 4: four dogs and a large dog at once) done.
 
 Feel round 6: "a kill frees the hero" (drop queued presses and the cap's recovery when nothing is left alive), then the death clip's return to standing, then air dead time. Sam's call: the lesson's launcher kills vs lifts.
 

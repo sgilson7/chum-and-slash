@@ -243,6 +243,16 @@
    "attacks": false,
    "dies_on_combo": "first_launch",
    "injured": true
+  },
+  "large_dog": {
+   "model": "dog",
+   "scale_pct": 170,
+   "health": 200,
+   "poise": 2,
+   "radius_mm": 780,
+   "push_pct": 45,
+   "bite": 14,
+   "attacks": true
   }
  },
  "_round3": "Round 3 (the animator, the newcomer): every hit shakes the target, sized by the move.",

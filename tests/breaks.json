@@ -313,5 +313,12 @@
     "find": "if self.paused_from == Screen::Sandbox {",
     "replace": "if false {",
     "test": "sandbox_pause_card_spawns"
+  },
+  {
+    "name": "arena 4's large dog is the injured one",
+    "file": "data/arenas.json",
+    "find": "{\"kind\": \"large_dog\", \"x_mm\": 0, \"z_mm\": -11000, \"tree\": \"\"}",
+    "replace": "{\"kind\": \"big_dog\", \"x_mm\": 0, \"z_mm\": -11000, \"tree\": \"\"}",
+    "test": "arena4_is_four_dogs_and_a_large_dog_at_once"
   }
 ]

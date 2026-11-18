@@ -33,6 +33,17 @@
    {"if": [{"chance": 50}], "do": "strafe_left"},
    {"do": "strafe_right"}
   ]},
+  "large_dog": {"reaction": 24, "rules": [
+   {"if": ["me_stunned"], "do": "reel", "interrupt": true},
+   {"if": ["me_airborne"], "do": "tumble", "interrupt": true},
+   {"if": [{"gap_above": 2400}], "do": "idle"},
+   {"if": ["has_token", {"gap_below": 700}], "do": "lunge"},
+   {"if": ["has_token"], "do": "approach"},
+   {"if": [{"gap_above": 900}], "do": "approach"},
+   {"if": [{"gap_below": 400}], "do": "back_off"},
+   {"if": [{"chance": 50}], "do": "strafe_left"},
+   {"do": "strafe_right"}
+  ]},
   "big_dog": {"reaction": 30, "rules": [
    {"if": ["me_stunned"], "do": "reel", "interrupt": true},
    {"if": ["me_airborne"], "do": "tumble", "interrupt": true},

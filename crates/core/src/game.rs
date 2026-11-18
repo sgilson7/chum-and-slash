@@ -1,4 +1,4 @@
-//! The game around the fight: screens, the prologue's three arenas with
+//! The game around the fight: screens, the prologue's four arenas with
 //! their cutscenes, checkpoints and tutorials, the sandbox, input from keys,
 //! mouse and pads, the camera, and what the page draws (M1, M5, M7).
 //!
@@ -854,7 +854,7 @@ mod tests {
     #[test]
     fn data_files_load() {
         let g = Game::new();
-        assert_eq!(g.arenas.len(), 3, "the prologue's three arenas");
+        assert_eq!(g.arenas.len(), 4, "the prologue's four arenas");
         assert!(g.text.contains_key("title"));
     }
 
@@ -963,7 +963,7 @@ mod tests {
     /// back to it.
     #[test]
     fn checkpoint_before_each_fight() {
-        for i in 0..3 {
+        for i in 0..g_arenas() {
             let mut g = Game::new();
             g.act("arena", &i.to_string()).unwrap();
             assert!(g.checkpoint.is_none());
@@ -985,10 +985,45 @@ mod tests {
         assert_eq!(g.world.hero.health, g.world.rules.hero.health);
     }
 
+    fn g_arenas() -> usize {
+        Game::new().arenas.len()
+    }
+
+    /// Arena 4 (Sam, 2026-11-18): four dogs and one large dog, all in the
+    /// fight at once, and the large one fights back (unlike Arena 3's
+    /// injured dog).
+    #[test]
+    fn arena4_is_four_dogs_and_a_large_dog_at_once() {
+        let mut g = Game::new();
+        g.act("arena", "3").unwrap();
+        g.act("skip", "").unwrap();
+        let mut kinds: Vec<&str> = g.world.enemies.iter().map(|e| e.kind.as_str()).collect();
+        kinds.sort();
+        assert_eq!(kinds, ["dog", "dog", "dog", "dog", "large_dog"]);
+        let big = g.world.enemies.iter().find(|e| e.kind == "large_dog").unwrap();
+        assert_ne!(
+            big.state,
+            crate::world::State::Stunned,
+            "the large dog is not lying injured"
+        );
+        let spec = &g.world.rules.enemies["large_dog"];
+        assert!(spec.attacks && !spec.injured && spec.bite > 0);
+        assert!(spec.scale_pct > g.world.rules.enemies["dog"].scale_pct);
+        // all five are in lock range from the start, so all join at once
+        let range = mm(g.world.rules.hero.lock_range_mm);
+        for e in &g.world.enemies {
+            assert!(
+                e.pos.sub(g.world.hero.pos).len_xz() < range,
+                "{} starts out of range",
+                e.kind
+            );
+        }
+    }
+
     /// CS-13: every cutscene can be skipped by holding skip.
     #[test]
     fn every_cutscene_skips() {
-        for i in 0..3 {
+        for i in 0..g_arenas() {
             let mut g = Game::new();
             g.act("arena", &i.to_string()).unwrap();
             let hold = g.pads.skip_hold;
@@ -1003,7 +1038,7 @@ mod tests {
     /// whenever it can, answering each tutorial prompt with its button.
     #[test]
     fn bot_clears_each_arena() {
-        for i in 0..3 {
+        for i in 0..g_arenas() {
             let mut g = Game::new();
             g.act("arena", &i.to_string()).unwrap();
             g.act("skip", "").unwrap();
