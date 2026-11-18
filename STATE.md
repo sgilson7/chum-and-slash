@@ -2,30 +2,25 @@
 
 The project's long-term memory, at most two pages. Rewrite it at each milestone (a stage boundary, a finished feature, a deploy) and before a handoff. After a compaction or in a new session, read this file and ask `tools/ask.py` for cards; do not re-read files it already summarises. `scripts/context_check.py` checks its size, its commit and the cards it cites.
 
-Commit: bb178f8
+Commit: 8edd174
 
 ## Where the build is
 
-Stage 5, M0 in progress. Plan approved 2026-11-18; Sam said build through to publishing without stopping (DECISIONS.md). All 25 questions on their defaults; CS-Q23/24/25 answered A. Ported so far (MIT, credit owed in LICENSES.md): POTS `fx.rs` (+ kit's sqrt/length, `Fx` alias), `geom.rs`, `mesh.rs`, `render.rs` into crates/core/src; `web/gl.js`, `data/shaders/scene.{vert,frag}`; kit `rng.rs`, `ticks.rs`, `web/input.js`. 46 core lib tests pass. Not yet: everything else. Context passed 200k at this point; Sam asked for no stops, so no /compact request.
-
-## Design settled (build to this)
-
-- Units Q16.16 metres, angles 65536/turn, 60 ticks/s. Gameplay JSON (combat, models, clips, enemies, arenas) embedded in core with include_str!; presentation JSON (audio, haptics, display, strings, pads glyphs) fetched by page.
-- Modules: model.rs (two-level joint rigs + parts from data/models.json; hero trousers = shader stripe style, ~44 vertical wales, white/brown, uniform-driven), clip.rs (keyed clips: per-joint keys with ease, events hit window/cancel_from, root curve; sample in Q16; transition offset decays with quintic smootherstep to exactly 0 at N ticks: 6 cancel, 12 locomotion), combat.rs (combo machine: 8-tick buffer, caps light4/heavy3/total6, 24-tick recovery, string reset 35; first combos LHLLH and LHLLH+Launcher recognised as data, ComboDone event; stamina only sprint/air moves/abilities; air dmg x3/2; launcher lifts only stunned to 3 m; air float gravity/4 for 20 ticks; stun 90 refreshed per hit, cut to a short tail when the player's string ends; push-back 0.3/0.8 m; hit-stop 4/7/10 cap 12; poise: stagger else shake), feel (camera knock ring from Chumworld Arena feel.rs: KNOCK_MAX 5 cm, RING_PCT 55, QUIET ONE/2000, test sequence [3276,-1801,990,-544,299,-164,90,-49,0]), pilot.rs (Vagrancy tree port, M4), pack.rs (tokens), tutorial.rs, arena.rs (rings per vistas review, checkpoints, cutscenes), world.rs (World::tick(input)->Frame: scene batch, sound events with Q16 rate, rumble events, harness lines), api/shim stateful Game like POTS shim (frame(now_ms), key, pad, act, ui, render, scene, draws, mats, uniforms, mesh, noise).
-- Page: D3 bans numbers/Math in JS, so pitch ratios, gains and noise samples come from the core. Split depth: far pass first, then a clear-depth draw, then near (CS-Q24, vistas review).
-- Harness: examples/harness.rs prints per tick clip/frame/phase/hitstop/reaction/node/stamina/sounds/rumbles; --json for journal animations.
+Stage 5, M0-M5 and M7 built and playable; browser check passes in Chromium (Playwright installed in .venv, R1.4 done). Core modules: fx/geom/mesh/render (POTS), model.rs (rig, data/models.json from tools/models.py), clip.rs (keyed clips, data/clips.json from tools/clips.py, inertialization, allowed-transition graph), world.rs (combat), pilot.rs (Vagrancy trees, data/pilots.json, Pack tokens), tutorial.rs, scene.rs (bodies + LTC-style skyline rings), game.rs (screens, arenas from data/arenas.json, checkpoints, cutscenes, input map data/pads.json, camera, ui view model, uniforms). Shim exposes Game. Page: web/app.js, gl.js (POTS + scenery upload + software check), audio.js (data/audio.json), style.css; data/haptics.json, glyphs.json, text.json (agent-written strings: list them in SECOND-ORDER). Harness: crates/core/examples/harness.rs + data/scenarios/*.txt (--json for journal). Screenshots: tools/shots.py -> ../hack-and-slash-journal/img/build/. 33 breaks caught (tests/breaks.json).
 
 ## Decisions in force
 
-Rules CS-1..CS-20 (CLAUDE.md "Rules agreed"). PLAN.md milestones M0-M8 and its starting-numbers table. Deploy grant: chum-and-slash after check.sh passes. Person row R1.4 (Playwright install) still open: install via scripts/setup.sh at M8.
+Rules CS-1..CS-20 (CLAUDE.md agreed rules). All questions on defaults; CS-Q22 grants Chumworld Arena code. Deploy grant: chum-and-slash after ./scripts/check.sh passes. Notebook rows R1.1-R1.15.
 
 ## What is next
 
-Write model.rs, clip.rs, combat.rs, world.rs, harness; then shim Game + page; then M4 (read Vagrancy lines named in ../refs/vagrancy.md Behaviour trees bullet), M5-M8.
+1. Journal: screenshots entry (img/build/*.png); list agent strings at foot of SECOND-ORDER.md; LICENSES.md credits (POTS, Vagrancy, LTC, Chumworld Arena, realtime kit).
+2. M6 feel rounds: run harness scenarios to files, spawn 3 playtester subagents (veteran, newcomer, animator) on the text, change one thing a round, journal entry with before/after.
+3. M6.1 journal animations from harness --json (SnapClass step player pattern).
+4. Full ./scripts/check.sh (three engines), then scripts/publish.sh to chum-and-slash; live entry; republish journal artifact https://claude.ai/artifact/HFNKrsPgkiULwcmrmEADUx.
 
 ## Cards the next session needs
 
 `card:docs.context.how-to-read-builder`
 `card:kits.realtime.drawing-less-on-a-software-renderer`
-`card:kits.canvas.going-further-webgl`
 `card:docs.checks.things-the-browser-check-cannot-see`
