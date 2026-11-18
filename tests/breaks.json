@@ -320,5 +320,19 @@
     "find": "{\"kind\": \"large_dog\", \"x_mm\": 0, \"z_mm\": -11000, \"tree\": \"\"}",
     "replace": "{\"kind\": \"big_dog\", \"x_mm\": 0, \"z_mm\": -11000, \"tree\": \"\"}",
     "test": "arena4_is_four_dogs_and_a_large_dog_at_once"
+  },
+  {
+    "name": "Tab only toggles lock-on",
+    "file": "crates/core/src/world.rs",
+    "find": "            } else if let Some(next) = self.next_target() {",
+    "replace": "            } else if let Some(next) = None {",
+    "test": "tab_cycles_the_lock_clockwise"
+  },
+  {
+    "name": "Tab cycles anticlockwise",
+    "file": "crates/core/src/world.rs",
+    "find": "let d = (from - yaw_of(e.pos.sub(p))) & (fx::TURN - 1);",
+    "replace": "let d = (yaw_of(e.pos.sub(p)) - from) & (fx::TURN - 1);",
+    "test": "tab_cycles_the_lock_clockwise"
   }
 ]

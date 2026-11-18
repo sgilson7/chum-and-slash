@@ -3,7 +3,7 @@
  "keys": {"KeyW": "fwd", "KeyS": "back", "KeyA": "left", "KeyD": "right",
           "ArrowUp": "fwd", "ArrowDown": "back", "ArrowLeft": "left", "ArrowRight": "right",
           "Mouse0": "light", "Mouse2": "heavy", "KeyE": "launcher", "Space": "jump",
-          "KeyQ": "mod", "Tab": "lock", "Mouse1": "lock", "ShiftLeft": "sprint", "ShiftRight": "sprint",
+          "KeyQ": "mod", "Tab": "cycle", "Mouse1": "lock", "ShiftLeft": "sprint", "ShiftRight": "sprint",
           "KeyX": "skip", "Enter": "skip", "KeyJ": "light", "KeyK": "heavy", "KeyL": "launcher", "KeyU": "mod", "KeyI": "lock"},
  "pad": {"0": "jump", "1": "launcher", "2": "light", "3": "heavy", "4": "mod", "5": "lock", "7": "sprint", "9": "skip", "11": "lock"},
  "dead_zone_pct": 18,

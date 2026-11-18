@@ -415,6 +415,34 @@ fn lock_on_starts_with_the_fight_and_toggles() {
     assert_eq!(w.hero.lock, Some(id));
 }
 
+/// T5, worked by hand: the hero at the origin faces -z (yaw 0; yaw grows
+/// to the left). A is 2.5 m ahead (yaw 0, the nearest), B ahead-right at
+/// (3, -3) m (yaw -45 deg), C ahead-left at (-3, -3) m (yaw +45 deg), D far
+/// right at 20 m, outside the 16 m lock range. Clockwise from A: B (drop
+/// 45 deg), then C (drop 270 from B), then A again (drop 45 from C); D never.
+#[test]
+fn tab_cycles_the_lock_clockwise() {
+    let mm = tool_core::model::mm;
+    let mut w = World::new();
+    let a = w.spawn("dog", v3(0, 0, -mm(2500)), fx::HALF).unwrap();
+    let b = w.spawn("dog", v3(mm(3000), 0, -mm(3000)), fx::HALF).unwrap();
+    let c = w.spawn("dog", v3(-mm(3000), 0, -mm(3000)), fx::HALF).unwrap();
+    let _d = w.spawn("dog", v3(mm(20000), 0, 0), fx::HALF).unwrap();
+    w.tick(Input::bits(0));
+    assert_eq!(w.hero.lock, Some(a), "lock-on starts on the nearest");
+    tap(&mut w, B_CYCLE);
+    assert_eq!(w.hero.lock, Some(b));
+    tap(&mut w, B_CYCLE);
+    assert_eq!(w.hero.lock, Some(c));
+    tap(&mut w, B_CYCLE);
+    assert_eq!(w.hero.lock, Some(a), "round again, never the dog out of range");
+    // with lock-on off, Tab turns it on at the nearest
+    tap(&mut w, B_LOCK);
+    assert_eq!(w.hero.lock, None);
+    tap(&mut w, B_CYCLE);
+    assert_eq!(w.hero.lock, Some(a));
+}
+
 /// The camera's knock rings back through the middle to exactly nothing
 /// (Chumworld Arena's test, the same numbers: 5 cm held, 55% kept).
 #[test]

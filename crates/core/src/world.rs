@@ -167,6 +167,8 @@ pub const B_FWD: u32 = 256;
 pub const B_BACK: u32 = 512;
 pub const B_LEFT: u32 = 1024;
 pub const B_RIGHT: u32 = 2048;
+/// Tab: lock on, or move the lock to the next target (T5)
+pub const B_CYCLE: u32 = 4096;
 
 /// One tick's input: buttons held, a stick (Q16, overrides the keys when
 /// it is pushed), and how far the camera was turned.
@@ -619,6 +621,15 @@ impl World {
         if pressed & B_LOCK != 0 {
             self.hero.lock_on = !self.hero.lock_on;
         }
+        // T5: Tab turns lock-on on (the nearest target, below) or moves it
+        // to the next target clockwise round the hero
+        if pressed & B_CYCLE != 0 {
+            if !self.hero.lock_on {
+                self.hero.lock_on = true;
+            } else if let Some(next) = self.next_target() {
+                self.hero.lock = Some(next);
+            }
+        }
         let range = model::mm(self.rules.hero.lock_range_mm);
         let still = self
             .hero
@@ -650,6 +661,24 @@ impl World {
             let d = fx::wrap(want - self.cam_yaw);
             self.cam_yaw = fx::wrap(self.cam_yaw + d / 8);
         }
+    }
+
+    /// The next live enemy in lock range clockwise round the hero from the
+    /// current target, seen from above. Yaw grows to the left, so clockwise
+    /// is the smallest positive drop in yaw, measured in `[0, TURN)`.
+    fn next_target(&self) -> Option<u32> {
+        let p = self.hero.pos;
+        let cur = self.hero.lock.and_then(|id| self.enemy(id))?;
+        let from = yaw_of(cur.pos.sub(p));
+        let range = model::mm(self.rules.hero.lock_range_mm);
+        self.alive()
+            .filter(|e| e.id != cur.id && e.pos.sub(p).len_xz() <= range)
+            .map(|e| {
+                let d = (from - yaw_of(e.pos.sub(p))) & (fx::TURN - 1);
+                (if d == 0 { fx::TURN } else { d }, e.id)
+            })
+            .min()
+            .map(|(_, id)| id)
     }
 
     fn hero_moves(&mut self, input: Input, pressed: u32) {

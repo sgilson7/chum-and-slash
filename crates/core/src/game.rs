@@ -130,6 +130,7 @@ pub fn action_bit(name: &str) -> u32 {
         "jump" => B_JUMP,
         "mod" => B_MOD,
         "lock" => B_LOCK,
+        "cycle" => B_CYCLE,
         "sprint" => B_SPRINT,
         "skip" => B_SKIP,
         "fwd" => B_FWD,
