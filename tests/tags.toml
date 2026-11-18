@@ -11,7 +11,7 @@
 # Steps: fmt, clippy, core, build, wasm, art, notebook, context, journal, browser, all.
 # After Peter's quick check in Ape Race, Honey Hole and Crabble.
 
-ignore = [".gitignore", "notes/**", ".claude/**", "LICENSE*", "README.md", "LICENSES.md", "MEASUREMENTS.md", "DECISIONS.md"]
+ignore = [".gitignore", "notes/**", "tools/journal_anim.py", "tools/shots.py", ".claude/**", "LICENSE*", "README.md", "LICENSES.md", "MEASUREMENTS.md", "DECISIONS.md"]
 
 [[rule]]
 name = "the core and the shim"
@@ -21,7 +21,7 @@ steps = ["fmt", "clippy", "core", "build", "wasm", "browser"]
 [[rule]]
 name = "the page and its data"
 # the boundary and copy tests read web/ and data/, so the core suite runs too
-files = ["web/**", "data/**"]
+files = ["web/**", "data/**", "tools/clips.py", "tools/models.py"]
 steps = ["core", "build", "wasm", "browser"]
 
 [[rule]]
