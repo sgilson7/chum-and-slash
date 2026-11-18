@@ -712,7 +712,11 @@ fn an_air_combo_keeps_the_hero_up() {
             break;
         }
     }
-    assert!(w.hero.vel.y >= 0, "fall stopped on the hit tick: {}", w.hero.vel.y);
+    assert!(
+        w.hero.vel.y >= 0,
+        "fall stopped on the hit tick: {}",
+        w.hero.vel.y
+    );
     let mut held = in_the_air(1500);
     let mut fell = in_the_air(9000);
     for w in [&mut held, &mut fell] {
