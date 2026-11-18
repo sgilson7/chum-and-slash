@@ -34,7 +34,6 @@ Where the design journal is, its link if it is published, and its newest entry.
 
 Every `SECOND-ORDER.md` row with status *person*, by number, with what the person has to decide or supply. `scripts/notebook_check.py` fails while one is missing.
 
-- R1.3: Chumworld Arena has no licence; may its code be ported (CS-Q22)?
 - R1.4: Playwright is not installed, so the browser check cannot run; approve `scripts/setup.sh` before the first deploy.
 
 ## Mistakes so far

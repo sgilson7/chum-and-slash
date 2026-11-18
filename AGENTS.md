@@ -49,7 +49,17 @@ Each model call re-reads the whole context, so what is read once is paid for on 
 
 ## Rules agreed for this project
 
-None yet. When the person answers the opening entry's questions, add each rule that applies to every later session here, with its journal ID.
+Agreed 2026-11-18 (journal entry 2026-11-18-agreed); each rule's reason is in the opening entry.
+
+- CS-1: every combat rule, tree, tutorial step and animation sample lives in the core in Q16.16; the page draws and plays what the core lists.
+- CS-2: every landed hit gives a reaction, hit-stop, a hit sound and a rumble in the tick it lands; a miss gives the miss sound only.
+- CS-3 to CS-9: Sam's combat rules (stamina, air damage, launcher on stun, three enemy states, caps 4/3/6 and recovery, the first combos, forward motion and push-back) each hold by a core test.
+- CS-10: enemy trees are Vagrancy's, ported per CS-Q23 with tests and a parity test, credited.
+- CS-11: clips are keyed and sampled in the core; no joint jumps more than the bound between ticks except at a declared cut.
+- CS-15: every journal animation replays the harness's own output and names the command that made it.
+- CS-16: a feel round changes one thing; its journal entry shows the harness before and after.
+- CS-17: borrowed code comes under its licence and is credited in LICENSES.md; Peter's work is rewritten, not copied.
+- CS-19: deploy only after `./scripts/check.sh` passes, only to `chum-and-slash`.
 
 ## Stopping
 

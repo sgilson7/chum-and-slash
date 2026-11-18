@@ -74,4 +74,4 @@ The journal holds them as answer chips: CS-Q1 to CS-Q22 on the "How I read this"
 
 ## Status
 
-- [ ] Read by the person on:
+- [x] Read by the person on: 2026-11-18 ("build through to publishing without stopping"; DECISIONS.md)

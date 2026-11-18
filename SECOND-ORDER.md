@@ -10,7 +10,7 @@ One row per assumption, surprise or open item. **Kind** is *divergence* (what wa
 | --- | --- | --- | --- | --- | --- | --- |
 | R1.1 | finding | Vagrancy's digest (`refs/vagrancy.md`) would point to its behaviour trees | It names only the road and the chart; the trees live in `crates/pilot` (1,734 lines) | The trees review adds a "What to copy" bullet to the digest before any port (rule 20) | | open |
 | R1.2 | divergence | Every reference in the brief has a digest | Protection of the Spheres and Pursuer had none | Shallow clones in `../refs-src/`; digests drafted with `tools/digest.py`; the animation and vistas reviews fill their "What to copy" | | open |
-| R1.3 | worklist | Chumworld Arena's code comes under a licence | Its repository has no licence file and GitHub reports none | Asked as CS-Q22; nothing ported until answered | | person |
+| R1.3 | worklist | Chumworld Arena's code comes under a licence | Its repository has no licence file and GitHub reports none | CS-Q22 A grants it under MIT (DECISIONS.md); credited in LICENSES.md | | done |
 | R1.4 | worklist | The browser check runs on this Mac | Playwright is not installed, so step 9 of `check.sh` fails on the untouched template | Install with `scripts/setup.sh` before the first deploy; needs your approval to install packages | | person |
 | R1.5 | finding | Sam's note quotes cue 191 as "plays it low noise. Bullshit." | The transcript reads "have it play low noise. Bullshit." | The brief matches the transcript's words and keeps Sam's reading beside it (CS-Q6) | | done |
 | R1.6 | finding | The repository can be named "Chum and Slash" | GitHub repository names hold no spaces | Asked as CS-Q10; default `chum-and-slash` | | open |
