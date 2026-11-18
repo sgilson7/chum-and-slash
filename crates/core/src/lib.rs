@@ -10,11 +10,15 @@
 //! realtime kit.
 
 pub mod api;
+pub mod clip;
 pub mod fx;
 pub mod geom;
 pub mod glossary;
 pub mod mesh;
+pub mod model;
 pub mod page;
+pub mod pilot;
 pub mod render;
 pub mod rng;
 pub mod ticks;
+pub mod world;

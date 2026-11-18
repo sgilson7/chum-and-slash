@@ -1,0 +1,42 @@
+{
+ "about": "Behaviour trees, Vagrancy's format (crates/pilot): an ordered list of rules; the first whose conditions hold runs its move; interrupt rules may break into a running move. Distances in cm. Every tree starts stunned, airborne, idle (CS-6).",
+ "trees": {
+  "dog": {"reaction": 12, "rules": [
+   {"if": ["me_stunned"], "do": "reel", "interrupt": true},
+   {"if": ["me_airborne"], "do": "tumble", "interrupt": true},
+   {"if": [{"gap_above": 1800}], "do": "idle"},
+   {"if": ["has_token", {"gap_below": 450}], "do": "lunge"},
+   {"if": ["has_token"], "do": "approach"},
+   {"if": [{"gap_above": 650}], "do": "approach"},
+   {"if": [{"gap_below": 300}], "do": "back_off"},
+   {"if": [{"chance": 50}], "do": "strafe_left"},
+   {"do": "strafe_right"}
+  ]},
+  "pup": {"reaction": 18, "rules": [
+   {"if": ["me_stunned"], "do": "reel", "interrupt": true},
+   {"if": ["me_airborne"], "do": "tumble", "interrupt": true},
+   {"if": [{"gap_above": 1800}], "do": "idle"},
+   {"if": ["has_token", {"gap_below": 450}], "do": "lunge"},
+   {"if": ["has_token"], "do": "approach"},
+   {"if": [{"gap_above": 650}], "do": "approach"},
+   {"if": [{"gap_below": 300}], "do": "back_off"},
+   {"if": [{"chance": 50}], "do": "strafe_left"},
+   {"do": "strafe_right"}
+  ]},
+  "tutorial_dog": {"reaction": 20, "rules": [
+   {"if": ["me_stunned"], "do": "reel", "interrupt": true},
+   {"if": ["me_airborne"], "do": "tumble", "interrupt": true},
+   {"if": [{"gap_above": 1800}], "do": "idle"},
+   {"if": ["volley"], "do": "lunge", "interrupt": true},
+   {"if": [{"gap_above": 650}], "do": "approach"},
+   {"if": [{"gap_below": 300}], "do": "back_off"},
+   {"if": [{"chance": 50}], "do": "strafe_left"},
+   {"do": "strafe_right"}
+  ]},
+  "big_dog": {"reaction": 30, "rules": [
+   {"if": ["me_stunned"], "do": "reel", "interrupt": true},
+   {"if": ["me_airborne"], "do": "tumble", "interrupt": true},
+   {"do": "idle"}
+  ]}
+ }
+}
