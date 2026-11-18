@@ -74,4 +74,4 @@ These stay with the person and go in `BRIEF.md` or `PLAN.md`:
 
 | Default | Changed to | Reason | Recorded in |
 | --- | --- | --- | --- |
-| | | | |
+| D21 | Subagents named in `BRIEF.md`: seven literature reviewers (stage 2) and playtesters per CS-Q15 | Sam's opening message asks for both | `BRIEF.md` Autonomy; `PLAN.md`; journal opening entry |

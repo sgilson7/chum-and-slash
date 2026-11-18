@@ -28,6 +28,8 @@ What a new session gets wrong first.
 
 Where the design journal is, its link if it is published, and its newest entry.
 
+`../hack-and-slash-journal/index.html`, published privately at https://claude.ai/artifact/HFNKrsPgkiULwcmrmEADUx (answers save to its `answers` store). Newest entry: 2026-11-18-plan.
+
 ## Open for the person
 
 Every `SECOND-ORDER.md` row with status *person*, by number, with what the person has to decide or supply. `scripts/notebook_check.py` fails while one is missing.
