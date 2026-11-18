@@ -1,0 +1,258 @@
+# clip air_heavy len30 anticipation0-7 strike8-11 follow12-19 recovery20-30 hit9-12 cancel22  forward199mm up0mm
+# clip air_light len18 anticipation0-2 strike3-5 follow6-9 recovery10-18 hit4-6 cancel9  forward149mm up0mm
+# clip dog_dead len40  forward0mm up-419mm
+# clip dog_down len30  forward0mm up-419mm
+# clip dog_hurt len14  forward0mm up0mm
+# clip dog_idle len60 loop  forward0mm up0mm
+# clip dog_injured len80 loop  forward0mm up-419mm
+# clip dog_lunge len66 anticipation0-17 strike18-35 follow36-45 recovery46-66 hit30-35  forward3000mm up0mm
+# clip dog_strafe len30 loop  forward0mm up0mm
+# clip dog_stunned len40 loop  forward0mm up0mm
+# clip dog_tumble len24 loop  forward0mm up0mm
+# clip fall len30 loop  forward0mm up0mm
+# clip heavy_1 len44 anticipation0-13 strike14-17 follow18-27 recovery28-44 hit15-18 cancel30  forward1000mm up0mm
+# clip heavy_2 len44 anticipation0-13 strike14-17 follow18-27 recovery28-44 hit15-18 cancel30  forward899mm up0mm
+# clip heavy_3 len50 anticipation0-15 strike16-19 follow20-31 recovery32-50 hit17-20 cancel34  forward1199mm up0mm
+# clip hurt len20  forward0mm up0mm
+# clip idle len90 loop  forward0mm up0mm
+# clip jump len16  forward0mm up0mm
+# clip launcher len40 anticipation0-9 strike10-13 follow14-21 recovery22-40 hit11-14 cancel24  forward299mm up0mm
+# clip light_1 len24 anticipation0-4 strike5-7 follow8-13 recovery14-24 hit6-8 cancel12  forward500mm up0mm
+# clip light_2 len24 anticipation0-4 strike5-7 follow8-13 recovery14-24 hit6-8 cancel12  forward500mm up0mm
+# clip light_3 len24 anticipation0-4 strike5-7 follow8-13 recovery14-24 hit6-8 cancel12  forward549mm up0mm
+# clip light_4 len28 anticipation0-5 strike6-8 follow9-15 recovery16-28 hit7-9 cancel14  forward750mm up0mm
+# clip recover len24 anticipation0-0 strike0-0 follow0-0 recovery0-24  forward0mm up0mm
+# clip run len36 loop  forward0mm up0mm
+# clip sprint len28 loop  forward0mm up0mm
+# clip whirl len42 anticipation0-5 strike6-29 follow30-35 recovery36-42 hit7-30  forward299mm up0mm
+# move air_heavy damage20 hitstop7 push200mm reach2200mm arc140deg stamina1200
+# move air_light damage9 hitstop4 push80mm reach2000mm arc160deg stamina600
+# move heavy_1 damage22 hitstop7 push800mm reach2200mm arc120deg stamina0
+# move heavy_2 damage22 hitstop7 push800mm reach2300mm arc170deg stamina0
+# move heavy_3 damage30 hitstop8 push1000mm reach2300mm arc120deg stamina0
+# move launcher damage12 hitstop10 push100mm reach2000mm arc120deg stamina0
+# move light_1 damage10 hitstop4 push300mm reach2000mm arc150deg stamina0
+# move light_2 damage10 hitstop4 push300mm reach2000mm arc150deg stamina0
+# move light_3 damage11 hitstop4 push300mm reach2000mm arc140deg stamina0
+# move light_4 damage14 hitstop5 push450mm reach2200mm arc90deg stamina0
+# move whirl damage8 hitstop5 push900mm reach2700mm arc360deg stamina3000
+t00001 hero idle@1 - hs0 stam100 hp100 | dog1 idle dog_strafe@1 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@1 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@1 hs0 hp60 node:strafe_left
+t00002 hero idle@2 - hs0 stam100 hp100 | dog1 idle dog_strafe@2 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@2 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@2 hs0 hp60 node:strafe_left
+t00003 hero idle@3 - hs0 stam100 hp100 | dog1 idle dog_strafe@3 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@3 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@3 hs0 hp60 node:strafe_left
+t00004 hero idle@4 - hs0 stam100 hp100 | dog1 idle dog_strafe@4 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@4 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@4 hs0 hp60 node:strafe_left
+t00005 hero idle@5 - hs0 stam100 hp100 | dog1 idle dog_strafe@5 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@5 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@5 hs0 hp60 node:strafe_left
+t00006 hero idle@6 - hs0 stam100 hp100 | dog1 idle dog_strafe@6 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@6 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@6 hs0 hp60 node:strafe_left
+t00007 hero idle@7 - hs0 stam100 hp100 | dog1 idle dog_strafe@7 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@7 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@7 hs0 hp60 node:strafe_left
+t00008 hero idle@8 - hs0 stam100 hp100 | dog1 idle dog_strafe@8 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@8 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@8 hs0 hp60 node:strafe_left
+t00009 hero idle@9 - hs0 stam100 hp100 | dog1 idle dog_strafe@9 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@9 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@9 hs0 hp60 node:strafe_left
+t00010 hero idle@10 - hs0 stam100 hp100 | dog1 idle dog_strafe@10 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@10 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@10 hs0 hp60 node:strafe_left
+t00011 hero idle@11 - hs0 stam100 hp100 | dog1 idle dog_strafe@11 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@11 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@11 hs0 hp60 node:strafe_left
+t00012 hero idle@12 - hs0 stam100 hp100 | dog1 idle dog_strafe@12 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@12 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@12 hs0 hp60 node:strafe_left
+t00013 hero idle@13 - hs0 stam100 hp100 | dog1 idle dog_strafe@13 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@13 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@13 hs0 hp60 node:strafe_left
+t00014 hero idle@14 - hs0 stam100 hp100 | dog1 idle dog_strafe@14 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@14 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@14 hs0 hp60 node:strafe_left
+t00015 hero idle@15 - hs0 stam100 hp100 | dog1 idle dog_strafe@15 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@15 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@15 hs0 hp60 node:strafe_left
+t00016 hero idle@16 - hs0 stam100 hp100 | dog1 idle dog_strafe@16 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@16 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@16 hs0 hp60 node:strafe_left
+t00017 hero idle@17 - hs0 stam100 hp100 | dog1 idle dog_strafe@17 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@17 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@17 hs0 hp60 node:strafe_left
+t00018 hero idle@18 - hs0 stam100 hp100 | dog1 idle dog_strafe@18 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@18 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@18 hs0 hp60 node:strafe_left
+t00019 hero idle@19 - hs0 stam100 hp100 | dog1 idle dog_strafe@19 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@19 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@19 hs0 hp60 node:strafe_left
+t00020 hero idle@20 - hs0 stam100 hp100 | dog1 idle dog_strafe@20 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@20 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@20 hs0 hp60 node:strafe_left
+t00021 hero idle@21 - hs0 stam100 hp100 | dog1 idle dog_strafe@21 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@21 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@21 hs0 hp60 node:strafe_left
+t00022 hero idle@22 - hs0 stam100 hp100 | dog1 idle dog_strafe@22 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@22 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@22 hs0 hp60 node:strafe_left
+t00023 hero idle@23 - hs0 stam100 hp100 | dog1 idle dog_strafe@23 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@23 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@23 hs0 hp60 node:strafe_left
+t00024 hero idle@24 - hs0 stam100 hp100 | dog1 idle dog_strafe@24 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@24 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@24 hs0 hp60 node:strafe_left
+t00025 hero idle@25 - hs0 stam100 hp100 | dog1 idle dog_strafe@25 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@25 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@25 hs0 hp60 node:strafe_left
+t00026 hero idle@26 - hs0 stam100 hp100 | dog1 idle dog_strafe@26 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@26 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@26 hs0 hp60 node:strafe_left
+t00027 hero idle@27 - hs0 stam100 hp100 | dog1 idle dog_strafe@27 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@27 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@27 hs0 hp60 node:strafe_left
+t00028 hero idle@28 - hs0 stam100 hp100 | dog1 idle dog_strafe@28 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@28 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@28 hs0 hp60 node:strafe_left
+t00029 hero idle@29 - hs0 stam100 hp100 | dog1 idle dog_strafe@29 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@29 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@29 hs0 hp60 node:strafe_left
+t00030 hero idle@30 - hs0 stam100 hp100 | dog1 idle dog_strafe@30 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@30 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@30 hs0 hp60 node:strafe_left
+t00031 hero idle@31 - hs0 stam100 hp100 | dog1 idle dog_strafe@31 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@31 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@31 hs0 hp60 node:strafe_left
+t00032 hero idle@32 - hs0 stam100 hp100 | dog1 idle dog_strafe@32 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@32 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@32 hs0 hp60 node:strafe_left
+t00033 hero idle@33 - hs0 stam100 hp100 | dog1 idle dog_strafe@33 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@33 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@33 hs0 hp60 node:strafe_left
+t00034 hero idle@34 - hs0 stam100 hp100 | dog1 idle dog_strafe@34 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@34 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@34 hs0 hp60 node:strafe_left
+t00035 hero idle@35 - hs0 stam100 hp100 | dog1 idle dog_strafe@35 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@35 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@35 hs0 hp60 node:strafe_left
+t00036 hero idle@36 - hs0 stam100 hp100 | dog1 idle dog_strafe@36 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@36 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@36 hs0 hp60 node:strafe_left
+t00037 hero idle@37 - hs0 stam100 hp100 | dog1 idle dog_strafe@37 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@37 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@37 hs0 hp60 node:strafe_left
+t00038 hero idle@38 - hs0 stam100 hp100 | dog1 idle dog_strafe@38 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@38 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@38 hs0 hp60 node:strafe_left
+t00039 hero idle@39 - hs0 stam100 hp100 | dog1 idle dog_strafe@39 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@39 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@39 hs0 hp60 node:strafe_left
+t00040 hero idle@40 - hs0 stam100 hp100 | dog1 idle dog_strafe@40 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@40 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@40 hs0 hp60 node:strafe_left
+t00041 hero idle@41 - hs0 stam100 hp100 | dog1 idle dog_strafe@41 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@41 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@41 hs0 hp60 node:strafe_left
+t00042 hero idle@42 - hs0 stam100 hp100 | dog1 idle dog_strafe@42 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@42 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@42 hs0 hp60 node:strafe_left
+t00043 hero idle@43 - hs0 stam100 hp100 | dog1 idle dog_strafe@43 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@43 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@43 hs0 hp60 node:strafe_left
+t00044 hero idle@44 - hs0 stam100 hp100 | dog1 idle dog_strafe@44 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@44 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@44 hs0 hp60 node:strafe_left
+t00045 hero idle@45 - hs0 stam100 hp100 | dog1 idle dog_strafe@45 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@45 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@45 hs0 hp60 node:strafe_left
+t00046 hero idle@46 - hs0 stam100 hp100 | dog1 idle dog_strafe@46 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@46 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@46 hs0 hp60 node:strafe_left
+t00047 hero idle@47 - hs0 stam100 hp100 | dog1 idle dog_strafe@47 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@47 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@47 hs0 hp60 node:strafe_left
+t00048 hero idle@48 - hs0 stam100 hp100 | dog1 idle dog_strafe@48 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@48 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@48 hs0 hp60 node:strafe_left
+t00049 hero idle@49 - hs0 stam100 hp100 | dog1 idle dog_strafe@49 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@49 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@49 hs0 hp60 node:strafe_left
+t00050 hero idle@50 - hs0 stam100 hp100 | dog1 idle dog_strafe@50 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@50 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@50 hs0 hp60 node:strafe_left
+t00051 hero idle@51 - hs0 stam100 hp100 | dog1 idle dog_strafe@51 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@51 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@51 hs0 hp60 node:strafe_left
+t00052 hero idle@52 - hs0 stam100 hp100 | dog1 idle dog_strafe@52 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@52 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@52 hs0 hp60 node:strafe_left
+t00053 hero idle@53 - hs0 stam100 hp100 | dog1 idle dog_strafe@53 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@53 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@53 hs0 hp60 node:strafe_left
+t00054 hero idle@54 - hs0 stam100 hp100 | dog1 idle dog_strafe@54 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@54 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@54 hs0 hp60 node:strafe_left
+t00055 hero idle@55 - hs0 stam100 hp100 | dog1 idle dog_strafe@55 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@55 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@55 hs0 hp60 node:strafe_left
+t00056 hero idle@56 - hs0 stam100 hp100 | dog1 idle dog_strafe@56 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@56 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@56 hs0 hp60 node:strafe_left
+t00057 hero idle@57 - hs0 stam100 hp100 | dog1 idle dog_strafe@57 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@57 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@57 hs0 hp60 node:strafe_left
+t00058 hero idle@58 - hs0 stam100 hp100 | dog1 idle dog_strafe@58 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@58 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@58 hs0 hp60 node:strafe_left
+t00059 hero idle@59 - hs0 stam100 hp100 | dog1 idle dog_strafe@59 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@59 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@59 hs0 hp60 node:strafe_left
+t00060 hero idle@60 - hs0 stam100 hp100 | dog1 idle dog_strafe@60 hs0 hp60 node:strafe_right | dog2 idle dog_strafe@60 hs0 hp60 node:strafe_left | dog3 idle dog_strafe@60 hs0 hp60 node:strafe_left
+t00061 hero idle@61 - hs0 stam100 hp100 | dog1 idle dog_lunge@1 hs0 hp60 node:lunge | dog2 idle dog_lunge@1 hs0 hp60 node:lunge | dog3 idle dog_lunge@1 hs0 hp60 node:lunge
+t00062 hero idle@62 - hs0 stam100 hp100 | dog1 idle dog_lunge@2 hs0 hp60 node:lunge | dog2 idle dog_lunge@2 hs0 hp60 node:lunge | dog3 idle dog_lunge@2 hs0 hp60 node:lunge
+t00063 hero idle@63 - hs0 stam100 hp100 | dog1 idle dog_lunge@3 hs0 hp60 node:lunge | dog2 idle dog_lunge@3 hs0 hp60 node:lunge | dog3 idle dog_lunge@3 hs0 hp60 node:lunge
+t00064 hero idle@64 - hs0 stam100 hp100 | dog1 idle dog_lunge@4 hs0 hp60 node:lunge | dog2 idle dog_lunge@4 hs0 hp60 node:lunge | dog3 idle dog_lunge@4 hs0 hp60 node:lunge
+t00065 hero idle@65 - hs0 stam100 hp100 | dog1 idle dog_lunge@5 hs0 hp60 node:lunge | dog2 idle dog_lunge@5 hs0 hp60 node:lunge | dog3 idle dog_lunge@5 hs0 hp60 node:lunge
+t00066 hero idle@66 - hs0 stam100 hp100 | dog1 idle dog_lunge@6 hs0 hp60 node:lunge | dog2 idle dog_lunge@6 hs0 hp60 node:lunge | dog3 idle dog_lunge@6 hs0 hp60 node:lunge
+t00067 hero whirl@1 anticipation hs0 stam70 hp100 | dog1 idle dog_lunge@7 hs0 hp60 node:lunge | dog2 idle dog_lunge@7 hs0 hp60 node:lunge | dog3 idle dog_lunge@7 hs0 hp60 node:lunge
+t00068 hero whirl@2 anticipation hs0 stam70 hp100 | dog1 idle dog_lunge@8 hs0 hp60 node:lunge | dog2 idle dog_lunge@8 hs0 hp60 node:lunge | dog3 idle dog_lunge@8 hs0 hp60 node:lunge
+t00069 hero whirl@3 anticipation hs0 stam70 hp100 | dog1 idle dog_lunge@9 hs0 hp60 node:lunge | dog2 idle dog_lunge@9 hs0 hp60 node:lunge | dog3 idle dog_lunge@9 hs0 hp60 node:lunge
+t00070 hero whirl@4 anticipation hs0 stam70 hp100 | dog1 idle dog_lunge@10 hs0 hp60 node:lunge | dog2 idle dog_lunge@10 hs0 hp60 node:lunge | dog3 idle dog_lunge@10 hs0 hp60 node:lunge
+t00071 hero whirl@5 anticipation hs0 stam70 hp100 | dog1 idle dog_lunge@11 hs0 hp60 node:lunge | dog2 idle dog_lunge@11 hs0 hp60 node:lunge | dog3 idle dog_lunge@11 hs0 hp60 node:lunge
+t00072 hero whirl@6 strike hs0 stam70 hp100 | dog1 idle dog_lunge@12 hs0 hp60 node:lunge | dog2 idle dog_lunge@12 hs0 hp60 node:lunge | dog3 idle dog_lunge@12 hs0 hp60 node:lunge || sound:whirl
+t00073 hero whirl@7 strike hs0 stam70 hp100 | dog1 idle dog_lunge@13 hs0 hp60 node:lunge | dog2 idle dog_lunge@13 hs0 hp60 node:lunge | dog3 idle dog_lunge@13 hs0 hp60 node:lunge
+t00074 hero whirl@8 strike hs0 stam70 hp100 | dog1 idle dog_lunge@14 hs0 hp60 node:lunge | dog2 idle dog_lunge@14 hs0 hp60 node:lunge | dog3 idle dog_lunge@14 hs0 hp60 node:lunge
+t00075 hero whirl@9 strike hs0 stam70 hp100 | dog1 idle dog_lunge@15 hs0 hp60 node:lunge | dog2 idle dog_lunge@15 hs0 hp60 node:lunge | dog3 idle dog_lunge@15 hs0 hp60 node:lunge
+t00076 hero whirl@10 strike hs0 stam70 hp100 | dog1 idle dog_lunge@16 hs0 hp60 node:lunge | dog2 idle dog_lunge@16 hs0 hp60 node:lunge | dog3 idle dog_lunge@16 hs0 hp60 node:lunge
+t00077 hero whirl@11 strike hs0 stam70 hp100 | dog1 idle dog_lunge@17 hs0 hp60 node:lunge | dog2 idle dog_lunge@17 hs0 hp60 node:lunge | dog3 idle dog_lunge@17 hs0 hp60 node:lunge
+t00078 hero whirl@12 strike hs0 stam70 hp100 | dog1 idle dog_lunge@18 hs0 hp60 node:lunge | dog2 idle dog_lunge@18 hs0 hp60 node:lunge | dog3 idle dog_lunge@18 hs0 hp60 node:lunge
+t00079 hero whirl@13 strike hs0 stam70 hp100 | dog1 idle dog_lunge@19 hs0 hp60 node:lunge | dog2 idle dog_lunge@19 hs0 hp60 node:lunge | dog3 idle dog_lunge@19 hs0 hp60 node:lunge
+t00080 hero whirl@14 strike hs0 stam70 hp100 | dog1 idle dog_lunge@20 hs0 hp60 node:lunge | dog2 idle dog_lunge@20 hs0 hp60 node:lunge | dog3 idle dog_lunge@20 hs0 hp60 node:lunge
+t00081 hero whirl@15 strike hs0 stam70 hp100 | dog1 idle dog_lunge@21 hs0 hp60 node:lunge | dog2 idle dog_lunge@21 hs0 hp60 node:lunge | dog3 idle dog_lunge@21 hs0 hp60 node:lunge
+t00082 hero whirl@16 strike hs0 stam70 hp100 | dog1 idle dog_lunge@22 hs0 hp60 node:lunge | dog2 idle dog_lunge@22 hs0 hp60 node:lunge | dog3 idle dog_lunge@22 hs0 hp60 node:lunge
+t00083 hero whirl@17 strike hs0 stam70 hp100 | dog1 idle dog_lunge@23 hs0 hp60 node:lunge | dog2 idle dog_lunge@23 hs0 hp60 node:lunge | dog3 idle dog_lunge@23 hs0 hp60 node:lunge
+t00084 hero whirl@18 strike hs0 stam70 hp100 | dog1 idle dog_lunge@24 hs0 hp60 node:lunge | dog2 idle dog_lunge@24 hs0 hp60 node:lunge | dog3 idle dog_lunge@24 hs0 hp60 node:lunge
+t00085 hero whirl@19 strike hs5 stam70 hp100 | dog1 stunned dog_hurt@0 hs5 hp52 node:lunge stun90 | dog2 stunned dog_hurt@0 hs5 hp52 node:lunge stun90 | dog3 idle dog_lunge@25 hs0 hp60 node:lunge || sound:hit_whirl rumble:whirl_hit hit:whirl sound:hit_whirl rumble:whirl_hit hit:whirl
+t00086 hero whirl@19 strike hs4 stam70 hp100 | dog1 stunned dog_hurt@0 hs4 hp52 node:lunge stun90 | dog2 stunned dog_hurt@0 hs4 hp52 node:lunge stun90 | dog3 idle dog_lunge@26 hs0 hp60 node:lunge
+t00087 hero whirl@19 strike hs3 stam70 hp100 | dog1 stunned dog_hurt@0 hs3 hp52 node:lunge stun90 | dog2 stunned dog_hurt@0 hs3 hp52 node:lunge stun90 | dog3 idle dog_lunge@27 hs0 hp60 node:lunge
+t00088 hero whirl@19 strike hs2 stam70 hp100 | dog1 stunned dog_hurt@0 hs2 hp52 node:lunge stun90 | dog2 stunned dog_hurt@0 hs2 hp52 node:lunge stun90 | dog3 idle dog_lunge@28 hs0 hp60 node:lunge
+t00089 hero whirl@19 strike hs1 stam70 hp100 | dog1 stunned dog_hurt@0 hs1 hp52 node:lunge stun90 | dog2 stunned dog_hurt@0 hs1 hp52 node:lunge stun90 | dog3 idle dog_lunge@29 hs0 hp60 node:lunge
+t00090 hero whirl@19 strike hs5 stam70 hp100 | dog1 stunned dog_hurt@0 hs0 hp52 node:lunge stun90 | dog2 stunned dog_hurt@0 hs0 hp52 node:lunge stun90 | dog3 stunned dog_hurt@0 hs5 hp52 node:lunge stun90 || sound:hit_whirl rumble:whirl_hit hit:whirl
+t00091 hero whirl@19 strike hs4 stam70 hp100 | dog1 stunned dog_hurt@1 hs0 hp52 node:lunge stun89 | dog2 stunned dog_hurt@1 hs0 hp52 node:lunge stun89 | dog3 stunned dog_hurt@0 hs4 hp52 node:lunge stun90
+t00092 hero whirl@19 strike hs3 stam70 hp100 | dog1 stunned dog_hurt@2 hs0 hp52 node:lunge stun88 | dog2 stunned dog_hurt@2 hs0 hp52 node:lunge stun88 | dog3 stunned dog_hurt@0 hs3 hp52 node:lunge stun90
+t00093 hero whirl@19 strike hs2 stam70 hp100 | dog1 stunned dog_hurt@3 hs0 hp52 node:lunge stun87 | dog2 stunned dog_hurt@3 hs0 hp52 node:lunge stun87 | dog3 stunned dog_hurt@0 hs2 hp52 node:lunge stun90
+t00094 hero whirl@19 strike hs1 stam70 hp100 | dog1 stunned dog_hurt@4 hs0 hp52 node:lunge stun86 | dog2 stunned dog_hurt@4 hs0 hp52 node:lunge stun86 | dog3 stunned dog_hurt@0 hs1 hp52 node:lunge stun90
+t00095 hero whirl@19 strike hs0 stam70 hp100 | dog1 stunned dog_hurt@5 hs0 hp52 node:lunge stun85 | dog2 stunned dog_hurt@5 hs0 hp52 node:lunge stun85 | dog3 stunned dog_hurt@0 hs0 hp52 node:lunge stun90
+t00096 hero whirl@20 strike hs0 stam70 hp100 | dog1 stunned dog_hurt@6 hs0 hp52 node:lunge stun84 | dog2 stunned dog_hurt@6 hs0 hp52 node:lunge stun84 | dog3 stunned dog_hurt@1 hs0 hp52 node:lunge stun89
+t00097 hero whirl@21 strike hs0 stam70 hp100 | dog1 stunned dog_hurt@7 hs0 hp52 node:lunge stun83 | dog2 stunned dog_hurt@7 hs0 hp52 node:lunge stun83 | dog3 stunned dog_hurt@2 hs0 hp52 node:lunge stun88
+t00098 hero whirl@22 strike hs0 stam70 hp100 | dog1 stunned dog_hurt@8 hs0 hp52 node:lunge stun82 | dog2 stunned dog_hurt@8 hs0 hp52 node:lunge stun82 | dog3 stunned dog_hurt@3 hs0 hp52 node:lunge stun87
+t00099 hero whirl@23 strike hs0 stam71 hp100 | dog1 stunned dog_hurt@9 hs0 hp52 node:lunge stun81 | dog2 stunned dog_hurt@9 hs0 hp52 node:lunge stun81 | dog3 stunned dog_hurt@4 hs0 hp52 node:lunge stun86
+t00100 hero whirl@24 strike hs0 stam71 hp100 | dog1 stunned dog_hurt@10 hs0 hp52 node:lunge stun80 | dog2 stunned dog_hurt@10 hs0 hp52 node:lunge stun80 | dog3 stunned dog_hurt@5 hs0 hp52 node:lunge stun85
+t00101 hero whirl@25 strike hs0 stam72 hp100 | dog1 stunned dog_hurt@11 hs0 hp52 node:lunge stun79 | dog2 stunned dog_hurt@11 hs0 hp52 node:lunge stun79 | dog3 stunned dog_hurt@6 hs0 hp52 node:lunge stun84
+t00102 hero whirl@26 strike hs0 stam72 hp100 | dog1 stunned dog_hurt@12 hs0 hp52 node:lunge stun78 | dog2 stunned dog_hurt@12 hs0 hp52 node:lunge stun78 | dog3 stunned dog_hurt@7 hs0 hp52 node:lunge stun83
+t00103 hero whirl@27 strike hs0 stam73 hp100 | dog1 stunned dog_hurt@13 hs0 hp52 node:lunge stun77 | dog2 stunned dog_hurt@13 hs0 hp52 node:lunge stun77 | dog3 stunned dog_hurt@8 hs0 hp52 node:lunge stun82
+t00104 hero whirl@28 strike hs0 stam73 hp100 | dog1 stunned dog_hurt@14 hs0 hp52 node:lunge stun76 | dog2 stunned dog_hurt@14 hs0 hp52 node:lunge stun76 | dog3 stunned dog_hurt@9 hs0 hp52 node:lunge stun81
+t00105 hero whirl@29 strike hs0 stam74 hp100 | dog1 stunned dog_stunned@1 hs0 hp52 node:lunge stun75 | dog2 stunned dog_stunned@1 hs0 hp52 node:lunge stun75 | dog3 stunned dog_hurt@10 hs0 hp52 node:lunge stun80
+t00106 hero whirl@30 follow-through hs0 stam74 hp100 | dog1 stunned dog_stunned@2 hs0 hp52 node:lunge stun74 | dog2 stunned dog_stunned@2 hs0 hp52 node:lunge stun74 | dog3 stunned dog_hurt@11 hs0 hp52 node:lunge stun79
+t00107 hero whirl@31 follow-through hs0 stam74 hp100 | dog1 stunned dog_stunned@3 hs0 hp52 node:lunge stun73 | dog2 stunned dog_stunned@3 hs0 hp52 node:lunge stun73 | dog3 stunned dog_hurt@12 hs0 hp52 node:lunge stun78
+t00108 hero whirl@32 follow-through hs0 stam75 hp100 | dog1 stunned dog_stunned@4 hs0 hp52 node:lunge stun72 | dog2 stunned dog_stunned@4 hs0 hp52 node:lunge stun72 | dog3 stunned dog_hurt@13 hs0 hp52 node:lunge stun77
+t00109 hero whirl@33 follow-through hs0 stam75 hp100 | dog1 stunned dog_stunned@5 hs0 hp52 node:lunge stun71 | dog2 stunned dog_stunned@5 hs0 hp52 node:lunge stun71 | dog3 stunned dog_hurt@14 hs0 hp52 node:lunge stun76
+t00110 hero whirl@34 follow-through hs0 stam76 hp100 | dog1 stunned dog_stunned@6 hs0 hp52 node:lunge stun70 | dog2 stunned dog_stunned@6 hs0 hp52 node:lunge stun70 | dog3 stunned dog_stunned@1 hs0 hp52 node:lunge stun75
+t00111 hero whirl@35 follow-through hs0 stam76 hp100 | dog1 stunned dog_stunned@7 hs0 hp52 node:reel stun69 | dog2 stunned dog_stunned@7 hs0 hp52 node:reel stun69 | dog3 stunned dog_stunned@2 hs0 hp52 node:lunge stun74
+t00112 hero whirl@36 recovery hs0 stam77 hp100 | dog1 stunned dog_stunned@8 hs0 hp52 node:none stun68 | dog2 stunned dog_stunned@8 hs0 hp52 node:none stun68 | dog3 stunned dog_stunned@3 hs0 hp52 node:lunge stun73
+t00113 hero whirl@37 recovery hs0 stam77 hp100 | dog1 stunned dog_stunned@9 hs0 hp52 node:reel stun67 | dog2 stunned dog_stunned@9 hs0 hp52 node:reel stun67 | dog3 stunned dog_stunned@4 hs0 hp52 node:lunge stun72
+t00114 hero whirl@38 recovery hs0 stam78 hp100 | dog1 stunned dog_stunned@10 hs0 hp52 node:none stun66 | dog2 stunned dog_stunned@10 hs0 hp52 node:none stun66 | dog3 stunned dog_stunned@5 hs0 hp52 node:lunge stun71
+t00115 hero whirl@39 recovery hs0 stam78 hp100 | dog1 stunned dog_stunned@11 hs0 hp52 node:reel stun65 | dog2 stunned dog_stunned@11 hs0 hp52 node:reel stun65 | dog3 stunned dog_stunned@6 hs0 hp52 node:lunge stun70
+t00116 hero whirl@40 recovery hs0 stam79 hp100 | dog1 stunned dog_stunned@12 hs0 hp52 node:none stun64 | dog2 stunned dog_stunned@12 hs0 hp52 node:none stun64 | dog3 stunned dog_stunned@7 hs0 hp52 node:reel stun69
+t00117 hero whirl@41 recovery hs0 stam79 hp100 | dog1 stunned dog_stunned@13 hs0 hp52 node:reel stun63 | dog2 stunned dog_stunned@13 hs0 hp52 node:reel stun63 | dog3 stunned dog_stunned@8 hs0 hp52 node:none stun68
+t00118 hero whirl@42 recovery hs0 stam79 hp100 | dog1 stunned dog_stunned@14 hs0 hp52 node:none stun62 | dog2 stunned dog_stunned@14 hs0 hp52 node:none stun62 | dog3 stunned dog_stunned@9 hs0 hp52 node:reel stun67
+t00119 hero idle@0 - hs0 stam80 hp100 | dog1 stunned dog_stunned@15 hs0 hp52 node:reel stun61 | dog2 stunned dog_stunned@15 hs0 hp52 node:reel stun61 | dog3 stunned dog_stunned@10 hs0 hp52 node:none stun66
+t00120 hero idle@1 - hs0 stam80 hp100 | dog1 stunned dog_stunned@16 hs0 hp52 node:none stun60 | dog2 stunned dog_stunned@16 hs0 hp52 node:none stun60 | dog3 stunned dog_stunned@11 hs0 hp52 node:reel stun65
+t00121 hero idle@2 - hs0 stam81 hp100 | dog1 stunned dog_stunned@17 hs0 hp52 node:reel stun59 | dog2 stunned dog_stunned@17 hs0 hp52 node:reel stun59 | dog3 stunned dog_stunned@12 hs0 hp52 node:none stun64
+t00122 hero idle@3 - hs0 stam81 hp100 | dog1 stunned dog_stunned@18 hs0 hp52 node:none stun58 | dog2 stunned dog_stunned@18 hs0 hp52 node:none stun58 | dog3 stunned dog_stunned@13 hs0 hp52 node:reel stun63
+t00123 hero idle@4 - hs0 stam82 hp100 | dog1 stunned dog_stunned@19 hs0 hp52 node:reel stun57 | dog2 stunned dog_stunned@19 hs0 hp52 node:reel stun57 | dog3 stunned dog_stunned@14 hs0 hp52 node:none stun62
+t00124 hero idle@5 - hs0 stam82 hp100 | dog1 stunned dog_stunned@20 hs0 hp52 node:none stun56 | dog2 stunned dog_stunned@20 hs0 hp52 node:none stun56 | dog3 stunned dog_stunned@15 hs0 hp52 node:reel stun61
+t00125 hero idle@6 - hs0 stam83 hp100 | dog1 stunned dog_stunned@21 hs0 hp52 node:reel stun55 | dog2 stunned dog_stunned@21 hs0 hp52 node:reel stun55 | dog3 stunned dog_stunned@16 hs0 hp52 node:none stun60
+t00126 hero idle@7 - hs0 stam83 hp100 | dog1 stunned dog_stunned@22 hs0 hp52 node:none stun54 | dog2 stunned dog_stunned@22 hs0 hp52 node:none stun54 | dog3 stunned dog_stunned@17 hs0 hp52 node:reel stun59
+t00127 hero idle@8 - hs0 stam83 hp100 | dog1 stunned dog_stunned@23 hs0 hp52 node:reel stun53 | dog2 stunned dog_stunned@23 hs0 hp52 node:reel stun53 | dog3 stunned dog_stunned@18 hs0 hp52 node:none stun58
+t00128 hero idle@9 - hs0 stam84 hp100 | dog1 stunned dog_stunned@24 hs0 hp52 node:none stun52 | dog2 stunned dog_stunned@24 hs0 hp52 node:none stun52 | dog3 stunned dog_stunned@19 hs0 hp52 node:reel stun57
+t00129 hero idle@10 - hs0 stam84 hp100 | dog1 stunned dog_stunned@25 hs0 hp52 node:reel stun51 | dog2 stunned dog_stunned@25 hs0 hp52 node:reel stun51 | dog3 stunned dog_stunned@20 hs0 hp52 node:none stun56
+t00130 hero idle@11 - hs0 stam85 hp100 | dog1 stunned dog_stunned@26 hs0 hp52 node:none stun50 | dog2 stunned dog_stunned@26 hs0 hp52 node:none stun50 | dog3 stunned dog_stunned@21 hs0 hp52 node:reel stun55
+t00131 hero idle@12 - hs0 stam85 hp100 | dog1 stunned dog_stunned@27 hs0 hp52 node:reel stun49 | dog2 stunned dog_stunned@27 hs0 hp52 node:reel stun49 | dog3 stunned dog_stunned@22 hs0 hp52 node:none stun54
+t00132 hero idle@13 - hs0 stam86 hp100 | dog1 stunned dog_stunned@28 hs0 hp52 node:none stun48 | dog2 stunned dog_stunned@28 hs0 hp52 node:none stun48 | dog3 stunned dog_stunned@23 hs0 hp52 node:reel stun53
+t00133 hero idle@14 - hs0 stam86 hp100 | dog1 stunned dog_stunned@29 hs0 hp52 node:reel stun47 | dog2 stunned dog_stunned@29 hs0 hp52 node:reel stun47 | dog3 stunned dog_stunned@24 hs0 hp52 node:none stun52
+t00134 hero idle@15 - hs0 stam87 hp100 | dog1 stunned dog_stunned@30 hs0 hp52 node:none stun46 | dog2 stunned dog_stunned@30 hs0 hp52 node:none stun46 | dog3 stunned dog_stunned@25 hs0 hp52 node:reel stun51
+t00135 hero idle@16 - hs0 stam87 hp100 | dog1 stunned dog_stunned@31 hs0 hp52 node:reel stun45 | dog2 stunned dog_stunned@31 hs0 hp52 node:reel stun45 | dog3 stunned dog_stunned@26 hs0 hp52 node:none stun50
+t00136 hero idle@17 - hs0 stam88 hp100 | dog1 stunned dog_stunned@32 hs0 hp52 node:none stun44 | dog2 stunned dog_stunned@32 hs0 hp52 node:none stun44 | dog3 stunned dog_stunned@27 hs0 hp52 node:reel stun49
+t00137 hero idle@18 - hs0 stam88 hp100 | dog1 stunned dog_stunned@33 hs0 hp52 node:reel stun43 | dog2 stunned dog_stunned@33 hs0 hp52 node:reel stun43 | dog3 stunned dog_stunned@28 hs0 hp52 node:none stun48
+t00138 hero idle@19 - hs0 stam88 hp100 | dog1 stunned dog_stunned@34 hs0 hp52 node:none stun42 | dog2 stunned dog_stunned@34 hs0 hp52 node:none stun42 | dog3 stunned dog_stunned@29 hs0 hp52 node:reel stun47
+t00139 hero idle@20 - hs0 stam89 hp100 | dog1 stunned dog_stunned@35 hs0 hp52 node:reel stun41 | dog2 stunned dog_stunned@35 hs0 hp52 node:reel stun41 | dog3 stunned dog_stunned@30 hs0 hp52 node:none stun46
+t00140 hero idle@21 - hs0 stam89 hp100 | dog1 stunned dog_stunned@36 hs0 hp52 node:none stun40 | dog2 stunned dog_stunned@36 hs0 hp52 node:none stun40 | dog3 stunned dog_stunned@31 hs0 hp52 node:reel stun45
+t00141 hero idle@22 - hs0 stam90 hp100 | dog1 stunned dog_stunned@37 hs0 hp52 node:reel stun39 | dog2 stunned dog_stunned@37 hs0 hp52 node:reel stun39 | dog3 stunned dog_stunned@32 hs0 hp52 node:none stun44
+t00142 hero idle@23 - hs0 stam90 hp100 | dog1 stunned dog_stunned@38 hs0 hp52 node:none stun38 | dog2 stunned dog_stunned@38 hs0 hp52 node:none stun38 | dog3 stunned dog_stunned@33 hs0 hp52 node:reel stun43
+t00143 hero idle@24 - hs0 stam91 hp100 | dog1 stunned dog_stunned@39 hs0 hp52 node:reel stun37 | dog2 stunned dog_stunned@39 hs0 hp52 node:reel stun37 | dog3 stunned dog_stunned@34 hs0 hp52 node:none stun42
+t00144 hero idle@25 - hs0 stam91 hp100 | dog1 stunned dog_stunned@40 hs0 hp52 node:none stun36 | dog2 stunned dog_stunned@40 hs0 hp52 node:none stun36 | dog3 stunned dog_stunned@35 hs0 hp52 node:reel stun41
+t00145 hero idle@26 - hs0 stam92 hp100 | dog1 stunned dog_stunned@41 hs0 hp52 node:reel stun35 | dog2 stunned dog_stunned@41 hs0 hp52 node:reel stun35 | dog3 stunned dog_stunned@36 hs0 hp52 node:none stun40
+t00146 hero idle@27 - hs0 stam92 hp100 | dog1 stunned dog_stunned@42 hs0 hp52 node:none stun34 | dog2 stunned dog_stunned@42 hs0 hp52 node:none stun34 | dog3 stunned dog_stunned@37 hs0 hp52 node:reel stun39
+t00147 hero idle@28 - hs0 stam92 hp100 | dog1 stunned dog_stunned@43 hs0 hp52 node:reel stun33 | dog2 stunned dog_stunned@43 hs0 hp52 node:reel stun33 | dog3 stunned dog_stunned@38 hs0 hp52 node:none stun38
+t00148 hero idle@29 - hs0 stam93 hp100 | dog1 stunned dog_stunned@44 hs0 hp52 node:none stun32 | dog2 stunned dog_stunned@44 hs0 hp52 node:none stun32 | dog3 stunned dog_stunned@39 hs0 hp52 node:reel stun37
+t00149 hero idle@30 - hs0 stam93 hp100 | dog1 stunned dog_stunned@45 hs0 hp52 node:reel stun31 | dog2 stunned dog_stunned@45 hs0 hp52 node:reel stun31 | dog3 stunned dog_stunned@40 hs0 hp52 node:none stun36
+t00150 hero idle@31 - hs0 stam94 hp100 | dog1 stunned dog_stunned@46 hs0 hp52 node:none stun30 | dog2 stunned dog_stunned@46 hs0 hp52 node:none stun30 | dog3 stunned dog_stunned@41 hs0 hp52 node:reel stun35
+t00151 hero idle@32 - hs0 stam94 hp100 | dog1 stunned dog_stunned@47 hs0 hp52 node:reel stun29 | dog2 stunned dog_stunned@47 hs0 hp52 node:reel stun29 | dog3 stunned dog_stunned@42 hs0 hp52 node:none stun34
+t00152 hero idle@33 - hs0 stam95 hp100 | dog1 stunned dog_stunned@48 hs0 hp52 node:none stun28 | dog2 stunned dog_stunned@48 hs0 hp52 node:none stun28 | dog3 stunned dog_stunned@43 hs0 hp52 node:reel stun33
+t00153 hero idle@34 - hs0 stam95 hp100 | dog1 stunned dog_stunned@49 hs0 hp52 node:reel stun27 | dog2 stunned dog_stunned@49 hs0 hp52 node:reel stun27 | dog3 stunned dog_stunned@44 hs0 hp52 node:none stun32
+t00154 hero idle@35 - hs0 stam96 hp100 | dog1 stunned dog_stunned@50 hs0 hp52 node:none stun26 | dog2 stunned dog_stunned@50 hs0 hp52 node:none stun26 | dog3 stunned dog_stunned@45 hs0 hp52 node:reel stun31
+t00155 hero idle@36 - hs0 stam96 hp100 | dog1 stunned dog_stunned@51 hs0 hp52 node:reel stun25 | dog2 stunned dog_stunned@51 hs0 hp52 node:reel stun25 | dog3 stunned dog_stunned@46 hs0 hp52 node:none stun30
+t00156 hero idle@37 - hs0 stam97 hp100 | dog1 stunned dog_stunned@52 hs0 hp52 node:none stun24 | dog2 stunned dog_stunned@52 hs0 hp52 node:none stun24 | dog3 stunned dog_stunned@47 hs0 hp52 node:reel stun29
+t00157 hero idle@38 - hs0 stam97 hp100 | dog1 stunned dog_stunned@53 hs0 hp52 node:reel stun23 | dog2 stunned dog_stunned@53 hs0 hp52 node:reel stun23 | dog3 stunned dog_stunned@48 hs0 hp52 node:none stun28
+t00158 hero idle@39 - hs0 stam97 hp100 | dog1 stunned dog_stunned@54 hs0 hp52 node:none stun22 | dog2 stunned dog_stunned@54 hs0 hp52 node:none stun22 | dog3 stunned dog_stunned@49 hs0 hp52 node:reel stun27
+t00159 hero idle@40 - hs0 stam98 hp100 | dog1 stunned dog_stunned@55 hs0 hp52 node:reel stun21 | dog2 stunned dog_stunned@55 hs0 hp52 node:reel stun21 | dog3 stunned dog_stunned@50 hs0 hp52 node:none stun26
+t00160 hero idle@41 - hs0 stam98 hp100 | dog1 stunned dog_stunned@56 hs0 hp52 node:none stun20 | dog2 stunned dog_stunned@56 hs0 hp52 node:none stun20 | dog3 stunned dog_stunned@51 hs0 hp52 node:reel stun25
+t00161 hero idle@42 - hs0 stam99 hp100 | dog1 stunned dog_stunned@57 hs0 hp52 node:reel stun19 | dog2 stunned dog_stunned@57 hs0 hp52 node:reel stun19 | dog3 stunned dog_stunned@52 hs0 hp52 node:none stun24
+t00162 hero idle@43 - hs0 stam99 hp100 | dog1 stunned dog_stunned@58 hs0 hp52 node:none stun18 | dog2 stunned dog_stunned@58 hs0 hp52 node:none stun18 | dog3 stunned dog_stunned@53 hs0 hp52 node:reel stun23
+t00163 hero idle@44 - hs0 stam100 hp100 | dog1 stunned dog_stunned@59 hs0 hp52 node:reel stun17 | dog2 stunned dog_stunned@59 hs0 hp52 node:reel stun17 | dog3 stunned dog_stunned@54 hs0 hp52 node:none stun22
+t00164 hero idle@45 - hs0 stam100 hp100 | dog1 stunned dog_stunned@60 hs0 hp52 node:none stun16 | dog2 stunned dog_stunned@60 hs0 hp52 node:none stun16 | dog3 stunned dog_stunned@55 hs0 hp52 node:reel stun21
+t00165 hero idle@46 - hs0 stam100 hp100 | dog1 stunned dog_stunned@61 hs0 hp52 node:reel stun15 | dog2 stunned dog_stunned@61 hs0 hp52 node:reel stun15 | dog3 stunned dog_stunned@56 hs0 hp52 node:none stun20
+t00166 hero idle@47 - hs0 stam100 hp100 | dog1 stunned dog_stunned@62 hs0 hp52 node:none stun14 | dog2 stunned dog_stunned@62 hs0 hp52 node:none stun14 | dog3 stunned dog_stunned@57 hs0 hp52 node:reel stun19
+t00167 hero idle@48 - hs0 stam100 hp100 | dog1 stunned dog_stunned@63 hs0 hp52 node:reel stun13 | dog2 stunned dog_stunned@63 hs0 hp52 node:reel stun13 | dog3 stunned dog_stunned@58 hs0 hp52 node:none stun18
+t00168 hero idle@49 - hs0 stam100 hp100 | dog1 stunned dog_stunned@64 hs0 hp52 node:none stun12 | dog2 stunned dog_stunned@64 hs0 hp52 node:none stun12 | dog3 stunned dog_stunned@59 hs0 hp52 node:reel stun17
+t00169 hero idle@50 - hs0 stam100 hp100 | dog1 stunned dog_stunned@65 hs0 hp52 node:reel stun11 | dog2 stunned dog_stunned@65 hs0 hp52 node:reel stun11 | dog3 stunned dog_stunned@60 hs0 hp52 node:none stun16
+t00170 hero idle@51 - hs0 stam100 hp100 | dog1 stunned dog_stunned@66 hs0 hp52 node:none stun10 | dog2 stunned dog_stunned@66 hs0 hp52 node:none stun10 | dog3 stunned dog_stunned@61 hs0 hp52 node:reel stun15
+t00171 hero idle@52 - hs0 stam100 hp100 | dog1 stunned dog_stunned@67 hs0 hp52 node:reel stun9 | dog2 stunned dog_stunned@67 hs0 hp52 node:reel stun9 | dog3 stunned dog_stunned@62 hs0 hp52 node:none stun14
+t00172 hero idle@53 - hs0 stam100 hp100 | dog1 stunned dog_stunned@68 hs0 hp52 node:none stun8 | dog2 stunned dog_stunned@68 hs0 hp52 node:none stun8 | dog3 stunned dog_stunned@63 hs0 hp52 node:reel stun13
+t00173 hero idle@54 - hs0 stam100 hp100 | dog1 stunned dog_stunned@69 hs0 hp52 node:reel stun7 | dog2 stunned dog_stunned@69 hs0 hp52 node:reel stun7 | dog3 stunned dog_stunned@64 hs0 hp52 node:none stun12
+t00174 hero idle@55 - hs0 stam100 hp100 | dog1 stunned dog_stunned@70 hs0 hp52 node:none stun6 | dog2 stunned dog_stunned@70 hs0 hp52 node:none stun6 | dog3 stunned dog_stunned@65 hs0 hp52 node:reel stun11
+t00175 hero idle@56 - hs0 stam100 hp100 | dog1 stunned dog_stunned@71 hs0 hp52 node:reel stun5 | dog2 stunned dog_stunned@71 hs0 hp52 node:reel stun5 | dog3 stunned dog_stunned@66 hs0 hp52 node:none stun10
+t00176 hero idle@57 - hs0 stam100 hp100 | dog1 stunned dog_stunned@72 hs0 hp52 node:none stun4 | dog2 stunned dog_stunned@72 hs0 hp52 node:none stun4 | dog3 stunned dog_stunned@67 hs0 hp52 node:reel stun9
+t00177 hero idle@58 - hs0 stam100 hp100 | dog1 stunned dog_stunned@73 hs0 hp52 node:reel stun3 | dog2 stunned dog_stunned@73 hs0 hp52 node:reel stun3 | dog3 stunned dog_stunned@68 hs0 hp52 node:none stun8
+t00178 hero idle@59 - hs0 stam100 hp100 | dog1 stunned dog_stunned@74 hs0 hp52 node:none stun2 | dog2 stunned dog_stunned@74 hs0 hp52 node:none stun2 | dog3 stunned dog_stunned@69 hs0 hp52 node:reel stun7
+t00179 hero idle@60 - hs0 stam100 hp100 | dog1 stunned dog_stunned@75 hs0 hp52 node:reel stun1 | dog2 stunned dog_stunned@75 hs0 hp52 node:reel stun1 | dog3 stunned dog_stunned@70 hs0 hp52 node:none stun6
+t00180 hero idle@61 - hs0 stam100 hp100 | dog1 idle dog_idle@1 hs0 hp52 node:none | dog2 idle dog_idle@1 hs0 hp52 node:none | dog3 stunned dog_stunned@71 hs0 hp52 node:reel stun5
+t00181 hero idle@62 - hs0 stam100 hp100 | dog1 idle dog_idle@2 hs0 hp52 node:reel | dog2 idle dog_idle@2 hs0 hp52 node:reel | dog3 stunned dog_stunned@72 hs0 hp52 node:none stun4
+t00182 hero idle@63 - hs0 stam100 hp100 | dog1 idle dog_idle@3 hs0 hp52 node:none | dog2 idle dog_idle@3 hs0 hp52 node:none | dog3 stunned dog_stunned@73 hs0 hp52 node:reel stun3
+t00183 hero idle@64 - hs0 stam100 hp100 | dog1 idle dog_idle@4 hs0 hp52 node:reel | dog2 idle dog_idle@4 hs0 hp52 node:reel | dog3 stunned dog_stunned@74 hs0 hp52 node:none stun2
+t00184 hero idle@65 - hs0 stam100 hp100 | dog1 idle dog_idle@5 hs0 hp52 node:none | dog2 idle dog_idle@5 hs0 hp52 node:none | dog3 stunned dog_stunned@75 hs0 hp52 node:reel stun1
+t00185 hero idle@66 - hs0 stam100 hp100 | dog1 idle dog_idle@6 hs0 hp52 node:reel | dog2 idle dog_idle@6 hs0 hp52 node:reel | dog3 idle dog_idle@1 hs0 hp52 node:none
+t00186 hero idle@67 - hs0 stam100 hp100 | dog1 idle dog_idle@7 hs0 hp52 node:none | dog2 idle dog_idle@7 hs0 hp52 node:none | dog3 idle dog_idle@2 hs0 hp52 node:reel
+t00187 hero idle@68 - hs0 stam100 hp100 | dog1 idle dog_idle@8 hs0 hp52 node:reel | dog2 idle dog_idle@8 hs0 hp52 node:reel | dog3 idle dog_idle@3 hs0 hp52 node:none
+t00188 hero idle@69 - hs0 stam100 hp100 | dog1 idle dog_idle@9 hs0 hp52 node:none | dog2 idle dog_idle@9 hs0 hp52 node:none | dog3 idle dog_idle@4 hs0 hp52 node:reel
+t00189 hero idle@70 - hs0 stam100 hp100 | dog1 idle dog_idle@10 hs0 hp52 node:reel | dog2 idle dog_idle@10 hs0 hp52 node:reel | dog3 idle dog_idle@5 hs0 hp52 node:none
+t00190 hero idle@71 - hs0 stam100 hp100 | dog1 idle dog_idle@11 hs0 hp52 node:none | dog2 idle dog_idle@11 hs0 hp52 node:none | dog3 idle dog_idle@6 hs0 hp52 node:reel
+t00191 hero idle@72 - hs0 stam100 hp100 | dog1 idle dog_idle@12 hs0 hp52 node:reel | dog2 idle dog_idle@12 hs0 hp52 node:reel | dog3 idle dog_idle@7 hs0 hp52 node:none
+t00192 hero idle@73 - hs0 stam100 hp100 | dog1 idle dog_idle@13 hs0 hp52 node:none | dog2 idle dog_idle@13 hs0 hp52 node:none | dog3 idle dog_idle@8 hs0 hp52 node:reel
+t00193 hero idle@74 - hs0 stam100 hp100 | dog1 idle dog_idle@14 hs0 hp52 node:reel | dog2 idle dog_idle@14 hs0 hp52 node:reel | dog3 idle dog_idle@9 hs0 hp52 node:none
+t00194 hero idle@75 - hs0 stam100 hp100 | dog1 idle dog_idle@15 hs0 hp52 node:none | dog2 idle dog_idle@15 hs0 hp52 node:none | dog3 idle dog_idle@10 hs0 hp52 node:reel
+t00195 hero idle@76 - hs0 stam100 hp100 | dog1 idle dog_idle@16 hs0 hp52 node:reel | dog2 idle dog_idle@16 hs0 hp52 node:reel | dog3 idle dog_idle@11 hs0 hp52 node:none
+t00196 hero idle@77 - hs0 stam100 hp100 | dog1 idle dog_idle@17 hs0 hp52 node:none | dog2 idle dog_idle@17 hs0 hp52 node:none | dog3 idle dog_idle@12 hs0 hp52 node:reel
+t00197 hero idle@78 - hs0 stam100 hp100 | dog1 idle dog_idle@18 hs0 hp52 node:reel | dog2 idle dog_idle@18 hs0 hp52 node:reel | dog3 idle dog_idle@13 hs0 hp52 node:none
+t00198 hero idle@79 - hs0 stam100 hp100 | dog1 idle dog_idle@19 hs0 hp52 node:none | dog2 idle dog_idle@19 hs0 hp52 node:none | dog3 idle dog_idle@14 hs0 hp52 node:reel
+t00199 hero idle@80 - hs0 stam100 hp100 | dog1 idle dog_idle@20 hs0 hp52 node:reel | dog2 idle dog_idle@20 hs0 hp52 node:reel | dog3 idle dog_idle@15 hs0 hp52 node:none
+t00200 hero idle@81 - hs0 stam100 hp100 | dog1 idle dog_idle@21 hs0 hp52 node:none | dog2 idle dog_idle@21 hs0 hp52 node:none | dog3 idle dog_idle@16 hs0 hp52 node:reel
+t00201 hero idle@82 - hs0 stam100 hp100 | dog1 idle dog_strafe@1 hs0 hp52 node:strafe_right | dog2 idle dog_strafe@1 hs0 hp52 node:strafe_right | dog3 idle dog_idle@17 hs0 hp52 node:none
+t00202 hero idle@83 - hs0 stam100 hp100 | dog1 idle dog_strafe@2 hs0 hp52 node:strafe_right | dog2 idle dog_strafe@2 hs0 hp52 node:strafe_right | dog3 idle dog_idle@18 hs0 hp52 node:reel
+t00203 hero idle@84 - hs0 stam100 hp100 | dog1 idle dog_strafe@3 hs0 hp52 node:strafe_right | dog2 idle dog_strafe@3 hs0 hp52 node:strafe_right | dog3 idle dog_idle@19 hs0 hp52 node:none
+t00204 hero idle@85 - hs0 stam100 hp100 | dog1 idle dog_strafe@4 hs0 hp52 node:strafe_right | dog2 idle dog_strafe@4 hs0 hp52 node:strafe_right | dog3 idle dog_idle@20 hs0 hp52 node:reel
+t00205 hero idle@86 - hs0 stam100 hp100 | dog1 idle dog_strafe@5 hs0 hp52 node:strafe_right | dog2 idle dog_strafe@5 hs0 hp52 node:strafe_right | dog3 idle dog_idle@21 hs0 hp52 node:none
+t00206 hero idle@87 - hs0 stam100 hp100 | dog1 idle dog_strafe@6 hs0 hp52 node:strafe_right | dog2 idle dog_strafe@6 hs0 hp52 node:strafe_right | dog3 idle dog_strafe@1 hs0 hp52 node:strafe_right
+t00207 hero idle@88 - hs0 stam100 hp100 | dog1 idle dog_strafe@7 hs0 hp52 node:strafe_right | dog2 idle dog_strafe@7 hs0 hp52 node:strafe_right | dog3 idle dog_strafe@2 hs0 hp52 node:strafe_right
+t00208 hero idle@89 - hs0 stam100 hp100 | dog1 idle dog_strafe@8 hs0 hp52 node:strafe_right | dog2 idle dog_strafe@8 hs0 hp52 node:strafe_right | dog3 idle dog_strafe@3 hs0 hp52 node:strafe_right
+t00209 hero idle@90 - hs0 stam100 hp100 | dog1 idle dog_strafe@9 hs0 hp52 node:strafe_right | dog2 idle dog_strafe@9 hs0 hp52 node:strafe_right | dog3 idle dog_strafe@4 hs0 hp52 node:strafe_right
+t00210 hero idle@91 - hs0 stam100 hp100 | dog1 idle dog_strafe@10 hs0 hp52 node:strafe_right | dog2 idle dog_strafe@10 hs0 hp52 node:strafe_right | dog3 idle dog_strafe@5 hs0 hp52 node:strafe_right
+t00211 hero idle@92 - hs0 stam100 hp100 | dog1 idle dog_strafe@11 hs0 hp52 node:strafe_right | dog2 idle dog_strafe@11 hs0 hp52 node:strafe_right | dog3 idle dog_strafe@6 hs0 hp52 node:strafe_right
+t00212 hero idle@93 - hs0 stam100 hp100 | dog1 idle dog_strafe@12 hs0 hp52 node:strafe_right | dog2 idle dog_strafe@12 hs0 hp52 node:strafe_right | dog3 idle dog_strafe@7 hs0 hp52 node:strafe_right
+t00213 hero idle@94 - hs0 stam100 hp100 | dog1 idle dog_strafe@13 hs0 hp52 node:strafe_right | dog2 idle dog_strafe@13 hs0 hp52 node:strafe_right | dog3 idle dog_strafe@8 hs0 hp52 node:strafe_right
+t00214 hero idle@95 - hs0 stam100 hp100 | dog1 idle dog_strafe@14 hs0 hp52 node:strafe_right | dog2 idle dog_strafe@14 hs0 hp52 node:strafe_right | dog3 idle dog_strafe@9 hs0 hp52 node:strafe_right
+t00215 hero idle@96 - hs0 stam100 hp100 | dog1 idle dog_strafe@15 hs0 hp52 node:strafe_right | dog2 idle dog_strafe@15 hs0 hp52 node:strafe_right | dog3 idle dog_strafe@10 hs0 hp52 node:strafe_right
+t00216 hero idle@97 - hs0 stam100 hp100 | dog1 idle dog_strafe@16 hs0 hp52 node:strafe_right | dog2 idle dog_strafe@16 hs0 hp52 node:strafe_right | dog3 idle dog_strafe@11 hs0 hp52 node:strafe_right
+t00217 hero idle@98 - hs0 stam100 hp100 | dog1 idle dog_strafe@17 hs0 hp52 node:strafe_right | dog2 idle dog_strafe@17 hs0 hp52 node:strafe_right | dog3 idle dog_strafe@12 hs0 hp52 node:strafe_right
+t00218 hero idle@99 - hs0 stam100 hp100 | dog1 idle dog_strafe@18 hs0 hp52 node:strafe_right | dog2 idle dog_strafe@18 hs0 hp52 node:strafe_right | dog3 idle dog_strafe@13 hs0 hp52 node:strafe_right
+t00219 hero idle@100 - hs0 stam100 hp100 | dog1 idle dog_strafe@19 hs0 hp52 node:strafe_right | dog2 idle dog_strafe@19 hs0 hp52 node:strafe_right | dog3 idle dog_strafe@14 hs0 hp52 node:strafe_right
+t00220 hero idle@101 - hs0 stam100 hp100 | dog1 idle dog_strafe@20 hs0 hp52 node:strafe_right | dog2 idle dog_strafe@20 hs0 hp52 node:strafe_right | dog3 idle dog_strafe@15 hs0 hp52 node:strafe_right

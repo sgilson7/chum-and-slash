@@ -145,16 +145,10 @@ fn only_sprint_air_moves_and_abilities_spend_stamina() {
 /// CS-5: a launcher lifts a stunned enemy and not an unstunned one.
 #[test]
 fn launcher_lifts_only_a_stunned_enemy() {
-    let (mut w, id) = with("big_dog", 2400);
-    // the big dog has poise: a launcher on it unstunned does not lift it
-    w.enemies[0].brain.tree.reaction = 0;
+    // a launcher as the first hit finds the dog unstunned: no lift
+    let (mut w, id) = with("dog", 1600);
     string(&mut w, &[B_LAUNCH]);
-    run(&mut w, 30, 0);
-    assert_ne!(
-        w.enemy(id).unwrap().state,
-        State::Airborne,
-        "unstunned: not lifted"
-    );
+    assert_ne!(w.enemy(id).unwrap().state, State::Airborne, "unstunned: not lifted");
     let (mut w, id) = with("dog", 1600);
     string(&mut w, &[B_LIGHT]);
     assert_eq!(w.enemy(id).unwrap().state, State::Stunned, "one hit stuns a dog");
@@ -430,4 +424,92 @@ fn the_camera_knock_rings_to_exactly_nothing() {
     }
     assert_eq!(seen, [3276, -1801, 990, -544, 299, -164, 90, -49, 0]);
     let _ = ONE;
+}
+
+/// Round 1 repair (R2.1): a dog strafes between lunges, at least the
+/// cooldown (60 ticks) after its last lunge ends (cue 39).
+#[test]
+fn a_dog_rests_between_lunges() {
+    let (mut w, id) = with("dog", 6000);
+    let mut starts = Vec::new();
+    let mut was = false;
+    for _ in 0..900 {
+        w.tick(Input::bits(0));
+        let now = w.enemy(id).unwrap().anim.clip == "dog_lunge";
+        if now && !was {
+            starts.push(w.tick);
+        }
+        was = now;
+    }
+    assert!(starts.len() >= 2, "it lunged {starts:?}");
+    for p in starts.windows(2) {
+        assert!(p[1] - p[0] >= 66 + 60, "lunges at {} and {}", p[0], p[1]);
+    }
+}
+
+/// Round 1 repair (R2.2): a bitten hero plays the whole hurt clip.
+#[test]
+fn a_bite_plays_the_hurt_clip_through() {
+    let (mut w, _) = with("dog", 6000);
+    for _ in 0..900 {
+        let ev = w.tick(Input::bits(0));
+        if ev.iter().any(|e| e.kind == "bitten") {
+            run(&mut w, 8, 0);
+            assert_eq!(w.hero.anim.clip, "hurt");
+            return;
+        }
+    }
+    panic!("no bite landed");
+}
+
+/// Round 1 repair (R2.3): a jump pressed before the launcher's cancel tick
+/// waits in the buffer and comes out at the cancel tick.
+#[test]
+fn an_early_jump_waits_for_the_cancel() {
+    let mut w = World::new();
+    tap(&mut w, B_LAUNCH);
+    let cancel = w.clips["launcher"].events.cancel.unwrap();
+    while w.hero.anim.tick + 3 < cancel {
+        w.tick(Input::bits(0));
+    }
+    tap(&mut w, B_JUMP);
+    run(&mut w, 6, 0);
+    assert!(!w.hero.grounded, "the jump came out");
+}
+
+/// Round 1 repair (R2.4): the Whirlwind Strike through three dogs stops
+/// the hero once, not three times.
+#[test]
+fn the_whirl_stops_the_hero_once() {
+    let mut w = World::new();
+    let m = tool_core::model::mm(2000);
+    w.spawn("dog", v3(0, 0, -m), 0).unwrap();
+    // a second dog arrives in reach part way through the spin, as the
+    // veteran saw (two hit-stops back to back)
+    w.spawn("dog", v3(0, 0, m * 5), 0).unwrap();
+    tap(&mut w, B_MOD | B_LIGHT);
+    let mut stopped = 0;
+    for k in 0..60 {
+        if k == 14 {
+            w.enemies[1].pos = v3(m, 0, 0);
+        }
+        w.tick(Input::bits(0));
+        if w.hero.hitstop > 0 {
+            stopped += 1;
+        }
+    }
+    assert!(stopped <= w.rules.moves["whirl"].hitstop, "stopped {stopped} ticks");
+}
+
+/// Round 1 repair (R2.5): the injured dog stays down, stunned, and the
+/// launcher at the end of the first combo can lift it.
+#[test]
+fn the_injured_dog_stays_down_and_stunned() {
+    let (mut w, id) = with("big_dog", 2600);
+    run(&mut w, 300, 0);
+    string(&mut w, &[B_LIGHT, B_HEAVY]);
+    run(&mut w, 300, 0);
+    let e = w.enemy(id).unwrap();
+    assert_eq!(e.state, State::Stunned, "still down after a string ends");
+    assert_eq!(e.anim.clip, "dog_injured");
 }

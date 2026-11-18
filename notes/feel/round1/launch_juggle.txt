@@ -1,0 +1,258 @@
+# clip air_heavy len30 anticipation0-7 strike8-11 follow12-19 recovery20-30 hit9-12 cancel22  forward199mm up0mm
+# clip air_light len18 anticipation0-2 strike3-5 follow6-9 recovery10-18 hit4-6 cancel9  forward149mm up0mm
+# clip dog_dead len40  forward0mm up-419mm
+# clip dog_down len30  forward0mm up-419mm
+# clip dog_hurt len14  forward0mm up0mm
+# clip dog_idle len60 loop  forward0mm up0mm
+# clip dog_injured len80 loop  forward0mm up-419mm
+# clip dog_lunge len66 anticipation0-17 strike18-35 follow36-45 recovery46-66 hit30-35  forward3000mm up0mm
+# clip dog_strafe len30 loop  forward0mm up0mm
+# clip dog_stunned len40 loop  forward0mm up0mm
+# clip dog_tumble len24 loop  forward0mm up0mm
+# clip fall len30 loop  forward0mm up0mm
+# clip heavy_1 len44 anticipation0-13 strike14-17 follow18-27 recovery28-44 hit15-18 cancel30  forward1000mm up0mm
+# clip heavy_2 len44 anticipation0-13 strike14-17 follow18-27 recovery28-44 hit15-18 cancel30  forward899mm up0mm
+# clip heavy_3 len50 anticipation0-15 strike16-19 follow20-31 recovery32-50 hit17-20 cancel34  forward1199mm up0mm
+# clip hurt len20  forward0mm up0mm
+# clip idle len90 loop  forward0mm up0mm
+# clip jump len16  forward0mm up0mm
+# clip launcher len40 anticipation0-9 strike10-13 follow14-21 recovery22-40 hit11-14 cancel24  forward299mm up0mm
+# clip light_1 len24 anticipation0-4 strike5-7 follow8-13 recovery14-24 hit6-8 cancel12  forward500mm up0mm
+# clip light_2 len24 anticipation0-4 strike5-7 follow8-13 recovery14-24 hit6-8 cancel12  forward500mm up0mm
+# clip light_3 len24 anticipation0-4 strike5-7 follow8-13 recovery14-24 hit6-8 cancel12  forward549mm up0mm
+# clip light_4 len28 anticipation0-5 strike6-8 follow9-15 recovery16-28 hit7-9 cancel14  forward750mm up0mm
+# clip recover len24 anticipation0-0 strike0-0 follow0-0 recovery0-24  forward0mm up0mm
+# clip run len36 loop  forward0mm up0mm
+# clip sprint len28 loop  forward0mm up0mm
+# clip whirl len42 anticipation0-5 strike6-29 follow30-35 recovery36-42 hit7-30  forward299mm up0mm
+# move air_heavy damage20 hitstop7 push200mm reach2200mm arc140deg stamina1200
+# move air_light damage9 hitstop4 push80mm reach2000mm arc160deg stamina600
+# move heavy_1 damage22 hitstop7 push800mm reach2200mm arc120deg stamina0
+# move heavy_2 damage22 hitstop7 push800mm reach2300mm arc170deg stamina0
+# move heavy_3 damage30 hitstop8 push1000mm reach2300mm arc120deg stamina0
+# move launcher damage12 hitstop10 push100mm reach2000mm arc120deg stamina0
+# move light_1 damage10 hitstop4 push300mm reach2000mm arc150deg stamina0
+# move light_2 damage10 hitstop4 push300mm reach2000mm arc150deg stamina0
+# move light_3 damage11 hitstop4 push300mm reach2000mm arc140deg stamina0
+# move light_4 damage14 hitstop5 push450mm reach2200mm arc90deg stamina0
+# move whirl damage8 hitstop5 push900mm reach2700mm arc360deg stamina3000
+t00001 hero idle@1 - hs0 stam100 hp100 | dog1 idle dog_idle@1 hs0 hp60 node:idle
+t00002 hero idle@2 - hs0 stam100 hp100 | dog1 idle dog_idle@2 hs0 hp60 node:idle
+t00003 hero light_1@1 anticipation hs0 stam100 hp100 string[light] | dog1 idle dog_idle@3 hs0 hp60 node:idle
+t00004 hero light_1@2 anticipation hs0 stam100 hp100 string[light] | dog1 idle dog_idle@4 hs0 hp60 node:idle
+t00005 hero light_1@3 anticipation hs0 stam100 hp100 string[light] | dog1 idle dog_idle@5 hs0 hp60 node:idle
+t00006 hero light_1@4 anticipation hs0 stam100 hp100 string[light] | dog1 idle dog_idle@6 hs0 hp60 node:idle
+t00007 hero light_1@5 strike hs0 stam100 hp100 string[light] | dog1 idle dog_idle@7 hs0 hp60 node:idle || sound:swing
+t00008 hero light_1@6 strike hs4 stam100 hp100 string[light] | dog1 stunned dog_hurt@0 hs4 hp50 node:idle stun90 || sound:hit_light rumble:light_hit hit:light_1
+t00009 hero light_1@6 strike hs3 stam100 hp100 string[light] | dog1 stunned dog_hurt@0 hs3 hp50 node:idle stun90
+t00010 hero light_1@6 strike hs2 stam100 hp100 string[light] | dog1 stunned dog_hurt@0 hs2 hp50 node:idle stun90
+t00011 hero light_1@6 strike hs1 stam100 hp100 string[light] | dog1 stunned dog_hurt@0 hs1 hp50 node:idle stun90
+t00012 hero light_1@6 strike hs0 stam100 hp100 string[light] | dog1 stunned dog_hurt@0 hs0 hp50 node:idle stun90
+t00013 hero light_1@7 strike hs0 stam100 hp100 string[light] | dog1 stunned dog_hurt@1 hs0 hp50 node:idle stun89
+t00014 hero light_1@8 follow-through hs0 stam100 hp100 string[light] | dog1 stunned dog_hurt@2 hs0 hp50 node:idle stun88
+t00015 hero light_1@9 follow-through hs0 stam100 hp100 string[light] | dog1 stunned dog_hurt@3 hs0 hp50 node:idle stun87
+t00016 hero light_1@10 follow-through hs0 stam100 hp100 string[light] | dog1 stunned dog_hurt@4 hs0 hp50 node:idle stun86
+t00017 hero light_1@11 follow-through hs0 stam100 hp100 string[light] | dog1 stunned dog_hurt@5 hs0 hp50 node:idle stun85
+t00018 hero light_1@12 follow-through hs0 stam100 hp100 string[light] | dog1 stunned dog_hurt@6 hs0 hp50 node:idle stun84
+t00019 hero light_1@13 follow-through hs0 stam100 hp100 string[light] | dog1 stunned dog_hurt@7 hs0 hp50 node:idle stun83
+t00020 hero light_1@14 recovery hs0 stam100 hp100 string[light] | dog1 stunned dog_hurt@8 hs0 hp50 node:idle stun82
+t00021 hero light_1@15 recovery hs0 stam100 hp100 string[light] | dog1 stunned dog_hurt@9 hs0 hp50 node:idle stun81
+t00022 hero light_1@16 recovery hs0 stam100 hp100 string[light] | dog1 stunned dog_hurt@10 hs0 hp50 node:idle stun80
+t00023 hero light_1@17 recovery hs0 stam100 hp100 string[light] | dog1 stunned dog_hurt@11 hs0 hp50 node:idle stun79
+t00024 hero light_1@18 recovery hs0 stam100 hp100 string[light] | dog1 stunned dog_hurt@12 hs0 hp50 node:idle stun78
+t00025 hero light_1@19 recovery hs0 stam100 hp100 string[light] | dog1 stunned dog_hurt@13 hs0 hp50 node:idle stun77
+t00026 hero light_1@20 recovery hs0 stam100 hp100 string[light] | dog1 stunned dog_hurt@14 hs0 hp50 node:idle stun76
+t00027 hero light_1@21 recovery hs0 stam100 hp100 string[light] | dog1 stunned dog_stunned@1 hs0 hp50 node:idle stun75
+t00028 hero light_1@22 recovery hs0 stam100 hp100 string[light] | dog1 stunned dog_stunned@2 hs0 hp50 node:idle stun74
+t00029 hero light_1@23 recovery hs0 stam100 hp100 string[light] | dog1 stunned dog_stunned@3 hs0 hp50 node:idle stun73
+t00030 hero light_1@24 recovery hs0 stam100 hp100 string[light] | dog1 stunned dog_stunned@4 hs0 hp50 node:idle stun72
+t00031 hero launcher@1 anticipation hs0 stam100 hp100 string[light,launcher] | dog1 stunned dog_stunned@5 hs0 hp50 node:idle stun71
+t00032 hero launcher@2 anticipation hs0 stam100 hp100 string[light,launcher] | dog1 stunned dog_stunned@6 hs0 hp50 node:idle stun70
+t00033 hero launcher@3 anticipation hs0 stam100 hp100 string[light,launcher] | dog1 stunned dog_stunned@7 hs0 hp50 node:idle stun69
+t00034 hero launcher@4 anticipation hs0 stam100 hp100 string[light,launcher] | dog1 stunned dog_stunned@8 hs0 hp50 node:idle stun68
+t00035 hero launcher@5 anticipation hs0 stam100 hp100 string[light,launcher] | dog1 stunned dog_stunned@9 hs0 hp50 node:none stun67
+t00036 hero launcher@6 anticipation hs0 stam100 hp100 string[light,launcher] | dog1 stunned dog_stunned@10 hs0 hp50 node:idle stun66
+t00037 hero launcher@7 anticipation hs0 stam100 hp100 string[light,launcher] | dog1 stunned dog_stunned@11 hs0 hp50 node:idle stun65
+t00038 hero launcher@8 anticipation hs0 stam100 hp100 string[light,launcher] | dog1 stunned dog_stunned@12 hs0 hp50 node:idle stun64
+t00039 hero launcher@9 anticipation hs0 stam100 hp100 string[light,launcher] | dog1 stunned dog_stunned@13 hs0 hp50 node:idle stun63
+t00040 hero launcher@10 strike hs0 stam100 hp100 string[light,launcher] | dog1 stunned dog_stunned@14 hs0 hp50 node:idle stun62 || sound:swing
+t00041 hero launcher@11 strike hs10 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@0 hs10 hp38 node:idle stun61 || sound:hit_launch rumble:launcher_hit hit:launcher
+t00042 hero launcher@11 strike hs9 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@0 hs9 hp38 node:idle stun61
+t00043 hero launcher@11 strike hs8 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@0 hs8 hp38 node:idle stun61
+t00044 hero launcher@11 strike hs7 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@0 hs7 hp38 node:idle stun61
+t00045 hero launcher@11 strike hs6 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@0 hs6 hp38 node:idle stun61
+t00046 hero launcher@11 strike hs5 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@0 hs5 hp38 node:idle stun61
+t00047 hero launcher@11 strike hs4 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@0 hs4 hp38 node:idle stun61
+t00048 hero launcher@11 strike hs3 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@0 hs3 hp38 node:idle stun61
+t00049 hero launcher@11 strike hs2 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@0 hs2 hp38 node:idle stun61
+t00050 hero launcher@11 strike hs1 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@0 hs1 hp38 node:idle stun61
+t00051 hero launcher@11 strike hs0 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@0 hs0 hp38 node:idle stun61
+t00052 hero launcher@12 strike hs0 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@1 hs0 hp38 node:idle stun61
+t00053 hero launcher@13 strike hs0 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@2 hs0 hp38 node:reel stun61
+t00054 hero launcher@14 follow-through hs0 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@3 hs0 hp38 node:none stun61
+t00055 hero launcher@15 follow-through hs0 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@4 hs0 hp38 node:reel stun61
+t00056 hero launcher@16 follow-through hs0 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@5 hs0 hp38 node:none stun61
+t00057 hero launcher@17 follow-through hs0 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@6 hs0 hp38 node:reel stun61
+t00058 hero launcher@18 follow-through hs0 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@7 hs0 hp38 node:none stun61
+t00059 hero launcher@19 follow-through hs0 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@8 hs0 hp38 node:reel stun61
+t00060 hero launcher@20 follow-through hs0 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@9 hs0 hp38 node:none stun61
+t00061 hero launcher@21 follow-through hs0 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@10 hs0 hp38 node:reel stun61
+t00062 hero launcher@22 recovery hs0 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@11 hs0 hp38 node:none stun61
+t00063 hero launcher@23 recovery hs0 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@12 hs0 hp38 node:reel stun61
+t00064 hero launcher@24 recovery hs0 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@13 hs0 hp38 node:none stun61
+t00065 hero launcher@25 recovery hs0 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@14 hs0 hp38 node:reel stun61
+t00066 hero launcher@26 recovery hs0 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@15 hs0 hp38 node:none stun61
+t00067 hero launcher@27 recovery hs0 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@16 hs0 hp38 node:reel stun61
+t00068 hero launcher@28 recovery hs0 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@17 hs0 hp38 node:none stun61
+t00069 hero launcher@29 recovery hs0 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@18 hs0 hp38 node:reel stun61
+t00070 hero launcher@30 recovery hs0 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@19 hs0 hp38 node:none stun61
+t00071 hero launcher@31 recovery hs0 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@20 hs0 hp38 node:reel stun61
+t00072 hero launcher@32 recovery hs0 stam100 hp100 string[light,launcher] | dog1 airborne dog_tumble@21 hs0 hp38 node:none stun61
+t00073 hero light_2@1 anticipation hs0 stam100 hp100 string[light,launcher,light] | dog1 airborne dog_tumble@22 hs0 hp38 node:reel stun61
+t00074 hero light_2@2 anticipation hs0 stam100 hp100 string[light,launcher,light] | dog1 airborne dog_tumble@23 hs0 hp38 node:none stun61
+t00075 hero light_2@3 anticipation hs0 stam100 hp100 string[light,launcher,light] | dog1 airborne dog_tumble@24 hs0 hp38 node:reel stun61
+t00076 hero light_2@4 anticipation hs0 stam100 hp100 string[light,launcher,light] | dog1 airborne dog_tumble@25 hs0 hp38 node:none stun61
+t00077 hero light_2@5 strike hs0 stam100 hp100 string[light,launcher,light] | dog1 airborne dog_tumble@26 hs0 hp38 node:reel stun61 || sound:swing
+t00078 hero light_2@6 strike hs0 stam100 hp100 string[light,launcher,light] | dog1 airborne dog_tumble@27 hs0 hp38 node:none stun61
+t00079 hero light_2@7 strike hs0 stam100 hp100 string[light,launcher,light] | dog1 airborne dog_tumble@28 hs0 hp38 node:reel stun61
+t00080 hero light_2@8 follow-through hs0 stam100 hp100 string[light,launcher,light] | dog1 airborne dog_tumble@29 hs0 hp38 node:none stun61
+t00081 hero light_2@9 follow-through hs0 stam100 hp100 string[light,launcher,light] | dog1 airborne dog_tumble@30 hs0 hp38 node:reel stun61
+t00082 hero light_2@10 follow-through hs0 stam100 hp100 string[light,launcher,light] | dog1 airborne dog_tumble@31 hs0 hp38 node:tumble stun61
+t00083 hero light_2@11 follow-through hs0 stam100 hp100 string[light,launcher,light] | dog1 airborne dog_tumble@32 hs0 hp38 node:none stun61
+t00084 hero light_2@12 follow-through hs0 stam100 hp100 string[light,launcher,light] | dog1 airborne dog_tumble@33 hs0 hp38 node:tumble stun61
+t00085 hero light_3@1 anticipation hs0 stam100 hp100 string[light,launcher,light,light] | dog1 airborne dog_tumble@34 hs0 hp38 node:none stun61
+t00086 hero light_3@2 anticipation hs0 stam100 hp100 string[light,launcher,light,light] | dog1 airborne dog_tumble@35 hs0 hp38 node:tumble stun61
+t00087 hero light_3@3 anticipation hs0 stam100 hp100 string[light,launcher,light,light] | dog1 airborne dog_tumble@36 hs0 hp38 node:none stun61
+t00088 hero light_3@4 anticipation hs0 stam100 hp100 string[light,launcher,light,light] | dog1 airborne dog_tumble@37 hs0 hp38 node:tumble stun61
+t00089 hero light_3@5 strike hs0 stam100 hp100 string[light,launcher,light,light] | dog1 airborne dog_tumble@38 hs0 hp38 node:none stun61 || sound:swing
+t00090 hero light_3@6 strike hs0 stam100 hp100 string[light,launcher,light,light] | dog1 airborne dog_tumble@39 hs0 hp38 node:tumble stun61
+t00091 hero light_3@7 strike hs0 stam100 hp100 string[light,launcher,light,light] | dog1 airborne dog_tumble@40 hs0 hp38 node:none stun61
+t00092 hero light_3@8 follow-through hs0 stam100 hp100 string[light,launcher,light,light] | dog1 airborne dog_tumble@41 hs0 hp38 node:tumble stun61
+t00093 hero light_3@9 follow-through hs0 stam100 hp100 string[light,launcher,light,light] | dog1 airborne dog_tumble@42 hs0 hp38 node:none stun61
+t00094 hero light_3@10 follow-through hs0 stam100 hp100 string[light,launcher,light,light] | dog1 airborne dog_tumble@43 hs0 hp38 node:tumble stun61
+t00095 hero light_3@11 follow-through hs0 stam100 hp100 string[light,launcher,light,light] | dog1 airborne dog_tumble@44 hs0 hp38 node:none stun61
+t00096 hero light_3@12 follow-through hs0 stam100 hp100 string[light,launcher,light,light] | dog1 airborne dog_tumble@45 hs0 hp38 node:tumble stun61
+t00097 hero heavy_1@1 anticipation hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@46 hs0 hp38 node:none stun61
+t00098 hero heavy_1@2 anticipation hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@47 hs0 hp38 node:tumble stun61
+t00099 hero heavy_1@3 anticipation hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@48 hs0 hp38 node:none stun61
+t00100 hero heavy_1@4 anticipation hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@49 hs0 hp38 node:tumble stun61
+t00101 hero heavy_1@5 anticipation hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@50 hs0 hp38 node:none stun61
+t00102 hero heavy_1@6 anticipation hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@51 hs0 hp38 node:tumble stun61
+t00103 hero heavy_1@7 anticipation hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@52 hs0 hp38 node:none stun61
+t00104 hero heavy_1@8 anticipation hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@53 hs0 hp38 node:tumble stun61
+t00105 hero heavy_1@9 anticipation hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@54 hs0 hp38 node:none stun61
+t00106 hero heavy_1@10 anticipation hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@55 hs0 hp38 node:tumble stun61
+t00107 hero heavy_1@11 anticipation hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@56 hs0 hp38 node:none stun61
+t00108 hero heavy_1@12 anticipation hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@57 hs0 hp38 node:tumble stun61
+t00109 hero heavy_1@13 anticipation hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@58 hs0 hp38 node:none stun61
+t00110 hero heavy_1@14 strike hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@59 hs0 hp38 node:tumble stun61 || sound:swing
+t00111 hero heavy_1@15 strike hs7 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@60 hs7 hp5 node:none stun61 || sound:hit_heavy rumble:heavy_hit hit:heavy_1
+t00112 hero heavy_1@15 strike hs6 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@60 hs6 hp5 node:none stun61
+t00113 hero heavy_1@15 strike hs5 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@60 hs5 hp5 node:none stun61
+t00114 hero heavy_1@15 strike hs4 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@60 hs4 hp5 node:none stun61
+t00115 hero heavy_1@15 strike hs3 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@60 hs3 hp5 node:none stun61
+t00116 hero heavy_1@15 strike hs2 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@60 hs2 hp5 node:none stun61
+t00117 hero heavy_1@15 strike hs1 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@60 hs1 hp5 node:none stun61
+t00118 hero heavy_1@15 strike hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@60 hs0 hp5 node:none stun61
+t00119 hero heavy_1@16 strike hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@61 hs0 hp5 node:tumble stun61
+t00120 hero heavy_1@17 strike hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@62 hs0 hp5 node:none stun61
+t00121 hero heavy_1@18 follow-through hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@63 hs0 hp5 node:tumble stun61
+t00122 hero heavy_1@19 follow-through hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@64 hs0 hp5 node:none stun61
+t00123 hero heavy_1@20 follow-through hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@65 hs0 hp5 node:tumble stun61
+t00124 hero heavy_1@21 follow-through hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@66 hs0 hp5 node:none stun61
+t00125 hero heavy_1@22 follow-through hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@67 hs0 hp5 node:tumble stun61
+t00126 hero heavy_1@23 follow-through hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@68 hs0 hp5 node:none stun61
+t00127 hero heavy_1@24 follow-through hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@69 hs0 hp5 node:tumble stun61
+t00128 hero heavy_1@25 follow-through hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@70 hs0 hp5 node:none stun61
+t00129 hero heavy_1@26 follow-through hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@71 hs0 hp5 node:tumble stun61
+t00130 hero heavy_1@27 follow-through hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@72 hs0 hp5 node:none stun61
+t00131 hero heavy_1@28 recovery hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@73 hs0 hp5 node:tumble stun61
+t00132 hero heavy_1@29 recovery hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@74 hs0 hp5 node:none stun61
+t00133 hero heavy_1@30 recovery hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@75 hs0 hp5 node:tumble stun61
+t00134 hero heavy_1@31 recovery hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@76 hs0 hp5 node:none stun61
+t00135 hero heavy_1@32 recovery hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@77 hs0 hp5 node:tumble stun61
+t00136 hero heavy_1@33 recovery hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@78 hs0 hp5 node:none stun61
+t00137 hero heavy_1@34 recovery hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@79 hs0 hp5 node:tumble stun61
+t00138 hero heavy_1@35 recovery hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@80 hs0 hp5 node:none stun61
+t00139 hero heavy_1@36 recovery hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@81 hs0 hp5 node:tumble stun61
+t00140 hero heavy_1@37 recovery hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@82 hs0 hp5 node:none stun61
+t00141 hero heavy_1@38 recovery hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@83 hs0 hp5 node:tumble stun61
+t00142 hero heavy_1@39 recovery hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@84 hs0 hp5 node:none stun61
+t00143 hero heavy_1@40 recovery hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@85 hs0 hp5 node:tumble stun61
+t00144 hero heavy_1@41 recovery hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@86 hs0 hp5 node:none stun61
+t00145 hero heavy_1@42 recovery hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@87 hs0 hp5 node:tumble stun61
+t00146 hero heavy_1@43 recovery hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@88 hs0 hp5 node:none stun61
+t00147 hero heavy_1@44 recovery hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@89 hs0 hp5 node:tumble stun61
+t00148 hero idle@0 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@90 hs0 hp5 node:none stun61
+t00149 hero idle@1 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@91 hs0 hp5 node:tumble stun61
+t00150 hero idle@2 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 airborne dog_tumble@92 hs0 hp5 node:none stun61
+t00151 hero idle@3 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@1 hs0 hp5 node:tumble stun40 || land:enemy
+t00152 hero idle@4 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@2 hs0 hp5 node:none stun39
+t00153 hero idle@5 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@3 hs0 hp5 node:tumble stun38
+t00154 hero idle@6 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@4 hs0 hp5 node:none stun37
+t00155 hero idle@7 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@5 hs0 hp5 node:tumble stun36
+t00156 hero idle@8 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@6 hs0 hp5 node:none stun35
+t00157 hero idle@9 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@7 hs0 hp5 node:tumble stun34
+t00158 hero idle@10 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@8 hs0 hp5 node:none stun33
+t00159 hero idle@11 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@9 hs0 hp5 node:tumble stun32
+t00160 hero idle@12 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@10 hs0 hp5 node:none stun31
+t00161 hero idle@13 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@11 hs0 hp5 node:tumble stun30
+t00162 hero idle@14 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@12 hs0 hp5 node:none stun29
+t00163 hero idle@15 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@13 hs0 hp5 node:tumble stun28
+t00164 hero idle@16 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@14 hs0 hp5 node:none stun27
+t00165 hero idle@17 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@15 hs0 hp5 node:tumble stun26
+t00166 hero idle@18 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@16 hs0 hp5 node:none stun25
+t00167 hero idle@19 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@17 hs0 hp5 node:tumble stun24
+t00168 hero idle@20 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@18 hs0 hp5 node:none stun23
+t00169 hero idle@21 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@19 hs0 hp5 node:tumble stun22
+t00170 hero idle@22 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@20 hs0 hp5 node:none stun21
+t00171 hero idle@23 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@21 hs0 hp5 node:tumble stun20
+t00172 hero idle@24 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@22 hs0 hp5 node:none stun19
+t00173 hero idle@25 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@23 hs0 hp5 node:tumble stun18
+t00174 hero idle@26 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@24 hs0 hp5 node:none stun17
+t00175 hero idle@27 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@25 hs0 hp5 node:tumble stun16
+t00176 hero idle@28 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@26 hs0 hp5 node:none stun15
+t00177 hero idle@29 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@27 hs0 hp5 node:tumble stun14
+t00178 hero idle@30 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@28 hs0 hp5 node:none stun13
+t00179 hero idle@31 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@29 hs0 hp5 node:tumble stun12
+t00180 hero idle@32 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@30 hs0 hp5 node:none stun11
+t00181 hero idle@33 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@31 hs0 hp5 node:tumble stun10
+t00182 hero idle@34 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@32 hs0 hp5 node:none stun9
+t00183 hero idle@35 - hs0 stam100 hp100 string[light,launcher,light,light,heavy] | dog1 down dog_down@33 hs0 hp5 node:idle stun8
+t00184 hero idle@36 - hs0 stam100 hp100 | dog1 down dog_down@34 hs0 hp5 node:idle stun7
+t00185 hero idle@37 - hs0 stam100 hp100 | dog1 down dog_down@35 hs0 hp5 node:idle stun6
+t00186 hero idle@38 - hs0 stam100 hp100 | dog1 down dog_down@36 hs0 hp5 node:idle stun5
+t00187 hero idle@39 - hs0 stam100 hp100 | dog1 down dog_down@37 hs0 hp5 node:idle stun4
+t00188 hero idle@40 - hs0 stam100 hp100 | dog1 down dog_down@38 hs0 hp5 node:idle stun3
+t00189 hero idle@41 - hs0 stam100 hp100 | dog1 down dog_down@39 hs0 hp5 node:idle stun2
+t00190 hero idle@42 - hs0 stam100 hp100 | dog1 down dog_down@40 hs0 hp5 node:idle stun1
+t00191 hero idle@43 - hs0 stam100 hp100 | dog1 stunned dog_stunned@1 hs0 hp5 node:idle stun20
+t00192 hero idle@44 - hs0 stam100 hp100 | dog1 stunned dog_stunned@2 hs0 hp5 node:idle stun19
+t00193 hero idle@45 - hs0 stam100 hp100 | dog1 stunned dog_stunned@3 hs0 hp5 node:idle stun18
+t00194 hero idle@46 - hs0 stam100 hp100 | dog1 stunned dog_stunned@4 hs0 hp5 node:idle stun17
+t00195 hero idle@47 - hs0 stam100 hp100 | dog1 stunned dog_stunned@5 hs0 hp5 node:idle stun16
+t00196 hero idle@48 - hs0 stam100 hp100 | dog1 stunned dog_stunned@6 hs0 hp5 node:idle stun15
+t00197 hero idle@49 - hs0 stam100 hp100 | dog1 stunned dog_stunned@7 hs0 hp5 node:idle stun14
+t00198 hero idle@50 - hs0 stam100 hp100 | dog1 stunned dog_stunned@8 hs0 hp5 node:idle stun13
+t00199 hero idle@51 - hs0 stam100 hp100 | dog1 stunned dog_stunned@9 hs0 hp5 node:idle stun12
+t00200 hero idle@52 - hs0 stam100 hp100 | dog1 stunned dog_stunned@10 hs0 hp5 node:idle stun11
+t00201 hero idle@53 - hs0 stam100 hp100 | dog1 stunned dog_stunned@11 hs0 hp5 node:idle stun10
+t00202 hero idle@54 - hs0 stam100 hp100 | dog1 stunned dog_stunned@12 hs0 hp5 node:idle stun9
+t00203 hero idle@55 - hs0 stam100 hp100 | dog1 stunned dog_stunned@13 hs0 hp5 node:idle stun8
+t00204 hero idle@56 - hs0 stam100 hp100 | dog1 stunned dog_stunned@14 hs0 hp5 node:idle stun7
+t00205 hero idle@57 - hs0 stam100 hp100 | dog1 stunned dog_stunned@15 hs0 hp5 node:idle stun6
+t00206 hero idle@58 - hs0 stam100 hp100 | dog1 stunned dog_stunned@16 hs0 hp5 node:idle stun5
+t00207 hero idle@59 - hs0 stam100 hp100 | dog1 stunned dog_stunned@17 hs0 hp5 node:idle stun4
+t00208 hero idle@60 - hs0 stam100 hp100 | dog1 stunned dog_stunned@18 hs0 hp5 node:idle stun3
+t00209 hero idle@61 - hs0 stam100 hp100 | dog1 stunned dog_stunned@19 hs0 hp5 node:idle stun2
+t00210 hero idle@62 - hs0 stam100 hp100 | dog1 stunned dog_stunned@20 hs0 hp5 node:idle stun1
+t00211 hero idle@63 - hs0 stam100 hp100 | dog1 idle dog_idle@1 hs0 hp5 node:idle
+t00212 hero idle@64 - hs0 stam100 hp100 | dog1 idle dog_idle@2 hs0 hp5 node:idle
+t00213 hero idle@65 - hs0 stam100 hp100 | dog1 idle dog_idle@3 hs0 hp5 node:none
+t00214 hero idle@66 - hs0 stam100 hp100 | dog1 idle dog_idle@4 hs0 hp5 node:idle
+t00215 hero idle@67 - hs0 stam100 hp100 | dog1 idle dog_idle@5 hs0 hp5 node:idle
+t00216 hero idle@68 - hs0 stam100 hp100 | dog1 idle dog_idle@6 hs0 hp5 node:idle
+t00217 hero idle@69 - hs0 stam100 hp100 | dog1 idle dog_idle@7 hs0 hp5 node:idle
+t00218 hero idle@70 - hs0 stam100 hp100 | dog1 idle dog_idle@8 hs0 hp5 node:idle
+t00219 hero idle@71 - hs0 stam100 hp100 | dog1 idle dog_idle@9 hs0 hp5 node:idle
+t00220 hero idle@72 - hs0 stam100 hp100 | dog1 idle dog_idle@10 hs0 hp5 node:idle

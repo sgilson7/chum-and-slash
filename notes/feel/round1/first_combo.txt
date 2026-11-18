@@ -1,0 +1,238 @@
+# clip air_heavy len30 anticipation0-7 strike8-11 follow12-19 recovery20-30 hit9-12 cancel22  forward199mm up0mm
+# clip air_light len18 anticipation0-2 strike3-5 follow6-9 recovery10-18 hit4-6 cancel9  forward149mm up0mm
+# clip dog_dead len40  forward0mm up-419mm
+# clip dog_down len30  forward0mm up-419mm
+# clip dog_hurt len14  forward0mm up0mm
+# clip dog_idle len60 loop  forward0mm up0mm
+# clip dog_injured len80 loop  forward0mm up-419mm
+# clip dog_lunge len66 anticipation0-17 strike18-35 follow36-45 recovery46-66 hit30-35  forward3000mm up0mm
+# clip dog_strafe len30 loop  forward0mm up0mm
+# clip dog_stunned len40 loop  forward0mm up0mm
+# clip dog_tumble len24 loop  forward0mm up0mm
+# clip fall len30 loop  forward0mm up0mm
+# clip heavy_1 len44 anticipation0-13 strike14-17 follow18-27 recovery28-44 hit15-18 cancel30  forward1000mm up0mm
+# clip heavy_2 len44 anticipation0-13 strike14-17 follow18-27 recovery28-44 hit15-18 cancel30  forward899mm up0mm
+# clip heavy_3 len50 anticipation0-15 strike16-19 follow20-31 recovery32-50 hit17-20 cancel34  forward1199mm up0mm
+# clip hurt len20  forward0mm up0mm
+# clip idle len90 loop  forward0mm up0mm
+# clip jump len16  forward0mm up0mm
+# clip launcher len40 anticipation0-9 strike10-13 follow14-21 recovery22-40 hit11-14 cancel24  forward299mm up0mm
+# clip light_1 len24 anticipation0-4 strike5-7 follow8-13 recovery14-24 hit6-8 cancel12  forward500mm up0mm
+# clip light_2 len24 anticipation0-4 strike5-7 follow8-13 recovery14-24 hit6-8 cancel12  forward500mm up0mm
+# clip light_3 len24 anticipation0-4 strike5-7 follow8-13 recovery14-24 hit6-8 cancel12  forward549mm up0mm
+# clip light_4 len28 anticipation0-5 strike6-8 follow9-15 recovery16-28 hit7-9 cancel14  forward750mm up0mm
+# clip recover len24 anticipation0-0 strike0-0 follow0-0 recovery0-24  forward0mm up0mm
+# clip run len36 loop  forward0mm up0mm
+# clip sprint len28 loop  forward0mm up0mm
+# clip whirl len42 anticipation0-5 strike6-29 follow30-35 recovery36-42 hit7-30  forward299mm up0mm
+# move air_heavy damage20 hitstop7 push200mm reach2200mm arc140deg stamina1200
+# move air_light damage9 hitstop4 push80mm reach2000mm arc160deg stamina600
+# move heavy_1 damage22 hitstop7 push800mm reach2200mm arc120deg stamina0
+# move heavy_2 damage22 hitstop7 push800mm reach2300mm arc170deg stamina0
+# move heavy_3 damage30 hitstop8 push1000mm reach2300mm arc120deg stamina0
+# move launcher damage12 hitstop10 push100mm reach2000mm arc120deg stamina0
+# move light_1 damage10 hitstop4 push300mm reach2000mm arc150deg stamina0
+# move light_2 damage10 hitstop4 push300mm reach2000mm arc150deg stamina0
+# move light_3 damage11 hitstop4 push300mm reach2000mm arc140deg stamina0
+# move light_4 damage14 hitstop5 push450mm reach2200mm arc90deg stamina0
+# move whirl damage8 hitstop5 push900mm reach2700mm arc360deg stamina3000
+t00001 hero idle@1 - hs0 stam100 hp100 | dog1 idle dog_idle@1 hs0 hp60 node:idle
+t00002 hero idle@2 - hs0 stam100 hp100 | dog1 idle dog_idle@2 hs0 hp60 node:idle
+t00003 hero light_1@1 anticipation hs0 stam100 hp100 string[light] | dog1 idle dog_idle@3 hs0 hp60 node:idle
+t00004 hero light_1@2 anticipation hs0 stam100 hp100 string[light] | dog1 idle dog_idle@4 hs0 hp60 node:idle
+t00005 hero light_1@3 anticipation hs0 stam100 hp100 string[light] | dog1 idle dog_idle@5 hs0 hp60 node:idle
+t00006 hero light_1@4 anticipation hs0 stam100 hp100 string[light] | dog1 idle dog_idle@6 hs0 hp60 node:idle
+t00007 hero light_1@5 strike hs0 stam100 hp100 string[light] | dog1 idle dog_idle@7 hs0 hp60 node:idle || sound:swing
+t00008 hero light_1@6 strike hs4 stam100 hp100 string[light] | dog1 stunned dog_hurt@0 hs4 hp50 node:idle stun90 || sound:hit_light rumble:light_hit hit:light_1
+t00009 hero light_1@6 strike hs3 stam100 hp100 string[light] | dog1 stunned dog_hurt@0 hs3 hp50 node:idle stun90
+t00010 hero light_1@6 strike hs2 stam100 hp100 string[light] | dog1 stunned dog_hurt@0 hs2 hp50 node:idle stun90
+t00011 hero light_1@6 strike hs1 stam100 hp100 string[light] | dog1 stunned dog_hurt@0 hs1 hp50 node:idle stun90
+t00012 hero light_1@6 strike hs0 stam100 hp100 string[light] | dog1 stunned dog_hurt@0 hs0 hp50 node:idle stun90
+t00013 hero light_1@7 strike hs0 stam100 hp100 string[light] | dog1 stunned dog_hurt@1 hs0 hp50 node:idle stun89
+t00014 hero light_1@8 follow-through hs0 stam100 hp100 string[light] | dog1 stunned dog_hurt@2 hs0 hp50 node:idle stun88
+t00015 hero light_1@9 follow-through hs0 stam100 hp100 string[light] | dog1 stunned dog_hurt@3 hs0 hp50 node:idle stun87
+t00016 hero light_1@10 follow-through hs0 stam100 hp100 string[light] | dog1 stunned dog_hurt@4 hs0 hp50 node:idle stun86
+t00017 hero light_1@11 follow-through hs0 stam100 hp100 string[light] | dog1 stunned dog_hurt@5 hs0 hp50 node:idle stun85
+t00018 hero light_1@12 follow-through hs0 stam100 hp100 string[light] | dog1 stunned dog_hurt@6 hs0 hp50 node:idle stun84
+t00019 hero heavy_1@1 anticipation hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@7 hs0 hp50 node:idle stun83
+t00020 hero heavy_1@2 anticipation hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@8 hs0 hp50 node:idle stun82
+t00021 hero heavy_1@3 anticipation hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@9 hs0 hp50 node:idle stun81
+t00022 hero heavy_1@4 anticipation hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@10 hs0 hp50 node:idle stun80
+t00023 hero heavy_1@5 anticipation hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@11 hs0 hp50 node:idle stun79
+t00024 hero heavy_1@6 anticipation hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@12 hs0 hp50 node:idle stun78
+t00025 hero heavy_1@7 anticipation hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@13 hs0 hp50 node:idle stun77
+t00026 hero heavy_1@8 anticipation hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@14 hs0 hp50 node:idle stun76
+t00027 hero heavy_1@9 anticipation hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_stunned@1 hs0 hp50 node:idle stun75
+t00028 hero heavy_1@10 anticipation hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_stunned@2 hs0 hp50 node:idle stun74
+t00029 hero heavy_1@11 anticipation hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_stunned@3 hs0 hp50 node:idle stun73
+t00030 hero heavy_1@12 anticipation hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_stunned@4 hs0 hp50 node:idle stun72
+t00031 hero heavy_1@13 anticipation hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_stunned@5 hs0 hp50 node:idle stun71
+t00032 hero heavy_1@14 strike hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_stunned@6 hs0 hp50 node:idle stun70 || sound:swing
+t00033 hero heavy_1@15 strike hs7 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@0 hs7 hp28 node:idle stun90 || sound:hit_heavy rumble:heavy_hit hit:heavy_1
+t00034 hero heavy_1@15 strike hs6 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@0 hs6 hp28 node:idle stun90
+t00035 hero heavy_1@15 strike hs5 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@0 hs5 hp28 node:idle stun90
+t00036 hero heavy_1@15 strike hs4 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@0 hs4 hp28 node:idle stun90
+t00037 hero heavy_1@15 strike hs3 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@0 hs3 hp28 node:idle stun90
+t00038 hero heavy_1@15 strike hs2 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@0 hs2 hp28 node:idle stun90
+t00039 hero heavy_1@15 strike hs1 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@0 hs1 hp28 node:idle stun90
+t00040 hero heavy_1@15 strike hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@0 hs0 hp28 node:idle stun90
+t00041 hero heavy_1@16 strike hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@1 hs0 hp28 node:idle stun89
+t00042 hero heavy_1@17 strike hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@2 hs0 hp28 node:none stun88
+t00043 hero heavy_1@18 follow-through hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@3 hs0 hp28 node:idle stun87
+t00044 hero heavy_1@19 follow-through hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@4 hs0 hp28 node:idle stun86
+t00045 hero heavy_1@20 follow-through hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@5 hs0 hp28 node:idle stun85
+t00046 hero heavy_1@21 follow-through hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@6 hs0 hp28 node:idle stun84
+t00047 hero heavy_1@22 follow-through hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@7 hs0 hp28 node:idle stun83
+t00048 hero heavy_1@23 follow-through hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@8 hs0 hp28 node:idle stun82
+t00049 hero heavy_1@24 follow-through hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@9 hs0 hp28 node:idle stun81
+t00050 hero heavy_1@25 follow-through hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@10 hs0 hp28 node:reel stun80
+t00051 hero heavy_1@26 follow-through hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@11 hs0 hp28 node:none stun79
+t00052 hero heavy_1@27 follow-through hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@12 hs0 hp28 node:reel stun78
+t00053 hero heavy_1@28 recovery hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@13 hs0 hp28 node:none stun77
+t00054 hero heavy_1@29 recovery hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_hurt@14 hs0 hp28 node:reel stun76
+t00055 hero heavy_1@30 recovery hs0 stam100 hp100 string[light,heavy] | dog1 stunned dog_stunned@1 hs0 hp28 node:none stun75
+t00056 hero light_2@1 anticipation hs0 stam100 hp100 string[light,heavy,light] | dog1 stunned dog_stunned@2 hs0 hp28 node:reel stun74
+t00057 hero light_2@2 anticipation hs0 stam100 hp100 string[light,heavy,light] | dog1 stunned dog_stunned@3 hs0 hp28 node:none stun73
+t00058 hero light_2@3 anticipation hs0 stam100 hp100 string[light,heavy,light] | dog1 stunned dog_stunned@4 hs0 hp28 node:reel stun72
+t00059 hero light_2@4 anticipation hs0 stam100 hp100 string[light,heavy,light] | dog1 stunned dog_stunned@5 hs0 hp28 node:none stun71
+t00060 hero light_2@5 strike hs0 stam100 hp100 string[light,heavy,light] | dog1 stunned dog_stunned@6 hs0 hp28 node:reel stun70 || sound:swing
+t00061 hero light_2@6 strike hs4 stam100 hp100 string[light,heavy,light] | dog1 stunned dog_hurt@0 hs4 hp18 node:none stun90 || sound:hit_light rumble:light_hit hit:light_2
+t00062 hero light_2@6 strike hs3 stam100 hp100 string[light,heavy,light] | dog1 stunned dog_hurt@0 hs3 hp18 node:none stun90
+t00063 hero light_2@6 strike hs2 stam100 hp100 string[light,heavy,light] | dog1 stunned dog_hurt@0 hs2 hp18 node:none stun90
+t00064 hero light_2@6 strike hs1 stam100 hp100 string[light,heavy,light] | dog1 stunned dog_hurt@0 hs1 hp18 node:none stun90
+t00065 hero light_2@6 strike hs0 stam100 hp100 string[light,heavy,light] | dog1 stunned dog_hurt@0 hs0 hp18 node:none stun90
+t00066 hero light_2@7 strike hs0 stam100 hp100 string[light,heavy,light] | dog1 stunned dog_hurt@1 hs0 hp18 node:reel stun89
+t00067 hero light_2@8 follow-through hs0 stam100 hp100 string[light,heavy,light] | dog1 stunned dog_hurt@2 hs0 hp18 node:none stun88
+t00068 hero light_2@9 follow-through hs0 stam100 hp100 string[light,heavy,light] | dog1 stunned dog_hurt@3 hs0 hp18 node:reel stun87
+t00069 hero light_2@10 follow-through hs0 stam100 hp100 string[light,heavy,light] | dog1 stunned dog_hurt@4 hs0 hp18 node:none stun86
+t00070 hero light_2@11 follow-through hs0 stam100 hp100 string[light,heavy,light] | dog1 stunned dog_hurt@5 hs0 hp18 node:reel stun85
+t00071 hero light_2@12 follow-through hs0 stam100 hp100 string[light,heavy,light] | dog1 stunned dog_hurt@6 hs0 hp18 node:none stun84
+t00072 hero light_3@1 anticipation hs0 stam100 hp100 string[light,heavy,light,light] | dog1 stunned dog_hurt@7 hs0 hp18 node:reel stun83
+t00073 hero light_3@2 anticipation hs0 stam100 hp100 string[light,heavy,light,light] | dog1 stunned dog_hurt@8 hs0 hp18 node:none stun82
+t00074 hero light_3@3 anticipation hs0 stam100 hp100 string[light,heavy,light,light] | dog1 stunned dog_hurt@9 hs0 hp18 node:reel stun81
+t00075 hero light_3@4 anticipation hs0 stam100 hp100 string[light,heavy,light,light] | dog1 stunned dog_hurt@10 hs0 hp18 node:none stun80
+t00076 hero light_3@5 strike hs0 stam100 hp100 string[light,heavy,light,light] | dog1 stunned dog_hurt@11 hs0 hp18 node:reel stun79 || sound:swing
+t00077 hero light_3@6 strike hs4 stam100 hp100 string[light,heavy,light,light] | dog1 stunned dog_hurt@0 hs4 hp7 node:none stun90 || sound:hit_light rumble:light_hit hit:light_3
+t00078 hero light_3@6 strike hs3 stam100 hp100 string[light,heavy,light,light] | dog1 stunned dog_hurt@0 hs3 hp7 node:none stun90
+t00079 hero light_3@6 strike hs2 stam100 hp100 string[light,heavy,light,light] | dog1 stunned dog_hurt@0 hs2 hp7 node:none stun90
+t00080 hero light_3@6 strike hs1 stam100 hp100 string[light,heavy,light,light] | dog1 stunned dog_hurt@0 hs1 hp7 node:none stun90
+t00081 hero light_3@6 strike hs0 stam100 hp100 string[light,heavy,light,light] | dog1 stunned dog_hurt@0 hs0 hp7 node:none stun90
+t00082 hero light_3@7 strike hs0 stam100 hp100 string[light,heavy,light,light] | dog1 stunned dog_hurt@1 hs0 hp7 node:reel stun89
+t00083 hero light_3@8 follow-through hs0 stam100 hp100 string[light,heavy,light,light] | dog1 stunned dog_hurt@2 hs0 hp7 node:none stun88
+t00084 hero light_3@9 follow-through hs0 stam100 hp100 string[light,heavy,light,light] | dog1 stunned dog_hurt@3 hs0 hp7 node:reel stun87
+t00085 hero light_3@10 follow-through hs0 stam100 hp100 string[light,heavy,light,light] | dog1 stunned dog_hurt@4 hs0 hp7 node:none stun86
+t00086 hero light_3@11 follow-through hs0 stam100 hp100 string[light,heavy,light,light] | dog1 stunned dog_hurt@5 hs0 hp7 node:reel stun85
+t00087 hero light_3@12 follow-through hs0 stam100 hp100 string[light,heavy,light,light] | dog1 stunned dog_hurt@6 hs0 hp7 node:none stun84
+t00088 hero heavy_2@1 anticipation hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 stunned dog_hurt@7 hs0 hp7 node:reel stun83 || combo:first
+t00089 hero heavy_2@2 anticipation hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 stunned dog_hurt@8 hs0 hp7 node:none stun82
+t00090 hero heavy_2@3 anticipation hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 stunned dog_hurt@9 hs0 hp7 node:reel stun81
+t00091 hero heavy_2@4 anticipation hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 stunned dog_hurt@10 hs0 hp7 node:none stun80
+t00092 hero heavy_2@5 anticipation hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 stunned dog_hurt@11 hs0 hp7 node:reel stun79
+t00093 hero heavy_2@6 anticipation hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 stunned dog_hurt@12 hs0 hp7 node:none stun78
+t00094 hero heavy_2@7 anticipation hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 stunned dog_hurt@13 hs0 hp7 node:reel stun77
+t00095 hero heavy_2@8 anticipation hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 stunned dog_hurt@14 hs0 hp7 node:none stun76
+t00096 hero heavy_2@9 anticipation hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 stunned dog_stunned@1 hs0 hp7 node:reel stun75
+t00097 hero heavy_2@10 anticipation hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 stunned dog_stunned@2 hs0 hp7 node:none stun74
+t00098 hero heavy_2@11 anticipation hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 stunned dog_stunned@3 hs0 hp7 node:reel stun73
+t00099 hero heavy_2@12 anticipation hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 stunned dog_stunned@4 hs0 hp7 node:none stun72
+t00100 hero heavy_2@13 anticipation hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 stunned dog_stunned@5 hs0 hp7 node:reel stun71
+t00101 hero heavy_2@14 strike hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 stunned dog_stunned@6 hs0 hp7 node:none stun70 || sound:swing
+t00102 hero heavy_2@15 strike hs7 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@0 hs7 hp-15 node:reel stun69 || sound:hit_heavy rumble:heavy_hit hit:heavy_2 die:1
+t00103 hero heavy_2@15 strike hs6 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@0 hs6 hp-15 node:reel stun69
+t00104 hero heavy_2@15 strike hs5 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@0 hs5 hp-15 node:reel stun69
+t00105 hero heavy_2@15 strike hs4 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@0 hs4 hp-15 node:reel stun69
+t00106 hero heavy_2@15 strike hs3 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@0 hs3 hp-15 node:reel stun69
+t00107 hero heavy_2@15 strike hs2 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@0 hs2 hp-15 node:reel stun69
+t00108 hero heavy_2@15 strike hs1 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@0 hs1 hp-15 node:reel stun69
+t00109 hero heavy_2@15 strike hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@0 hs0 hp-15 node:reel stun69
+t00110 hero heavy_2@16 strike hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@1 hs0 hp-15 node:reel stun69
+t00111 hero heavy_2@17 strike hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@2 hs0 hp-15 node:reel stun69
+t00112 hero heavy_2@18 follow-through hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@3 hs0 hp-15 node:reel stun69
+t00113 hero heavy_2@19 follow-through hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@4 hs0 hp-15 node:reel stun69
+t00114 hero heavy_2@20 follow-through hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@5 hs0 hp-15 node:reel stun69
+t00115 hero heavy_2@21 follow-through hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@6 hs0 hp-15 node:reel stun69
+t00116 hero heavy_2@22 follow-through hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@7 hs0 hp-15 node:reel stun69
+t00117 hero heavy_2@23 follow-through hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@8 hs0 hp-15 node:reel stun69
+t00118 hero heavy_2@24 follow-through hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@9 hs0 hp-15 node:reel stun69
+t00119 hero heavy_2@25 follow-through hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@10 hs0 hp-15 node:reel stun69
+t00120 hero heavy_2@26 follow-through hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@11 hs0 hp-15 node:reel stun69
+t00121 hero heavy_2@27 follow-through hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@12 hs0 hp-15 node:reel stun69
+t00122 hero heavy_2@28 recovery hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@13 hs0 hp-15 node:reel stun69
+t00123 hero heavy_2@29 recovery hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@14 hs0 hp-15 node:reel stun69
+t00124 hero heavy_2@30 recovery hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@15 hs0 hp-15 node:reel stun69
+t00125 hero heavy_2@31 recovery hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@16 hs0 hp-15 node:reel stun69
+t00126 hero heavy_2@32 recovery hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@17 hs0 hp-15 node:reel stun69
+t00127 hero heavy_2@33 recovery hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@18 hs0 hp-15 node:reel stun69
+t00128 hero heavy_2@34 recovery hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@19 hs0 hp-15 node:reel stun69
+t00129 hero heavy_2@35 recovery hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@20 hs0 hp-15 node:reel stun69
+t00130 hero heavy_2@36 recovery hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@21 hs0 hp-15 node:reel stun69
+t00131 hero heavy_2@37 recovery hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@22 hs0 hp-15 node:reel stun69
+t00132 hero heavy_2@38 recovery hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@23 hs0 hp-15 node:reel stun69
+t00133 hero heavy_2@39 recovery hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@24 hs0 hp-15 node:reel stun69
+t00134 hero heavy_2@40 recovery hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@25 hs0 hp-15 node:reel stun69
+t00135 hero heavy_2@41 recovery hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@26 hs0 hp-15 node:reel stun69
+t00136 hero heavy_2@42 recovery hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@27 hs0 hp-15 node:reel stun69
+t00137 hero heavy_2@43 recovery hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@28 hs0 hp-15 node:reel stun69
+t00138 hero heavy_2@44 recovery hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@29 hs0 hp-15 node:reel stun69
+t00139 hero idle@0 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@30 hs0 hp-15 node:reel stun69
+t00140 hero idle@1 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@31 hs0 hp-15 node:reel stun69
+t00141 hero idle@2 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@32 hs0 hp-15 node:reel stun69
+t00142 hero idle@3 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@33 hs0 hp-15 node:reel stun69
+t00143 hero idle@4 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@34 hs0 hp-15 node:reel stun69
+t00144 hero idle@5 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@35 hs0 hp-15 node:reel stun69
+t00145 hero idle@6 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@36 hs0 hp-15 node:reel stun69
+t00146 hero idle@7 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@37 hs0 hp-15 node:reel stun69
+t00147 hero idle@8 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@38 hs0 hp-15 node:reel stun69
+t00148 hero idle@9 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@39 hs0 hp-15 node:reel stun69
+t00149 hero idle@10 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@40 hs0 hp-15 node:reel stun69
+t00150 hero idle@11 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@41 hs0 hp-15 node:reel stun69
+t00151 hero idle@12 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@42 hs0 hp-15 node:reel stun69
+t00152 hero idle@13 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@43 hs0 hp-15 node:reel stun69
+t00153 hero idle@14 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@44 hs0 hp-15 node:reel stun69
+t00154 hero idle@15 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@45 hs0 hp-15 node:reel stun69
+t00155 hero idle@16 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@46 hs0 hp-15 node:reel stun69
+t00156 hero idle@17 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@47 hs0 hp-15 node:reel stun69
+t00157 hero idle@18 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@48 hs0 hp-15 node:reel stun69
+t00158 hero idle@19 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@49 hs0 hp-15 node:reel stun69
+t00159 hero idle@20 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@50 hs0 hp-15 node:reel stun69
+t00160 hero idle@21 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@51 hs0 hp-15 node:reel stun69
+t00161 hero idle@22 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@52 hs0 hp-15 node:reel stun69
+t00162 hero idle@23 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@53 hs0 hp-15 node:reel stun69
+t00163 hero idle@24 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@54 hs0 hp-15 node:reel stun69
+t00164 hero idle@25 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@55 hs0 hp-15 node:reel stun69
+t00165 hero idle@26 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@56 hs0 hp-15 node:reel stun69
+t00166 hero idle@27 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@57 hs0 hp-15 node:reel stun69
+t00167 hero idle@28 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@58 hs0 hp-15 node:reel stun69
+t00168 hero idle@29 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@59 hs0 hp-15 node:reel stun69
+t00169 hero idle@30 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@60 hs0 hp-15 node:reel stun69
+t00170 hero idle@31 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@61 hs0 hp-15 node:reel stun69
+t00171 hero idle@32 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@62 hs0 hp-15 node:reel stun69
+t00172 hero idle@33 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@63 hs0 hp-15 node:reel stun69
+t00173 hero idle@34 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@64 hs0 hp-15 node:reel stun69
+t00174 hero idle@35 - hs0 stam100 hp100 string[light,heavy,light,light,heavy] | dog1 dead dog_dead@65 hs0 hp-15 node:reel stun69
+t00175 hero idle@36 - hs0 stam100 hp100 | dog1 dead dog_dead@66 hs0 hp-15 node:reel stun69
+t00176 hero idle@37 - hs0 stam100 hp100 | dog1 dead dog_dead@67 hs0 hp-15 node:reel stun69
+t00177 hero idle@38 - hs0 stam100 hp100 | dog1 dead dog_dead@68 hs0 hp-15 node:reel stun69
+t00178 hero idle@39 - hs0 stam100 hp100 | dog1 dead dog_dead@69 hs0 hp-15 node:reel stun69
+t00179 hero idle@40 - hs0 stam100 hp100 | dog1 dead dog_dead@70 hs0 hp-15 node:reel stun69
+t00180 hero idle@41 - hs0 stam100 hp100 | dog1 dead dog_dead@71 hs0 hp-15 node:reel stun69
+t00181 hero idle@42 - hs0 stam100 hp100 | dog1 dead dog_dead@72 hs0 hp-15 node:reel stun69
+t00182 hero idle@43 - hs0 stam100 hp100 | dog1 dead dog_dead@73 hs0 hp-15 node:reel stun69
+t00183 hero idle@44 - hs0 stam100 hp100 | dog1 dead dog_dead@74 hs0 hp-15 node:reel stun69
+t00184 hero idle@45 - hs0 stam100 hp100 | dog1 dead dog_dead@75 hs0 hp-15 node:reel stun69
+t00185 hero idle@46 - hs0 stam100 hp100 | dog1 dead dog_dead@76 hs0 hp-15 node:reel stun69
+t00186 hero idle@47 - hs0 stam100 hp100 | dog1 dead dog_dead@77 hs0 hp-15 node:reel stun69
+t00187 hero idle@48 - hs0 stam100 hp100 | dog1 dead dog_dead@78 hs0 hp-15 node:reel stun69
+t00188 hero idle@49 - hs0 stam100 hp100 | dog1 dead dog_dead@79 hs0 hp-15 node:reel stun69
+t00189 hero idle@50 - hs0 stam100 hp100 | dog1 dead dog_dead@80 hs0 hp-15 node:reel stun69
+t00190 hero idle@51 - hs0 stam100 hp100 | dog1 dead dog_dead@81 hs0 hp-15 node:reel stun69
+t00191 hero idle@52 - hs0 stam100 hp100 | dog1 dead dog_dead@82 hs0 hp-15 node:reel stun69
+t00192 hero idle@53 - hs0 stam100 hp100 | dog1 dead dog_dead@83 hs0 hp-15 node:reel stun69
+t00193 hero idle@54 - hs0 stam100 hp100 | dog1 dead dog_dead@84 hs0 hp-15 node:reel stun69
+t00194 hero idle@55 - hs0 stam100 hp100 | dog1 dead dog_dead@85 hs0 hp-15 node:reel stun69
+t00195 hero idle@56 - hs0 stam100 hp100 | dog1 dead dog_dead@86 hs0 hp-15 node:reel stun69
+t00196 hero idle@57 - hs0 stam100 hp100 | dog1 dead dog_dead@87 hs0 hp-15 node:reel stun69
+t00197 hero idle@58 - hs0 stam100 hp100 | dog1 dead dog_dead@88 hs0 hp-15 node:reel stun69
+t00198 hero idle@59 - hs0 stam100 hp100 | dog1 dead dog_dead@89 hs0 hp-15 node:reel stun69
+t00199 hero idle@60 - hs0 stam100 hp100 | dog1 dead dog_dead@90 hs0 hp-15 node:reel stun69
+t00200 hero idle@61 - hs0 stam100 hp100 | dog1 dead dog_dead@91 hs0 hp-15 node:reel stun69

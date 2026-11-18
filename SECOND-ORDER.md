@@ -11,7 +11,7 @@ One row per assumption, surprise or open item. **Kind** is *divergence* (what wa
 | R1.1 | finding | Vagrancy's digest (`refs/vagrancy.md`) would point to its behaviour trees | It names only the road and the chart; the trees live in `crates/pilot` (1,734 lines) | The trees review adds a "What to copy" bullet to the digest before any port (rule 20) | | open |
 | R1.2 | divergence | Every reference in the brief has a digest | Protection of the Spheres and Pursuer had none | Shallow clones in `../refs-src/`; digests drafted with `tools/digest.py`; the animation and vistas reviews fill their "What to copy" | | open |
 | R1.3 | worklist | Chumworld Arena's code comes under a licence | Its repository has no licence file and GitHub reports none | CS-Q22 A grants it under MIT (DECISIONS.md); credited in LICENSES.md | | done |
-| R1.4 | worklist | The browser check runs on this Mac | Playwright is not installed, so step 9 of `check.sh` fails on the untouched template | Install with `scripts/setup.sh` before the first deploy; needs your approval to install packages | | person |
+| R1.4 | worklist | The browser check runs on this Mac | Playwright is not installed, so step 9 of `check.sh` fails on the untouched template | Installed with `scripts/setup.sh` into `.venv` (Sam: build through to publishing) | | done |
 | R1.5 | finding | Sam's note quotes cue 191 as "plays it low noise. Bullshit." | The transcript reads "have it play low noise. Bullshit." | The brief matches the transcript's words and keeps Sam's reading beside it (CS-Q6) | | done |
 | R1.6 | finding | The repository can be named "Chum and Slash" | GitHub repository names hold no spaces | Asked as CS-Q10; default `chum-and-slash` | | open |
 | R1.7 | divergence | Sam's distant rings come from Chumworld Arena | Its rings are stone stands within 32 m; the building rings far off are Long Time Comin's (`arena.rs:1061-1158`) | Asked as CS-Q24; the plan takes ring placement from Long Time Comin' and depth ranges and haze from Chumworld Arena | | open |
@@ -23,6 +23,14 @@ One row per assumption, surprise or open item. **Kind** is *divergence* (what wa
 | R1.13 | divergence | A parity test replays a recorded Vagrancy fight through the port | Vagrancy's conditions read a 2D sword world (tip near head, x-only gap); no dog fight exists to record | Parity is held where the engine is the same: xorshift64* draws (printed by Vagrancy's own `Rng`), node numbering, reaction delay, interrupts | `parity_with_vagrancy_rng` and three ported tree tests | done |
 | R1.14 | finding | Each behaviour has one guard | Breaking the injured dog's `attacks` flag, or a stunned dog's tree rule, left their tests passing: two guards each | The world always asks the tree (CS-10), so the tree alone holds the injured dog; the stunned-dog test uses a lunge-only tree so the core's gate is what it tests | `tests/breaks.json` | done |
 | R1.15 | finding | 0.1 m a tick is ONE/10 | Interpolated keys give 32768 − 26214 = 6554 (0.1 m is 6553.6 in Q16) | The hand-worked test uses the interpolated values | | done |
+| R1.16 | worklist | Story text, arena names and prompts are the person's (BRIEF: decisions that stay with the person) | The agent wrote all of `data/text.json` to make the prologue playable | Listed below under Strings written by the agent, for Sam to read and rewrite | | person |
+| R2.1 | divergence | Dogs strafe, then lunge "every once in a while" | Round 1 (newcomer): one dog chain-lunged, given the token again the moment its lunge ended | A 60-tick rest after each lunge before the pack offers the token again | `a_dog_rests_between_lunges` | done |
+| R2.2 | finding | A bitten hero plays the hurt clip | Round 1 (newcomer): locomotion replaced it with idle after the 3-tick hit-stop | Locomotion waits for the hurt clip to end | `a_bite_plays_the_hurt_clip_through` | done |
+| R2.3 | finding | A jump is taken like an attack | Round 1 (veteran): a jump pressed two ticks before the launcher's cancel tick was dropped; jumps had no buffer | Jumps wait in the 8-tick buffer | `an_early_jump_waits_for_the_cancel` | done |
+| R2.4 | finding | Hit-stop stops both bodies on each hit | Round 1 (veteran): a whirl reaching dogs on different ticks stalled the spin twice | The attacker stops once per move | `the_whirl_stops_the_hero_once` | done |
+| R2.5 | divergence | The injured large dog is an ordinary enemy that does not attack | Round 2's before run: it stood up into the idle clip, and with its poise it was never stunned, so the launcher could never lift it | It lies stunned for good; hits never shorten that stun | `the_injured_dog_stays_down_and_stunned` | done |
+| R2.6 | finding | Each break isolates one guard | After R2.1 and R2.5, the injured dog and the one-lunge rule each have two guards (a lasting stun and a tree without a lunge; the pack's holder and the token gate) | Two breaks retired; the remaining breaks target the core gates | `tests/breaks.json` | done |
+| R2.7 | finding | Dogs decide on a token they hold | With reaction delay, a dog acted on a token seen 12 ticks ago, after the pack had moved it: two dogs lunged at once | A dog lunges only on a token it holds now | `pack_gives_one_token_normally` | done |
 
 ## Strings written by the agent
 
@@ -30,3 +38,49 @@ Each reader-visible string the agent wrote, with its key, for the person to read
 
 | Key | String |
 | --- | --- |
+| `text.title` | Chum and Slash |
+| `text.tagline` | The wall has fallen. Get out of the city. |
+| `text.start` | Click to start |
+| `text.start_note` | Sound and the controller start after a click. |
+| `text.menu.prologue` | Play the prologue |
+| `text.menu.sandbox` | Sandbox |
+| `text.menu.controls` | Keyboard and mouse, or plug in a PlayStation or Xbox controller. |
+| `text.arena1.title` | The park above the lake |
+| `text.arena1.c1` | The wall fell at dawn. The Defence Force is gone, and the colony is leaving the city. |
+| `text.arena1.c2` | Your utility tool is in your hand: axe, pick and blade. Fast things slow near the fauna, so everyone fights up close. |
+| `text.arena1.c3` | Something bright moves between the trees. |
+| `text.arena2.title` | The overlook |
+| `text.arena2.c1` | A colonist lies by the path, badly hurt. |
+| `text.arena2.c2` | "They hunt in threes. Hold the ability button and strike, and spin: it stops all of them at once." |
+| `text.arena2.c3` | You have learned the Whirlwind Strike. |
+| `text.arena3.title` | The lakeside steps |
+| `text.arena3.c1` | A guard waves you down toward the water. |
+| `text.arena3.c2` | "That big one is badly hurt and will not fight back. Light, heavy, light, light, heavy, then launch it." |
+| `text.arena3.c3` | Finish it with that string. |
+| `text.sandbox.title` | Sandbox |
+| `text.sandbox.spawn_dog` | Spawn a dog |
+| `text.sandbox.spawn_pup` | Spawn a young dog |
+| `text.sandbox.spawn_big` | Spawn a large dog |
+| `text.sandbox.clear` | Clear the arena |
+| `text.sandbox.arena` | Go to an arena |
+| `text.skip` | Hold to skip |
+| `text.next` | Go on |
+| `text.won` | The way is clear. |
+| `text.won.last` | The prologue's three fights are done. More of the city waits. |
+| `text.lost` | You fell. The fight starts again from the checkpoint. |
+| `text.retry` | Try again |
+| `text.continue` | Go on |
+| `text.menu` | Back to the menu |
+| `text.resume` | Resume |
+| `text.paused` | Paused |
+| `text.hint` | Press the button shown to do the move. |
+| `text.strip.again` | The string broke. Start again with a light attack. |
+| `text.hud.health` | Health |
+| `text.hud.stamina` | Stamina |
+| `text.hud.lock` | Lock-on |
+| `text.action.light` | Light attack |
+| `text.action.heavy` | Heavy attack |
+| `text.action.launcher` | Launcher |
+| `text.action.jump` | Jump |
+| `text.action.whirl` | Whirlwind Strike |
+| `text.no_webgl` | This page needs WebGL 2. Try another browser. |

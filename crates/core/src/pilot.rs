@@ -328,7 +328,13 @@ pub struct Brain {
     pub node: String,
     pub token: bool,
     pub volley: bool,
+    /// ticks before this dog may be given the token again: it strafes, and
+    /// only every once in a while closes to bite (cue 39; round 1, R2.1)
+    pub cooldown: u32,
 }
+
+/// The rest between a dog's lunges, in ticks (1 s).
+pub const LUNGE_COOLDOWN: u32 = 60;
 
 impl Brain {
     pub fn for_kind(kind: &str) -> Brain {
@@ -349,6 +355,7 @@ impl Brain {
             node: "idle".into(),
             token: false,
             volley: false,
+            cooldown: 0,
         }
     }
 
@@ -374,6 +381,7 @@ pub struct Pack {
 impl Pack {
     pub fn step(&mut self, enemies: &[Enemy], rules: &Rules) {
         let free = |e: &Enemy| e.state == State::Idle && rules.enemies[&e.kind].attacks;
+        let rested = |e: &Enemy| free(e) && e.brain.cooldown == 0;
         if let Some(h) = self.holder {
             let keep = enemies
                 .iter()
@@ -388,7 +396,7 @@ impl Pack {
         }
         if self.holder.is_none() {
             // the dog that has waited longest is the one nearest in id order
-            self.holder = enemies.iter().filter(|e| free(e)).map(|e| e.id).next();
+            self.holder = enemies.iter().filter(|e| rested(e)).map(|e| e.id).next();
         }
     }
 }
@@ -417,7 +425,15 @@ pub fn think(w: &mut World, i: usize) -> Intent {
         e.brain.node = "lunge".into();
         return Intent::Lunge;
     }
-    let mv = e.brain.tree.input(s);
+    let mut mv = e.brain.tree.input(s);
+    // a dog decides on what it saw `reaction` ticks ago, but it lunges only
+    // on a token it holds now (or the tutorial's volley): two dogs never
+    // lunge at once outside the volley (M4.4)
+    let holds_now = w.pack.holder == Some(e.id) || w.pack.volleyed.contains(&e.id);
+    if mv.as_ref().is_some_and(|(n, _)| n == "lunge") && !holds_now {
+        e.brain.tree.end();
+        mv = None;
+    }
     if mv.as_ref().is_some_and(|(n, _)| n == "lunge") {
         w.pack.volleyed.retain(|id| *id != e.id);
     }
@@ -491,6 +507,7 @@ pub fn act(e: &mut Enemy, intent: Intent, hero: V3, clips: &Clips, m: &Model) {
             e.pos = e.pos.add(facing(e.yaw, 0).scale(f));
             if clips["dog_lunge"].done(e.anim.tick) {
                 e.brain.tree.end();
+                e.brain.cooldown = LUNGE_COOLDOWN;
                 e.anim.play(clips, m, "dog_idle", 12);
             }
             return;

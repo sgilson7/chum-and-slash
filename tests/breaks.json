@@ -58,15 +58,15 @@
   {
     "name": "the light cap is gone",
     "file": "crates/core/src/world.rs",
-    "find": "&& (c.light_run >= cs.cap_light ||",
-    "replace": "&& (c.light_run >= 99 ||",
+    "find": "&& (c.light_run >= cs.cap_light",
+    "replace": "&& (c.light_run >= 99",
     "test": "light_string_caps_at_four"
   },
   {
     "name": "the heavy cap is gone",
     "file": "crates/core/src/world.rs",
-    "find": "|| c.heavy_run >= cs.cap_heavy ||",
-    "replace": "|| c.heavy_run >= 99 ||",
+    "find": "|| c.heavy_run >= cs.cap_heavy",
+    "replace": "|| c.heavy_run >= 99",
     "test": "heavy_caps_at_three"
   },
   {
@@ -119,13 +119,6 @@
     "test": "whirl_stuns_every_dog_in_reach"
   },
   {
-    "name": "the injured dog attacks",
-    "file": "data/pilots.json",
-    "find": "\"big_dog\": {\"reaction\": 30, \"rules\": [",
-    "replace": "\"big_dog\": {\"reaction\": 30, \"rules\": [\n   {\"if\": [{\"gap_below\": 450}], \"do\": \"lunge\"},",
-    "test": "injured_dog_never_attacks"
-  },
-  {
     "name": "the combo does not kill",
     "file": "crates/core/src/world.rs",
     "find": "Some(c) => finishing.as_deref() == Some(c.as_str()) && spec.launches,",
@@ -138,13 +131,6 @@
     "find": "{\"if\": [\"has_token\", {\"gap_below\": 450}], \"do\": \"lunge\"},\n   {\"if\": [\"has_token\"], \"do\": \"approach\"},\n   {\"if\": [{\"gap_above\": 650}], \"do\": \"approach\"},\n   {\"if\": [{\"gap_below\": 300}], \"do\": \"back_off\"},\n   {\"if\": [{\"chance\": 50}], \"do\": \"strafe_left\"},\n   {\"do\": \"strafe_right\"}\n  ]},\n  \"pup\"",
     "replace": "{\"if\": [{\"gap_above\": 650}], \"do\": \"approach\"},\n   {\"do\": \"strafe_right\"}\n  ]},\n  \"pup\"",
     "test": "dog_lunges_after_strafing"
-  },
-  {
-    "name": "the pack gives every dog a token",
-    "file": "crates/core/src/pilot.rs",
-    "find": "token: w.pack.holder == Some(e.id),",
-    "replace": "token: true,",
-    "test": "pack_gives_one_token_normally"
   },
   {
     "name": "the volley does not reach the dogs",
@@ -184,8 +170,8 @@
   {
     "name": "interrupts are ignored",
     "file": "crates/core/src/pilot.rs",
-    "find": "let interrupt = if self.current.is_some() { self.pick(&seen, true) } else { None };",
-    "replace": "let interrupt: Option<(usize, String)> = None;",
+    "find": "        let interrupt = if self.current.is_some() {\n            self.pick(&seen, true)",
+    "replace": "        let interrupt = if self.current.is_some() && false {\n            self.pick(&seen, true)",
     "test": "a_running_move_holds_until_an_interrupt"
   },
   {
@@ -229,5 +215,47 @@
     "find": "let s = ease(b.ease, ((t - a.tick) as i64 * ONE as i64 / span as i64) as i32);",
     "replace": "let s = ease(Ease::In, ((t - a.tick) as i64 * ONE as i64 / span as i64) as i32);",
     "test": "clip_samples_match_hand_worked_keys"
+  },
+  {
+    "name": "round 1: no rest between lunges",
+    "file": "crates/core/src/pilot.rs",
+    "find": "                e.brain.cooldown = LUNGE_COOLDOWN;",
+    "replace": "                e.brain.cooldown = 0;",
+    "test": "a_dog_rests_between_lunges"
+  },
+  {
+    "name": "round 1: locomotion cuts the hurt clip",
+    "file": "crates/core/src/world.rs",
+    "find": "if self.hero.act.is_none() && self.hero.combo.recovery == 0 && !hurting {",
+    "replace": "if self.hero.act.is_none() && self.hero.combo.recovery == 0 && (hurting || !hurting) {",
+    "test": "a_bite_plays_the_hurt_clip_through"
+  },
+  {
+    "name": "round 1: an early jump is dropped",
+    "file": "crates/core/src/world.rs",
+    "find": "            self.hero.jump_buffer = if age >= self.rules.combo.buffer { None } else { Some(age + 1) };",
+    "replace": "            self.hero.jump_buffer = if age >= 0 { None } else { Some(age + 1) };",
+    "test": "an_early_jump_waits_for_the_cancel"
+  },
+  {
+    "name": "round 1: every whirl hit stops the hero",
+    "file": "crates/core/src/world.rs",
+    "find": "        if first_contact {\n            self.hero.hitstop = hs;",
+    "replace": "        if first_contact || !first_contact {\n            self.hero.hitstop = hs;",
+    "test": "the_whirl_stops_the_hero_once"
+  },
+  {
+    "name": "round 1: a stale token still lunges",
+    "file": "crates/core/src/pilot.rs",
+    "find": "    if mv.as_ref().is_some_and(|(n, _)| n == \"lunge\") && !holds_now {",
+    "replace": "    if mv.as_ref().is_some_and(|(n, _)| n == \"lunge\") && !holds_now && false {",
+    "test": "pack_gives_one_token_normally"
+  },
+  {
+    "name": "round 1: the injured dog stands up",
+    "file": "crates/core/src/world.rs",
+    "find": "state: if injured { State::Stunned } else { State::Idle },",
+    "replace": "state: State::Idle,",
+    "test": "the_injured_dog_stays_down_and_stunned"
   }
 ]

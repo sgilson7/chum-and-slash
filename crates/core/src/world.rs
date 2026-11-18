@@ -297,6 +297,8 @@ pub struct Hero {
     pub lock_on: bool,
     pub sprinting: bool,
     pub prev_bits: u32,
+    /// a jump pressed too early waits like any press (round 1, R2.3)
+    pub jump_buffer: Option<u32>,
 }
 
 #[derive(Debug, Clone)]
@@ -423,6 +425,7 @@ impl World {
                 lock_on: true,
                 sprinting: false,
                 prev_bits: 0,
+                jump_buffer: None,
             },
             rules,
             clips,
@@ -461,8 +464,10 @@ impl World {
             pos: at,
             vel: V3::ZERO,
             yaw,
-            state: State::Idle,
-            stun: 0,
+            // a badly injured dog lies stunned for good: it never gets up,
+            // and the launcher can lift it (cue 79; round 1, R2.5)
+            state: if injured { State::Stunned } else { State::Idle },
+            stun: if injured { u32::MAX / 2 } else { 0 },
             health: spec.health,
             anim: Player::new(if injured { "dog_injured" } else { "dog_idle" }),
             prev_pose: model.rest(),
@@ -843,8 +848,15 @@ impl World {
                 self.hero.vel.z = 0;
             }
         }
-        // jumping is free (CS-Q9); a jump from the ground reaches jump_mm
-        if pressed & B_JUMP != 0 && self.hero.grounded && self.hero.combo.recovery == 0 {
+        // jumping is free (CS-Q9); a jump from the ground reaches jump_mm.
+        // A press waits in the buffer like an attack's.
+        if pressed & B_JUMP != 0 {
+            self.hero.jump_buffer = Some(0);
+        }
+        if let Some(age) = self.hero.jump_buffer {
+            self.hero.jump_buffer = if age >= self.rules.combo.buffer { None } else { Some(age + 1) };
+        }
+        if self.hero.jump_buffer.is_some() && self.hero.grounded && self.hero.combo.recovery == 0 {
             let cancel_ok = match &self.hero.act {
                 None => true,
                 Some(a) => self.clips[&a.name]
@@ -855,6 +867,7 @@ impl World {
             if cancel_ok {
                 self.hero.vel.y = rise_speed(g, model::mm(jump_mm));
                 self.hero.grounded = false;
+                self.hero.jump_buffer = None;
                 if self.hero.act.take().is_some_and(|a| a.ends_string || a.capped) {
                     self.end_string();
                 }
@@ -919,7 +932,8 @@ impl World {
         }
         self.keep_on_floor();
         // the locomotion clip follows the motion
-        if self.hero.act.is_none() && self.hero.combo.recovery == 0 {
+        let hurting = self.hero.anim.clip == "hurt" && !self.clips["hurt"].done(self.hero.anim.tick);
+        if self.hero.act.is_none() && self.hero.combo.recovery == 0 && !hurting {
             let want_clip = if !self.hero.grounded {
                 if self.hero.anim.clip == "jump" && !self.clips["jump"].done(self.hero.anim.tick) {
                     "jump"
@@ -970,6 +984,9 @@ impl World {
         let hero_pos = self.hero.pos;
         let clips = &self.clips;
         let e = &mut self.enemies[i];
+        if e.brain.cooldown > 0 {
+            e.brain.cooldown -= 1;
+        }
         if e.shake > 0 {
             e.shake -= 1;
         }
@@ -1109,6 +1126,7 @@ impl World {
             .map(|k| k.name.clone());
         let e = &mut self.enemies[i];
         let espec = self.rules.enemies[&e.kind].clone();
+        let first_contact = self.hero.act.as_ref().is_none_or(|a| a.hit.is_empty());
         if let Some(a) = self.hero.act.as_mut() {
             a.hit.push(e.id);
         }
@@ -1118,7 +1136,11 @@ impl World {
         e.health -= dmg;
         let hs = spec.hitstop.min(cap);
         e.hitstop = hs;
-        self.hero.hitstop = hs;
+        // the attacker stops once per move, so a spin through three dogs
+        // does not stall three times (round 1, R2.4)
+        if first_contact {
+            self.hero.hitstop = hs;
+        }
         // CS-9: the hit pushes the target back along the line from the hero
         let away = e.pos.sub(self.hero.pos);
         let away = if away.len_xz() == 0 {
@@ -1167,8 +1189,9 @@ impl World {
             let one_hit = espec.poise == 0 || spec.stuns;
             if one_hit || stunned_before {
                 e.state = State::Stunned;
-                e.stun = stun.window;
-                e.in_string = !spec.ability;
+                // the injured dog's stun never runs down (R2.5)
+                e.stun = if espec.injured { u32::MAX / 2 } else { stun.window };
+                e.in_string = !spec.ability && !espec.injured;
             }
             if spec.stagger > espec.poise {
                 e.anim.play(&self.clips, &dm, "dog_hurt", 6);
