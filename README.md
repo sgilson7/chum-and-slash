@@ -1,8 +1,10 @@
-# A Builder tool
+# Chum and Slash
 
-Replace this file with your tool's README once `BRIEF.md` is written. `crates/core/tests/copy.rs` reads it against `TONE.md`.
+A third-person sci-fi hack and slash for the browser: combat after Devil May Cry 5 and Dragon's Dogma 2, characters built from primitives, bright plant-like fauna, and a park on a hill above a lake with the colony city across the water. The MVP is the prologue's three arenas, with tutorials that teach by play and checkpoints just before each fight, and a sandbox where you spawn enemies and fight them.
 
-This directory is a copy of the Builder template. Its rules are in `BUILDER-SPEC.md`, a coding agent's instructions are in `CLAUDE.md` and `AGENTS.md`, the meaning of each term is in `GLOSSARY.md`, and the rules for every string are in `TONE.md`.
+Play with keyboard and mouse (WASD, left click light, right click heavy, E launcher, Space jump, hold Q with left click for the Whirlwind Strike, Tab lock-on, Shift sprint), or plug in a PlayStation or Xbox controller (Square light, Triangle heavy, Circle launcher, Cross jump, L1 with Square for the Whirlwind Strike, R1 lock-on). Hits rumble the pad where the browser allows it.
+
+Every rule lives in a Rust core compiled to WebAssembly; the page draws what the core returns. `crates/core/examples/harness.rs` plays scripted fights and prints what each tick did, for the playtester agents who tuned the feel. Built with Builder (`BUILDER-SPEC.md`); borrowed code and its licences are in `LICENSES.md`.
 
 ## Build, test and serve
 
