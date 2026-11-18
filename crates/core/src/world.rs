@@ -955,11 +955,14 @@ impl World {
         let g = self.gravity();
         let stun = self.rules.stun.clone();
         let dm = self.models["dog"].clone();
-        let intent = if self.enemies[i].state == State::Idle && self.enemies[i].hitstop == 0 {
+        // the tree runs every tick, as Vagrancy's do, so its lit node is
+        // always current; the core acts on it only for an idle dog (M4.2)
+        let thought = if self.enemies[i].state != State::Dead && self.enemies[i].hitstop == 0 {
             pilot::think(self, i)
         } else {
             Intent::Hold
         };
+        let intent = if self.enemies[i].state == State::Idle { thought } else { Intent::Hold };
         let hero_pos = self.hero.pos;
         let clips = &self.clips;
         let e = &mut self.enemies[i];
@@ -1286,6 +1289,37 @@ impl World {
             ));
         }
         s
+    }
+}
+
+impl World {
+    /// One tick as data, for the journal's animations (CS-15): the same
+    /// fields `describe` puts in words, plus each tree's lit nodes.
+    pub fn snapshot(&self, events: &[Event]) -> serde_json::Value {
+        let h = &self.hero;
+        let clip = &self.clips[&h.anim.clip];
+        serde_json::json!({
+            "t": self.tick,
+            "hero": {
+                "clip": h.anim.clip, "frame": h.anim.tick, "len": clip.len,
+                "phase": clip.phase(h.anim.tick), "hitstop": h.hitstop,
+                "stamina": h.stamina, "health": h.health,
+                "string": h.combo.presses, "recovery": h.combo.recovery,
+                "y_mm": h.pos.y * 1000 / ONE, "grounded": h.grounded,
+            },
+            "enemies": self.enemies.iter().map(|e| {
+                let tr = e.brain.tree.trace();
+                serde_json::json!({
+                    "id": e.id, "kind": e.kind, "state": e.state.name(),
+                    "clip": e.anim.clip, "frame": e.anim.tick, "hitstop": e.hitstop,
+                    "shake": e.shake, "stun": e.stun, "health": e.health,
+                    "node": e.brain.node, "reaction": e.reaction,
+                    "y_mm": e.pos.y * 1000 / ONE,
+                    "active": tr.active, "held": tr.held, "failed": tr.failed,
+                })
+            }).collect::<Vec<_>>(),
+            "events": events.iter().map(|e| serde_json::json!({"kind": e.kind, "name": e.name})).collect::<Vec<_>>(),
+        })
     }
 }
 

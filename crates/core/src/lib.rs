@@ -20,5 +20,7 @@ pub mod page;
 pub mod pilot;
 pub mod render;
 pub mod rng;
+pub mod scene;
 pub mod ticks;
+pub mod tutorial;
 pub mod world;

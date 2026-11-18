@@ -1,0 +1,10 @@
+# Arena 3's lesson on a dog: light, heavy, light, light, heavy, launcher.
+spawn dog 0 -1600
+tree 0 big_dog
+press 2 light
+press 16 heavy
+press 50 light
+press 66 light
+press 82 heavy
+press 116 launcher
+end 200

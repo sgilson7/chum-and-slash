@@ -1,0 +1,3 @@
+# One dog strafes and lunges; the hero waits, then answers the lunge.
+spawn dog 0 -5000
+end 400

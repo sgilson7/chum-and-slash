@@ -52,6 +52,12 @@ impl Clock {
         }
         ticks
     }
+
+    /// How far this frame lies between the last tick and the next, as
+    /// Q16.16: the page draws there (M1.1, Fiedler's "Fix Your Timestep").
+    pub fn alpha(&self) -> i32 {
+        ((self.owed.clamp(0, TICK_US) * crate::fx::ONE as i64) / TICK_US) as i32
+    }
 }
 
 /// Input bits for the example world.
