@@ -58,7 +58,7 @@ pub fn bodies(w: &World, alpha: i32, out: &mut Batch) {
     }
     let dm = &w.models["dog"];
     for e in &w.enemies {
-        let now = e.anim.pose(&w.clips, dm);
+        let now = e.pose_now(&w.clips, dm, w.rules.flinch_fade);
         let pose = pose_between(&e.prev_pose, &now, alpha);
         // a hit that does not stagger shakes the body in place (cue 123)
         let shake = if e.shake > 0 {

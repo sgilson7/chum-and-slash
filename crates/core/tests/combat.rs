@@ -552,3 +552,29 @@ fn every_hit_shakes_its_target_by_the_move() {
     assert_eq!(shakes[0], (4, tool_core::model::mm(15)));
     assert_eq!(shakes[1], (8, tool_core::model::mm(35)));
 }
+
+/// Round 4: every hit bends the target over its clip, even the injured
+/// dog lying down, by the move's size (light 15, heavy 30 degrees), and the
+/// bend is gone `flinch_fade` ticks after the hit-stop.
+#[test]
+fn every_hit_flinches_its_target_and_the_flinch_fades() {
+    for (kind, button, deg) in [
+        ("big_dog", B_LIGHT, 15),
+        ("big_dog", B_HEAVY, 30),
+        ("dog", B_LIGHT, 15),
+    ] {
+        let (mut w, id) = with(kind, 2200);
+        let m = w.models["dog"].clone();
+        let neck = m.joint("neck").unwrap();
+        w.tick(Input::bits(button));
+        while !w.tick(Input::bits(0)).iter().any(|e| e.kind == "hit") {}
+        let e = w.enemy(id).unwrap();
+        let bent =
+            e.pose_now(&w.clips, &m, w.rules.flinch_fade)[neck][0] - e.anim.pose(&w.clips, &m)[neck][0];
+        assert_eq!(bent, -fx::deg(deg), "{kind}: neck bent back by the move's size");
+        let wait = e.hitstop + w.rules.flinch_fade;
+        run(&mut w, wait, 0);
+        let e = w.enemy(id).unwrap();
+        assert_eq!(e.flinch_left, 0, "{kind}: the flinch has faded");
+    }
+}

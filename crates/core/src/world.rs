@@ -47,6 +47,9 @@ pub struct MoveSpec {
     pub shake: u32,
     #[serde(default)]
     pub shake_mm: i32,
+    /// the flinch layered over the target's clip, degrees (round 4)
+    #[serde(default)]
+    pub flinch_deg: i32,
 }
 
 #[derive(Debug, Clone, Deserialize)]
@@ -122,6 +125,7 @@ pub struct Rules {
     pub stun: StunSpec,
     pub hero: HeroSpec,
     pub push_ticks: u32,
+    pub flinch_fade: u32,
     pub enemies: BTreeMap<String, EnemySpec>,
 }
 
@@ -322,6 +326,9 @@ pub struct Enemy {
     pub hitstop: u32,
     pub shake: u32,
     pub shake_mm: i32,
+    /// the flinch: its size in degrees and the ticks of fade left
+    pub flinch_deg: i32,
+    pub flinch_left: u32,
     pub float: u32,
     pub knock: V3,
     pub knock_ticks: u32,
@@ -337,6 +344,23 @@ pub struct Enemy {
 }
 
 impl Enemy {
+    /// The pose to draw: the clip's, with the hit's flinch layered on top
+    /// (round 4): the chest and neck bend back and the hips pitch up by the
+    /// move's size, fading to nothing over `flinch_fade` ticks.
+    pub fn pose_now(&self, clips: &Clips, model: &Model, fade: u32) -> Pose {
+        let mut p = self.anim.pose(clips, model);
+        if self.flinch_left == 0 || fade == 0 {
+            return p;
+        }
+        let k = fx::deg(self.flinch_deg) * self.flinch_left as i32 / fade as i32;
+        for (name, sign) in [("chest", -1), ("neck", -1), ("hips", 1)] {
+            if let Some(j) = model.joint(name) {
+                p[j][0] += sign * k;
+            }
+        }
+        p
+    }
+
     pub fn spec<'a>(&self, r: &'a Rules) -> &'a EnemySpec {
         &r.enemies[&self.kind]
     }
@@ -481,6 +505,8 @@ impl World {
             hitstop: 0,
             shake: 0,
             shake_mm: 0,
+            flinch_deg: 0,
+            flinch_left: 0,
             float: 0,
             knock: V3::ZERO,
             knock_ticks: 0,
@@ -569,7 +595,7 @@ impl World {
         self.hero.prev_yaw = self.hero.yaw;
         let dm = &self.models["dog"];
         for e in self.enemies.iter_mut() {
-            e.prev_pose = e.anim.pose(&self.clips, dm);
+            e.prev_pose = e.pose_now(&self.clips, dm, self.rules.flinch_fade);
             e.prev_pos = e.pos;
             e.prev_yaw = e.yaw;
         }
@@ -1008,6 +1034,10 @@ impl World {
             e.anim.step(true);
             return;
         }
+        // the flinch holds through hit-stop, then fades (round 4)
+        if e.flinch_left > 0 {
+            e.flinch_left -= 1;
+        }
         if e.knock_ticks > 0 {
             e.knock_ticks -= 1;
             e.pos = e.pos.add(e.knock);
@@ -1180,6 +1210,8 @@ impl World {
         if !died {
             e.shake = spec.shake;
             e.shake_mm = model::mm(spec.shake_mm);
+            e.flinch_deg = spec.flinch_deg;
+            e.flinch_left = self.rules.flinch_fade;
         }
         if died {
             e.state = State::Dead;
@@ -1342,7 +1374,7 @@ impl World {
         ));
         let dm = &self.models["dog"];
         for e in &self.enemies {
-            let ep = e.anim.pose(&self.clips, dm);
+            let ep = e.pose_now(&self.clips, dm, self.rules.flinch_fade);
             let ec = &self.clips[&e.anim.clip];
             s.push_str(&format!(
                 " | {}{} {} {}@{} pose[{}] hs{}{} hp{} node:{}{}",
@@ -1353,8 +1385,23 @@ impl World {
                 ec.local(e.anim.tick),
                 World::pose_words(dm, &ep),
                 e.hitstop,
-                if e.shake > 0 {
-                    format!(" shake{}", e.shake)
+                if e.shake > 0 || e.flinch_left > 0 {
+                    format!(
+                        "{}{}",
+                        if e.shake > 0 {
+                            format!(" shake{}", e.shake)
+                        } else {
+                            String::new()
+                        },
+                        if e.flinch_left > 0 {
+                            format!(
+                                " flinch{}deg",
+                                e.flinch_deg * e.flinch_left as i32 / self.rules.flinch_fade.max(1) as i32
+                            )
+                        } else {
+                            String::new()
+                        }
+                    )
                 } else {
                     String::new()
                 },

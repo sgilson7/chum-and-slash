@@ -11,7 +11,8 @@
    "stagger": 1,
    "hit": "light",
    "shake": 4,
-   "shake_mm": 15
+   "shake_mm": 15,
+   "flinch_deg": 15
   },
   "light_2": {
    "press": "light",
@@ -23,7 +24,8 @@
    "stagger": 1,
    "hit": "light",
    "shake": 4,
-   "shake_mm": 15
+   "shake_mm": 15,
+   "flinch_deg": 15
   },
   "light_3": {
    "press": "light",
@@ -35,7 +37,8 @@
    "stagger": 1,
    "hit": "light",
    "shake": 4,
-   "shake_mm": 15
+   "shake_mm": 15,
+   "flinch_deg": 15
   },
   "light_4": {
    "press": "light",
@@ -47,7 +50,8 @@
    "stagger": 1,
    "hit": "light",
    "shake": 4,
-   "shake_mm": 15
+   "shake_mm": 15,
+   "flinch_deg": 15
   },
   "heavy_1": {
    "press": "heavy",
@@ -59,7 +63,8 @@
    "stagger": 2,
    "hit": "heavy",
    "shake": 8,
-   "shake_mm": 35
+   "shake_mm": 35,
+   "flinch_deg": 30
   },
   "heavy_2": {
    "press": "heavy",
@@ -71,7 +76,8 @@
    "stagger": 2,
    "hit": "heavy",
    "shake": 8,
-   "shake_mm": 35
+   "shake_mm": 35,
+   "flinch_deg": 30
   },
   "heavy_3": {
    "press": "heavy",
@@ -83,7 +89,8 @@
    "stagger": 2,
    "hit": "heavy",
    "shake": 8,
-   "shake_mm": 35
+   "shake_mm": 35,
+   "flinch_deg": 30
   },
   "launcher": {
    "press": "launcher",
@@ -96,7 +103,8 @@
    "hit": "launch",
    "launches": true,
    "shake": 10,
-   "shake_mm": 45
+   "shake_mm": 45,
+   "flinch_deg": 45
   },
   "air_light": {
    "press": "light",
@@ -110,7 +118,8 @@
    "hit": "light",
    "stamina": 600,
    "shake": 4,
-   "shake_mm": 15
+   "shake_mm": 15,
+   "flinch_deg": 15
   },
   "air_heavy": {
    "press": "heavy",
@@ -124,7 +133,8 @@
    "hit": "heavy",
    "stamina": 1200,
    "shake": 8,
-   "shake_mm": 35
+   "shake_mm": 35,
+   "flinch_deg": 30
   },
   "whirl": {
    "press": "light",
@@ -139,7 +149,8 @@
    "stamina": 3000,
    "stuns": true,
    "shake": 6,
-   "shake_mm": 25
+   "shake_mm": 25,
+   "flinch_deg": 20
   }
  },
  "combo": {
@@ -234,5 +245,7 @@
    "injured": true
   }
  },
- "_round3": "Round 3 (the animator, the newcomer): every hit shakes the target, sized by the move."
+ "_round3": "Round 3 (the animator, the newcomer): every hit shakes the target, sized by the move.",
+ "flinch_fade": 8,
+ "_round4": "Round 4 (the animator, the veteran): every hit bends the target's spine, neck and hips over whatever clip plays, held through hit-stop, then fading over flinch_fade ticks."
 }

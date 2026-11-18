@@ -271,5 +271,12 @@
     "find": "            e.shake = spec.shake;\n            e.shake_mm = model::mm(spec.shake_mm);",
     "replace": "            e.shake = 0;\n            e.shake_mm = 0;",
     "test": "every_hit_shakes_its_target_by_the_move"
+  },
+  {
+    "name": "round 4: hits do not flinch",
+    "file": "crates/core/src/world.rs",
+    "find": "            e.flinch_left = self.rules.flinch_fade;",
+    "replace": "            e.flinch_left = 0;",
+    "test": "every_hit_flinches_its_target_and_the_flinch_fades"
   }
 ]
