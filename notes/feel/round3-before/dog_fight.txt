@@ -1,0 +1,458 @@
+# clip air_heavy len30 anticipation0-7 strike8-11 follow12-19 recovery20-30 hit9-12 cancel22  forward199mm up0mm
+# clip air_light len18 anticipation0-2 strike3-5 follow6-9 recovery10-18 hit4-6 cancel9  forward149mm up0mm
+# clip dog_dead len40  forward0mm up-419mm
+# clip dog_down len30  forward0mm up-419mm
+# clip dog_hurt len14  forward0mm up0mm
+# clip dog_idle len60 loop  forward0mm up0mm
+# clip dog_injured len80 loop  forward0mm up-419mm
+# clip dog_lunge len66 anticipation0-17 strike18-35 follow36-45 recovery46-66 hit30-35  forward3000mm up0mm
+# clip dog_strafe len30 loop  forward0mm up0mm
+# clip dog_stunned len40 loop  forward0mm up0mm
+# clip dog_tumble len24 loop  forward0mm up0mm
+# clip fall len30 loop  forward0mm up0mm
+# clip heavy_1 len44 anticipation0-13 strike14-17 follow18-27 recovery28-44 hit15-18 cancel30  forward1000mm up0mm
+# clip heavy_2 len44 anticipation0-13 strike14-17 follow18-27 recovery28-44 hit15-18 cancel30  forward899mm up0mm
+# clip heavy_3 len50 anticipation0-15 strike16-19 follow20-31 recovery32-50 hit17-20 cancel34  forward1199mm up0mm
+# clip hurt len20  forward0mm up0mm
+# clip idle len90 loop  forward0mm up0mm
+# clip jump len16  forward0mm up0mm
+# clip launcher len40 anticipation0-9 strike10-13 follow14-21 recovery22-40 hit11-14 cancel24  forward299mm up0mm
+# clip light_1 len24 anticipation0-4 strike5-7 follow8-13 recovery14-24 hit6-8 cancel12  forward500mm up0mm
+# clip light_2 len24 anticipation0-4 strike5-7 follow8-13 recovery14-24 hit6-8 cancel12  forward500mm up0mm
+# clip light_3 len24 anticipation0-4 strike5-7 follow8-13 recovery14-24 hit6-8 cancel12  forward549mm up0mm
+# clip light_4 len28 anticipation0-5 strike6-8 follow9-15 recovery16-28 hit7-9 cancel14  forward750mm up0mm
+# clip recover len24 anticipation0-0 strike0-0 follow0-0 recovery0-24  forward0mm up0mm
+# clip run len36 loop  forward0mm up0mm
+# clip sprint len28 loop  forward0mm up0mm
+# clip whirl len42 anticipation0-5 strike6-29 follow30-35 recovery36-42 hit7-30  forward299mm up0mm
+# move air_heavy damage20 hitstop7 push200mm reach2200mm arc140deg stamina1200
+# move air_light damage9 hitstop4 push80mm reach2000mm arc160deg stamina600
+# move heavy_1 damage22 hitstop7 push800mm reach2200mm arc120deg stamina0
+# move heavy_2 damage22 hitstop7 push800mm reach2300mm arc170deg stamina0
+# move heavy_3 damage30 hitstop8 push1000mm reach2300mm arc120deg stamina0
+# move launcher damage12 hitstop10 push100mm reach2000mm arc120deg stamina0
+# move light_1 damage10 hitstop4 push300mm reach2000mm arc150deg stamina0
+# move light_2 damage10 hitstop4 push300mm reach2000mm arc150deg stamina0
+# move light_3 damage11 hitstop4 push300mm reach2000mm arc140deg stamina0
+# move light_4 damage14 hitstop5 push450mm reach2200mm arc90deg stamina0
+# move whirl damage8 hitstop5 push900mm reach2700mm arc360deg stamina3000
+t00001 hero idle@1 - hs0 stam100 hp100 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@1 pose[] hs0 hp60 node:approach
+t00002 hero idle@2 - hs0 stam100 hp100 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@2 pose[] hs0 hp60 node:approach
+t00003 hero idle@3 - hs0 stam100 hp100 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@3 pose[] hs0 hp60 node:approach
+t00004 hero idle@4 - hs0 stam100 hp100 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@4 pose[] hs0 hp60 node:approach
+t00005 hero idle@5 - hs0 stam100 hp100 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@5 pose[] hs0 hp60 node:approach
+t00006 hero idle@6 - hs0 stam100 hp100 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@6 pose[] hs0 hp60 node:approach
+t00007 hero idle@7 - hs0 stam100 hp100 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@7 pose[] hs0 hp60 node:approach
+t00008 hero idle@8 - hs0 stam100 hp100 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@8 pose[] hs0 hp60 node:approach
+t00009 hero idle@9 - hs0 stam100 hp100 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@9 pose[] hs0 hp60 node:approach
+t00010 hero idle@10 - hs0 stam100 hp100 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@10 pose[] hs0 hp60 node:approach
+t00011 hero idle@11 - hs0 stam100 hp100 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@11 pose[bl_hip.x+18 br_hip.x-18 fl_hip.x-18] hs0 hp60 node:approach
+t00012 hero idle@12 - hs0 stam100 hp100 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@12 pose[bl_hip.x+22 br_hip.x-22 fl_hip.x-22] hs0 hp60 node:approach
+t00013 hero idle@13 - hs0 stam100 hp100 pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@13 pose[bl_hip.x+25 br_hip.x-25 fl_hip.x-25] hs0 hp60 node:approach
+t00014 hero idle@14 - hs0 stam100 hp100 pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@14 pose[bl_hip.x+27 br_hip.x-27 fl_hip.x-27] hs0 hp60 node:approach
+t00015 hero idle@15 - hs0 stam100 hp100 pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@15 pose[bl_hip.x+27 br_hip.x-27 fl_hip.x-27] hs0 hp60 node:approach
+t00016 hero idle@16 - hs0 stam100 hp100 pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@16 pose[bl_hip.x+27 br_hip.x-27 fl_hip.x-27] hs0 hp60 node:approach
+t00017 hero idle@17 - hs0 stam100 hp100 pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@17 pose[bl_hip.x+25 br_hip.x-25 fl_hip.x-25] hs0 hp60 node:approach
+t00018 hero idle@18 - hs0 stam100 hp100 pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@18 pose[bl_hip.x+22 br_hip.x-22 fl_hip.x-22] hs0 hp60 node:approach
+t00019 hero idle@19 - hs0 stam100 hp100 pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@19 pose[bl_hip.x+18 br_hip.x-18 fl_hip.x-18] hs0 hp60 node:approach
+t00020 hero idle@20 - hs0 stam100 hp100 pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@20 pose[] hs0 hp60 node:approach
+t00021 hero idle@21 - hs0 stam100 hp100 pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_idle@1 pose[] hs0 hp60 node:none
+t00022 hero idle@22 - hs0 stam100 hp100 pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@1 pose[] hs0 hp60 node:approach
+t00023 hero idle@23 - hs0 stam100 hp100 pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@2 pose[] hs0 hp60 node:approach
+t00024 hero idle@24 - hs0 stam100 hp100 pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@3 pose[] hs0 hp60 node:approach
+t00025 hero idle@25 - hs0 stam100 hp100 pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@4 pose[] hs0 hp60 node:approach
+t00026 hero idle@26 - hs0 stam100 hp100 pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@5 pose[] hs0 hp60 node:approach
+t00027 hero idle@27 - hs0 stam100 hp100 pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@6 pose[] hs0 hp60 node:approach
+t00028 hero idle@28 - hs0 stam100 hp100 pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@7 pose[] hs0 hp60 node:approach
+t00029 hero idle@29 - hs0 stam100 hp100 pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@8 pose[] hs0 hp60 node:approach
+t00030 hero idle@30 - hs0 stam100 hp100 pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@9 pose[] hs0 hp60 node:approach
+t00031 hero idle@31 - hs0 stam100 hp100 pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@10 pose[] hs0 hp60 node:approach
+t00032 hero idle@32 - hs0 stam100 hp100 pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@11 pose[bl_hip.x+18 br_hip.x-18 fl_hip.x-18] hs0 hp60 node:approach
+t00033 hero idle@33 - hs0 stam100 hp100 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@12 pose[bl_hip.x+22 br_hip.x-22 fl_hip.x-22] hs0 hp60 node:approach
+t00034 hero idle@34 - hs0 stam100 hp100 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@13 pose[bl_hip.x+25 br_hip.x-25 fl_hip.x-25] hs0 hp60 node:approach
+t00035 hero idle@35 - hs0 stam100 hp100 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@14 pose[bl_hip.x+27 br_hip.x-27 fl_hip.x-27] hs0 hp60 node:approach
+t00036 hero idle@36 - hs0 stam100 hp100 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@15 pose[bl_hip.x+27 br_hip.x-27 fl_hip.x-27] hs0 hp60 node:approach
+t00037 hero idle@37 - hs0 stam100 hp100 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@16 pose[bl_hip.x+27 br_hip.x-27 fl_hip.x-27] hs0 hp60 node:approach
+t00038 hero idle@38 - hs0 stam100 hp100 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@17 pose[bl_hip.x+25 br_hip.x-25 fl_hip.x-25] hs0 hp60 node:approach
+t00039 hero idle@39 - hs0 stam100 hp100 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@18 pose[bl_hip.x+22 br_hip.x-22 fl_hip.x-22] hs0 hp60 node:approach
+t00040 hero idle@40 - hs0 stam100 hp100 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@19 pose[bl_hip.x+18 br_hip.x-18 fl_hip.x-18] hs0 hp60 node:approach
+t00041 hero idle@41 - hs0 stam100 hp100 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_strafe@20 pose[] hs0 hp60 node:approach
+t00042 hero idle@42 - hs0 stam100 hp100 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_idle@1 pose[] hs0 hp60 node:none
+t00043 hero idle@43 - hs0 stam100 hp100 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@1 pose[br_knee.x-23 fl_knee.x-19 bl_hip.x+17] hs0 hp60 node:lunge
+t00044 hero idle@44 - hs0 stam100 hp100 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@2 pose[br_knee.x-29 fl_knee.x-23 bl_hip.x+20] hs0 hp60 node:lunge
+t00045 hero idle@45 - hs0 stam100 hp100 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@3 pose[br_knee.x-34 bl_knee.x-27 fl_knee.x-25] hs0 hp60 node:lunge
+t00046 hero idle@46 - hs0 stam100 hp100 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@4 pose[br_knee.x-38 bl_knee.x-35 fl_knee.x-26] hs0 hp60 node:lunge
+t00047 hero idle@47 - hs0 stam100 hp100 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@5 pose[bl_knee.x-43 br_knee.x-43 fl_knee.x-29] hs0 hp60 node:lunge
+t00048 hero idle@48 - hs0 stam100 hp100 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@6 pose[bl_knee.x-50 br_knee.x-50 fl_knee.x-33] hs0 hp60 node:lunge
+t00049 hero idle@49 - hs0 stam100 hp100 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@7 pose[bl_knee.x-56 br_knee.x-56 fl_knee.x-37] hs0 hp60 node:lunge
+t00050 hero idle@50 - hs0 stam100 hp100 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@8 pose[bl_knee.x-62 br_knee.x-62 fl_knee.x-41] hs0 hp60 node:lunge
+t00051 hero idle@51 - hs0 stam100 hp100 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@9 pose[bl_knee.x-67 br_knee.x-67 fl_knee.x-45] hs0 hp60 node:lunge
+t00052 hero idle@52 - hs0 stam100 hp100 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@10 pose[bl_knee.x-72 br_knee.x-72 fl_knee.x-48] hs0 hp60 node:lunge
+t00053 hero idle@53 - hs0 stam100 hp100 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@11 pose[bl_knee.x-76 br_knee.x-76 fl_knee.x-50] hs0 hp60 node:lunge
+t00054 hero idle@54 - hs0 stam100 hp100 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@12 pose[bl_knee.x-80 br_knee.x-80 fl_knee.x-53] hs0 hp60 node:lunge
+t00055 hero idle@55 - hs0 stam100 hp100 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@13 pose[bl_knee.x-83 br_knee.x-83 fl_knee.x-55] hs0 hp60 node:lunge
+t00056 hero idle@56 - hs0 stam100 hp100 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@14 pose[bl_knee.x-85 br_knee.x-85 fl_knee.x-57] hs0 hp60 node:lunge
+t00057 hero idle@57 - hs0 stam100 hp100 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@15 pose[bl_knee.x-87 br_knee.x-87 fl_knee.x-58] hs0 hp60 node:lunge
+t00058 hero idle@58 - hs0 stam100 hp100 pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@16 pose[bl_knee.x-88 br_knee.x-88 fl_knee.x-59] hs0 hp60 node:lunge
+t00059 hero idle@59 - hs0 stam100 hp100 pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@17 pose[bl_knee.x-89 br_knee.x-89 fl_knee.x-59] hs0 hp60 node:lunge
+t00060 hero idle@60 - hs0 stam100 hp100 pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@18 pose[bl_knee.x-90 br_knee.x-90 fl_knee.x-59] hs0 hp60 node:lunge
+t00061 hero idle@61 - hs0 stam100 hp100 pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@19 pose[bl_knee.x-82 br_knee.x-82 fl_knee.x-54] hs0 hp60 node:lunge
+t00062 hero idle@62 - hs0 stam100 hp100 pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@20 pose[bl_knee.x-75 br_knee.x-75 fl_knee.x-49] hs0 hp60 node:lunge
+t00063 hero idle@63 - hs0 stam100 hp100 pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@21 pose[bl_knee.x-67 br_knee.x-67 fl_knee.x-45] hs0 hp60 node:lunge
+t00064 hero idle@64 - hs0 stam100 hp100 pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@22 pose[bl_knee.x-60 br_knee.x-60 fl_hip.x+43] hs0 hp60 node:lunge
+t00065 hero idle@65 - hs0 stam100 hp100 pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@23 pose[bl_knee.x-52 br_knee.x-52 fl_hip.x+46] hs0 hp60 node:lunge
+t00066 hero idle@66 - hs0 stam100 hp100 pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@24 pose[fl_hip.x+49 fr_hip.x+49 bl_knee.x-45] hs0 hp60 node:lunge
+t00067 hero idle@67 - hs0 stam100 hp100 pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@25 pose[fl_hip.x+53 fr_hip.x+53 bl_knee.x-37] hs0 hp60 node:lunge
+t00068 hero idle@68 - hs0 stam100 hp100 pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@26 pose[fl_hip.x+56 fr_hip.x+56 bl_knee.x-30] hs0 hp60 node:lunge
+t00069 hero idle@69 - hs0 stam100 hp100 pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@27 pose[fl_hip.x+59 fr_hip.x+59 bl_hip.x-26] hs0 hp60 node:lunge
+t00070 hero idle@70 - hs0 stam100 hp100 pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@28 pose[fl_hip.x+63 fr_hip.x+63 bl_hip.x-34] hs0 hp60 node:lunge
+t00071 hero idle@71 - hs0 stam100 hp100 pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@29 pose[fl_hip.x+66 fr_hip.x+66 bl_hip.x-42] hs0 hp60 node:lunge
+t00072 hero hurt@0 - hs3 stam100 hp92 pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@30 pose[fl_hip.x+69 fr_hip.x+69 bl_hip.x-49] hs0 hp60 node:lunge || sound:bite rumble:hurt bitten:hero
+t00073 hero hurt@0 - hs2 stam100 hp92 pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@31 pose[fl_hip.x+59 fr_hip.x+59 bl_hip.x-33] hs0 hp60 node:lunge
+t00074 hero hurt@0 - hs1 stam100 hp92 pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@32 pose[fl_hip.x+49 fr_hip.x+49 bl_hip.x-16] hs0 hp60 node:lunge
+t00075 hero hurt@0 - hs0 stam100 hp92 pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@33 pose[fl_hip.x+39 fr_hip.x+39] hs0 hp60 node:lunge
+t00076 hero hurt@1 - hs0 stam100 hp92 pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@34 pose[fl_hip.x+34 fr_hip.x+34] hs0 hp60 node:lunge
+t00077 hero hurt@2 - hs0 stam100 hp92 pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@35 pose[fl_hip.x+31 fr_hip.x+31] hs0 hp60 node:lunge
+t00078 hero hurt@3 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@36 pose[fl_hip.x+29 fr_hip.x+29] hs0 hp60 node:lunge
+t00079 hero hurt@4 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@37 pose[fl_hip.x+29 fr_hip.x+29] hs0 hp60 node:lunge
+t00080 hero hurt@5 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@38 pose[fl_hip.x+29 fr_hip.x+29] hs0 hp60 node:lunge
+t00081 hero hurt@6 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@39 pose[fl_hip.x+29 fr_hip.x+29] hs0 hp60 node:lunge
+t00082 hero hurt@7 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@40 pose[fl_hip.x+28 fr_hip.x+28] hs0 hp60 node:lunge
+t00083 hero hurt@8 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@41 pose[fl_hip.x+27 fr_hip.x+27] hs0 hp60 node:lunge
+t00084 hero hurt@9 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@42 pose[fl_hip.x+26 fr_hip.x+26] hs0 hp60 node:lunge
+t00085 hero hurt@10 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@43 pose[fl_hip.x+25 fr_hip.x+25] hs0 hp60 node:lunge
+t00086 hero hurt@11 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@44 pose[fl_hip.x+24 fr_hip.x+24] hs0 hp60 node:lunge
+t00087 hero hurt@12 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@45 pose[fl_hip.x+23 fr_hip.x+23] hs0 hp60 node:lunge
+t00088 hero hurt@13 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@46 pose[fl_hip.x+22 fr_hip.x+22] hs0 hp60 node:lunge
+t00089 hero hurt@14 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@47 pose[fl_hip.x+20 fr_hip.x+20] hs0 hp60 node:lunge
+t00090 hero hurt@15 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@48 pose[fl_hip.x+19 fr_hip.x+19] hs0 hp60 node:lunge
+t00091 hero hurt@16 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@49 pose[fl_hip.x+17 fr_hip.x+17] hs0 hp60 node:lunge
+t00092 hero hurt@17 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@50 pose[fl_hip.x+16 fr_hip.x+16] hs0 hp60 node:lunge
+t00093 hero hurt@18 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@51 pose[] hs0 hp60 node:lunge
+t00094 hero hurt@19 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@52 pose[] hs0 hp60 node:lunge
+t00095 hero idle@0 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@53 pose[] hs0 hp60 node:lunge
+t00096 hero idle@1 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@54 pose[] hs0 hp60 node:lunge
+t00097 hero idle@2 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@55 pose[] hs0 hp60 node:lunge
+t00098 hero idle@3 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@56 pose[] hs0 hp60 node:lunge
+t00099 hero idle@4 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@57 pose[] hs0 hp60 node:lunge
+t00100 hero idle@5 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@58 pose[] hs0 hp60 node:lunge
+t00101 hero idle@6 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@59 pose[] hs0 hp60 node:lunge
+t00102 hero idle@7 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@60 pose[] hs0 hp60 node:lunge
+t00103 hero idle@8 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@61 pose[] hs0 hp60 node:lunge
+t00104 hero idle@9 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@62 pose[] hs0 hp60 node:lunge
+t00105 hero idle@10 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@63 pose[] hs0 hp60 node:lunge
+t00106 hero idle@11 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@64 pose[] hs0 hp60 node:lunge
+t00107 hero idle@12 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@65 pose[] hs0 hp60 node:lunge
+t00108 hero idle@13 - hs0 stam100 hp92 pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_lunge@66 pose[] hs0 hp60 node:lunge
+t00109 hero idle@14 - hs0 stam100 hp92 pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_idle@1 pose[] hs0 hp60 node:lunge
+t00110 hero idle@15 - hs0 stam100 hp92 pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_idle@2 pose[] hs0 hp60 node:none
+t00111 hero idle@16 - hs0 stam100 hp92 pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_idle@3 pose[] hs0 hp60 node:none
+t00112 hero idle@17 - hs0 stam100 hp92 pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_idle@4 pose[] hs0 hp60 node:none
+t00113 hero idle@18 - hs0 stam100 hp92 pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_idle@5 pose[] hs0 hp60 node:none
+t00114 hero idle@19 - hs0 stam100 hp92 pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_idle@6 pose[] hs0 hp60 node:none
+t00115 hero idle@20 - hs0 stam100 hp92 pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_idle@7 pose[] hs0 hp60 node:none
+t00116 hero idle@21 - hs0 stam100 hp92 pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_idle@8 pose[] hs0 hp60 node:none
+t00117 hero idle@22 - hs0 stam100 hp92 pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_idle@9 pose[] hs0 hp60 node:none
+t00118 hero idle@23 - hs0 stam100 hp92 pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_idle@10 pose[] hs0 hp60 node:none
+t00119 hero idle@24 - hs0 stam100 hp92 pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_idle@11 pose[] hs0 hp60 node:none
+t00120 hero idle@25 - hs0 stam100 hp92 pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_idle@12 pose[] hs0 hp60 node:none
+t00121 hero light_1@1 anticipation hs0 stam100 hp92 string[light] pose[r_elbow.x+53 r_shoulder.x+44 l_elbow.x+29] | dog1 idle dog_idle@13 pose[] hs0 hp60 node:none
+t00122 hero light_1@2 anticipation hs0 stam100 hp92 string[light] pose[r_shoulder.x+60 r_elbow.x+56 r_shoulder.y+38] | dog1 idle dog_strafe@1 pose[] hs0 hp60 node:back_off
+t00123 hero light_1@3 anticipation hs0 stam100 hp92 string[light] pose[r_shoulder.x+71 r_elbow.x+59 r_shoulder.y+50] | dog1 idle dog_strafe@2 pose[] hs0 hp60 node:back_off
+t00124 hero light_1@4 anticipation hs0 stam100 hp92 string[light] pose[r_shoulder.x+77 r_elbow.x+60 r_shoulder.y+57] | dog1 idle dog_strafe@3 pose[] hs0 hp60 node:back_off
+t00125 hero light_1@5 strike hs0 stam100 hp92 string[light] pose[r_shoulder.x+79 r_elbow.x+60 r_shoulder.y+59] | dog1 idle dog_strafe@4 pose[] hs0 hp60 node:back_off || sound:swing
+t00126 hero light_1@6 strike hs4 stam100 hp92 string[light] pose[r_shoulder.x+81 r_elbow.x+43 l_elbow.x+29] | dog1 stunned dog_hurt@0 pose[neck.x-29 head.x-24] hs4 hp50 node:back_off stun90 || sound:hit_light rumble:light_hit hit:light_1
+t00127 hero light_1@6 strike hs3 stam100 hp92 string[light] pose[r_shoulder.x+81 r_elbow.x+43 l_elbow.x+29] | dog1 stunned dog_hurt@0 pose[neck.x-29 head.x-24] hs3 hp50 node:back_off stun90
+t00128 hero light_1@6 strike hs2 stam100 hp92 string[light] pose[r_shoulder.x+81 r_elbow.x+43 l_elbow.x+29] | dog1 stunned dog_hurt@0 pose[neck.x-29 head.x-24] hs2 hp50 node:back_off stun90
+t00129 hero light_1@6 strike hs1 stam100 hp92 string[light] pose[r_shoulder.x+81 r_elbow.x+43 l_elbow.x+29] | dog1 stunned dog_hurt@0 pose[neck.x-29 head.x-24] hs1 hp50 node:back_off stun90
+t00130 hero light_1@6 strike hs0 stam100 hp92 string[light] pose[r_shoulder.x+81 r_elbow.x+43 l_elbow.x+29] | dog1 stunned dog_hurt@0 pose[neck.x-29 head.x-24] hs0 hp50 node:back_off stun90
+t00131 hero light_1@7 strike hs0 stam100 hp92 string[light] pose[r_shoulder.x+83 l_elbow.x+29 r_elbow.x+26] | dog1 stunned dog_hurt@1 pose[neck.x-25 head.x-21] hs0 hp50 node:back_off stun89
+t00132 hero light_1@8 follow-through hs0 stam100 hp92 string[light] pose[r_shoulder.x+84 r_shoulder.y-59 chest.y-29] | dog1 stunned dog_hurt@2 pose[neck.x-22 head.x-18] hs0 hp50 node:back_off stun88
+t00133 hero light_1@9 follow-through hs0 stam100 hp92 string[light] pose[r_shoulder.x+80 r_shoulder.y-67 chest.y-31] | dog1 stunned dog_hurt@3 pose[neck.x-18 head.x-15] hs0 hp50 node:back_off stun87
+t00134 hero light_1@10 follow-through hs0 stam100 hp92 string[light] pose[r_shoulder.x+76 r_shoulder.y-73 chest.y-32] | dog1 stunned dog_hurt@4 pose[neck.x-15] hs0 hp50 node:back_off stun86
+t00135 hero light_1@11 follow-through hs0 stam100 hp92 string[light] pose[r_shoulder.y-78 r_shoulder.x+73 chest.y-33] | dog1 stunned dog_hurt@5 pose[] hs0 hp50 node:back_off stun85
+t00136 hero light_1@12 follow-through hs0 stam100 hp92 string[light] pose[r_shoulder.y-82 r_shoulder.x+71 chest.y-34] | dog1 stunned dog_hurt@6 pose[] hs0 hp50 node:back_off stun84
+t00137 hero light_2@1 anticipation hs0 stam100 hp92 string[light,light] pose[r_shoulder.y-106 r_shoulder.x+88 chest.y-44] | dog1 stunned dog_hurt@7 pose[] hs0 hp50 node:back_off stun83
+t00138 hero light_2@2 anticipation hs0 stam100 hp92 string[light,light] pose[r_shoulder.y-112 r_shoulder.x+93 chest.y-46] | dog1 stunned dog_hurt@8 pose[] hs0 hp50 node:back_off stun82
+t00139 hero light_2@3 anticipation hs0 stam100 hp92 string[light,light] pose[r_shoulder.y-104 r_shoulder.x+90 r_elbow.x+55] | dog1 stunned dog_hurt@9 pose[] hs0 hp50 node:back_off stun81
+t00140 hero light_2@4 anticipation hs0 stam100 hp92 string[light,light] pose[r_shoulder.y-89 r_shoulder.x+82 r_elbow.x+64] | dog1 stunned dog_hurt@10 pose[] hs0 hp50 node:back_off stun80
+t00141 hero light_2@5 strike hs0 stam100 hp92 string[light,light] pose[r_shoulder.y-77 r_shoulder.x+76 r_elbow.x+69] | dog1 stunned dog_hurt@11 pose[] hs0 hp50 node:back_off stun79 || sound:swing
+t00142 hero light_2@6 strike hs4 stam100 hp92 string[light,light] pose[r_shoulder.x+78 r_elbow.x+51 r_shoulder.y-36] | dog1 stunned dog_hurt@0 pose[neck.x-29 head.x-24] hs4 hp40 node:back_off stun90 || sound:hit_light rumble:light_hit hit:light_2
+t00143 hero light_2@6 strike hs3 stam100 hp92 string[light,light] pose[r_shoulder.x+78 r_elbow.x+51 r_shoulder.y-36] | dog1 stunned dog_hurt@0 pose[neck.x-29 head.x-24] hs3 hp40 node:back_off stun90
+t00144 hero light_2@6 strike hs2 stam100 hp92 string[light,light] pose[r_shoulder.x+78 r_elbow.x+51 r_shoulder.y-36] | dog1 stunned dog_hurt@0 pose[neck.x-29 head.x-24] hs2 hp40 node:back_off stun90
+t00145 hero light_2@6 strike hs1 stam100 hp92 string[light,light] pose[r_shoulder.x+78 r_elbow.x+51 r_shoulder.y-36] | dog1 stunned dog_hurt@0 pose[neck.x-29 head.x-24] hs1 hp40 node:back_off stun90
+t00146 hero light_2@6 strike hs0 stam100 hp92 string[light,light] pose[r_shoulder.x+78 r_elbow.x+51 r_shoulder.y-36] | dog1 stunned dog_hurt@0 pose[neck.x-29 head.x-24] hs0 hp40 node:back_off stun90
+t00147 hero light_2@7 strike hs0 stam100 hp92 string[light,light] pose[r_shoulder.x+81 r_elbow.x+33 l_elbow.x+29] | dog1 stunned dog_hurt@1 pose[neck.x-25 head.x-21] hs0 hp40 node:reel stun89
+t00148 hero light_2@8 follow-through hs0 stam100 hp92 string[light,light] pose[r_shoulder.x+84 r_shoulder.y+39 l_elbow.x+29] | dog1 stunned dog_hurt@2 pose[neck.x-22 head.x-18] hs0 hp40 node:none stun88
+t00149 hero light_2@9 follow-through hs0 stam100 hp92 string[light,light] pose[r_shoulder.x+80 r_shoulder.y+46 l_elbow.x+29] | dog1 stunned dog_hurt@3 pose[neck.x-18 head.x-15] hs0 hp40 node:reel stun87
+t00150 hero light_2@10 follow-through hs0 stam100 hp92 string[light,light] pose[r_shoulder.x+76 r_shoulder.y+51 l_elbow.x+29] | dog1 stunned dog_hurt@4 pose[neck.x-15] hs0 hp40 node:none stun86
+t00151 hero light_2@11 follow-through hs0 stam100 hp92 string[light,light] pose[r_shoulder.x+73 r_shoulder.y+54 l_elbow.x+29] | dog1 stunned dog_hurt@5 pose[] hs0 hp40 node:reel stun85
+t00152 hero light_2@12 follow-through hs0 stam100 hp92 string[light,light] pose[r_shoulder.x+71 r_shoulder.y+57 chest.y+29] | dog1 stunned dog_hurt@6 pose[] hs0 hp40 node:none stun84
+t00153 hero heavy_1@1 anticipation hs0 stam100 hp92 string[light,light,heavy] pose[r_shoulder.x+89 r_shoulder.y+55 l_shoulder.x+34] | dog1 stunned dog_hurt@7 pose[] hs0 hp40 node:reel stun83
+t00154 hero heavy_1@2 anticipation hs0 stam100 hp92 string[light,light,heavy] pose[r_shoulder.x+99 l_shoulder.x+53 r_shoulder.y+45] | dog1 stunned dog_hurt@8 pose[] hs0 hp40 node:none stun82
+t00155 hero heavy_1@3 anticipation hs0 stam100 hp92 string[light,light,heavy] pose[r_shoulder.x+101 l_shoulder.x+70 l_elbow.x+33] | dog1 stunned dog_hurt@9 pose[] hs0 hp40 node:reel stun81
+t00156 hero heavy_1@4 anticipation hs0 stam100 hp92 string[light,light,heavy] pose[r_shoulder.x+103 l_shoulder.x+86 r_elbow.x+38] | dog1 stunned dog_hurt@10 pose[] hs0 hp40 node:none stun80
+t00157 hero heavy_1@5 anticipation hs0 stam100 hp92 string[light,light,heavy] pose[r_shoulder.x+108 l_shoulder.x+100 r_elbow.x+41] | dog1 stunned dog_hurt@11 pose[] hs0 hp40 node:reel stun79
+t00158 hero heavy_1@6 anticipation hs0 stam100 hp92 string[light,light,heavy] pose[r_shoulder.x+119 l_shoulder.x+112 r_elbow.x+41] | dog1 stunned dog_hurt@12 pose[] hs0 hp40 node:none stun78
+t00159 hero heavy_1@7 anticipation hs0 stam100 hp92 string[light,light,heavy] pose[r_shoulder.x+129 l_shoulder.x+123 r_elbow.x+41] | dog1 stunned dog_hurt@13 pose[] hs0 hp40 node:reel stun77
+t00160 hero heavy_1@8 anticipation hs0 stam100 hp92 string[light,light,heavy] pose[r_shoulder.x+139 l_shoulder.x+133 r_elbow.x+40] | dog1 stunned dog_hurt@14 pose[] hs0 hp40 node:none stun76
+t00161 hero heavy_1@9 anticipation hs0 stam100 hp92 string[light,light,heavy] pose[r_shoulder.x+147 l_shoulder.x+141 r_elbow.x+40] | dog1 stunned dog_stunned@1 pose[] hs0 hp40 node:reel stun75
+t00162 hero heavy_1@10 anticipation hs0 stam100 hp92 string[light,light,heavy] pose[r_shoulder.x+153 l_shoulder.x+148 r_elbow.x+40] | dog1 stunned dog_stunned@2 pose[] hs0 hp40 node:none stun74
+t00163 hero heavy_1@11 anticipation hs0 stam100 hp92 string[light,light,heavy] pose[r_shoulder.x+158 l_shoulder.x+153 r_elbow.x+40] | dog1 stunned dog_stunned@3 pose[] hs0 hp40 node:reel stun73
+t00164 hero heavy_1@12 anticipation hs0 stam100 hp92 string[light,light,heavy] pose[r_shoulder.x+162 l_shoulder.x+157 r_elbow.x+40] | dog1 stunned dog_stunned@4 pose[] hs0 hp40 node:none stun72
+t00165 hero heavy_1@13 anticipation hs0 stam100 hp92 string[light,light,heavy] pose[r_shoulder.x+164 l_shoulder.x+159 r_elbow.x+40] | dog1 stunned dog_stunned@5 pose[] hs0 hp40 node:reel stun71
+t00166 hero heavy_1@14 strike hs0 stam100 hp92 string[light,light,heavy] pose[r_shoulder.x+164 l_shoulder.x+159 l_elbow.x+39] | dog1 stunned dog_stunned@6 pose[bl_knee.x-20 br_knee.x-20 tail.x+19] hs0 hp40 node:none stun70 || sound:swing
+t00167 hero heavy_1@15 strike hs7 stam100 hp92 string[light,light,heavy] pose[r_shoulder.x+133 l_shoulder.x+129 l_elbow.x+32] | dog1 stunned dog_hurt@0 pose[neck.x-29 head.x-24] hs7 hp18 node:reel stun90 || sound:hit_heavy rumble:heavy_hit hit:heavy_1
+t00168 hero heavy_1@15 strike hs6 stam100 hp92 string[light,light,heavy] pose[r_shoulder.x+133 l_shoulder.x+129 l_elbow.x+32] | dog1 stunned dog_hurt@0 pose[neck.x-29 head.x-24] hs6 hp18 node:reel stun90
+t00169 hero heavy_1@15 strike hs5 stam100 hp92 string[light,light,heavy] pose[r_shoulder.x+133 l_shoulder.x+129 l_elbow.x+32] | dog1 stunned dog_hurt@0 pose[neck.x-29 head.x-24] hs5 hp18 node:reel stun90
+t00170 hero heavy_1@15 strike hs4 stam100 hp92 string[light,light,heavy] pose[r_shoulder.x+133 l_shoulder.x+129 l_elbow.x+32] | dog1 stunned dog_hurt@0 pose[neck.x-29 head.x-24] hs4 hp18 node:reel stun90
+t00171 hero heavy_1@15 strike hs3 stam100 hp92 string[light,light,heavy] pose[r_shoulder.x+133 l_shoulder.x+129 l_elbow.x+32] | dog1 stunned dog_hurt@0 pose[neck.x-29 head.x-24] hs3 hp18 node:reel stun90
+t00172 hero heavy_1@15 strike hs2 stam100 hp92 string[light,light,heavy] pose[r_shoulder.x+133 l_shoulder.x+129 l_elbow.x+32] | dog1 stunned dog_hurt@0 pose[neck.x-29 head.x-24] hs2 hp18 node:reel stun90
+t00173 hero heavy_1@15 strike hs1 stam100 hp92 string[light,light,heavy] pose[r_shoulder.x+133 l_shoulder.x+129 l_elbow.x+32] | dog1 stunned dog_hurt@0 pose[neck.x-29 head.x-24] hs1 hp18 node:reel stun90
+t00174 hero heavy_1@15 strike hs0 stam100 hp92 string[light,light,heavy] pose[r_shoulder.x+133 l_shoulder.x+129 l_elbow.x+32] | dog1 stunned dog_hurt@0 pose[neck.x-29 head.x-24] hs0 hp18 node:reel stun90
+t00175 hero heavy_1@16 strike hs0 stam100 hp92 string[light,light,heavy] pose[r_shoulder.x+102 l_shoulder.x+99 l_elbow.x+24] | dog1 stunned dog_hurt@1 pose[neck.x-25 head.x-21] hs0 hp18 node:none stun89
+t00176 hero heavy_1@17 strike hs0 stam100 hp92 string[light,light,heavy] pose[r_shoulder.x+71 l_shoulder.x+69 l_elbow.x+17] | dog1 stunned dog_hurt@2 pose[neck.x-22 head.x-18] hs0 hp18 node:reel stun88
+t00177 hero heavy_1@18 follow-through hs0 stam100 hp92 string[light,light,heavy] pose[l_shoulder.x+39 r_shoulder.x+39 chest.x+25] | dog1 stunned dog_hurt@3 pose[neck.x-18 head.x-15] hs0 hp18 node:none stun87
+t00178 hero heavy_1@19 follow-through hs0 stam100 hp92 string[light,light,heavy] pose[l_shoulder.x+37 r_shoulder.x+37 chest.x+26] | dog1 stunned dog_hurt@4 pose[neck.x-15] hs0 hp18 node:reel stun86
+t00179 hero heavy_1@20 follow-through hs0 stam100 hp92 string[light,light,heavy] pose[l_shoulder.x+34 r_shoulder.x+34 chest.x+26] | dog1 stunned dog_hurt@5 pose[] hs0 hp18 node:none stun85
+t00180 hero heavy_1@21 follow-through hs0 stam100 hp92 string[light,light,heavy] pose[l_shoulder.x+32 r_shoulder.x+32 chest.x+27] | dog1 stunned dog_hurt@6 pose[] hs0 hp18 node:reel stun84
+t00181 hero heavy_1@22 follow-through hs0 stam100 hp92 string[light,light,heavy] pose[l_shoulder.x+30 r_shoulder.x+30 chest.x+27] | dog1 stunned dog_hurt@7 pose[] hs0 hp18 node:none stun83
+t00182 hero heavy_1@23 follow-through hs0 stam100 hp92 string[light,light,heavy] pose[l_knee.x-29 r_knee.x-29 l_shoulder.x+28] | dog1 stunned dog_hurt@8 pose[] hs0 hp18 node:reel stun82
+t00183 hero heavy_1@24 follow-through hs0 stam100 hp92 string[light,light,heavy] pose[l_knee.x-31 r_knee.x-31 chest.x+27] | dog1 stunned dog_hurt@9 pose[] hs0 hp18 node:none stun81
+t00184 hero heavy_1@25 follow-through hs0 stam100 hp92 string[light,light,heavy] pose[l_knee.x-32 r_knee.x-32 chest.x+27] | dog1 stunned dog_hurt@10 pose[] hs0 hp18 node:reel stun80
+t00185 hero heavy_1@26 follow-through hs0 stam100 hp92 string[light,light,heavy] pose[l_knee.x-34 r_knee.x-34 chest.x+27] | dog1 stunned dog_hurt@11 pose[] hs0 hp18 node:none stun79
+t00186 hero heavy_1@27 follow-through hs0 stam100 hp92 string[light,light,heavy] pose[l_knee.x-34 r_knee.x-34 chest.x+27] | dog1 stunned dog_hurt@12 pose[] hs0 hp18 node:reel stun78
+t00187 hero heavy_1@28 recovery hs0 stam100 hp92 string[light,light,heavy] pose[l_knee.x-34 r_knee.x-34 chest.x+27] | dog1 stunned dog_hurt@13 pose[] hs0 hp18 node:none stun77
+t00188 hero heavy_1@29 recovery hs0 stam100 hp92 string[light,light,heavy] pose[l_knee.x-34 r_knee.x-34 chest.x+27] | dog1 stunned dog_hurt@14 pose[] hs0 hp18 node:reel stun76
+t00189 hero heavy_1@30 recovery hs0 stam100 hp92 string[light,light,heavy] pose[l_knee.x-34 r_knee.x-34 chest.x+27] | dog1 stunned dog_stunned@1 pose[] hs0 hp18 node:none stun75
+t00190 hero heavy_1@31 recovery hs0 stam100 hp92 string[light,light,heavy] pose[l_knee.x-32 r_knee.x-32 chest.x+25] | dog1 stunned dog_stunned@2 pose[] hs0 hp18 node:reel stun74
+t00191 hero heavy_1@32 recovery hs0 stam100 hp92 string[light,light,heavy] pose[l_knee.x-31 r_knee.x-31 chest.x+24] | dog1 stunned dog_stunned@3 pose[] hs0 hp18 node:none stun73
+t00192 hero heavy_1@33 recovery hs0 stam100 hp92 string[light,light,heavy] pose[l_knee.x-29 r_knee.x-29 r_shoulder.x+24] | dog1 stunned dog_stunned@4 pose[] hs0 hp18 node:reel stun72
+t00193 hero heavy_1@34 recovery hs0 stam100 hp92 string[light,light,heavy] pose[l_knee.x-27 r_knee.x-27 r_shoulder.x+24] | dog1 stunned dog_stunned@5 pose[] hs0 hp18 node:none stun71
+t00194 hero heavy_1@35 recovery hs0 stam100 hp92 string[light,light,heavy] pose[l_knee.x-25 r_knee.x-25 r_elbow.x+24] | dog1 stunned dog_stunned@6 pose[bl_knee.x-20 br_knee.x-20 tail.x+19] hs0 hp18 node:reel stun70
+t00195 hero heavy_1@36 recovery hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+27 r_shoulder.x+24 l_knee.x-23] | dog1 stunned dog_stunned@7 pose[bl_knee.x-26 br_knee.x-26 tail.x+26] hs0 hp18 node:none stun69
+t00196 hero heavy_1@37 recovery hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+30 r_shoulder.x+24 l_elbow.x+23] | dog1 stunned dog_stunned@8 pose[bl_knee.x-31 br_knee.x-31 tail.x+31] hs0 hp18 node:reel stun68
+t00197 hero heavy_1@38 recovery hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+33 l_elbow.x+25 r_shoulder.x+24] | dog1 stunned dog_stunned@9 pose[bl_knee.x-35 br_knee.x-35 tail.x+35] hs0 hp18 node:none stun67
+t00198 hero heavy_1@39 recovery hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+36 l_elbow.x+26 r_shoulder.x+24] | dog1 stunned dog_stunned@10 pose[bl_knee.x-38 br_knee.x-38 tail.x+38] hs0 hp18 node:reel stun66
+t00199 hero heavy_1@40 recovery hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+39 l_elbow.x+27 r_shoulder.x+24] | dog1 stunned dog_stunned@11 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun65
+t00200 hero heavy_1@41 recovery hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+41 l_elbow.x+28 r_shoulder.x+24] | dog1 stunned dog_stunned@12 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun64
+t00201 hero heavy_1@42 recovery hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+43 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@13 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun63
+t00202 hero heavy_1@43 recovery hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+44 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@14 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun62
+t00203 hero heavy_1@44 recovery hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@15 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun61
+t00204 hero idle@0 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@16 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun60
+t00205 hero idle@1 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@17 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun59
+t00206 hero idle@2 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@18 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun58
+t00207 hero idle@3 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@19 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun57
+t00208 hero idle@4 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@20 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun56
+t00209 hero idle@5 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@21 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun55
+t00210 hero idle@6 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@22 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun54
+t00211 hero idle@7 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@23 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun53
+t00212 hero idle@8 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@24 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun52
+t00213 hero idle@9 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@25 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun51
+t00214 hero idle@10 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@26 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun50
+t00215 hero idle@11 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@27 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun49
+t00216 hero idle@12 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@28 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun48
+t00217 hero idle@13 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@29 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun47
+t00218 hero idle@14 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@30 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun46
+t00219 hero idle@15 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@31 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun45
+t00220 hero idle@16 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@32 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun44
+t00221 hero idle@17 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@33 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun43
+t00222 hero idle@18 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@34 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun42
+t00223 hero idle@19 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@35 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun41
+t00224 hero idle@20 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@36 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun40
+t00225 hero idle@21 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@37 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun39
+t00226 hero idle@22 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@38 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun38
+t00227 hero idle@23 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@39 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun37
+t00228 hero idle@24 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@0 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun36
+t00229 hero idle@25 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@1 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun35
+t00230 hero idle@26 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@2 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun34
+t00231 hero idle@27 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@3 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun33
+t00232 hero idle@28 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@4 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun32
+t00233 hero idle@29 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@5 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun31
+t00234 hero idle@30 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@6 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun30
+t00235 hero idle@31 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@7 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun29
+t00236 hero idle@32 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@8 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun28
+t00237 hero idle@33 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@9 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun27
+t00238 hero idle@34 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@10 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun26
+t00239 hero idle@35 - hs0 stam100 hp92 string[light,light,heavy] pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@11 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun25
+t00240 hero idle@36 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@12 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun19
+t00241 hero idle@37 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@13 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun18
+t00242 hero idle@38 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@14 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun17
+t00243 hero idle@39 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@15 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun16
+t00244 hero idle@40 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@16 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun15
+t00245 hero idle@41 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@17 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun14
+t00246 hero idle@42 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@18 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun13
+t00247 hero idle@43 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@19 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun12
+t00248 hero idle@44 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@20 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun11
+t00249 hero idle@45 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@21 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun10
+t00250 hero idle@46 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@22 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun9
+t00251 hero idle@47 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@23 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun8
+t00252 hero idle@48 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@24 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun7
+t00253 hero idle@49 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@25 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun6
+t00254 hero idle@50 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@26 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun5
+t00255 hero idle@51 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@27 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun4
+t00256 hero idle@52 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@28 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun3
+t00257 hero idle@53 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@29 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none stun2
+t00258 hero idle@54 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 stunned dog_stunned@30 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:reel stun1
+t00259 hero idle@55 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_idle@1 pose[bl_knee.x-39 br_knee.x-39 tail.x+39] hs0 hp18 node:none
+t00260 hero idle@56 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 idle dog_idle@2 pose[bl_knee.x-38 br_knee.x-38 tail.x+38] hs0 hp18 node:reel
+t00261 hero light_1@1 anticipation hs0 stam100 hp92 string[light] pose[r_elbow.x+54 r_shoulder.x+44 l_elbow.x+29] | dog1 idle dog_idle@3 pose[tail.x+36 bl_knee.x-35 br_knee.x-35] hs0 hp18 node:none
+t00262 hero light_1@2 anticipation hs0 stam100 hp92 string[light] pose[r_shoulder.x+60 r_elbow.x+57 r_shoulder.y+38] | dog1 idle dog_idle@4 pose[tail.x+32 bl_knee.x-31 br_knee.x-31] hs0 hp18 node:reel
+t00263 hero light_1@3 anticipation hs0 stam100 hp92 string[light] pose[r_shoulder.x+71 r_elbow.x+59 r_shoulder.y+50] | dog1 idle dog_idle@5 pose[bl_knee.x-26 br_knee.x-26 tail.x+26] hs0 hp18 node:none
+t00264 hero light_1@4 anticipation hs0 stam100 hp92 string[light] pose[r_shoulder.x+77 r_elbow.x+60 r_shoulder.y+57] | dog1 idle dog_idle@6 pose[tail.x+21 bl_knee.x-20 br_knee.x-20] hs0 hp18 node:reel
+t00265 hero light_1@5 strike hs0 stam100 hp92 string[light] pose[r_shoulder.x+79 r_elbow.x+60 r_shoulder.y+59] | dog1 idle dog_idle@7 pose[tail.x+15] hs0 hp18 node:none || sound:swing
+t00266 hero light_1@6 strike hs4 stam100 hp92 string[light] pose[r_shoulder.x+81 r_elbow.x+43 l_elbow.x+29] | dog1 stunned dog_hurt@0 pose[neck.x-29 head.x-24] hs4 hp8 node:reel stun90 || sound:hit_light rumble:light_hit hit:light_1
+t00267 hero light_1@6 strike hs3 stam100 hp92 string[light] pose[r_shoulder.x+81 r_elbow.x+43 l_elbow.x+29] | dog1 stunned dog_hurt@0 pose[neck.x-29 head.x-24] hs3 hp8 node:reel stun90
+t00268 hero light_1@6 strike hs2 stam100 hp92 string[light] pose[r_shoulder.x+81 r_elbow.x+43 l_elbow.x+29] | dog1 stunned dog_hurt@0 pose[neck.x-29 head.x-24] hs2 hp8 node:reel stun90
+t00269 hero light_1@6 strike hs1 stam100 hp92 string[light] pose[r_shoulder.x+81 r_elbow.x+43 l_elbow.x+29] | dog1 stunned dog_hurt@0 pose[neck.x-29 head.x-24] hs1 hp8 node:reel stun90
+t00270 hero light_1@6 strike hs0 stam100 hp92 string[light] pose[r_shoulder.x+81 r_elbow.x+43 l_elbow.x+29] | dog1 stunned dog_hurt@0 pose[neck.x-29 head.x-24] hs0 hp8 node:reel stun90
+t00271 hero light_1@7 strike hs0 stam100 hp92 string[light] pose[r_shoulder.x+83 l_elbow.x+29 r_elbow.x+26] | dog1 stunned dog_hurt@1 pose[neck.x-25 head.x-21] hs0 hp8 node:none stun89
+t00272 hero light_1@8 follow-through hs0 stam100 hp92 string[light] pose[r_shoulder.x+84 r_shoulder.y-59 chest.y-29] | dog1 stunned dog_hurt@2 pose[neck.x-22 head.x-18] hs0 hp8 node:reel stun88
+t00273 hero light_1@9 follow-through hs0 stam100 hp92 string[light] pose[r_shoulder.x+80 r_shoulder.y-67 chest.y-31] | dog1 stunned dog_hurt@3 pose[neck.x-18 head.x-15] hs0 hp8 node:none stun87
+t00274 hero light_1@10 follow-through hs0 stam100 hp92 string[light] pose[r_shoulder.x+76 r_shoulder.y-73 chest.y-32] | dog1 stunned dog_hurt@4 pose[neck.x-15] hs0 hp8 node:reel stun86
+t00275 hero light_1@11 follow-through hs0 stam100 hp92 string[light] pose[r_shoulder.y-78 r_shoulder.x+73 chest.y-33] | dog1 stunned dog_hurt@5 pose[] hs0 hp8 node:none stun85
+t00276 hero light_1@12 follow-through hs0 stam100 hp92 string[light] pose[r_shoulder.y-82 r_shoulder.x+71 chest.y-34] | dog1 stunned dog_hurt@6 pose[] hs0 hp8 node:none stun84
+t00277 hero light_2@1 anticipation hs0 stam100 hp92 string[light,light] pose[r_shoulder.y-106 r_shoulder.x+88 chest.y-44] | dog1 stunned dog_hurt@7 pose[] hs0 hp8 node:none stun83
+t00278 hero light_2@2 anticipation hs0 stam100 hp92 string[light,light] pose[r_shoulder.y-112 r_shoulder.x+93 chest.y-46] | dog1 stunned dog_hurt@8 pose[] hs0 hp8 node:none stun82
+t00279 hero light_2@3 anticipation hs0 stam100 hp92 string[light,light] pose[r_shoulder.y-104 r_shoulder.x+90 r_elbow.x+55] | dog1 stunned dog_hurt@9 pose[] hs0 hp8 node:none stun81
+t00280 hero light_2@4 anticipation hs0 stam100 hp92 string[light,light] pose[r_shoulder.y-89 r_shoulder.x+82 r_elbow.x+64] | dog1 stunned dog_hurt@10 pose[] hs0 hp8 node:none stun80
+t00281 hero light_2@5 strike hs0 stam100 hp92 string[light,light] pose[r_shoulder.y-77 r_shoulder.x+76 r_elbow.x+69] | dog1 stunned dog_hurt@11 pose[] hs0 hp8 node:none stun79 || sound:swing
+t00282 hero light_2@6 strike hs4 stam100 hp92 string[light,light] pose[r_shoulder.x+78 r_elbow.x+51 r_shoulder.y-36] | dog1 dead dog_dead@0 pose[] hs4 hp-2 node:none stun78 || sound:hit_light rumble:light_hit hit:light_2 die:1
+t00283 hero light_2@6 strike hs3 stam100 hp92 string[light,light] pose[r_shoulder.x+78 r_elbow.x+51 r_shoulder.y-36] | dog1 dead dog_dead@0 pose[] hs3 hp-2 node:none stun78
+t00284 hero light_2@6 strike hs2 stam100 hp92 string[light,light] pose[r_shoulder.x+78 r_elbow.x+51 r_shoulder.y-36] | dog1 dead dog_dead@0 pose[] hs2 hp-2 node:none stun78
+t00285 hero light_2@6 strike hs1 stam100 hp92 string[light,light] pose[r_shoulder.x+78 r_elbow.x+51 r_shoulder.y-36] | dog1 dead dog_dead@0 pose[] hs1 hp-2 node:none stun78
+t00286 hero light_2@6 strike hs0 stam100 hp92 string[light,light] pose[r_shoulder.x+78 r_elbow.x+51 r_shoulder.y-36] | dog1 dead dog_dead@0 pose[] hs0 hp-2 node:none stun78
+t00287 hero light_2@7 strike hs0 stam100 hp92 string[light,light] pose[r_shoulder.x+81 r_elbow.x+33 l_elbow.x+29] | dog1 dead dog_dead@1 pose[] hs0 hp-2 node:none stun78
+t00288 hero light_2@8 follow-through hs0 stam100 hp92 string[light,light] pose[r_shoulder.x+84 r_shoulder.y+39 l_elbow.x+29] | dog1 dead dog_dead@2 pose[] hs0 hp-2 node:none stun78
+t00289 hero light_2@9 follow-through hs0 stam100 hp92 string[light,light] pose[r_shoulder.x+80 r_shoulder.y+46 l_elbow.x+29] | dog1 dead dog_dead@3 pose[] hs0 hp-2 node:none stun78
+t00290 hero light_2@10 follow-through hs0 stam100 hp92 string[light,light] pose[r_shoulder.x+76 r_shoulder.y+51 l_elbow.x+29] | dog1 dead dog_dead@4 pose[] hs0 hp-2 node:none stun78
+t00291 hero light_2@11 follow-through hs0 stam100 hp92 string[light,light] pose[r_shoulder.x+73 r_shoulder.y+54 l_elbow.x+29] | dog1 dead dog_dead@5 pose[] hs0 hp-2 node:none stun78
+t00292 hero light_2@12 follow-through hs0 stam100 hp92 string[light,light] pose[r_shoulder.x+71 r_shoulder.y+57 chest.y+29] | dog1 dead dog_dead@6 pose[] hs0 hp-2 node:none stun78
+t00293 hero light_3@1 anticipation hs0 stam100 hp92 string[light,light,light] pose[r_shoulder.x+111 r_shoulder.y+66 chest.y+33] | dog1 dead dog_dead@7 pose[] hs0 hp-2 node:none stun78
+t00294 hero light_3@2 anticipation hs0 stam100 hp92 string[light,light,light] pose[r_shoulder.x+135 r_shoulder.y+64 chest.y+32] | dog1 dead dog_dead@8 pose[] hs0 hp-2 node:none stun78
+t00295 hero light_3@3 anticipation hs0 stam100 hp92 string[light,light,light] pose[r_shoulder.x+144 r_shoulder.y+54 r_elbow.x+38] | dog1 dead dog_dead@9 pose[bl_hip.x-16 br_hip.x-16 fl_hip.x+16] hs0 hp-2 node:none stun78
+t00296 hero light_3@4 anticipation hs0 stam100 hp92 string[light,light,light] pose[r_shoulder.x+145 r_elbow.x+45 r_shoulder.y+40] | dog1 dead dog_dead@10 pose[bl_hip.x-20 br_hip.x-20 fl_hip.x+19] hs0 hp-2 node:none stun78
+t00297 hero light_3@5 strike hs0 stam100 hp92 string[light,light,light] pose[r_shoulder.x+141 r_elbow.x+49 r_shoulder.y+32] | dog1 dead dog_dead@11 pose[bl_hip.x-24 br_hip.x-24 fl_hip.x+24] hs0 hp-2 node:none stun78 || sound:swing
+t00298 hero light_3@6 strike hs0 stam100 hp92 string[light,light,light] pose[r_shoulder.x+103 r_elbow.x+36 l_elbow.x+29] | dog1 dead dog_dead@12 pose[bl_hip.x-28 br_hip.x-28 fl_hip.x+28] hs0 hp-2 node:none stun78
+t00299 hero light_3@7 strike hs0 stam100 hp92 string[light,light,light] pose[r_shoulder.x+66 l_elbow.x+29 r_elbow.x+23] | dog1 dead dog_dead@13 pose[bl_hip.x-33 br_hip.x-33 fl_hip.x+33] hs0 hp-2 node:none stun78
+t00300 hero light_3@8 follow-through hs0 stam100 hp92 string[light,light,light] pose[l_elbow.x+29 r_shoulder.x+29 r_shoulder.y-29] | dog1 dead dog_dead@14 pose[bl_hip.x-39 br_hip.x-39 fl_hip.x+39] hs0 hp-2 node:none stun78
+t00301 hero light_3@9 follow-through hs0 stam100 hp92 string[light,light,light] pose[r_shoulder.y-33 l_elbow.x+29 r_shoulder.x+26] | dog1 dead dog_dead@15 pose[bl_hip.x-45 br_hip.x-45 fl_hip.x+44] hs0 hp-2 node:none stun78
+t00302 hero light_3@10 follow-through hs0 stam100 hp92 string[light,light,light] pose[r_shoulder.y-35 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@16 pose[bl_hip.x-51 br_hip.x-51 fl_hip.x+51] hs0 hp-2 node:none stun78
+t00303 hero light_3@11 follow-through hs0 stam100 hp92 string[light,light,light] pose[r_shoulder.y-37 l_elbow.x+29 r_shoulder.x+22] | dog1 dead dog_dead@17 pose[bl_hip.x-57 br_hip.x-57 fl_hip.x+57] hs0 hp-2 node:none stun78
+t00304 hero light_3@12 follow-through hs0 stam100 hp92 string[light,light,light] pose[r_shoulder.y-38 l_elbow.x+29 r_elbow.x+23] | dog1 dead dog_dead@18 pose[bl_hip.x-64 br_hip.x-64 fl_hip.x+64] hs0 hp-2 node:none stun78
+t00305 hero light_3@13 follow-through hs0 stam100 hp92 string[light,light,light] pose[r_shoulder.y-39 l_elbow.x+29 r_elbow.x+24] | dog1 dead dog_dead@19 pose[bl_hip.x-72 br_hip.x-72 fl_hip.x+72] hs0 hp-2 node:none stun78
+t00306 hero light_3@14 recovery hs0 stam100 hp92 string[light,light,light] pose[r_shoulder.y-39 l_elbow.x+29 r_elbow.x+24] | dog1 dead dog_dead@20 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00307 hero light_4@1 anticipation hs0 stam100 hp92 string[light,light,light,light] pose[r_elbow.x+45 r_shoulder.y-35 l_elbow.x+29] | dog1 dead dog_dead@21 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00308 hero light_4@2 anticipation hs0 stam100 hp92 string[light,light,light,light] pose[r_elbow.x+65 l_elbow.x+29 r_shoulder.x+29] | dog1 dead dog_dead@22 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00309 hero light_4@3 anticipation hs0 stam100 hp92 string[light,light,light,light] pose[r_elbow.x+83 l_shoulder.x+33 r_shoulder.x+33] | dog1 dead dog_dead@23 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00310 hero light_4@4 anticipation hs0 stam100 hp92 string[light,light,light,light] pose[r_elbow.x+98 l_shoulder.x+37 r_shoulder.x+37] | dog1 dead dog_dead@24 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00311 hero light_4@5 anticipation hs0 stam100 hp92 string[light,light,light,light] pose[r_elbow.x+107 l_shoulder.x+39 r_shoulder.x+39] | dog1 dead dog_dead@25 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00312 hero light_4@6 strike hs0 stam100 hp92 string[light,light,light,light] pose[r_elbow.x+109 l_shoulder.x+39 r_shoulder.x+39] | dog1 dead dog_dead@26 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78 || sound:swing
+t00313 hero light_4@7 strike hs0 stam100 hp92 string[light,light,light,light] pose[r_elbow.x+73 r_shoulder.x+56 l_elbow.x+29] | dog1 dead dog_dead@27 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00314 hero light_4@8 strike hs0 stam100 hp92 string[light,light,light,light] pose[r_shoulder.x+73 r_elbow.x+36 l_elbow.x+29] | dog1 dead dog_dead@28 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00315 hero light_4@9 follow-through hs0 stam100 hp92 string[light,light,light,light] pose[r_shoulder.x+90 l_elbow.x+29 l_shoulder.x-19] | dog1 dead dog_dead@29 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00316 hero light_4@10 follow-through hs0 stam100 hp92 string[light,light,light,light] pose[r_shoulder.x+89 l_elbow.x+29 l_shoulder.x-19] | dog1 dead dog_dead@30 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00317 hero light_4@11 follow-through hs0 stam100 hp92 string[light,light,light,light] pose[r_shoulder.x+89 l_elbow.x+29 l_shoulder.x-19] | dog1 dead dog_dead@31 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00318 hero light_4@12 follow-through hs0 stam100 hp92 string[light,light,light,light] pose[r_shoulder.x+88 l_elbow.x+29 l_shoulder.x-19] | dog1 dead dog_dead@32 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00319 hero light_4@13 follow-through hs0 stam100 hp92 string[light,light,light,light] pose[r_shoulder.x+88 l_elbow.x+29 l_shoulder.x-19] | dog1 dead dog_dead@33 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00320 hero light_4@14 follow-through hs0 stam100 hp92 string[light,light,light,light] pose[r_shoulder.x+88 l_elbow.x+29 l_shoulder.x-19] | dog1 dead dog_dead@34 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00321 hero light_4@15 follow-through hs0 stam100 hp92 string[light,light,light,light] pose[r_shoulder.x+88 l_elbow.x+29 l_shoulder.x-19] | dog1 dead dog_dead@35 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00322 hero light_4@16 recovery hs0 stam100 hp92 string[light,light,light,light] pose[r_shoulder.x+87 l_elbow.x+29 l_shoulder.x-19] | dog1 dead dog_dead@36 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00323 hero light_4@17 recovery hs0 stam100 hp92 string[light,light,light,light] pose[r_shoulder.x+86 l_elbow.x+29 l_shoulder.x-19] | dog1 dead dog_dead@37 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00324 hero light_4@18 recovery hs0 stam100 hp92 string[light,light,light,light] pose[r_shoulder.x+83 l_elbow.x+29 l_shoulder.x-17] | dog1 dead dog_dead@38 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00325 hero light_4@19 recovery hs0 stam100 hp92 string[light,light,light,light] pose[r_shoulder.x+78 l_elbow.x+29] | dog1 dead dog_dead@39 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00326 hero light_4@20 recovery hs0 stam100 hp92 string[light,light,light,light] pose[r_shoulder.x+71 l_elbow.x+29 r_elbow.x+15] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00327 hero light_4@21 recovery hs0 stam100 hp92 string[light,light,light,light] pose[r_shoulder.x+64 l_elbow.x+29 r_elbow.x+20] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00328 hero light_4@22 recovery hs0 stam100 hp92 string[light,light,light,light] pose[r_shoulder.x+56 l_elbow.x+29 r_elbow.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00329 hero light_4@23 recovery hs0 stam100 hp92 string[light,light,light,light] pose[r_shoulder.x+48 l_elbow.x+29 r_elbow.x+29] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00330 hero light_4@24 recovery hs0 stam100 hp92 string[light,light,light,light] pose[r_shoulder.x+41 r_elbow.x+34 l_elbow.x+29] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00331 hero light_4@25 recovery hs0 stam100 hp92 string[light,light,light,light] pose[r_elbow.x+38 r_shoulder.x+34 l_elbow.x+29] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00332 hero light_4@26 recovery hs0 stam100 hp92 string[light,light,light,light] pose[r_elbow.x+42 l_elbow.x+29 r_shoulder.x+29] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00333 hero light_4@27 recovery hs0 stam100 hp92 string[light,light,light,light] pose[r_elbow.x+44 l_elbow.x+29 r_shoulder.x+26] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00334 hero light_4@28 recovery hs0 stam100 hp92 string[light,light,light,light] pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00335 hero recover@1 recovery hs0 stam100 hp92 recovery24 pose[r_elbow.x+43 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78 || recovery:cap
+t00336 hero recover@2 recovery hs0 stam100 hp92 recovery23 pose[r_elbow.x+41 l_elbow.x+29 r_shoulder.x+21] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00337 hero recover@3 recovery hs0 stam100 hp92 recovery22 pose[r_elbow.x+37 l_elbow.x+29 r_shoulder.x+18] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00338 hero recover@4 recovery hs0 stam100 hp92 recovery21 pose[r_elbow.x+32 l_elbow.x+29 l_knee.x-15] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00339 hero recover@5 recovery hs0 stam100 hp92 recovery20 pose[l_elbow.x+29 r_elbow.x+27 l_knee.x-17] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00340 hero recover@6 recovery hs0 stam100 hp92 recovery19 pose[l_elbow.x+29 r_elbow.x+23 l_knee.x-18] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00341 hero recover@7 recovery hs0 stam100 hp92 recovery18 pose[l_elbow.x+29 r_elbow.x+21 l_knee.x-19] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00342 hero recover@8 recovery hs0 stam100 hp92 recovery17 pose[l_elbow.x+29 l_knee.x-19 r_elbow.x+19] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00343 hero recover@9 recovery hs0 stam100 hp92 recovery16 pose[l_elbow.x+29 r_elbow.x+20 l_knee.x-19] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00344 hero recover@10 recovery hs0 stam100 hp92 recovery15 pose[l_elbow.x+29 r_elbow.x+21 l_knee.x-19] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00345 hero recover@11 recovery hs0 stam100 hp92 recovery14 pose[l_elbow.x+29 r_elbow.x+22 l_knee.x-19] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00346 hero recover@12 recovery hs0 stam100 hp92 recovery13 pose[l_elbow.x+29 r_elbow.x+23 l_knee.x-18] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00347 hero recover@13 recovery hs0 stam100 hp92 recovery12 pose[l_elbow.x+29 r_elbow.x+25 l_knee.x-18] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00348 hero recover@14 recovery hs0 stam100 hp92 recovery11 pose[l_elbow.x+29 r_elbow.x+27 l_knee.x-17] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00349 hero recover@15 recovery hs0 stam100 hp92 recovery10 pose[r_elbow.x+30 l_elbow.x+29 l_knee.x-16] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00350 hero recover@16 recovery hs0 stam100 hp92 recovery9 pose[r_elbow.x+32 l_elbow.x+29 l_knee.x-15] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00351 hero recover@17 recovery hs0 stam100 hp92 recovery8 pose[r_elbow.x+34 l_elbow.x+29 r_shoulder.x+16] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00352 hero recover@18 recovery hs0 stam100 hp92 recovery7 pose[r_elbow.x+37 l_elbow.x+29 r_shoulder.x+18] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00353 hero recover@19 recovery hs0 stam100 hp92 recovery6 pose[r_elbow.x+39 l_elbow.x+29 r_shoulder.x+20] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00354 hero recover@20 recovery hs0 stam100 hp92 recovery5 pose[r_elbow.x+41 l_elbow.x+29 r_shoulder.x+21] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00355 hero recover@21 recovery hs0 stam100 hp92 recovery4 pose[r_elbow.x+42 l_elbow.x+29 r_shoulder.x+23] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00356 hero recover@22 recovery hs0 stam100 hp92 recovery3 pose[r_elbow.x+43 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00357 hero recover@23 recovery hs0 stam100 hp92 recovery2 pose[r_elbow.x+44 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00358 hero recover@24 recovery hs0 stam100 hp92 recovery1 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00359 hero idle@0 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00360 hero idle@1 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00361 hero idle@2 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00362 hero idle@3 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00363 hero idle@4 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00364 hero idle@5 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00365 hero idle@6 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00366 hero idle@7 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00367 hero idle@8 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00368 hero idle@9 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00369 hero idle@10 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00370 hero idle@11 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00371 hero idle@12 - hs0 stam100 hp92 pose[r_elbow.x+45 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00372 hero idle@13 - hs0 stam100 hp92 pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00373 hero idle@14 - hs0 stam100 hp92 pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00374 hero idle@15 - hs0 stam100 hp92 pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00375 hero idle@16 - hs0 stam100 hp92 pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00376 hero idle@17 - hs0 stam100 hp92 pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00377 hero idle@18 - hs0 stam100 hp92 pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00378 hero idle@19 - hs0 stam100 hp92 pose[r_elbow.x+46 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00379 hero idle@20 - hs0 stam100 hp92 pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00380 hero idle@21 - hs0 stam100 hp92 pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00381 hero idle@22 - hs0 stam100 hp92 pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00382 hero idle@23 - hs0 stam100 hp92 pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00383 hero idle@24 - hs0 stam100 hp92 pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00384 hero idle@25 - hs0 stam100 hp92 pose[r_elbow.x+47 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00385 hero idle@26 - hs0 stam100 hp92 pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00386 hero idle@27 - hs0 stam100 hp92 pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00387 hero idle@28 - hs0 stam100 hp92 pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00388 hero idle@29 - hs0 stam100 hp92 pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00389 hero idle@30 - hs0 stam100 hp92 pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00390 hero idle@31 - hs0 stam100 hp92 pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00391 hero idle@32 - hs0 stam100 hp92 pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00392 hero idle@33 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00393 hero idle@34 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00394 hero idle@35 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00395 hero idle@36 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00396 hero idle@37 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00397 hero idle@38 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00398 hero idle@39 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00399 hero idle@40 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00400 hero idle@41 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00401 hero idle@42 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00402 hero idle@43 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00403 hero idle@44 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00404 hero idle@45 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00405 hero idle@46 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00406 hero idle@47 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00407 hero idle@48 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00408 hero idle@49 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00409 hero idle@50 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00410 hero idle@51 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00411 hero idle@52 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00412 hero idle@53 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00413 hero idle@54 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00414 hero idle@55 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00415 hero idle@56 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00416 hero idle@57 - hs0 stam100 hp92 pose[r_elbow.x+49 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00417 hero idle@58 - hs0 stam100 hp92 pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00418 hero idle@59 - hs0 stam100 hp92 pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00419 hero idle@60 - hs0 stam100 hp92 pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78
+t00420 hero idle@61 - hs0 stam100 hp92 pose[r_elbow.x+48 l_elbow.x+29 r_shoulder.x+24] | dog1 dead dog_dead@40 pose[bl_hip.x-79 br_hip.x-79 fl_hip.x+79] hs0 hp-2 node:none stun78

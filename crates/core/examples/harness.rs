@@ -121,7 +121,32 @@ fn main() {
         }
     }
     if let Some(out) = json_out {
-        let doc = serde_json::json!({"made_by": format!("cargo run -q --example harness -- {path} --json {out}"), "scenario": path, "steps": steps});
+        // what the diagrams need, from the core: blends, trees, the combo table
+        let blends: serde_json::Map<String, serde_json::Value> =
+            w.clips.keys().map(|k| (k.clone(), serde_json::json!(tool_core::clip::blend_for(k)))).collect();
+        let trees: serde_json::Map<String, serde_json::Value> = tool_core::pilot::trees()
+            .into_iter()
+            .map(|(name, t)| {
+                let ids = tool_core::pilot::node_ids(&t.rules);
+                let rules: Vec<serde_json::Value> = t
+                    .rules
+                    .iter()
+                    .zip(ids.iter())
+                    .map(|(r, id)| serde_json::json!({
+                        "act": r.act, "interrupt": r.interrupt, "seq": id.seq, "act_id": id.act,
+                        "conds": r.when.iter().zip(id.conds.iter()).map(|(c, i)| serde_json::json!({"id": i, "cond": format!("{c:?}")})).collect::<Vec<_>>(),
+                    }))
+                    .collect();
+                (name, serde_json::json!({"reaction": t.reaction, "rules": rules}))
+            })
+            .collect();
+        let doc = serde_json::json!({
+            "made_by": format!("cargo run -q --example harness -- {path} --json {out}"),
+            "scenario": path, "blends": blends, "trees": trees,
+            "combo": {"cap_light": w.rules.combo.cap_light, "cap_heavy": w.rules.combo.cap_heavy, "cap_total": w.rules.combo.cap_total, "recovery": w.rules.combo.recovery},
+            "combos": w.rules.combos.iter().map(|c| serde_json::json!({"name": c.name, "presses": c.presses})).collect::<Vec<_>>(),
+            "steps": steps,
+        });
         fs::write(&out, serde_json::to_string(&doc).unwrap()).expect("write json");
         eprintln!("wrote {out}");
     }

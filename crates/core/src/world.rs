@@ -618,12 +618,6 @@ impl World {
         if let Some(p) = press_of(pressed) {
             self.hero.combo.buffer = Some((p.to_string(), 0));
         }
-        if let Some((_, age)) = self.hero.combo.buffer.as_mut() {
-            *age += 1;
-            if *age > buffer {
-                self.hero.combo.buffer = None;
-            }
-        }
         if self.hero.combo.recovery > 0 {
             self.hero.combo.recovery -= 1;
             self.hero.combo.buffer = None;
@@ -647,6 +641,15 @@ impl World {
                     self.hero.anim.step(false);
                     return;
                 }
+                self.hero.combo.buffer = None;
+            }
+        }
+        // a press waits `buffer` ticks; it is tried before it ages, so a
+        // press made `buffer` ticks before the cancel tick still comes out
+        // (round 3, R3.2)
+        if let Some((_, age)) = self.hero.combo.buffer.as_mut() {
+            *age += 1;
+            if *age > buffer {
                 self.hero.combo.buffer = None;
             }
         }
@@ -1265,6 +1268,26 @@ impl World {
 
     /// What the tick did, in words, for the harness (M0.3): each body's
     /// clip, frame and phase, hit-stop, state, reaction and tree node.
+    /// A body's pose in words: its three most-turned joints, in degrees,
+    /// so a playtester reading text can see a recoil or a raised arm
+    /// (round 3, R3.1).
+    pub fn pose_words(model: &Model, pose: &Pose) -> String {
+        let mut j: Vec<(i32, String)> = model
+            .joints
+            .iter()
+            .zip(pose.iter())
+            .flat_map(|(jt, a)| {
+                ["x", "y", "z"].iter().enumerate().map(move |(k, ax)| {
+                    let d = fx::wrap(a[k]) * 360 / fx::TURN;
+                    (d, format!("{}.{}{:+}", jt.name, ax, d))
+                })
+            })
+            .filter(|(d, _)| d.abs() >= 15)
+            .collect();
+        j.sort_by_key(|(d, n)| (-d.abs(), n.clone()));
+        j.into_iter().take(3).map(|(_, n)| n).collect::<Vec<_>>().join(" ")
+    }
+
     pub fn describe(&self) -> String {
         let h = &self.hero;
         let clip = &self.clips[&h.anim.clip];
@@ -1292,14 +1315,20 @@ impl World {
                 String::new()
             },
         );
+        let hp = h.anim.pose(&self.clips, &self.models["hero"]);
+        s.push_str(&format!(" pose[{}]", World::pose_words(&self.models["hero"], &hp)));
+        let dm = &self.models["dog"];
         for e in &self.enemies {
+            let ep = e.anim.pose(&self.clips, dm);
+            let ec = &self.clips[&e.anim.clip];
             s.push_str(&format!(
-                " | {}{} {} {}@{} hs{}{} hp{} node:{}{}",
+                " | {}{} {} {}@{} pose[{}] hs{}{} hp{} node:{}{}",
                 e.kind,
                 e.id,
                 e.state.name(),
                 e.anim.clip,
-                e.anim.tick,
+                ec.local(e.anim.tick),
+                World::pose_words(dm, &ep),
                 e.hitstop,
                 if e.shake > 0 {
                     format!(" shake{}", e.shake)
@@ -1308,7 +1337,9 @@ impl World {
                 },
                 e.health,
                 e.brain.node,
-                if e.stun > 0 {
+                if e.stun > 100_000 {
+                    " stun-lasting".to_string()
+                } else if e.stun > 0 {
                     format!(" stun{}", e.stun)
                 } else {
                     String::new()

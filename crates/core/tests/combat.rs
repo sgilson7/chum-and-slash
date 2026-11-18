@@ -513,3 +513,19 @@ fn the_injured_dog_stays_down_and_stunned() {
     assert_eq!(e.state, State::Stunned, "still down after a string ends");
     assert_eq!(e.anim.clip, "dog_injured");
 }
+
+/// Round 3 repair (R3.2): a press made exactly `buffer` ticks before the
+/// move's cancel tick comes out on the cancel tick.
+#[test]
+fn a_press_the_buffer_length_early_still_comes_out() {
+    let mut w = World::new();
+    tap(&mut w, B_HEAVY);
+    let cancel = w.clips["heavy_1"].events.cancel.unwrap();
+    let buffer = w.rules.combo.buffer;
+    while w.hero.anim.tick + buffer < cancel {
+        w.tick(Input::bits(0));
+    }
+    w.tick(Input::bits(B_LIGHT));
+    run(&mut w, buffer + 2, 0);
+    assert_eq!(w.hero.act.as_ref().map(|a| a.name.as_str()), Some("light_1"));
+}

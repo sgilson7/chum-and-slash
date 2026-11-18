@@ -257,5 +257,12 @@
     "find": "state: if injured { State::Stunned } else { State::Idle },",
     "replace": "state: State::Idle,",
     "test": "the_injured_dog_stays_down_and_stunned"
+  },
+  {
+    "name": "round 3: the buffer ages before it is tried",
+    "file": "crates/core/src/world.rs",
+    "find": "        if self.hero.combo.recovery > 0 {\n            self.hero.combo.recovery -= 1;",
+    "replace": "        if let Some((_, age)) = self.hero.combo.buffer.as_mut() {\n            *age += 1;\n        }\n        if self.hero.combo.recovery > 0 {\n            self.hero.combo.recovery -= 1;",
+    "test": "a_press_the_buffer_length_early_still_comes_out"
   }
 ]
