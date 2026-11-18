@@ -2,33 +2,39 @@
 
 Stage 9, written by the agent. `C5 Consolidate in your own words`. A fresh session starts from this file, not from memory.
 
-Commit: (none yet)
+Commit: 98f6240 (published); later commits are notes and the journal
 
 ## What this is
 
-Five sentences at most: what the tool does, for whom, and where it lives.
+Chum and Slash: a third-person sci-fi hack and slash for the browser, after Devil May Cry 5 and Dragon's Dogma 2, with characters built from primitives. The MVP: the prologue's three arenas (tutorials, checkpoints, skippable cutscenes) and a sandbox. Live at https://sgilson7.github.io/chum-and-slash/ from the public repository sgilson7/chum-and-slash. Keyboard and mouse, or a standard-mapped PS5 or Xbox pad with rumble.
 
 ## Rules that hold it up
 
-The rules that break silently if a later change ignores them, and the test that guards each.
+CS-1 to CS-20 (CLAUDE.md, "Rules agreed"). Sam's combat rules each have a core test in `crates/core/tests/combat.rs`; CS-2 `every_landed_hit_is_told_four_ways`; CS-11 `no_joint_jumps_between_ticks` and `no_joint_jumps_through_a_change_of_clip`; CS-12 `prompt_resumes_only_on_its_input_and_performs_it`; CS-13 `checkpoint_before_each_fight`, `every_cutscene_skips`; M7.3 `bot_clears_each_arena`. 40 breaks in `tests/breaks.json` each turn a test red.
 
 ## Shape of the code
 
-Where each kind of thing lives, in a short table.
+| Where | What |
+| --- | --- |
+| `crates/core/src/world.rs` | the fight: combo machine, stamina, stun, launch, air, hits, hit-stop, shake, flinch, sounds and rumbles as events |
+| `clip.rs`, `model.rs` | keyed clips and the two-level rig (data from `tools/clips.py`, `tools/models.py`) |
+| `pilot.rs` | Vagrancy's trees and the pack's tokens (`data/pilots.json`) |
+| `tutorial.rs`, `game.rs` | prompts; screens, arenas, checkpoints, input mapping, camera, view model |
+| `scene.rs`, `render.rs`, `mesh.rs` | the draw list and the vista rings (after POTS and Long Time Comin') |
+| `web/` | app.js (input, loop, UI), gl.js (POTS's WebGL), audio.js |
+| `crates/core/examples/harness.rs` | the text harness; `tutorial_trace.rs` for the journal |
 
 ## Commands
 
-Build, test, check, publish, and the probes, with what each prints when it passes.
+`cargo test` (126 tests); `./scripts/build.sh`; `PATH=$PWD/.venv/bin:$PATH ./scripts/check.sh` (passes, three engines); `python3 scripts/break_tests.py` (40 of 40 caught); `cargo run -q --example harness -- data/scenarios/first_combo.txt [--json out.json]`; `.venv/bin/python tools/shots.py`; `python3 tools/journal_anim.py`; `./scripts/publish.sh` then `BUILDER_ORIGIN=https://sgilson7.github.io/chum-and-slash .venv/bin/python tests/browser/check.py`.
 
 ## What will bite within the hour
 
-What a new session gets wrong first.
+`cargo fmt` rewraps long lines, so scripted edits must match the formatted text. Q16 products must go through `fx::mul` (three overflows came from `int(n) * scale`). The harness prints the top three joints only: a feel change it cannot print is a change playtesters cannot see (R3.1). publish.sh needs the repository's local git identity, now set.
 
 ## The journal
 
-Where the design journal is, its link if it is published, and its newest entry.
-
-`../hack-and-slash-journal/index.html`, published privately at https://claude.ai/artifact/HFNKrsPgkiULwcmrmEADUx (answers save to its `answers` store). Newest entry: 2026-11-18-plan.
+`../hack-and-slash-journal/index.html`, private at https://claude.ai/artifact/HFNKrsPgkiULwcmrmEADUx. Newest entries: 2026-11-18-live and 2026-11-18-feel-round-5. Pages: How I read this, The brief, Research (7 reviews), Plan, The build, Feel rounds (5), Moving parts (6 animations from the harness), Live now.
 
 ## Open for the person
 
@@ -38,12 +44,14 @@ Every `SECOND-ORDER.md` row with status *person*, by number, with what the perso
 
 ## Mistakes so far
 
-By system, from `SECOND-ORDER.md`, with the rule each one produced.
+Feel: round 2 measured nothing because the harness printed no poses (R3.1). Core: a buffer that aged before it was tried (R3.2); tokens acted on after the pack moved them (R2.7); Q16 overflows in tests and tutorial (fixed with `fx::mul`). Tests: breaks that a second guard masked (R1.14, R2.6).
 
 ## What passed
 
-The last lines of `./scripts/check.sh` and `./scripts/count-tests.sh`, with the date and commit.
+2026-11-18, commit 98f6240: `./scripts/check.sh` BUILDER CHECK PASSED (browser check in chromium, firefox, webkit); `./scripts/count-tests.sh` 126 passed, 0 failed; the browser check against https://sgilson7.github.io/chum-and-slash passed in all three engines.
+
+Tokens (`tools/tokens.py`): | 2026-11-18 14:35 | 07850e6c | 254 calls | 155k at first plan | peak 659k | mean 398k | 1 compaction | 100.3M re-read | 53% above 200k |
 
 ## The next action
 
-One action.
+Sam plays the live build with a PS5 pad and answers round 5's open call (the lesson's launcher); then feel round 6: "a kill frees the hero".
