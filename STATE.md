@@ -2,7 +2,7 @@
 
 The project's long-term memory, at most two pages. Rewrite it at each milestone (a stage boundary, a finished feature, a deploy) and before a handoff. After a compaction or in a new session, read this file and ask `tools/ask.py` for cards; do not re-read files it already summarises. `scripts/context_check.py` checks its size, its commit and the cards it cites.
 
-Commit: 7e02945
+Commit: 50b8168
 
 ## Where the build is
 
@@ -14,7 +14,7 @@ Rules CS-1..CS-20 (CLAUDE.md). All questions on defaults; CS-Q23-25 answered A. 
 
 ## What is next
 
-T1 (camera up and to the side; player steers it) done and republished.
+T1 (camera up and to the side; player steers it) and T2 (a capped move cannot be cancelled, so mashing reaches the recovery) done.
 
 Feel round 6: "a kill frees the hero" (drop queued presses and the cap's recovery when nothing is left alive), then the death clip's return to standing, then air dead time. Sam's call: the lesson's launcher kills vs lifts.
 
