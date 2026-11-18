@@ -652,3 +652,131 @@ fn mashing_light_still_reaches_the_cap() {
     assert_eq!(recoveries, 1, "the cap's recovery came");
     assert_eq!(lights, 4, "four lights, no more, before it");
 }
+
+// ------------------------------------------------------------ T6: the air
+
+/// The hero and one dog 2.5 m up, the dog 1.5 m ahead and held up for a
+/// while, as if just launched and followed with a jump.
+fn in_the_air(dog_at_mm: i32) -> World {
+    let mm = tool_core::model::mm;
+    let mut w = World::new();
+    let id = w.spawn("dog", v3(0, mm(2500), -mm(dog_at_mm)), fx::HALF).unwrap();
+    let e = w.enemies.iter_mut().find(|e| e.id == id).unwrap();
+    e.state = State::Airborne;
+    e.float = 1000;
+    w.hero.grounded = false;
+    w.hero.pos = v3(0, mm(2500), 0);
+    w
+}
+
+fn act_name(w: &World) -> String {
+    w.hero.act.as_ref().map(|a| a.name.clone()).unwrap_or_default()
+}
+
+/// T6: a light in the air that lands on an airborne dog opens the next
+/// air move (the rising cut, then the chop); one that misses does not.
+#[test]
+fn an_air_hit_opens_the_next_air_move() {
+    let mut w = in_the_air(1500);
+    tap(&mut w, B_LIGHT);
+    assert_eq!(act_name(&w), "air_light");
+    let ev = until_ready(&mut w, 40);
+    assert_eq!(names(&ev, "hit").len(), 1, "the opener lands");
+    assert_eq!(w.hero.air_chain, 1);
+    tap(&mut w, B_LIGHT);
+    assert_eq!(act_name(&w), "air_light_2");
+    until_ready(&mut w, 40);
+    tap(&mut w, B_LIGHT);
+    assert_eq!(act_name(&w), "air_light_3");
+    // the dog out of reach: every press is the opener again
+    let mut w = in_the_air(9000);
+    tap(&mut w, B_LIGHT);
+    until_ready(&mut w, 40);
+    assert_eq!(w.hero.air_chain, 0);
+    tap(&mut w, B_LIGHT);
+    assert_eq!(act_name(&w), "air_light", "a miss drops the air combo");
+}
+
+/// T6: landing an air move on an airborne dog stops the hero's fall on
+/// that tick (its upward speed is at least 0), so an air combo keeps the
+/// hero up; the same presses against nothing let the hero drop.
+#[test]
+fn an_air_combo_keeps_the_hero_up() {
+    // on the tick the opener lands, the hero's fall stops (by hand: the
+    // hero has been falling since the jump's top, so without the hold its
+    // speed would be below 0)
+    let mut w = in_the_air(1500);
+    tap(&mut w, B_LIGHT);
+    for _ in 0..40 {
+        if !names(&w.tick(Input::bits(0)), "hit").is_empty() {
+            break;
+        }
+    }
+    assert!(w.hero.vel.y >= 0, "fall stopped on the hit tick: {}", w.hero.vel.y);
+    let mut held = in_the_air(1500);
+    let mut fell = in_the_air(9000);
+    for w in [&mut held, &mut fell] {
+        for _ in 0..3 {
+            tap(w, B_LIGHT);
+            until_ready(w, 40);
+        }
+    }
+    assert!(held.hero.air_chain >= 2);
+    assert!(!fell.hero.grounded || fell.hero.pos.y == 0);
+    assert!(
+        held.hero.pos.y > fell.hero.pos.y,
+        "held {} vs fell {}",
+        held.hero.pos.y,
+        fell.hero.pos.y
+    );
+}
+
+/// T6: the launcher in the air is the slam. The hero hangs through its
+/// wind-up (vel 0), then dives at slam_mm_s (18,000 mm/s is 300 mm a
+/// tick); an airborne dog it hits is driven down and lies down for
+/// slam_landed (70) ticks, not the usual landed (40).
+#[test]
+fn the_air_launcher_slams() {
+    let mm = tool_core::model::mm;
+    let mut w = in_the_air(1500);
+    w.tick(Input::bits(B_LAUNCH));
+    assert_eq!(act_name(&w), "air_slam");
+    assert_eq!(w.hero.vel.y, 0, "hangs through the wind-up");
+    let mut dove = false;
+    for _ in 0..20 {
+        w.tick(Input::bits(0));
+        if w.hero.vel.y == -(mm(18000) / 60) {
+            dove = true;
+            break;
+        }
+    }
+    assert!(dove, "then dives at 300 mm a tick");
+    let mut slammed = false;
+    for _ in 0..60 {
+        w.tick(Input::bits(0));
+        let e = &w.enemies[0];
+        if e.reaction == "slammed" {
+            slammed = true;
+        }
+        if e.state == State::Down {
+            assert_eq!(e.stun, 70, "down for slam_landed on the tick it lands");
+            break;
+        }
+    }
+    assert!(slammed, "the slam drove the dog down");
+    assert!(w.hero.grounded);
+    assert_eq!(w.style.slams, 1);
+}
+
+/// T6: the style grade is fed by the fight: a light hit on a grounded dog
+/// scores its 10 damage at 100%, and a bite of 8 takes 16 points.
+#[test]
+fn the_fight_feeds_the_style_grade() {
+    let (mut w, _) = with("dog", 2000);
+    w.tick(Input::bits(0));
+    tap(&mut w, B_LIGHT);
+    until_ready(&mut w, 40);
+    assert_eq!(w.style.dealt, 10);
+    assert_eq!(w.style.points, 10);
+    assert_eq!(w.style.grade(&w.style_rules), Some("C"), "100% is a C");
+}

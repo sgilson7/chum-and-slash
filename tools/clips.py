@@ -191,6 +191,43 @@ def hero():
         (30, "inout", dict(r_hip=(40, 0, 0), r_knee=(-60, 0, 0))),
     ])
 
+    # T6: the air string. A hit on an airborne enemy opens the next one:
+    # light, a rising cut, then an overhead chop; heavy, then a rising cut.
+    # The slam (the launcher in the air): tool overhead, then down hard;
+    # its hit window runs through the dive and the landing.
+    tuck = dict(r_hip=(40, 0, 0), l_hip=(20, 0, 0), r_knee=(-60, 0, 0), l_knee=(-50, 0, 0))
+    c["air_light_2"] = attack(phases=[4, 8, 12], hit=[5, 8], cancel=11, length=20, forward_mm=150, strike_tick=8, poses=[
+        (0, "inout", tuck),
+        (4, "out", dict(r_shoulder=(0, 10, 10), r_elbow=(50, 0, 0), chest=(14, 0, 0), **tuck)),
+        (8, "linear", dict(r_shoulder=(130, 0, 10), r_elbow=(10, 0, 0), chest=(-8, 0, 0), **tuck)),
+        (12, "out", dict(r_shoulder=(140, 0, 10), r_elbow=(20, 0, 0), chest=(-10, 0, 0), **tuck)),
+        (20, "inout", tuck),
+    ])
+    c["air_light_3"] = attack(phases=[6, 9, 14], hit=[7, 9], cancel=13, length=22, forward_mm=200, strike_tick=9, poses=[
+        (0, "inout", tuck),
+        (6, "out", dict(r_shoulder=(150, 10, 10), r_elbow=(50, 0, 0), chest=(-10, 0, 0), **tuck)),
+        (9, "linear", dict(r_shoulder=(50, 0, 10), r_elbow=(5, 0, 0), chest=(20, 0, 0), **tuck)),
+        (14, "out", dict(r_shoulder=(35, 0, 10), r_elbow=(15, 0, 0), chest=(22, 0, 0), **tuck)),
+        (22, "inout", tuck),
+    ])
+    c["air_heavy_2"] = attack(phases=[8, 12, 20], hit=[9, 12], cancel=22, length=30, forward_mm=200, strike_tick=12, poses=[
+        (0, "inout", tuck),
+        (8, "out", dict(r_shoulder=(10, 30, 10), r_elbow=(40, 0, 0), l_shoulder=(10, 20, -5), chest=(18, 20, 0), **tuck)),
+        (12, "linear", dict(r_shoulder=(140, -10, 10), r_elbow=(5, 0, 0), l_shoulder=(120, -10, -5), chest=(-12, -10, 0), **tuck)),
+        (20, "out", dict(r_shoulder=(155, -10, 10), r_elbow=(10, 0, 0), l_shoulder=(130, -10, -5), chest=(-14, -10, 0), **tuck)),
+        (30, "inout", tuck),
+    ])
+    c["air_slam"] = attack(phases=[7, 11, 20], hit=[7, 20], cancel=30, length=38, forward_mm=100, strike_tick=11, poses=[
+        (0, "inout", tuck),
+        (7, "out", dict(r_shoulder=(170, 0, 5), r_elbow=(30, 0, 0), l_shoulder=(165, 0, -5), l_elbow=(30, 0, 0), chest=(-14, 0, 0),
+                        r_hip=(20, 0, 0), l_hip=(20, 0, 0), r_knee=(-30, 0, 0), l_knee=(-30, 0, 0))),
+        (11, "linear", dict(r_shoulder=(30, 0, 5), r_elbow=(0, 0, 0), l_shoulder=(30, 0, -5), l_elbow=(5, 0, 0), chest=(34, 0, 0),
+                           r_hip=(10, 0, 0), l_hip=(10, 0, 0), r_knee=(-20, 0, 0), l_knee=(-20, 0, 0))),
+        (20, "out", dict(r_shoulder=(20, 0, 5), r_elbow=(5, 0, 0), l_shoulder=(20, 0, -5), l_elbow=(10, 0, 0), chest=(36, 0, 0),
+                         r_hip=(50, 0, 0), l_hip=(50, 0, 0), r_knee=(-70, 0, 0), l_knee=(-70, 0, 0))),
+        (38, "inout", {}),
+    ])
+
     # The Whirlwind Strike: arms out, two turns of the hips, 30 degrees a tick.
     out = dict(r_shoulder=(80, 0, 70), r_elbow=(5, 0, 0), l_shoulder=(70, 0, -60), l_elbow=(10, 0, 0))
     c["whirl"] = clip(42, merge(

@@ -716,6 +716,8 @@ impl Game {
                     "lock": h.lock.is_some(),
                     "lock_label": self.t("hud.lock"),
                     "recovery": h.combo.recovery > 0,
+                    "style": w.style.grade(&w.style_rules).unwrap_or(""),
+                    "style_label": self.t("hud.style"),
                 });
                 if self.in_sandbox {
                     out["buttons"] = json!([
@@ -749,7 +751,27 @@ impl Game {
             }
             Screen::Won => {
                 let last = self.arena + 1 >= self.arenas.len();
-                out["lines"] = json!([self.t(if last { "won.last" } else { "won" })]);
+                // T6: the fight's style grade and what made it
+                let st = &w.style;
+                let grade = st.grade(&w.style_rules).unwrap_or("D");
+                out["lines"] = json!([
+                    self.t(if last { "won.last" } else { "won" }),
+                    format!("{}: {}", self.t("style.grade"), grade),
+                    format!(
+                        "{}: {}.{} s · {}: {} · {}: {} · {}: {} · {}: {}",
+                        self.t("style.air"),
+                        st.air_ticks / 60,
+                        st.air_ticks % 60 / 6,
+                        self.t("style.most"),
+                        st.most_at_once,
+                        self.t("style.slams"),
+                        st.slams,
+                        self.t("style.repeats"),
+                        st.repeats,
+                        self.t("style.bites"),
+                        st.bites
+                    ),
+                ]);
                 out["buttons"] = json!([btn("continue", "continue", ""), btn("menu", "menu", "")]);
             }
             Screen::Lost => {

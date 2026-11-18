@@ -14,7 +14,7 @@ Rules CS-1..CS-20 (CLAUDE.md). All questions on defaults; CS-Q23-25 answered A. 
 
 ## What is next
 
-T1 (camera up and to the side; player steers it) T2 (a capped move cannot be cancelled, so mashing reaches the recovery) T3 (the sandbox pause card carries the spawn tools) T4 (Arena 4: four dogs and a large dog at once) and T5 (Tab cycles targets) done.
+T1 (camera up and to the side; player steers it) T2 (a capped move cannot be cancelled, so mashing reaches the recovery) T3 (the sandbox pause card carries the spawn tools) T4 (Arena 4: four dogs and a large dog at once) T5 (Tab cycles targets) and T6 (air combos, slam, style grade) done. Next: T7 (Arena 5, the caster: bolts, flees, staggers easily, with two young dogs), then T8 (Arena 6: a caster and two large dogs, both allowed to attack at once; the pack gives one token today, `pilot.rs` `Pack`).
 
 Feel round 6: "a kill frees the hero" (drop queued presses and the cap's recovery when nothing is left alive), then the death clip's return to standing, then air dead time. Sam's call: the lesson's launcher kills vs lifts.
 

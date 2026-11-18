@@ -1,0 +1,14 @@
+{
+ "_about": "T6: the style grade for one fight. Every landed hit scores its damage times a percentage built from these bonuses; the grade is the points per point of damage dealt, in percent, so fights of any size grade alike. Worked examples are in crates/core/src/style.rs's tests.",
+ "base_pct": 100,
+ "air_move_pct": 50,
+ "airborne_target_pct": 25,
+ "extra_target_pct": 50,
+ "slam_pct": 100,
+ "stale_pct": 50,
+ "recent_strings": 3,
+ "combo_points": 30,
+ "air_ticks_per_point": 4,
+ "bitten_times": 2,
+ "grades": [["S", 180], ["A", 140], ["B", 110], ["C", 80], ["D", 0]]
+}

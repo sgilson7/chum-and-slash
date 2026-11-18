@@ -275,15 +275,15 @@
   {
     "name": "round 4: hits do not flinch",
     "file": "crates/core/src/world.rs",
-    "find": "        e.flinch_deg = spec.flinch_deg;\n        e.flinch_left = self.rules.flinch_fade;\n        if died {",
-    "replace": "        e.flinch_deg = spec.flinch_deg;\n        e.flinch_left = 0;\n        if died {",
+    "find": "        e.flinch_deg = spec.flinch_deg;\n        e.flinch_left = self.rules.flinch_fade;\n        let slam_speed = per_tick(self.rules.air.slam_mm_s);\n        if died {",
+    "replace": "        e.flinch_deg = spec.flinch_deg;\n        e.flinch_left = 0;\n        let slam_speed = per_tick(self.rules.air.slam_mm_s);\n        if died {",
     "test": "every_hit_flinches_its_target_and_the_flinch_fades"
   },
   {
     "name": "round 5: kills do not react",
     "file": "crates/core/src/world.rs",
-    "find": "        e.flinch_deg = spec.flinch_deg;\n        e.flinch_left = self.rules.flinch_fade;\n        if died {",
-    "replace": "        e.flinch_deg = if died { 0 } else { spec.flinch_deg };\n        e.flinch_left = self.rules.flinch_fade;\n        if died {",
+    "find": "        e.flinch_deg = spec.flinch_deg;\n        e.flinch_left = self.rules.flinch_fade;\n        let slam_speed = per_tick(self.rules.air.slam_mm_s);\n        if died {",
+    "replace": "        e.flinch_deg = if died { 0 } else { spec.flinch_deg };\n        e.flinch_left = self.rules.flinch_fade;\n        let slam_speed = per_tick(self.rules.air.slam_mm_s);\n        if died {",
     "test": "a_killing_blow_reacts_too"
   },
   {
@@ -334,5 +334,47 @@
     "find": "let d = (from - yaw_of(e.pos.sub(p))) & (fx::TURN - 1);",
     "replace": "let d = (yaw_of(e.pos.sub(p)) - from) & (fx::TURN - 1);",
     "test": "tab_cycles_the_lock_clockwise"
+  },
+  {
+    "name": "an air hit opens nothing",
+    "file": "crates/core/src/world.rs",
+    "find": "\"light\" if chained => [\"air_light\", \"air_light_2\", \"air_light_3\"][n % 3].to_string(),",
+    "replace": "\"light\" if chained => \"air_light\".to_string(),",
+    "test": "an_air_hit_opens_the_next_air_move"
+  },
+  {
+    "name": "an air combo does not hold the hero up",
+    "file": "crates/core/src/world.rs",
+    "find": "self.hero.vel.y = self.hero.vel.y.max(0);",
+    "replace": "self.hero.vel.y = self.hero.vel.y.max(i32::MIN);",
+    "test": "an_air_combo_keeps_the_hero_up"
+  },
+  {
+    "name": "a slammed dog lies down the usual time",
+    "file": "crates/core/src/world.rs",
+    "find": "self.rules.air.slam_landed\n",
+    "replace": "stun.landed\n",
+    "test": "the_air_launcher_slams"
+  },
+  {
+    "name": "the style grade ignores hits",
+    "file": "crates/core/src/style.rs",
+    "find": "self.points += h.damage * pct / 100;",
+    "replace": "self.points += 0;",
+    "test": "hits_score_by_hand"
+  },
+  {
+    "name": "a repeated string scores in full",
+    "file": "crates/core/src/style.rs",
+    "find": "pct = pct * spec.stale_pct / 100;",
+    "replace": "pct = pct * 100 / 100;",
+    "test": "a_repeated_string_scores_half"
+  },
+  {
+    "name": "the fight does not feed the style",
+    "file": "crates/core/src/world.rs",
+    "find": "                damage: dealt,",
+    "replace": "                damage: 0,",
+    "test": "the_fight_feeds_the_style_grade"
   }
 ]

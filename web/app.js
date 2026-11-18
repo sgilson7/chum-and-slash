@@ -158,6 +158,7 @@ function drawUi(force) {
   if (ui.hud) {
     const items = [meter(ui.hud.health_label, ui.hud.health, "health"), meter(ui.hud.stamina_label, ui.hud.stamina, "stamina")];
     if (ui.hud.lock) items.push(make("span", "lock", `◎ ${ui.hud.lock_label}`));
+    if (ui.hud.style) items.push(make("span", "style", `${ui.hud.style_label} ${ui.hud.style}`));
     hud.replaceChildren(...items);
   }
   const tools = el("tools");

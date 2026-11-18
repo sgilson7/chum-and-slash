@@ -15,6 +15,7 @@ use crate::fx::{self, ONE};
 use crate::geom::{facing, v3, V3};
 use crate::model::{self, Model, Pose};
 use crate::pilot::{self, Intent};
+use crate::style::{HitKind, Style, StyleSpec};
 use serde::Deserialize;
 use std::collections::BTreeMap;
 
@@ -42,6 +43,9 @@ pub struct MoveSpec {
     pub stamina: i32,
     #[serde(default)]
     pub stuns: bool,
+    /// the air launcher: a dive that drives the target down (T6)
+    #[serde(default)]
+    pub slams: bool,
     /// the target's shake: how many ticks and how far, mm (round 3)
     #[serde(default)]
     pub shake: u32,
@@ -116,8 +120,15 @@ pub struct EnemySpec {
 }
 
 #[derive(Debug, Clone, Deserialize)]
+pub struct AirSpec {
+    pub slam_mm_s: i32,
+    pub slam_landed: u32,
+}
+
+#[derive(Debug, Clone, Deserialize)]
 pub struct Rules {
     pub moves: BTreeMap<String, MoveSpec>,
+    pub air: AirSpec,
     pub combo: ComboSpec,
     pub combos: Vec<NamedCombo>,
     pub hitstop_cap: u32,
@@ -311,6 +322,13 @@ pub struct Hero {
     pub prev_bits: u32,
     /// a jump pressed too early waits like any press (round 1, R2.3)
     pub jump_buffer: Option<u32>,
+    /// T6: air hits in a row this airtime; while it is above 0 the next
+    /// air press opens the next air move and the hero hangs in the air
+    pub air_chain: u32,
+    /// air moves started in this air string, to pick the next one
+    pub air_count: u32,
+    /// the latest air move has landed on an airborne enemy
+    pub air_open: bool,
 }
 
 #[derive(Debug, Clone)]
@@ -342,6 +360,8 @@ pub struct Enemy {
     pub brain: pilot::Brain,
     /// stunned by the hero's current string (its stun ends with the string)
     pub in_string: bool,
+    /// driven down by a slam: it lies down longer when it lands (T6)
+    pub slammed: bool,
     pub dead_for: u32,
     /// the last move that hit it, for the harness
     pub reaction: &'static str,
@@ -428,6 +448,9 @@ pub struct World {
     pub rumble_rank: u32,
     /// the pack's attack tokens (M4.4)
     pub pack: pilot::Pack,
+    /// T6: this fight's style
+    pub style_rules: StyleSpec,
+    pub style: Style,
     pub events: Vec<Event>,
 }
 
@@ -461,6 +484,9 @@ impl World {
                 sprinting: false,
                 prev_bits: 0,
                 jump_buffer: None,
+                air_chain: 0,
+                air_count: 0,
+                air_open: false,
             },
             rules,
             clips,
@@ -480,6 +506,8 @@ impl World {
             rumble_until: 0,
             rumble_rank: 0,
             pack: pilot::Pack::default(),
+            style_rules: StyleSpec::shipped(),
+            style: Style::default(),
             events: Vec::new(),
         }
     }
@@ -521,6 +549,7 @@ impl World {
             bit: false,
             brain: pilot::Brain::for_kind(kind),
             in_string: false,
+            slammed: false,
             dead_for: 0,
             reaction: "",
         });
@@ -760,6 +789,7 @@ impl World {
     }
 
     fn end_string(&mut self) {
+        self.style.ended(&self.style_rules);
         self.hero.combo.presses.clear();
         self.hero.combo.light_run = 0;
         self.hero.combo.heavy_run = 0;
@@ -778,9 +808,20 @@ impl World {
         let name = if modifier && press == "light" {
             "whirl".to_string()
         } else if airborne {
+            // T6: a miss drops the air combo; a hit on an airborne enemy
+            // opens the next air move of the string
+            if !self.hero.air_open {
+                self.hero.air_chain = 0;
+                self.hero.air_count = 0;
+            }
+            let chained = self.hero.air_chain > 0;
+            let n = self.hero.air_count as usize;
             match press {
+                "light" if chained => ["air_light", "air_light_2", "air_light_3"][n % 3].to_string(),
                 "light" => "air_light".to_string(),
+                "heavy" if chained => ["air_heavy", "air_heavy_2"][n % 2].to_string(),
                 "heavy" => "air_heavy".to_string(),
+                "launcher" => "air_slam".to_string(),
                 _ => return false,
             }
         } else {
@@ -806,9 +847,19 @@ impl World {
             self.hero.stamina -= spec.stamina;
             self.hero.rested = 0;
         }
+        if spec.air {
+            self.hero.air_count += 1;
+            self.hero.air_open = false;
+        }
+        if !spec.ability {
+            self.style.started(&name);
+        }
         let c = &mut self.hero.combo;
         let first = c.presses.is_empty();
-        if spec.ability {
+        if spec.air {
+            // T6: the air string stands outside the ground string's caps;
+            // stamina bounds it
+        } else if spec.ability {
             // an ability stands outside the string
             c.presses.clear();
             c.light_run = 0;
@@ -832,6 +883,7 @@ impl World {
         }
         let cs = &self.rules.combo;
         let capped = !spec.ability
+            && !spec.air
             && (c.light_run >= cs.cap_light
                 || c.heavy_run >= cs.cap_heavy
                 || c.presses.len() as u32 >= cs.cap_total);
@@ -839,6 +891,7 @@ impl World {
         if let Some(done) = self.rules.combos.iter().find(|k| k.presses == presses) {
             let n = done.name.clone();
             self.events.push(ev("combo", &n));
+            self.style.combo(&self.style_rules);
         }
         // close on a locked target at the start of a string
         let mut snap = 0;
@@ -861,7 +914,7 @@ impl World {
             serial: self.serial,
             hit: Vec::new(),
             capped,
-            ends_string: press == "launcher",
+            ends_string: press == "launcher" && !spec.air,
             snap,
             snap_ticks,
         });
@@ -986,30 +1039,54 @@ impl World {
                 self.hero.vel.z = 0;
             }
         }
-        // the air: gravity, eased while an air string is landing hits
-        if !self.hero.grounded {
-            let float = self
+        // the air: gravity, eased while an air string is landing hits, and
+        // (T6) for every air move while the air combo holds; the slam dives
+        let slamming = self
+            .hero
+            .act
+            .as_ref()
+            .is_some_and(|a| self.rules.moves[&a.name].slams);
+        if !self.hero.grounded && slamming {
+            // it hangs through the wind-up, then dives from the strike
+            let strike = self
                 .hero
                 .act
                 .as_ref()
-                .is_some_and(|a| self.rules.moves[&a.name].air && !a.hit.is_empty());
+                .and_then(|a| self.clips[&a.name].events.phases)
+                .map_or(0, |p| p[0]);
+            self.hero.vel = if self.hero.anim.tick >= strike {
+                v3(0, -per_tick(self.rules.air.slam_mm_s), 0)
+            } else {
+                V3::ZERO
+            };
+        } else if !self.hero.grounded {
+            let float = self.hero.act.as_ref().is_some_and(|a| {
+                self.rules.moves[&a.name].air && (!a.hit.is_empty() || self.hero.air_chain > 0)
+            });
             let gg = if float {
                 g * self.rules.stun.air_gravity_pct / 100
             } else {
                 g
             };
             self.hero.vel.y -= gg;
+            if self.hero.air_chain > 0 {
+                self.style.air_tick(&self.style_rules);
+            }
         }
         self.hero.pos = self.hero.pos.add(self.hero.vel);
         if self.hero.pos.y <= 0 && !self.hero.grounded {
             self.hero.pos.y = 0;
             self.hero.vel = V3::ZERO;
             self.hero.grounded = true;
+            self.hero.air_chain = 0;
+            self.hero.air_count = 0;
+            self.hero.air_open = false;
+            // the slam plays out its impact on the ground (T6)
             if self
                 .hero
                 .act
                 .as_ref()
-                .is_some_and(|a| self.rules.moves[&a.name].air)
+                .is_some_and(|a| self.rules.moves[&a.name].air && !self.rules.moves[&a.name].slams)
             {
                 self.hero.act = None;
                 self.end_string();
@@ -1133,7 +1210,12 @@ impl World {
                     e.pos.y = 0;
                     e.vel = V3::ZERO;
                     e.state = State::Down;
-                    e.stun = stun.landed;
+                    e.stun = if e.slammed {
+                        self.rules.air.slam_landed
+                    } else {
+                        stun.landed
+                    };
+                    e.slammed = false;
                     e.anim.play(clips, &dm, "dog_down", 12);
                     self.events.push(ev("land", "enemy"));
                 }
@@ -1220,12 +1302,14 @@ impl World {
         let e = &mut self.enemies[i];
         let espec = self.rules.enemies[&e.kind].clone();
         let first_contact = self.hero.act.as_ref().is_none_or(|a| a.hit.is_empty());
+        let nth_target = self.hero.act.as_ref().map_or(0, |a| a.hit.len() as u32);
         if let Some(a) = self.hero.act.as_mut() {
             a.hit.push(e.id);
         }
         let was_air = e.state == State::Airborne;
         // CS-4: an airborne enemy takes half again
         let dmg = if was_air { spec.damage * 3 / 2 } else { spec.damage };
+        let dealt = dmg.min(e.health.max(0));
         e.health -= dmg;
         let hs = spec.hitstop.min(cap);
         e.hitstop = hs;
@@ -1263,10 +1347,19 @@ impl World {
         e.shake_mm = model::mm(spec.shake_mm);
         e.flinch_deg = spec.flinch_deg;
         e.flinch_left = self.rules.flinch_fade;
+        let slam_speed = per_tick(self.rules.air.slam_mm_s);
         if died {
             e.state = State::Dead;
             e.anim.play(&self.clips, &dm, "dog_dead", 12);
             e.reaction = "dies";
+        } else if spec.slams && was_air {
+            // T6: the slam drives an airborne enemy into the ground
+            e.vel = v3(0, -slam_speed, 0);
+            e.float = 0;
+            e.slammed = true;
+            e.knock = V3::ZERO;
+            e.knock_ticks = 0;
+            e.reaction = "slammed";
         } else if spec.launches && stunned_before {
             // CS-5: only a stunned enemy is lifted
             e.state = State::Airborne;
@@ -1285,6 +1378,16 @@ impl World {
             e.float = stun.air_float;
             e.vel.y = e.vel.y.max(ONE / 100);
             e.reaction = "juggled";
+            // T6: an air move that lands on an airborne enemy holds the
+            // hero up with it and opens the next air move
+            if spec.air && !self.hero.grounded {
+                self.hero.vel.y = self.hero.vel.y.max(0);
+                self.hero.air_open = true;
+                if first_contact {
+                    self.hero.air_chain += 1;
+                    self.style.longest_air_chain = self.style.longest_air_chain.max(self.hero.air_chain);
+                }
+            }
         } else {
             // one hit stuns a dog (cue 39); a whirl stuns all it reaches
             let one_hit = espec.poise == 0 || spec.stuns;
@@ -1303,6 +1406,16 @@ impl World {
             }
         }
         let e_id = e.id;
+        self.style.hit(
+            &self.style_rules,
+            &HitKind {
+                damage: dealt,
+                air_move: spec.air,
+                airborne_target: was_air,
+                nth_target,
+                slam: spec.slams,
+            },
+        );
         let hit_name = format!("hit_{}", spec.hit);
         let rumble = format!(
             "{}_hit",
@@ -1346,6 +1459,7 @@ impl World {
             }
         }
         for b in bitten {
+            self.style.bitten(&self.style_rules, b);
             self.hero.health -= b;
             self.hero.hitstop = 3;
             self.sound("bite", 0, 7);

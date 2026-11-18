@@ -151,6 +151,67 @@
    "shake": 6,
    "shake_mm": 25,
    "flinch_deg": 20
+  },
+  "air_light_2": {
+   "press": "light",
+   "air": true,
+   "damage": 9,
+   "hitstop": 4,
+   "push_mm": 80,
+   "reach_mm": 2000,
+   "arc_deg": 160,
+   "stagger": 1,
+   "hit": "light",
+   "stamina": 600,
+   "shake": 4,
+   "shake_mm": 15,
+   "flinch_deg": 15
+  },
+  "air_light_3": {
+   "press": "light",
+   "air": true,
+   "damage": 12,
+   "hitstop": 5,
+   "push_mm": 150,
+   "reach_mm": 2100,
+   "arc_deg": 140,
+   "stagger": 1,
+   "hit": "light",
+   "stamina": 600,
+   "shake": 5,
+   "shake_mm": 20,
+   "flinch_deg": 20
+  },
+  "air_heavy_2": {
+   "press": "heavy",
+   "air": true,
+   "damage": 24,
+   "hitstop": 7,
+   "push_mm": 200,
+   "reach_mm": 2200,
+   "arc_deg": 150,
+   "stagger": 2,
+   "hit": "heavy",
+   "stamina": 1200,
+   "shake": 8,
+   "shake_mm": 35,
+   "flinch_deg": 30
+  },
+  "air_slam": {
+   "press": "launcher",
+   "air": true,
+   "slams": true,
+   "damage": 30,
+   "hitstop": 9,
+   "push_mm": 300,
+   "reach_mm": 2400,
+   "arc_deg": 200,
+   "stagger": 2,
+   "hit": "launch",
+   "stamina": 1500,
+   "shake": 10,
+   "shake_mm": 45,
+   "flinch_deg": 45
   }
  },
  "combo": {
@@ -198,6 +259,11 @@
   "air_gravity_pct": 25,
   "launch_mm": 3000,
   "landed": 40
+ },
+ "air": {
+  "_about": "T6: air combos. An air move that lands on an airborne enemy opens the next air move in the string and holds both bodies up; the launcher in the air is the slam, a dive at slam_mm_s that drives a hit enemy into the ground, down for slam_landed ticks.",
+  "slam_mm_s": 18000,
+  "slam_landed": 70
  },
  "hero": {
   "run_mm_s": 4500,

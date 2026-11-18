@@ -35,6 +35,7 @@ button:focus-visible { outline: 3px solid var(--glow); outline-offset: 2px; }
 .stamina .meter-fill { background: var(--stamina); }
 .skip .meter-fill { background: var(--glow); }
 .lock { font-size: 13px; color: var(--warm); }
+.style { font-size: 15px; font-weight: 700; color: var(--warm); letter-spacing: 0.04em; }
 #tools { position: absolute; right: 16px; top: 16px; display: flex; flex-direction: column; gap: 8px; }
 #prompt { position: absolute; left: 50%; top: 58%; transform: translateX(-50%); display: grid; justify-items: center; gap: 4px; padding: 14px 22px; background: var(--shade); border: 2px solid var(--glow); border-radius: 8px; text-align: center; }
 #prompt.paused { border-color: var(--warm); }
