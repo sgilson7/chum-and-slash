@@ -355,6 +355,62 @@ impl Player {
     }
 }
 
+/// Which changes of clip the game makes (CS-11 tests these): a reaction
+/// (hurt, stunned, tumble, dead) can cut in at any tick; an attack gives
+/// way to the next move only from its cancel tick, or once it ends; a
+/// tumbling dog only lands; a lunging dog finishes its lunge.
+pub fn allowed(from: &Clip, at: u32, to: &str) -> bool {
+    let reaction = ["hurt", "dog_hurt", "dog_stunned", "dog_tumble", "dog_dead"];
+    if reaction.contains(&to) {
+        return true;
+    }
+    let name = from.name.as_str();
+    if name == "dog_tumble" {
+        return matches!(to, "dog_down" | "dog_stunned");
+    }
+    if name == "dog_lunge" {
+        return at >= from.len && matches!(to, "dog_idle" | "dog_strafe");
+    }
+    if name.starts_with("dog") {
+        return to != "dog_injured" || name == "dog_injured";
+    }
+    if to.starts_with("air_") && !(name.starts_with("air_") || matches!(name, "jump" | "fall" | "launcher")) {
+        return false;
+    }
+    match from.events.cancel {
+        Some(c) => at >= c,
+        None => from.looping || at >= from.len || from.events.phases.is_none(),
+    }
+}
+
+/// The transition length into a clip: short for attacks so a cancel stays
+/// quick (6 ticks), longer for everything else (12): animation review.
+pub fn blend_for(clip: &str) -> u32 {
+    // the launcher opens with a crouch, so 8 ticks in costs nothing and
+    // keeps a launcher-to-launcher change under the bound (46 degrees at 6)
+    if clip == "launcher" {
+        return 8;
+    }
+    // a hit reaction is a cut: it shows on the tick of contact (round 2)
+    if clip == "dog_hurt" {
+        return 0;
+    }
+    let attack = [
+        "light",
+        "heavy",
+        "launch",
+        "air_",
+        "whirl",
+        "dog_lunge",
+        "dog_bite",
+    ];
+    if attack.iter().any(|a| clip.starts_with(a)) {
+        6
+    } else {
+        12
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -498,61 +554,5 @@ mod tests {
             bad.len(),
             &bad[..bad.len().min(12)]
         );
-    }
-}
-
-/// Which changes of clip the game makes (CS-11 tests these): a reaction
-/// (hurt, stunned, tumble, dead) can cut in at any tick; an attack gives
-/// way to the next move only from its cancel tick, or once it ends; a
-/// tumbling dog only lands; a lunging dog finishes its lunge.
-pub fn allowed(from: &Clip, at: u32, to: &str) -> bool {
-    let reaction = ["hurt", "dog_hurt", "dog_stunned", "dog_tumble", "dog_dead"];
-    if reaction.contains(&to) {
-        return true;
-    }
-    let name = from.name.as_str();
-    if name == "dog_tumble" {
-        return matches!(to, "dog_down" | "dog_stunned");
-    }
-    if name == "dog_lunge" {
-        return at >= from.len && matches!(to, "dog_idle" | "dog_strafe");
-    }
-    if name.starts_with("dog") {
-        return to != "dog_injured" || name == "dog_injured";
-    }
-    if to.starts_with("air_") && !(name.starts_with("air_") || matches!(name, "jump" | "fall" | "launcher")) {
-        return false;
-    }
-    match from.events.cancel {
-        Some(c) => at >= c,
-        None => from.looping || at >= from.len || from.events.phases.is_none(),
-    }
-}
-
-/// The transition length into a clip: short for attacks so a cancel stays
-/// quick (6 ticks), longer for everything else (12): animation review.
-pub fn blend_for(clip: &str) -> u32 {
-    // the launcher opens with a crouch, so 8 ticks in costs nothing and
-    // keeps a launcher-to-launcher change under the bound (46 degrees at 6)
-    if clip == "launcher" {
-        return 8;
-    }
-    // a hit reaction is a cut: it shows on the tick of contact (round 2)
-    if clip == "dog_hurt" {
-        return 0;
-    }
-    let attack = [
-        "light",
-        "heavy",
-        "launch",
-        "air_",
-        "whirl",
-        "dog_lunge",
-        "dog_bite",
-    ];
-    if attack.iter().any(|a| clip.starts_with(a)) {
-        6
-    } else {
-        12
     }
 }

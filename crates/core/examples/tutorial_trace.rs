@@ -39,17 +39,12 @@ fn main() {
             "asking": asking, "pressed": bits != 0, "hero_clip": g.world.hero.anim.clip,
             "dog_clip": g.world.enemies.first().map(|e| e.anim.clip.clone()),
         }));
-        if paused_for > 60
-            && phase == "off"
-            && steps.len() > 0
-            && g.world.hero.act.is_none()
-            && t > 0
-            && paused_for > 120
-        {
-            break;
-        }
+        // after the answer, sixty ticks of play, then stop
         if paused_for >= 60 && phase == "off" {
             paused_for += 1;
+            if paused_for > 120 {
+                break;
+            }
         }
     }
     let doc = serde_json::json!({"made_by": format!("cargo run -q --example tutorial_trace -- {out}"), "steps": steps});
