@@ -3,7 +3,7 @@
 //! comments; no test compares a value with the function that made it.
 
 use tool_core::fx::{self, ONE};
-use tool_core::geom::{v3, V3};
+use tool_core::geom::{facing, v3, V3};
 use tool_core::world::*;
 
 fn ahead(m: i32) -> V3 {
@@ -783,4 +783,155 @@ fn the_fight_feeds_the_style_grade() {
     assert_eq!(w.style.dealt, 10);
     assert_eq!(w.style.points, 10);
     assert_eq!(w.style.grade(&w.style_rules), Some("C"), "100% is a C");
+}
+
+// ------------------------------------------------------------ T7, T8
+
+/// The bolt in flight, if one is.
+fn bolts(w: &World) -> usize {
+    w.bolts.len()
+}
+
+/// T7: a caster 10 m off rears (its cast clip) and spits a bolt on the
+/// clip's hit tick (32); the bolt flies to the standing hero and does the
+/// caster's 9 (data/combat.json cast.damage), told as a "bitten" event.
+#[test]
+fn a_caster_spits_a_bolt_that_hurts() {
+    let (mut w, id) = with("caster", 10000);
+    let mut cast_seen = false;
+    let mut released = None;
+    for _ in 0..300 {
+        w.tick(Input::bits(0));
+        let e = w.enemy(id).unwrap();
+        if e.anim.clip == "dog_cast" {
+            cast_seen = true;
+            if released.is_none() && bolts(&w) == 1 {
+                released = Some(e.anim.tick);
+            }
+        }
+        if released.is_some() {
+            break;
+        }
+    }
+    assert!(cast_seen, "the caster cast within 5 s");
+    // the bolt leaves on the tick the clip reaches 32, after which the
+    // clip has stepped once: 33
+    assert_eq!(released, Some(33));
+    let ev = run(&mut w, 120, 0);
+    let hurt: Vec<i32> = ev.iter().filter(|e| e.kind == "bitten").map(|e| e.a).collect();
+    assert_eq!(hurt.first(), Some(&9), "the bolt does 9");
+    assert_eq!(w.hero.health, 100 - hurt.iter().sum::<i32>());
+}
+
+/// T7: a bolt at chest height hits a hero standing in its path, and
+/// passes under a hero 2 m up.
+#[test]
+fn a_bolt_passes_under_a_jump() {
+    let shot = |hero_up_mm: i32| {
+        let mut w = World::new();
+        let up = tool_core::model::mm(hero_up_mm);
+        w.hero.pos = v3(0, up, 0);
+        w.hero.grounded = up == 0;
+        let at = ahead(tool_core::model::mm(3000)).add(v3(0, tool_core::model::mm(850), 0));
+        w.bolts.push(Bolt {
+            pos: at,
+            prev_pos: at,
+            vel: v3(0, 0, tool_core::model::mm(200)),
+            life: 60,
+            damage: 9,
+            radius: tool_core::model::mm(400),
+            body: tool_core::model::mm(1700),
+            rgb: [0, 0, 0],
+        });
+        // 3 m at 200 mm a tick: 15 ticks to reach the hero; 30 to be past
+        let ev = run(&mut w, 30, 0);
+        ev.iter().filter(|e| e.kind == "bitten").count()
+    };
+    assert_eq!(shot(0), 1, "a standing hero is hit");
+    // the hero falls about 30 ticks x a little: still well over 1.25 m
+    // (850 + 400) at tick 15, when the bolt is under them
+    assert_eq!(shot(3000), 0, "a hero in the air lets it pass");
+}
+
+/// T7: one light hit stuns a caster mid-cast (poise 0), and the bolt it
+/// was rearing for never leaves.
+#[test]
+fn one_hit_breaks_a_cast() {
+    let (mut w, id) = with("caster", 10000);
+    for _ in 0..300 {
+        w.tick(Input::bits(0));
+        let e = w.enemy(id).unwrap();
+        if e.anim.clip == "dog_cast" && e.anim.tick >= 4 {
+            break;
+        }
+    }
+    let e = w.enemy(id).unwrap();
+    assert_eq!(e.anim.clip, "dog_cast");
+    // stand the hero 1.6 m in front of it, facing it
+    let p = e.pos;
+    let face = yaw_of(w.hero.pos.sub(p));
+    w.hero.pos = p.add(facing(face, 0).scale(tool_core::model::mm(1600)));
+    w.hero.yaw = yaw_of(p.sub(w.hero.pos));
+    w.hero.prev_pos = w.hero.pos;
+    tap(&mut w, B_LIGHT);
+    run(&mut w, 12, 0);
+    assert_eq!(w.enemy(id).unwrap().state, State::Stunned, "one hit staggers it");
+    run(&mut w, 30, 0);
+    assert_eq!(bolts(&w), 0, "the bolt never left");
+}
+
+/// T7: a caster the hero comes within 7 m of runs. It sees with a 14-tick
+/// delay and flees at 4 m/s (66 mm a tick), veering half a step aside
+/// (so 66 / sqrt(1.25) = 59 mm a tick straight away): over 60 ticks it
+/// gains at least 46 x 59 = 2.7 m. Assert more than 2 m.
+#[test]
+fn a_caster_runs_from_a_close_hero() {
+    let (mut w, id) = with("caster", 3000);
+    let before = w.enemy(id).unwrap().pos.sub(w.hero.pos).len_xz();
+    run(&mut w, 60, 0);
+    let after = w.enemy(id).unwrap().pos.sub(w.hero.pos).len_xz();
+    assert!(
+        after - before > tool_core::model::mm(2000),
+        "gained {} mm",
+        (after - before) * 1000 / ONE
+    );
+}
+
+/// T8: with a pack of two, two large dogs lunge on the same tick; with
+/// the usual pack of one they never do.
+#[test]
+fn a_pack_of_two_lets_both_large_dogs_attack_at_once() {
+    let together = |size: usize| {
+        let mut w = World::new();
+        w.pack.size = size;
+        let m = tool_core::model::mm(6000);
+        for at in [v3(m, 0, -m), v3(-m, 0, -m)] {
+            w.spawn("large_dog", at, 0).unwrap();
+        }
+        let mut most = 0;
+        for _ in 0..900 {
+            w.tick(Input::bits(0));
+            assert!(w.pack.holders.len() <= size.max(1));
+            let n = w.enemies.iter().filter(|e| e.anim.clip == "dog_lunge").count();
+            most = most.max(n);
+        }
+        most
+    };
+    assert_eq!(together(1), 1);
+    assert_eq!(together(2), 2);
+}
+
+/// T7: a caster rests between bolts: each cast's rest is its clip (58
+/// ticks) and the gap (100), so in 600 ticks it casts at most
+/// 600 / 158 + 1 = 4 times (it cast every 50 ticks before the rest was
+/// counted from the start of the cast).
+#[test]
+fn a_caster_rests_between_bolts() {
+    let (mut w, _) = with("caster", 10000);
+    let ev = run(&mut w, 600, 0);
+    let casts = ev
+        .iter()
+        .filter(|e| e.kind == "sound" && e.name == "cast")
+        .count();
+    assert!((1..=4).contains(&casts), "{casts} casts");
 }

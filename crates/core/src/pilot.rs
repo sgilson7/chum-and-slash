@@ -20,7 +20,7 @@ use crate::clip::Clips;
 use crate::fx::{self, ONE};
 use crate::geom::{facing, v3, V3};
 use crate::model::{self, Model};
-use crate::world::{yaw_of, Enemy, Rules, State, World};
+use crate::world::{yaw_of, Enemy, EnemySpec, Rules, State, World};
 use serde::Deserialize;
 use std::collections::{BTreeMap, VecDeque};
 
@@ -72,6 +72,8 @@ pub enum Cond {
     OppAirborne,
     /// A seeded chance, in percent, drawn when the rule is considered.
     Chance(u32),
+    /// My rest since my last bolt or lunge is over (T7).
+    Ready,
 }
 
 #[derive(Clone, Debug, Deserialize, PartialEq, Eq)]
@@ -111,6 +113,7 @@ pub struct Seen {
     pub token: bool,
     pub volley: bool,
     pub opp_airborne: bool,
+    pub ready: bool,
 }
 
 /// The ids a rule's nodes took, depth first from 0 at the root
@@ -196,6 +199,7 @@ impl Tree {
             Cond::Volley => s.volley,
             Cond::OppAirborne => s.opp_airborne,
             Cond::Chance(pct) => self.rng.below(100) < *pct,
+            Cond::Ready => s.ready,
         }
     }
 
@@ -295,6 +299,7 @@ impl Tree {
             "strafe_left" | "strafe_right" => 60 + self.rng.below(61),
             "lunge" => LUNGE_TICKS,
             "approach" | "back_off" => 20,
+            "flee" => 30,
             "idle" => 30,
             _ => 1,
         }
@@ -318,6 +323,10 @@ pub enum Intent {
     CircleLeft,
     CircleRight,
     Lunge,
+    /// a caster runs from the hero (T7)
+    Flee,
+    /// a caster rears and spits a bolt (T7)
+    Cast,
 }
 
 /// An enemy's brain: its tree, the node it is on (for the harness and the
@@ -367,37 +376,57 @@ impl Brain {
 }
 
 /// The pack hands out attack tokens before the enemies move (M4.4): one
-/// dog lunges at a time, unless the tutorial's volley gives every dog a
-/// token on the same tick.
-#[derive(Clone, Debug, Default, PartialEq, Eq)]
+/// dog lunges at a time, unless the arena allows more at once (T8) or the
+/// tutorial's volley gives every dog a token on the same tick.
+#[derive(Clone, Debug, PartialEq, Eq)]
 pub struct Pack {
-    pub holder: Option<u32>,
+    /// the dogs holding a token now, at most `size`
+    pub holders: Vec<u32>,
+    /// how many dogs may attack at once: one, unless the arena says more
+    pub size: usize,
     /// set by the tutorial for one tick: every idle dog attacks now
     pub volley: bool,
     /// the dogs given the volley
     pub volleyed: Vec<u32>,
 }
 
+impl Default for Pack {
+    fn default() -> Pack {
+        Pack {
+            holders: Vec::new(),
+            size: 1,
+            volley: false,
+            volleyed: Vec::new(),
+        }
+    }
+}
+
 impl Pack {
     pub fn step(&mut self, enemies: &[Enemy], rules: &Rules) {
         let free = |e: &Enemy| e.state == State::Idle && rules.enemies[&e.kind].attacks;
         let rested = |e: &Enemy| free(e) && e.brain.cooldown == 0;
-        if let Some(h) = self.holder {
-            let keep = enemies
+        self.holders.retain(|h| {
+            enemies
                 .iter()
-                .any(|e| e.id == h && free(e) && (e.brain.token || e.anim.clip == "dog_lunge"));
-            if !keep {
-                self.holder = None;
-            }
-        }
+                .any(|e| e.id == *h && free(e) && (e.brain.token || e.anim.clip == "dog_lunge"))
+        });
         if self.volley {
             self.volleyed = enemies.iter().filter(|e| free(e)).map(|e| e.id).collect();
             self.volley = false;
         }
-        if self.holder.is_none() {
-            // the dog that has waited longest is the one nearest in id order
-            self.holder = enemies.iter().filter(|e| rested(e)).map(|e| e.id).next();
+        // the dogs that have waited longest are the ones first in id order
+        for e in enemies.iter().filter(|e| rested(e)) {
+            if self.holders.len() >= self.size.max(1) {
+                break;
+            }
+            if !self.holders.contains(&e.id) {
+                self.holders.push(e.id);
+            }
         }
+    }
+
+    pub fn holds(&self, id: u32) -> bool {
+        self.holders.contains(&id)
     }
 }
 
@@ -410,32 +439,45 @@ pub fn seen(w: &World, i: usize) -> Seen {
         stunned: e.state == State::Stunned,
         airborne: e.state == State::Airborne,
         down: e.state == State::Down,
-        token: w.pack.holder == Some(e.id),
+        token: w.pack.holds(e.id),
         volley: w.pack.volleyed.contains(&e.id),
         opp_airborne: !w.hero.grounded,
+        ready: e.brain.cooldown == 0,
     }
 }
 
 /// The tree's move for this tick, as an intent; also records the node.
 pub fn think(w: &mut World, i: usize) -> Intent {
     let s = seen(w, i);
+    let casting = w.enemies[i].anim.clip == "dog_cast" && !w.clips["dog_cast"].done(w.enemies[i].anim.tick);
     let e = &mut w.enemies[i];
     // a dog already lunging finishes its lunge
     if e.anim.clip == "dog_lunge" && e.anim.tick < LUNGE_TICKS {
         e.brain.node = "lunge".into();
         return Intent::Lunge;
     }
+    // a caster already rearing finishes its bolt, unless a hit stuns it
+    if casting {
+        e.brain.node = "cast".into();
+        return Intent::Cast;
+    }
     let mut mv = e.brain.tree.input(s);
     // a dog decides on what it saw `reaction` ticks ago, but it lunges only
     // on a token it holds now (or the tutorial's volley): two dogs never
     // lunge at once outside the volley (M4.4)
-    let holds_now = w.pack.holder == Some(e.id) || w.pack.volleyed.contains(&e.id);
+    let holds_now = w.pack.holds(e.id) || w.pack.volleyed.contains(&e.id);
     if mv.as_ref().is_some_and(|(n, _)| n == "lunge") && !holds_now {
         e.brain.tree.end();
         mv = None;
     }
     if mv.as_ref().is_some_and(|(n, _)| n == "lunge") {
         w.pack.volleyed.retain(|id| *id != e.id);
+    }
+    // likewise a caster casts only once its rest is over now, not on the
+    // rest it saw `reaction` ticks ago (T7)
+    if mv.as_ref().is_some_and(|(n, _)| n == "cast") && e.brain.cooldown > 0 {
+        e.brain.tree.end();
+        mv = None;
     }
     e.brain.node = mv
         .as_ref()
@@ -447,6 +489,8 @@ pub fn think(w: &mut World, i: usize) -> Intent {
         Some("strafe_left") => Intent::CircleLeft,
         Some("strafe_right") => Intent::CircleRight,
         Some("lunge") => Intent::Lunge,
+        Some("flee") => Intent::Flee,
+        Some("cast") => Intent::Cast,
         _ => Intent::Hold,
     }
 }
@@ -455,9 +499,9 @@ pub fn think(w: &mut World, i: usize) -> Intent {
 pub const TROT_MM_S: i32 = 3000;
 pub const RING_MM: i32 = 5000;
 
-/// Carries out an intent: walks, circles, or lunges with the clip's root
-/// motion.
-pub fn act(e: &mut Enemy, intent: Intent, hero: V3, clips: &Clips, m: &Model) {
+/// Carries out an intent: walks, circles, flees, casts, or lunges with the
+/// clip's root motion.
+pub fn act(e: &mut Enemy, intent: Intent, hero: V3, clips: &Clips, m: &Model, spec: &EnemySpec) {
     let to = hero.sub(e.pos);
     let face = yaw_of(to);
     let trot = crate::world::per_tick(TROT_MM_S);
@@ -478,6 +522,34 @@ pub fn act(e: &mut Enemy, intent: Intent, hero: V3, clips: &Clips, m: &Model) {
         Intent::Away => {
             e.pos = e.pos.sub(dir.scale(trot));
             e.yaw = turn_to(e.yaw, face);
+        }
+        Intent::Flee => {
+            // it turns its back and runs, veering to one side so the park's
+            // edge does not pin it (T7)
+            let run = crate::world::per_tick(spec.cast.as_ref().map_or(TROT_MM_S, |c| c.flee_mm_s));
+            let way = dir.neg().add(side.scale(ONE / 2)).norm();
+            e.pos = e.pos.add(way.scale(run));
+            e.yaw = turn_to(e.yaw, yaw_of(way));
+        }
+        Intent::Cast => {
+            if e.anim.clip != "dog_cast" {
+                e.yaw = face;
+                e.bit = false;
+                e.anim.play(clips, m, "dog_cast", 6);
+                // the rest runs from the start of the cast: the clip, then the gap
+                e.brain.cooldown =
+                    clips["dog_cast"].len + spec.cast.as_ref().map_or(LUNGE_COOLDOWN, |c| c.gap);
+                return;
+            }
+            // it aims until the bolt leaves, then holds still
+            if !e.bit {
+                e.yaw = turn_to(e.yaw, face);
+            }
+            if clips["dog_cast"].done(e.anim.tick) {
+                e.brain.tree.end();
+                e.anim.play(clips, m, "dog_idle", 12);
+            }
+            return;
         }
         Intent::CircleLeft | Intent::CircleRight => {
             let s = if intent == Intent::CircleLeft {

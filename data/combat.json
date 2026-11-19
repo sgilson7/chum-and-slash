@@ -319,6 +319,21 @@
    "push_pct": 45,
    "bite": 14,
    "attacks": true
+  },
+  "caster": {
+   "_about": "T7: a slim violet dog that keeps its distance and spits bolts. Poise 0: every hit staggers it and breaks its cast. It takes no attack token; its bolts are paced by cast.gap.",
+   "model": "dog",
+   "scale_pct": 95,
+   "health": 40,
+   "poise": 0,
+   "radius_mm": 420,
+   "push_pct": 140,
+   "bite": 0,
+   "attacks": false,
+   "cast": {"damage": 9, "speed_mm_s": 11000, "radius_mm": 400, "life": 120, "gap": 100, "flee_mm_s": 4000,
+     "mouth_up_mm": 700, "mouth_ahead_mm": 650, "body_mm": 1700, "rgb": [176, 120, 255]},
+   "recolour": {"dog_magenta": [98, 62, 172], "dog_belly": [130, 255, 228], "leaf_lime": [206, 176, 255],
+     "leaf_teal": [70, 44, 124], "eye_glow": [130, 255, 228]}
   }
  },
  "_round3": "Round 3 (the animator, the newcomer): every hit shakes the target, sized by the move.",

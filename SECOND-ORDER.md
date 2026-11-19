@@ -38,6 +38,10 @@ One row per assumption, surprise or open item. **Kind** is *divergence* (what wa
 | R5.2 | finding | Five dogs at once is beatable | The scripted player clears Arena 4 in 1,201 ticks (20 s) with 48 of 100 health left; it loses none in Arenas 1 to 3. Only one dog holds the attack token at a time, so the five take turns | Nothing; the numbers are for Sam to judge in play | `bot_clears_each_arena` | done |
 | R6.1 | divergence | Air moves count toward the ground string's caps (4 light, 3 heavy, 6 total) | Under those caps an air combo would stop at four lights and then recover in mid-air, which cuts across "maintain the airtime until you drop the combo" | Air moves stand outside the ground caps; their stamina cost (600 a light, 1,200 a heavy, 1,500 a slam, of 10,000) bounds an air combo. The slam hangs through its wind-up (7 ticks), then dives at 300 mm a tick | `world.rs` `start`, `hero_motion`; `data/combat.json` `air` | done |
 | R6.2 | divergence | How a style grade should weigh things | Sam named multi-enemy hits, air time and not repeating a combo | Each hit scores its damage at 100%, +50% for an air move, +25% on an airborne target, +50% for a move's second and later targets, +100% for a slam, halved when the string repeats one of the last 3; +30 a named combo; +1 per 4 ticks of air combo; a bite costs twice its damage. Grade = points per damage dealt: S 180%, A 140%, B 110%, C 80%. The ground-only scripted player grades C, D, A, D in Arenas 1 to 4 | `data/style.json`, `crates/core/src/style.rs` | done |
+| R7.1 | divergence | What a caster looks like | Sam named a caster but not its body | A slim violet-and-cyan dog on the shared dog skeleton, so stunned, tumble, down and dead clips serve it; one new clip, `dog_cast`. A humanoid caster would need its own skeleton and clip set | `data/combat.json` `caster`, `tools/clips.py` | done |
+| R7.2 | finding | A tree's `ready` condition gates a caster's bolts | Trees see 14 ticks late, so a caster recast every 50 ticks; then the rest was set on a tick `think` never reached | The rest starts with the cast (clip plus gap) and the cast is gated on the rest now, as the lunge is on its token | `a_caster_rests_between_bolts` | done |
+| R8.1 | divergence | The scripted player clears every arena by mashing | It died in Arena 6 to two large dogs biting together, and side-stepping the crouch was too slow | It whirls when a dog leaps at it from within 4.5 m and it has the stamina; Arena 6 then ends with 45 of 100 health | `bot_clears_each_arena` | done |
+| R9.1 | divergence | The style grade is one measure | A meter that "fills up as you accrue style" needs points that drain; the T6 grade is points per damage | Two measures: the live meter (fills with each hit's style points, holds 90 ticks, drains 1 every 3; ranks D 0, C 40, B 100, A 180, S 280 of 400; a bite takes 5x its damage) and the fight's grade at the end, which also reports the best rank the meter reached | `data/style.json` `meter` | done |
 
 ## Strings written by the agent
 
@@ -102,3 +106,15 @@ Each reader-visible string the agent wrote, with its key, for the person to read
 | `text.action.jump` | Jump |
 | `text.action.whirl` | Whirlwind Strike |
 | `text.no_webgl` | This page needs WebGL 2. Try another browser. |
+| `text.arena5.title` | The reed bank |
+| `text.arena5.c1` | Past the gate the road follows the lake through the reeds. |
+| `text.arena5.c2` | Something violet watches from the far bank, and two young dogs run ahead of it. |
+| `text.arena5.c3` | It spits bolts of light and runs when you come close. Catch it, and one blow will stagger it. |
+| `text.arena6.title` | The causeway |
+| `text.arena6.c1` | The carts reach the causeway as night falls. |
+| `text.arena6.c2` | The violet caster is back, and two large dogs walk with it. |
+| `text.arena6.c3` | These two will not wait their turn. Keep moving. |
+| `text.sandbox.spawn_caster` | Spawn a caster |
+| `text.style.top` | Best rank on the meter |
+| `text.style.rank.*` | Stellar, Ace, Bold, Crisp, Dull (S to D) |
+| `text.style.bites` | Hits taken (was Bites taken; bolts count too) |

@@ -56,7 +56,8 @@ Tokens (`tools/tokens.py`): | 2026-11-18 14:35 | 07850e6c | 254 calls | 155k at 
 
 - T1: the camera sits up and to the hero's side (6 m back, 1.2 m aside, 1.5 m up, `data/look.json`), and the mouse or right stick steers it; lock-on turns it toward the target only after 90 quiet ticks.
 - T6: air combos (an air hit opens the next air move; the hero hangs while the chain holds; the air launcher slams) and a per-fight style grade (R6.1, R6.2).
-- T7, T8 open: Arena 5 (a caster and two young dogs) and Arena 6 (a caster and two large dogs that may attack together).
+- T9: a live style meter on the right that fills as style is earned and drains when it stops (R9.1); the end-of-fight grade stays.
+- T7: Arena 5, the caster (R7.1, R7.2): bolts with a glowing wind-up, flees within 7 m, every hit staggers it. T8: Arena 6, a caster and two large dogs; the pack holds two tokens there (R8.1 for the scripted player).
 - T5: Tab cycles the lock-on target clockwise; middle click and I toggle lock-on; `tab_cycles_the_lock_clockwise`. Pads unchanged (R1 and R3 toggle).
 - T4: Arena 4, four dogs and a fighting large dog at once (`large_dog`, R5.1). Person: whether the sandbox's "Spawn a large dog" should spawn the fighting kind (R5.1).
 - T3: the sandbox's spawn tools were out of reach of the locked mouse. Escape now opens a pause card that carries them; `sandbox_pause_card_spawns`.

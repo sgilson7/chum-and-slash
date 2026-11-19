@@ -1,380 +1,443 @@
 [
-  {
-    "name": "an empty title is refused",
-    "file": "crates/core/src/page.rs",
-    "find": "if strings.title.trim().is_empty() {",
-    "replace": "if false {",
-    "test": "an_empty_title_is_rejected_by_name"
-  },
-  {
-    "name": "an unknown action is refused",
-    "file": "crates/core/src/api.rs",
-    "find": "other => return Err(format!(\"Unknown action \\\"{other}\\\".\")),",
-    "replace": "_ => {}",
-    "test": "act_refuses_an_unknown_action"
-  },
-  {
-    "name": "a hit plays no hit sound",
-    "file": "crates/core/src/world.rs",
-    "find": "self.sound(&hit_name, combo_index.clamp(0, 5), e_id);",
-    "replace": "let _ = (&hit_name, combo_index);",
-    "test": "every_landed_hit_is_told_four_ways"
-  },
-  {
-    "name": "a hit gives no hit-stop",
-    "file": "crates/core/src/world.rs",
-    "find": "let hs = spec.hitstop.min(cap);",
-    "replace": "let hs = 0 * cap;",
-    "test": "every_landed_hit_is_told_four_ways"
-  },
-  {
-    "name": "a swing plays no miss sound",
-    "file": "crates/core/src/world.rs",
-    "find": "let s = if act.name == \"whirl\" { \"whirl\" } else { \"swing\" };",
-    "replace": "let s = \"hit_light\";",
-    "test": "a_miss_sounds_unlike_a_hit"
-  },
-  {
-    "name": "ground moves cost stamina",
-    "file": "crates/core/src/world.rs",
-    "find": "if spec.stamina > 0 {",
-    "replace": "if true {\n            self.hero.stamina -= 1;\n        }\n        if spec.stamina > 0 {",
-    "test": "only_sprint_air_moves_and_abilities_spend_stamina"
-  },
-  {
-    "name": "air hits deal no bonus",
-    "file": "crates/core/src/world.rs",
-    "find": "let dmg = if was_air { spec.damage * 3 / 2 } else { spec.damage };",
-    "replace": "let dmg = spec.damage;",
-    "test": "air_hits_deal_half_again"
-  },
-  {
-    "name": "a launcher lifts anything",
-    "file": "crates/core/src/world.rs",
-    "find": "} else if spec.launches && stunned_before {",
-    "replace": "} else if spec.launches {",
-    "test": "launcher_lifts_only_a_stunned_enemy"
-  },
-  {
-    "name": "the light cap is gone",
-    "file": "crates/core/src/world.rs",
-    "find": "&& (c.light_run >= cs.cap_light",
-    "replace": "&& (c.light_run >= 99",
-    "test": "light_string_caps_at_four"
-  },
-  {
-    "name": "the heavy cap is gone",
-    "file": "crates/core/src/world.rs",
-    "find": "|| c.heavy_run >= cs.cap_heavy",
-    "replace": "|| c.heavy_run >= 99",
-    "test": "heavy_caps_at_three"
-  },
-  {
-    "name": "the total cap is gone",
-    "file": "crates/core/src/world.rs",
-    "find": "|| c.presses.len() as u32 >= cs.cap_total);",
-    "replace": "|| c.presses.len() as u32 >= 99);",
-    "test": "interleaved_caps_at_six"
-  },
-  {
-    "name": "a move starts in recovery",
-    "file": "crates/core/src/world.rs",
-    "find": "            self.hero.combo.recovery -= 1;\n            self.hero.combo.buffer = None;\n            self.hero.anim.step(false);",
-    "replace": "            self.hero.combo.recovery -= 1;\n            self.hero.combo.recovery = 0;\n            self.hero.anim.step(false);",
-    "test": "no_attack_starts_in_recovery"
-  },
-  {
-    "name": "combos are not recognised",
-    "file": "crates/core/src/world.rs",
-    "find": "self.events.push(ev(\"combo\", &n));",
-    "replace": "let _ = n;",
-    "test": "first_combos_perform_from_their_inputs"
-  },
-  {
-    "name": "attacks carry no one forward",
-    "file": "crates/core/src/world.rs",
-    "find": "self.hero.pos = self.hero.pos.add(dir.scale(f));",
-    "replace": "let _ = (dir, f);",
-    "test": "every_attack_moves_its_attacker_forward"
-  },
-  {
-    "name": "hits push no one back",
-    "file": "crates/core/src/world.rs",
-    "find": "e.knock_ticks = push_ticks;",
-    "replace": "e.knock_ticks = 0 * push_ticks;",
-    "test": "every_landed_hit_pushes_its_target_back"
-  },
-  {
-    "name": "the stun outlives the string",
-    "file": "crates/core/src/world.rs",
-    "find": "                e.stun = e.stun.min(tail);",
-    "replace": "                e.stun = e.stun.max(tail);",
-    "test": "stun_lasts_while_the_combo_lasts"
-  },
-  {
-    "name": "the whirl stuns nothing",
-    "file": "crates/core/src/world.rs",
-    "find": "let one_hit = espec.poise == 0 || spec.stuns;",
-    "replace": "let one_hit = espec.poise == 0 && !spec.stuns && !spec.ability;",
-    "test": "whirl_stuns_every_dog_in_reach"
-  },
-  {
-    "name": "the combo does not kill",
-    "file": "crates/core/src/world.rs",
-    "find": "Some(c) => finishing.as_deref() == Some(c.as_str()) && spec.launches,",
-    "replace": "Some(_) => false,",
-    "test": "the_launcher_combo_kills_the_injured_dog"
-  },
-  {
-    "name": "dogs never lunge",
-    "file": "data/pilots.json",
-    "find": "{\"if\": [\"has_token\", {\"gap_below\": 450}], \"do\": \"lunge\"},\n   {\"if\": [\"has_token\"], \"do\": \"approach\"},\n   {\"if\": [{\"gap_above\": 650}], \"do\": \"approach\"},\n   {\"if\": [{\"gap_below\": 300}], \"do\": \"back_off\"},\n   {\"if\": [{\"chance\": 50}], \"do\": \"strafe_left\"},\n   {\"do\": \"strafe_right\"}\n  ]},\n  \"pup\"",
-    "replace": "{\"if\": [{\"gap_above\": 650}], \"do\": \"approach\"},\n   {\"do\": \"strafe_right\"}\n  ]},\n  \"pup\"",
-    "test": "dog_lunges_after_strafing"
-  },
-  {
-    "name": "the volley does not reach the dogs",
-    "file": "crates/core/src/pilot.rs",
-    "find": "volley: w.pack.volleyed.contains(&e.id),",
-    "replace": "volley: false,",
-    "test": "tutorial_volley_attacks_together"
-  },
-  {
-    "name": "a stunned dog still lunges",
-    "file": "crates/core/src/world.rs",
-    "find": "            State::Stunned => {\n                if e.stun > 0 {",
-    "replace": "            State::Stunned => {\n                pilot::act(e, pilot::Intent::Lunge, hero_pos, clips, &dm);\n                if e.stun > 0 {",
-    "test": "a_stunned_dog_sends_nothing_until_the_stun_ends"
-  },
-  {
-    "name": "lock-on cannot be released",
-    "file": "crates/core/src/world.rs",
-    "find": "            self.hero.lock_on = !self.hero.lock_on;",
-    "replace": "            self.hero.lock_on = true;",
-    "test": "lock_on_starts_with_the_fight_and_toggles"
-  },
-  {
-    "name": "the knock never settles",
-    "file": "crates/core/src/world.rs",
-    "find": "    if n.len() < QUIET {",
-    "replace": "    if n.len() < 0 {",
-    "test": "the_camera_knock_rings_to_exactly_nothing"
-  },
-  {
-    "name": "the pilot reacts at once",
-    "file": "crates/core/src/pilot.rs",
-    "find": "        let seen = *self.seen.front().unwrap_or(&now);",
-    "replace": "        let seen = now;",
-    "test": "a_pilot_acts_on_what_it_saw_reaction_ticks_ago"
-  },
-  {
-    "name": "interrupts are ignored",
-    "file": "crates/core/src/pilot.rs",
-    "find": "        let interrupt = if self.current.is_some() {\n            self.pick(&seen, true)",
-    "replace": "        let interrupt = if self.current.is_some() && false {\n            self.pick(&seen, true)",
-    "test": "a_running_move_holds_until_an_interrupt"
-  },
-  {
-    "name": "trees lose their stun rule",
-    "file": "data/pilots.json",
-    "find": "\"dog\": {\"reaction\": 12, \"rules\": [\n   {\"if\": [\"me_stunned\"], \"do\": \"reel\", \"interrupt\": true},",
-    "replace": "\"dog\": {\"reaction\": 12, \"rules\": [",
-    "test": "every_enemy_kind_has_idle_stunned_airborne"
-  },
-  {
-    "name": "the generator differs from Vagrancy's",
-    "file": "crates/core/src/pilot.rs",
-    "find": "        x ^= x << 25;",
-    "replace": "        x ^= x << 24;",
-    "test": "parity_with_vagrancy_rng"
-  },
-  {
-    "name": "the trousers lose their stripes",
-    "file": "crates/core/src/model.rs",
-    "find": "\"stripes\" => STYLE_STRIPES,",
-    "replace": "\"stripes\" => STYLE_PLAIN,",
-    "test": "hero_model_has_the_described_parts_and_colours"
-  },
-  {
-    "name": "the offset never dies",
-    "file": "crates/core/src/clip.rs",
-    "find": "ONE - (10 * s3 - 15 * s4 + 6 * s5)",
-    "replace": "ONE - (10 * s3 - 15 * s4 + 5 * s5)",
-    "test": "inertialization_reaches_zero_on_its_last_tick"
-  },
-  {
-    "name": "clips snap between poses",
-    "file": "crates/core/src/clip.rs",
-    "find": "        let k = decay(self.blend_age, self.blend_len);",
-    "replace": "        let k = 0 * decay(self.blend_age, self.blend_len);",
-    "test": "no_joint_jumps_through_a_change_of_clip"
-  },
-  {
-    "name": "easing is ignored",
-    "file": "crates/core/src/clip.rs",
-    "find": "let s = ease(b.ease, ((t - a.tick) as i64 * ONE as i64 / span as i64) as i32);",
-    "replace": "let s = ease(Ease::In, ((t - a.tick) as i64 * ONE as i64 / span as i64) as i32);",
-    "test": "clip_samples_match_hand_worked_keys"
-  },
-  {
-    "name": "round 1: no rest between lunges",
-    "file": "crates/core/src/pilot.rs",
-    "find": "                e.brain.cooldown = LUNGE_COOLDOWN;",
-    "replace": "                e.brain.cooldown = 0;",
-    "test": "a_dog_rests_between_lunges"
-  },
-  {
-    "name": "round 1: locomotion cuts the hurt clip",
-    "file": "crates/core/src/world.rs",
-    "find": "if self.hero.act.is_none() && self.hero.combo.recovery == 0 && !hurting {",
-    "replace": "if self.hero.act.is_none() && self.hero.combo.recovery == 0 && (hurting || !hurting) {",
-    "test": "a_bite_plays_the_hurt_clip_through"
-  },
-  {
-    "name": "round 1: an early jump is dropped",
-    "file": "crates/core/src/world.rs",
-    "find": "            self.hero.jump_buffer = if age >= self.rules.combo.buffer {",
-    "replace": "            self.hero.jump_buffer = if age >= 0 {",
-    "test": "an_early_jump_waits_for_the_cancel"
-  },
-  {
-    "name": "round 1: every whirl hit stops the hero",
-    "file": "crates/core/src/world.rs",
-    "find": "        if first_contact {\n            self.hero.hitstop = hs;",
-    "replace": "        if first_contact || !first_contact {\n            self.hero.hitstop = hs;",
-    "test": "the_whirl_stops_the_hero_once"
-  },
-  {
-    "name": "round 1: a stale token still lunges",
-    "file": "crates/core/src/pilot.rs",
-    "find": "    if mv.as_ref().is_some_and(|(n, _)| n == \"lunge\") && !holds_now {",
-    "replace": "    if mv.as_ref().is_some_and(|(n, _)| n == \"lunge\") && !holds_now && false {",
-    "test": "pack_gives_one_token_normally"
-  },
-  {
-    "name": "round 1: the injured dog stands up",
-    "file": "crates/core/src/world.rs",
-    "find": "state: if injured { State::Stunned } else { State::Idle },",
-    "replace": "state: State::Idle,",
-    "test": "the_injured_dog_stays_down_and_stunned"
-  },
-  {
-    "name": "round 3: the buffer ages before it is tried",
-    "file": "crates/core/src/world.rs",
-    "find": "        if self.hero.combo.recovery > 0 {\n            self.hero.combo.recovery -= 1;",
-    "replace": "        if let Some((_, age)) = self.hero.combo.buffer.as_mut() {\n            *age += 1;\n        }\n        if self.hero.combo.recovery > 0 {\n            self.hero.combo.recovery -= 1;",
-    "test": "a_press_the_buffer_length_early_still_comes_out"
-  },
-  {
-    "name": "round 3: hits do not shake",
-    "file": "crates/core/src/world.rs",
-    "find": "        e.shake = spec.shake;\n        e.shake_mm = model::mm(spec.shake_mm);",
-    "replace": "        e.shake = 0;\n        e.shake_mm = 0;",
-    "test": "every_hit_shakes_its_target_by_the_move"
-  },
-  {
-    "name": "round 4: hits do not flinch",
-    "file": "crates/core/src/world.rs",
-    "find": "        e.flinch_deg = spec.flinch_deg;\n        e.flinch_left = self.rules.flinch_fade;\n        let slam_speed = per_tick(self.rules.air.slam_mm_s);\n        if died {",
-    "replace": "        e.flinch_deg = spec.flinch_deg;\n        e.flinch_left = 0;\n        let slam_speed = per_tick(self.rules.air.slam_mm_s);\n        if died {",
-    "test": "every_hit_flinches_its_target_and_the_flinch_fades"
-  },
-  {
-    "name": "round 5: kills do not react",
-    "file": "crates/core/src/world.rs",
-    "find": "        e.flinch_deg = spec.flinch_deg;\n        e.flinch_left = self.rules.flinch_fade;\n        let slam_speed = per_tick(self.rules.air.slam_mm_s);\n        if died {",
-    "replace": "        e.flinch_deg = if died { 0 } else { spec.flinch_deg };\n        e.flinch_left = self.rules.flinch_fade;\n        let slam_speed = per_tick(self.rules.air.slam_mm_s);\n        if died {",
-    "test": "a_killing_blow_reacts_too"
-  },
-  {
-    "name": "T1: lock-on overrides the player's camera",
-    "file": "crates/core/src/world.rs",
-    "find": "let player_steers = self.look_idle < self.rules.camera_follow_after;",
-    "replace": "let player_steers = false;",
-    "test": "look_input_holds_the_camera_against_lock_on"
-  },
-  {
-    "name": "T1: the camera sits behind the hero's back",
-    "file": "crates/core/src/game.rs",
-    "find": "let pivot = chest.add(right.scale(mm(c.side_mm)));",
-    "replace": "let pivot = chest;",
-    "test": "the_camera_sits_up_and_to_the_side"
-  },
-  {
-    "name": "T2: a capped move can be cancelled",
-    "file": "crates/core/src/world.rs",
-    "find": "            Some(a) if a.capped => false,\n            Some(a) => {",
-    "replace": "            Some(a) => {",
-    "test": "mashing_light_still_reaches_the_cap"
-  },
-  {
-    "name": "the sandbox pause card has no spawn tools",
-    "file": "crates/core/src/game.rs",
-    "find": "if self.paused_from == Screen::Sandbox {",
-    "replace": "if false {",
-    "test": "sandbox_pause_card_spawns"
-  },
-  {
-    "name": "arena 4's large dog is the injured one",
-    "file": "data/arenas.json",
-    "find": "{\"kind\": \"large_dog\", \"x_mm\": 0, \"z_mm\": -11000, \"tree\": \"\"}",
-    "replace": "{\"kind\": \"big_dog\", \"x_mm\": 0, \"z_mm\": -11000, \"tree\": \"\"}",
-    "test": "arena4_is_four_dogs_and_a_large_dog_at_once"
-  },
-  {
-    "name": "Tab only toggles lock-on",
-    "file": "crates/core/src/world.rs",
-    "find": "            } else if let Some(next) = self.next_target() {",
-    "replace": "            } else if let Some(next) = None {",
-    "test": "tab_cycles_the_lock_clockwise"
-  },
-  {
-    "name": "Tab cycles anticlockwise",
-    "file": "crates/core/src/world.rs",
-    "find": "let d = (from - yaw_of(e.pos.sub(p))) & (fx::TURN - 1);",
-    "replace": "let d = (yaw_of(e.pos.sub(p)) - from) & (fx::TURN - 1);",
-    "test": "tab_cycles_the_lock_clockwise"
-  },
-  {
-    "name": "an air hit opens nothing",
-    "file": "crates/core/src/world.rs",
-    "find": "\"light\" if chained => [\"air_light\", \"air_light_2\", \"air_light_3\"][n % 3].to_string(),",
-    "replace": "\"light\" if chained => \"air_light\".to_string(),",
-    "test": "an_air_hit_opens_the_next_air_move"
-  },
-  {
-    "name": "an air combo does not hold the hero up",
-    "file": "crates/core/src/world.rs",
-    "find": "self.hero.vel.y = self.hero.vel.y.max(0);",
-    "replace": "self.hero.vel.y = self.hero.vel.y.max(i32::MIN);",
-    "test": "an_air_combo_keeps_the_hero_up"
-  },
-  {
-    "name": "a slammed dog lies down the usual time",
-    "file": "crates/core/src/world.rs",
-    "find": "self.rules.air.slam_landed\n",
-    "replace": "stun.landed\n",
-    "test": "the_air_launcher_slams"
-  },
-  {
-    "name": "the style grade ignores hits",
-    "file": "crates/core/src/style.rs",
-    "find": "self.points += h.damage * pct / 100;",
-    "replace": "self.points += 0;",
-    "test": "hits_score_by_hand"
-  },
-  {
-    "name": "a repeated string scores in full",
-    "file": "crates/core/src/style.rs",
-    "find": "pct = pct * spec.stale_pct / 100;",
-    "replace": "pct = pct * 100 / 100;",
-    "test": "a_repeated_string_scores_half"
-  },
-  {
-    "name": "the fight does not feed the style",
-    "file": "crates/core/src/world.rs",
-    "find": "                damage: dealt,",
-    "replace": "                damage: 0,",
-    "test": "the_fight_feeds_the_style_grade"
-  }
+ {
+  "name": "an empty title is refused",
+  "file": "crates/core/src/page.rs",
+  "find": "if strings.title.trim().is_empty() {",
+  "replace": "if false {",
+  "test": "an_empty_title_is_rejected_by_name"
+ },
+ {
+  "name": "an unknown action is refused",
+  "file": "crates/core/src/api.rs",
+  "find": "other => return Err(format!(\"Unknown action \\\"{other}\\\".\")),",
+  "replace": "_ => {}",
+  "test": "act_refuses_an_unknown_action"
+ },
+ {
+  "name": "a hit plays no hit sound",
+  "file": "crates/core/src/world.rs",
+  "find": "self.sound(&hit_name, combo_index.clamp(0, 5), e_id);",
+  "replace": "let _ = (&hit_name, combo_index);",
+  "test": "every_landed_hit_is_told_four_ways"
+ },
+ {
+  "name": "a hit gives no hit-stop",
+  "file": "crates/core/src/world.rs",
+  "find": "let hs = spec.hitstop.min(cap);",
+  "replace": "let hs = 0 * cap;",
+  "test": "every_landed_hit_is_told_four_ways"
+ },
+ {
+  "name": "a swing plays no miss sound",
+  "file": "crates/core/src/world.rs",
+  "find": "let s = if act.name == \"whirl\" { \"whirl\" } else { \"swing\" };",
+  "replace": "let s = \"hit_light\";",
+  "test": "a_miss_sounds_unlike_a_hit"
+ },
+ {
+  "name": "ground moves cost stamina",
+  "file": "crates/core/src/world.rs",
+  "find": "if spec.stamina > 0 {",
+  "replace": "if true {\n            self.hero.stamina -= 1;\n        }\n        if spec.stamina > 0 {",
+  "test": "only_sprint_air_moves_and_abilities_spend_stamina"
+ },
+ {
+  "name": "air hits deal no bonus",
+  "file": "crates/core/src/world.rs",
+  "find": "let dmg = if was_air { spec.damage * 3 / 2 } else { spec.damage };",
+  "replace": "let dmg = spec.damage;",
+  "test": "air_hits_deal_half_again"
+ },
+ {
+  "name": "a launcher lifts anything",
+  "file": "crates/core/src/world.rs",
+  "find": "} else if spec.launches && stunned_before {",
+  "replace": "} else if spec.launches {",
+  "test": "launcher_lifts_only_a_stunned_enemy"
+ },
+ {
+  "name": "the light cap is gone",
+  "file": "crates/core/src/world.rs",
+  "find": "&& (c.light_run >= cs.cap_light",
+  "replace": "&& (c.light_run >= 99",
+  "test": "light_string_caps_at_four"
+ },
+ {
+  "name": "the heavy cap is gone",
+  "file": "crates/core/src/world.rs",
+  "find": "|| c.heavy_run >= cs.cap_heavy",
+  "replace": "|| c.heavy_run >= 99",
+  "test": "heavy_caps_at_three"
+ },
+ {
+  "name": "the total cap is gone",
+  "file": "crates/core/src/world.rs",
+  "find": "|| c.presses.len() as u32 >= cs.cap_total);",
+  "replace": "|| c.presses.len() as u32 >= 99);",
+  "test": "interleaved_caps_at_six"
+ },
+ {
+  "name": "a move starts in recovery",
+  "file": "crates/core/src/world.rs",
+  "find": "            self.hero.combo.recovery -= 1;\n            self.hero.combo.buffer = None;\n            self.hero.anim.step(false);",
+  "replace": "            self.hero.combo.recovery -= 1;\n            self.hero.combo.recovery = 0;\n            self.hero.anim.step(false);",
+  "test": "no_attack_starts_in_recovery"
+ },
+ {
+  "name": "combos are not recognised",
+  "file": "crates/core/src/world.rs",
+  "find": "self.events.push(ev(\"combo\", &n));",
+  "replace": "let _ = n;",
+  "test": "first_combos_perform_from_their_inputs"
+ },
+ {
+  "name": "attacks carry no one forward",
+  "file": "crates/core/src/world.rs",
+  "find": "self.hero.pos = self.hero.pos.add(dir.scale(f));",
+  "replace": "let _ = (dir, f);",
+  "test": "every_attack_moves_its_attacker_forward"
+ },
+ {
+  "name": "hits push no one back",
+  "file": "crates/core/src/world.rs",
+  "find": "e.knock_ticks = push_ticks;",
+  "replace": "e.knock_ticks = 0 * push_ticks;",
+  "test": "every_landed_hit_pushes_its_target_back"
+ },
+ {
+  "name": "the stun outlives the string",
+  "file": "crates/core/src/world.rs",
+  "find": "                e.stun = e.stun.min(tail);",
+  "replace": "                e.stun = e.stun.max(tail);",
+  "test": "stun_lasts_while_the_combo_lasts"
+ },
+ {
+  "name": "the whirl stuns nothing",
+  "file": "crates/core/src/world.rs",
+  "find": "let one_hit = espec.poise == 0 || spec.stuns;",
+  "replace": "let one_hit = espec.poise == 0 && !spec.stuns && !spec.ability;",
+  "test": "whirl_stuns_every_dog_in_reach"
+ },
+ {
+  "name": "the combo does not kill",
+  "file": "crates/core/src/world.rs",
+  "find": "Some(c) => finishing.as_deref() == Some(c.as_str()) && spec.launches,",
+  "replace": "Some(_) => false,",
+  "test": "the_launcher_combo_kills_the_injured_dog"
+ },
+ {
+  "name": "dogs never lunge",
+  "file": "data/pilots.json",
+  "find": "{\"if\": [\"has_token\", {\"gap_below\": 450}], \"do\": \"lunge\"},\n   {\"if\": [\"has_token\"], \"do\": \"approach\"},\n   {\"if\": [{\"gap_above\": 650}], \"do\": \"approach\"},\n   {\"if\": [{\"gap_below\": 300}], \"do\": \"back_off\"},\n   {\"if\": [{\"chance\": 50}], \"do\": \"strafe_left\"},\n   {\"do\": \"strafe_right\"}\n  ]},\n  \"pup\"",
+  "replace": "{\"if\": [{\"gap_above\": 650}], \"do\": \"approach\"},\n   {\"do\": \"strafe_right\"}\n  ]},\n  \"pup\"",
+  "test": "dog_lunges_after_strafing"
+ },
+ {
+  "name": "the volley does not reach the dogs",
+  "file": "crates/core/src/pilot.rs",
+  "find": "volley: w.pack.volleyed.contains(&e.id),",
+  "replace": "volley: false,",
+  "test": "tutorial_volley_attacks_together"
+ },
+ {
+  "name": "a stunned dog still lunges",
+  "file": "crates/core/src/world.rs",
+  "find": "            State::Stunned => {\n                if e.stun > 0 {",
+  "replace": "            State::Stunned => {\n                pilot::act(e, pilot::Intent::Lunge, hero_pos, clips, &dm);\n                if e.stun > 0 {",
+  "test": "a_stunned_dog_sends_nothing_until_the_stun_ends"
+ },
+ {
+  "name": "lock-on cannot be released",
+  "file": "crates/core/src/world.rs",
+  "find": "            self.hero.lock_on = !self.hero.lock_on;",
+  "replace": "            self.hero.lock_on = true;",
+  "test": "lock_on_starts_with_the_fight_and_toggles"
+ },
+ {
+  "name": "the knock never settles",
+  "file": "crates/core/src/world.rs",
+  "find": "    if n.len() < QUIET {",
+  "replace": "    if n.len() < 0 {",
+  "test": "the_camera_knock_rings_to_exactly_nothing"
+ },
+ {
+  "name": "the pilot reacts at once",
+  "file": "crates/core/src/pilot.rs",
+  "find": "        let seen = *self.seen.front().unwrap_or(&now);",
+  "replace": "        let seen = now;",
+  "test": "a_pilot_acts_on_what_it_saw_reaction_ticks_ago"
+ },
+ {
+  "name": "interrupts are ignored",
+  "file": "crates/core/src/pilot.rs",
+  "find": "        let interrupt = if self.current.is_some() {\n            self.pick(&seen, true)",
+  "replace": "        let interrupt = if self.current.is_some() && false {\n            self.pick(&seen, true)",
+  "test": "a_running_move_holds_until_an_interrupt"
+ },
+ {
+  "name": "trees lose their stun rule",
+  "file": "data/pilots.json",
+  "find": "\"dog\": {\"reaction\": 12, \"rules\": [\n   {\"if\": [\"me_stunned\"], \"do\": \"reel\", \"interrupt\": true},",
+  "replace": "\"dog\": {\"reaction\": 12, \"rules\": [",
+  "test": "every_enemy_kind_has_idle_stunned_airborne"
+ },
+ {
+  "name": "the generator differs from Vagrancy's",
+  "file": "crates/core/src/pilot.rs",
+  "find": "        x ^= x << 25;",
+  "replace": "        x ^= x << 24;",
+  "test": "parity_with_vagrancy_rng"
+ },
+ {
+  "name": "the trousers lose their stripes",
+  "file": "crates/core/src/model.rs",
+  "find": "\"stripes\" => STYLE_STRIPES,",
+  "replace": "\"stripes\" => STYLE_PLAIN,",
+  "test": "hero_model_has_the_described_parts_and_colours"
+ },
+ {
+  "name": "the offset never dies",
+  "file": "crates/core/src/clip.rs",
+  "find": "ONE - (10 * s3 - 15 * s4 + 6 * s5)",
+  "replace": "ONE - (10 * s3 - 15 * s4 + 5 * s5)",
+  "test": "inertialization_reaches_zero_on_its_last_tick"
+ },
+ {
+  "name": "clips snap between poses",
+  "file": "crates/core/src/clip.rs",
+  "find": "        let k = decay(self.blend_age, self.blend_len);",
+  "replace": "        let k = 0 * decay(self.blend_age, self.blend_len);",
+  "test": "no_joint_jumps_through_a_change_of_clip"
+ },
+ {
+  "name": "easing is ignored",
+  "file": "crates/core/src/clip.rs",
+  "find": "let s = ease(b.ease, ((t - a.tick) as i64 * ONE as i64 / span as i64) as i32);",
+  "replace": "let s = ease(Ease::In, ((t - a.tick) as i64 * ONE as i64 / span as i64) as i32);",
+  "test": "clip_samples_match_hand_worked_keys"
+ },
+ {
+  "name": "round 1: no rest between lunges",
+  "file": "crates/core/src/pilot.rs",
+  "find": "                e.brain.cooldown = LUNGE_COOLDOWN;",
+  "replace": "                e.brain.cooldown = 0;",
+  "test": "a_dog_rests_between_lunges"
+ },
+ {
+  "name": "round 1: locomotion cuts the hurt clip",
+  "file": "crates/core/src/world.rs",
+  "find": "if self.hero.act.is_none() && self.hero.combo.recovery == 0 && !hurting {",
+  "replace": "if self.hero.act.is_none() && self.hero.combo.recovery == 0 && (hurting || !hurting) {",
+  "test": "a_bite_plays_the_hurt_clip_through"
+ },
+ {
+  "name": "round 1: an early jump is dropped",
+  "file": "crates/core/src/world.rs",
+  "find": "            self.hero.jump_buffer = if age >= self.rules.combo.buffer {",
+  "replace": "            self.hero.jump_buffer = if age >= 0 {",
+  "test": "an_early_jump_waits_for_the_cancel"
+ },
+ {
+  "name": "round 1: every whirl hit stops the hero",
+  "file": "crates/core/src/world.rs",
+  "find": "        if first_contact {\n            self.hero.hitstop = hs;",
+  "replace": "        if first_contact || !first_contact {\n            self.hero.hitstop = hs;",
+  "test": "the_whirl_stops_the_hero_once"
+ },
+ {
+  "name": "round 1: a stale token still lunges",
+  "file": "crates/core/src/pilot.rs",
+  "find": "    if mv.as_ref().is_some_and(|(n, _)| n == \"lunge\") && !holds_now {",
+  "replace": "    if mv.as_ref().is_some_and(|(n, _)| n == \"lunge\") && !holds_now && false {",
+  "test": "pack_gives_one_token_normally"
+ },
+ {
+  "name": "round 1: the injured dog stands up",
+  "file": "crates/core/src/world.rs",
+  "find": "state: if injured { State::Stunned } else { State::Idle },",
+  "replace": "state: State::Idle,",
+  "test": "the_injured_dog_stays_down_and_stunned"
+ },
+ {
+  "name": "round 3: the buffer ages before it is tried",
+  "file": "crates/core/src/world.rs",
+  "find": "        if self.hero.combo.recovery > 0 {\n            self.hero.combo.recovery -= 1;",
+  "replace": "        if let Some((_, age)) = self.hero.combo.buffer.as_mut() {\n            *age += 1;\n        }\n        if self.hero.combo.recovery > 0 {\n            self.hero.combo.recovery -= 1;",
+  "test": "a_press_the_buffer_length_early_still_comes_out"
+ },
+ {
+  "name": "round 3: hits do not shake",
+  "file": "crates/core/src/world.rs",
+  "find": "        e.shake = spec.shake;\n        e.shake_mm = model::mm(spec.shake_mm);",
+  "replace": "        e.shake = 0;\n        e.shake_mm = 0;",
+  "test": "every_hit_shakes_its_target_by_the_move"
+ },
+ {
+  "name": "round 4: hits do not flinch",
+  "file": "crates/core/src/world.rs",
+  "find": "        e.flinch_deg = spec.flinch_deg;\n        e.flinch_left = self.rules.flinch_fade;\n        let slam_speed = per_tick(self.rules.air.slam_mm_s);\n        if died {",
+  "replace": "        e.flinch_deg = spec.flinch_deg;\n        e.flinch_left = 0;\n        let slam_speed = per_tick(self.rules.air.slam_mm_s);\n        if died {",
+  "test": "every_hit_flinches_its_target_and_the_flinch_fades"
+ },
+ {
+  "name": "round 5: kills do not react",
+  "file": "crates/core/src/world.rs",
+  "find": "        e.flinch_deg = spec.flinch_deg;\n        e.flinch_left = self.rules.flinch_fade;\n        let slam_speed = per_tick(self.rules.air.slam_mm_s);\n        if died {",
+  "replace": "        e.flinch_deg = if died { 0 } else { spec.flinch_deg };\n        e.flinch_left = self.rules.flinch_fade;\n        let slam_speed = per_tick(self.rules.air.slam_mm_s);\n        if died {",
+  "test": "a_killing_blow_reacts_too"
+ },
+ {
+  "name": "T1: lock-on overrides the player's camera",
+  "file": "crates/core/src/world.rs",
+  "find": "let player_steers = self.look_idle < self.rules.camera_follow_after;",
+  "replace": "let player_steers = false;",
+  "test": "look_input_holds_the_camera_against_lock_on"
+ },
+ {
+  "name": "T1: the camera sits behind the hero's back",
+  "file": "crates/core/src/game.rs",
+  "find": "let pivot = chest.add(right.scale(mm(c.side_mm)));",
+  "replace": "let pivot = chest;",
+  "test": "the_camera_sits_up_and_to_the_side"
+ },
+ {
+  "name": "T2: a capped move can be cancelled",
+  "file": "crates/core/src/world.rs",
+  "find": "            Some(a) if a.capped => false,\n            Some(a) => {",
+  "replace": "            Some(a) => {",
+  "test": "mashing_light_still_reaches_the_cap"
+ },
+ {
+  "name": "the sandbox pause card has no spawn tools",
+  "file": "crates/core/src/game.rs",
+  "find": "if self.paused_from == Screen::Sandbox {",
+  "replace": "if false {",
+  "test": "sandbox_pause_card_spawns"
+ },
+ {
+  "name": "arena 4's large dog is the injured one",
+  "file": "data/arenas.json",
+  "find": "{\"kind\": \"large_dog\", \"x_mm\": 0, \"z_mm\": -11000, \"tree\": \"\"}",
+  "replace": "{\"kind\": \"big_dog\", \"x_mm\": 0, \"z_mm\": -11000, \"tree\": \"\"}",
+  "test": "arena4_is_four_dogs_and_a_large_dog_at_once"
+ },
+ {
+  "name": "Tab only toggles lock-on",
+  "file": "crates/core/src/world.rs",
+  "find": "            } else if let Some(next) = self.next_target() {",
+  "replace": "            } else if let Some(next) = None {",
+  "test": "tab_cycles_the_lock_clockwise"
+ },
+ {
+  "name": "Tab cycles anticlockwise",
+  "file": "crates/core/src/world.rs",
+  "find": "let d = (from - yaw_of(e.pos.sub(p))) & (fx::TURN - 1);",
+  "replace": "let d = (yaw_of(e.pos.sub(p)) - from) & (fx::TURN - 1);",
+  "test": "tab_cycles_the_lock_clockwise"
+ },
+ {
+  "name": "an air hit opens nothing",
+  "file": "crates/core/src/world.rs",
+  "find": "\"light\" if chained => [\"air_light\", \"air_light_2\", \"air_light_3\"][n % 3].to_string(),",
+  "replace": "\"light\" if chained => \"air_light\".to_string(),",
+  "test": "an_air_hit_opens_the_next_air_move"
+ },
+ {
+  "name": "an air combo does not hold the hero up",
+  "file": "crates/core/src/world.rs",
+  "find": "self.hero.vel.y = self.hero.vel.y.max(0);",
+  "replace": "self.hero.vel.y = self.hero.vel.y.max(i32::MIN);",
+  "test": "an_air_combo_keeps_the_hero_up"
+ },
+ {
+  "name": "a slammed dog lies down the usual time",
+  "file": "crates/core/src/world.rs",
+  "find": "self.rules.air.slam_landed\n",
+  "replace": "stun.landed\n",
+  "test": "the_air_launcher_slams"
+ },
+ {
+  "name": "the style grade ignores hits",
+  "file": "crates/core/src/style.rs",
+  "find": "        let scored = h.damage * pct / 100;",
+  "replace": "        let scored = 0;",
+  "test": "hits_score_by_hand"
+ },
+ {
+  "name": "a repeated string scores in full",
+  "file": "crates/core/src/style.rs",
+  "find": "pct = pct * spec.stale_pct / 100;",
+  "replace": "pct = pct * 100 / 100;",
+  "test": "a_repeated_string_scores_half"
+ },
+ {
+  "name": "the fight does not feed the style",
+  "file": "crates/core/src/world.rs",
+  "find": "                damage: dealt,",
+  "replace": "                damage: 0,",
+  "test": "the_fight_feeds_the_style_grade"
+ },
+ {
+  "name": "the meter never drains",
+  "file": "crates/core/src/style.rs",
+  "find": "            self.gauge_by(spec, -1);",
+  "replace": "            self.gauge_by(spec, 0);",
+  "test": "the_meter_fills_holds_and_drains"
+ },
+ {
+  "name": "the meter has no grace",
+  "file": "crates/core/src/style.rs",
+  "find": "        if self.quiet > m.grace_ticks &&",
+  "replace": "        if self.quiet > 0 &&",
+  "test": "the_meter_fills_holds_and_drains"
+ },
+ {
+  "name": "a bolt does no damage",
+  "file": "crates/core/src/world.rs",
+  "find": "            damage: c.damage,",
+  "replace": "            damage: 0,",
+  "test": "a_caster_spits_a_bolt_that_hurts"
+ },
+ {
+  "name": "a bolt hits at any height",
+  "file": "crates/core/src/world.rs",
+  "find": "            let level = b.pos.y >= hp.y - b.radius && b.pos.y <= hp.y + b.body + b.radius;",
+  "replace": "            let level = true;",
+  "test": "a_bolt_passes_under_a_jump"
+ },
+ {
+  "name": "the caster shrugs off a hit",
+  "file": "data/combat.json",
+  "find": "   \"poise\": 0,\n   \"radius_mm\": 420,",
+  "replace": "   \"poise\": 3,\n   \"radius_mm\": 420,",
+  "test": "one_hit_breaks_a_cast"
+ },
+ {
+  "name": "the caster flees toward the hero",
+  "file": "crates/core/src/pilot.rs",
+  "find": "            let way = dir.neg().add(side.scale(ONE / 2)).norm();",
+  "replace": "            let way = dir.add(side.scale(ONE / 2)).norm();",
+  "test": "a_caster_runs_from_a_close_hero"
+ },
+ {
+  "name": "the caster never rests",
+  "file": "crates/core/src/pilot.rs",
+  "find": "                    clips[\"dog_cast\"].len + spec.cast.as_ref().map_or(LUNGE_COOLDOWN, |c| c.gap);",
+  "replace": "                    0;",
+  "test": "a_caster_rests_between_bolts"
+ },
+ {
+  "name": "the pack holds one token whatever its size",
+  "file": "crates/core/src/pilot.rs",
+  "find": "            if self.holders.len() >= self.size.max(1) {",
+  "replace": "            if self.holders.len() >= 1 {",
+  "test": "a_pack_of_two_lets_both_large_dogs_attack_at_once"
+ },
+ {
+  "name": "the arena's attackers are ignored",
+  "file": "crates/core/src/game.rs",
+  "find": "        self.world.pack.size = a.attackers;\n",
+  "replace": "",
+  "test": "arena6_is_a_caster_and_two_large_dogs_both_attacking"
+ }
 ]

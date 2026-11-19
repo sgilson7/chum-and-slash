@@ -39,9 +39,16 @@ pub struct ArenaSpec {
     pub spawn: Vec<SpawnSpec>,
     pub beats: Vec<Beat>,
     pub strip: Vec<String>,
+    /// how many dogs may attack at once (T8); one when unsaid
+    #[serde(default = "one_attacker")]
+    pub attackers: usize,
     pub sky: [i32; 3],
     pub fog: [i32; 3],
     pub backdrop: Backdrop,
+}
+
+fn one_attacker() -> usize {
+    1
 }
 
 #[derive(Debug, Clone, Deserialize)]
@@ -460,6 +467,7 @@ impl Game {
         self.in_sandbox = false;
         let a = self.arenas[i].clone();
         self.fresh_world(a.sky, a.fog, &a.backdrop);
+        self.world.pack.size = a.attackers;
         for (k, s) in a.spawn.iter().enumerate() {
             if let Ok(id) = self.world.spawn(&s.kind, v3(mm(s.x_mm), 0, mm(s.z_mm)), fx::HALF) {
                 if !s.tree.is_empty() {
@@ -708,6 +716,8 @@ impl Game {
             }
             Screen::Fight | Screen::Sandbox => {
                 let h = &w.hero;
+                // the live style meter: its rank, and the fill toward the next
+                let (rank, fill) = w.style.meter(&w.style_rules);
                 out["hud"] = json!({
                     "health": h.health.max(0) * 100 / w.rules.hero.health,
                     "stamina": h.stamina * 100 / w.rules.stamina.max,
@@ -716,14 +726,21 @@ impl Game {
                     "lock": h.lock.is_some(),
                     "lock_label": self.t("hud.lock"),
                     "recovery": h.combo.recovery > 0,
-                    "style": w.style.grade(&w.style_rules).unwrap_or(""),
-                    "style_label": self.t("hud.style"),
+                    "style": {
+                        "rank": rank,
+                        "word": self.t(&format!("style.rank.{rank}")),
+                        "fill": fill,
+                        "rose": w.style.rose > 0,
+                        "fell": w.style.fell > 0,
+                        "label": self.t("hud.style"),
+                    },
                 });
                 if self.in_sandbox {
                     out["buttons"] = json!([
                         btn("sandbox.spawn_dog", "spawn", "dog"),
                         btn("sandbox.spawn_pup", "spawn", "pup"),
                         btn("sandbox.spawn_big", "spawn", "big_dog"),
+                        btn("sandbox.spawn_caster", "spawn", "caster"),
                         btn("sandbox.clear", "clear", ""),
                         btn("menu", "menu", ""),
                     ]);
@@ -758,6 +775,13 @@ impl Game {
                     self.t(if last { "won.last" } else { "won" }),
                     format!("{}: {}", self.t("style.grade"), grade),
                     format!(
+                        "{}: {}",
+                        self.t("style.top"),
+                        st.top
+                            .map(|i| w.style_rules.meter.ranks[i].0.as_str())
+                            .unwrap_or("D")
+                    ),
+                    format!(
                         "{}: {}.{} s · {}: {} · {}: {} · {}: {} · {}: {}",
                         self.t("style.air"),
                         st.air_ticks / 60,
@@ -788,6 +812,7 @@ impl Game {
                         btn("sandbox.spawn_dog", "spawn", "dog"),
                         btn("sandbox.spawn_pup", "spawn", "pup"),
                         btn("sandbox.spawn_big", "spawn", "big_dog"),
+                        btn("sandbox.spawn_caster", "spawn", "caster"),
                         btn("sandbox.clear", "clear", ""),
                     ]);
                 }
@@ -877,7 +902,7 @@ mod tests {
     #[test]
     fn data_files_load() {
         let g = Game::new();
-        assert_eq!(g.arenas.len(), 4, "the prologue's four arenas");
+        assert_eq!(g.arenas.len(), 6, "the prologue's six arenas");
         assert!(g.text.contains_key("title"));
     }
 
@@ -923,7 +948,10 @@ mod tests {
             .iter()
             .map(|b| b["act"].as_str().unwrap())
             .collect();
-        assert_eq!(acts, ["resume", "spawn", "spawn", "spawn", "clear", "menu"]);
+        assert_eq!(
+            acts,
+            ["resume", "spawn", "spawn", "spawn", "spawn", "clear", "menu"]
+        );
         let before = g.world.enemies.len();
         g.act("spawn", "dog").unwrap();
         assert_eq!(g.world.enemies.len(), before + 1);
@@ -1012,6 +1040,38 @@ mod tests {
         Game::new().arenas.len()
     }
 
+    /// T7: Arena 5 is a caster and two young dogs; the caster staggers
+    /// from any hit and takes no attack token.
+    #[test]
+    fn arena5_is_a_caster_and_two_young_dogs() {
+        let mut g = Game::new();
+        g.act("arena", "4").unwrap();
+        g.act("skip", "").unwrap();
+        let mut kinds: Vec<&str> = g.world.enemies.iter().map(|e| e.kind.as_str()).collect();
+        kinds.sort();
+        assert_eq!(kinds, ["caster", "pup", "pup"]);
+        assert_eq!(g.world.pack.size, 1);
+        let c = &g.world.rules.enemies["caster"];
+        assert_eq!(c.poise, 0, "easily staggered");
+        assert!(c.cast.is_some() && !c.attacks);
+    }
+
+    /// T8: Arena 6 is a caster and two large dogs, and its pack lets two
+    /// attack at once; the pack size survives a retry.
+    #[test]
+    fn arena6_is_a_caster_and_two_large_dogs_both_attacking() {
+        let mut g = Game::new();
+        g.act("arena", "5").unwrap();
+        g.act("skip", "").unwrap();
+        let mut kinds: Vec<&str> = g.world.enemies.iter().map(|e| e.kind.as_str()).collect();
+        kinds.sort();
+        assert_eq!(kinds, ["caster", "large_dog", "large_dog"]);
+        assert_eq!(g.world.pack.size, 2);
+        g.world.pack.size = 1;
+        g.retry();
+        assert_eq!(g.world.pack.size, 2, "the checkpoint keeps the pack");
+    }
+
     /// Arena 4 (Sam, 2026-11-18): four dogs and one large dog, all in the
     /// fight at once, and the large one fights back (unlike Arena 3's
     /// injured dog).
@@ -1059,6 +1119,8 @@ mod tests {
 
     /// A scripted player clears each arena (M7.3): it locks on and strikes
     /// whenever it can, answering each tutorial prompt with its button.
+    /// Since Arena 6 (T8), when a dog leaps at it from within 4.5 m and it
+    /// has the stamina, it whirls, as a player who reads the lunge would.
     #[test]
     fn bot_clears_each_arena() {
         for i in 0..g_arenas() {
@@ -1088,8 +1150,18 @@ mod tests {
                     e.pos.sub(g.world.hero.pos).len_xz()
                         < fx::mul(fx::int(3), e.scale(&g.world.rules)) + fx::int(1)
                 });
+                let hp = g.world.hero.pos;
+                let leaping = g.world.enemies.iter().any(|e| {
+                    e.state == crate::world::State::Idle
+                        && e.anim.clip == "dog_lunge"
+                        && (16..34).contains(&e.anim.tick)
+                        && e.pos.sub(hp).len_xz() < fx::int(9) / 2
+                });
+                let can_whirl = g.world.hero.stamina >= g.world.rules.moves["whirl"].stamina;
                 let mut bits = 0;
-                if let Some(b) = ask {
+                if leaping && ready && can_whirl && ask.is_none() && strip.is_empty() {
+                    bits = B_MOD | B_LIGHT;
+                } else if let Some(b) = ask {
                     if t % 2 == 0 {
                         bits = b;
                     }

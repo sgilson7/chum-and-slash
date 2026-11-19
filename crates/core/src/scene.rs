@@ -16,7 +16,7 @@ use crate::mesh::Mesh;
 use crate::model::{mm, rgb255, STYLE_PLAIN};
 use crate::render::{standing, Batch, Rgb, LAYER_INKED, LAYER_PLAIN};
 use crate::rng::Rng;
-use crate::world::{State, World};
+use crate::world::{mouth, State, World};
 
 pub fn m(n: i32) -> i32 {
     fx::int(n)
@@ -77,12 +77,15 @@ pub fn bodies(w: &World, alpha: i32, out: &mut Batch) {
         let r =
             root(e.prev_pos, e.pos, e.prev_yaw, e.yaw, alpha, lift).then(&Affine::translate(v3(shake, 0, 0)));
         let dim = e.state == State::Dead;
+        let espec = e.spec(&w.rules);
         for (i, a) in dm.parts_at(&r, &pose, scale) {
             let p = &dm.parts[i];
+            // a kind may wear other colours on the shared dog (T7's caster)
+            let rgb = espec.recolour.get(&p.colour).map_or(p.rgb, |c| rgb255(*c));
             let rgb = if dim {
-                [p.rgb[0] / 2, p.rgb[1] / 2, p.rgb[2] / 2]
+                [rgb[0] / 2, rgb[1] / 2, rgb[2] / 2]
             } else {
-                p.rgb
+                rgb
             };
             out.push(
                 LAYER_INKED,
@@ -92,6 +95,36 @@ pub fn bodies(w: &World, alpha: i32, out: &mut Batch) {
                 if dim { STYLE_PLAIN } else { p.style },
             );
         }
+    }
+    // a caster's charge: a glow at its mouth that swells until the bolt
+    // leaves, so the bolt can be seen coming (T7)
+    for e in &w.enemies {
+        let Some(c) = e.spec(&w.rules).cast.as_ref() else {
+            continue;
+        };
+        if e.state != State::Idle || e.anim.clip != "dog_cast" || e.bit {
+            continue;
+        }
+        let first = w.clips["dog_cast"].events.phases.map_or(1, |p| p[1]).max(1);
+        let grow = (e.anim.tick as i32 * ONE / first as i32).clamp(0, ONE);
+        let size = fx::mul(mm(c.radius_mm) * 2, grow);
+        let p = mouth(c, lerp_v(e.prev_pos, e.pos, alpha), e.yaw, e.scale(&w.rules));
+        let a = Affine::translate(p).then(&Affine::scale(v3(size, size, size)));
+        out.tint(Mesh::Sphere, &a, rgb255(c.rgb), ONE * 3 / 4);
+    }
+    // bolts: a bright core in a coloured glow
+    for b in &w.bolts {
+        let p = lerp_v(b.prev_pos, b.pos, alpha);
+        let core = Affine::translate(p).then(&Affine::scale(v3(b.radius, b.radius, b.radius)));
+        out.push(
+            LAYER_PLAIN,
+            Mesh::Sphere,
+            &core,
+            rgb255([255, 255, 255]),
+            STYLE_PLAIN,
+        );
+        let glow = Affine::translate(p).then(&Affine::scale(v3(b.radius * 2, b.radius * 2, b.radius * 2)));
+        out.tint(Mesh::Sphere, &glow, rgb255(b.rgb), ONE * 3 / 4);
     }
     // the lock-on mark: a ring on the ground under the target
     if let Some(t) = w.hero.lock.and_then(|id| w.enemy(id)) {

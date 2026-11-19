@@ -48,6 +48,17 @@
    {"if": ["me_stunned"], "do": "reel", "interrupt": true},
    {"if": ["me_airborne"], "do": "tumble", "interrupt": true},
    {"do": "idle"}
+  ]},
+  "caster": {"reaction": 14, "rules": [
+   {"if": ["me_stunned"], "do": "reel", "interrupt": true},
+   {"if": ["me_airborne"], "do": "tumble", "interrupt": true},
+   {"if": [{"gap_above": 2600}], "do": "idle"},
+   {"if": [{"gap_below": 700}], "do": "flee", "interrupt": true},
+   {"if": [{"gap_above": 2000}], "do": "approach"},
+   {"if": ["ready"], "do": "cast"},
+   {"if": [{"gap_below": 1100}], "do": "flee"},
+   {"if": [{"chance": 50}], "do": "strafe_left"},
+   {"do": "strafe_right"}
   ]}
  }
 }

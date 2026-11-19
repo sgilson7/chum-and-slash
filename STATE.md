@@ -6,17 +6,15 @@ Commit: fc0d22d
 
 ## Where the build is
 
-Deployed: https://sgilson7.github.io/chum-and-slash/ from 98f6240 (public repo sgilson7/chum-and-slash, gh-pages); live browser check passed in three engines. All milestones M0-M8 built. Five feel rounds with three playtester subagents each: all "almost", none "feels great" (journal Feel rounds). Journal artifact https://claude.ai/artifact/HFNKrsPgkiULwcmrmEADUx (republish after each entry; publish with files for img/build/*.png).
+Deployed: https://sgilson7.github.io/chum-and-slash/ (public repo sgilson7/chum-and-slash, gh-pages); live browser check passes in three engines after each deploy. Six arenas: 1-3 tutorial, 4 four dogs and a large dog, 5 a caster and two young dogs (T7), 6 a caster and two large dogs with a pack of two (T8). Air combos, slam and style grade (T6); a live style meter on the right (T9). 63 breaks, all caught. Journal artifact https://claude.ai/artifact/HFNKrsPgkiULwcmrmEADUx (republish after each entry; publish with files for img/build/*.png).
 
 ## Decisions in force
 
-Rules CS-1..CS-20 (CLAUDE.md). All questions on defaults; CS-Q23-25 answered A. Deploy grant: chum-and-slash after check.sh. Notebook R1.1-R3.2; person rows R1.16 (story text).
+Rules CS-1..CS-20 (CLAUDE.md). Deploy grant: chum-and-slash after check.sh. Notebook rows through R9.1; person rows R1.16 (story text, strings list at the foot of SECOND-ORDER.md) and R5.1 (sandbox large-dog button). T1-T9 done.
 
 ## What is next
 
-T1 (camera up and to the side; player steers it) T2 (a capped move cannot be cancelled, so mashing reaches the recovery) T3 (the sandbox pause card carries the spawn tools) T4 (Arena 4: four dogs and a large dog at once) T5 (Tab cycles targets) and T6 (air combos, slam, style grade) done. Next: T7 (Arena 5, the caster: bolts, flees, staggers easily, with two young dogs), then T8 (Arena 6: a caster and two large dogs, both allowed to attack at once; the pack gives one token today, `pilot.rs` `Pack`).
-
-Feel round 6: "a kill frees the hero" (drop queued presses and the cap's recovery when nothing is left alive), then the death clip's return to standing, then air dead time. Sam's call: the lesson's launcher kills vs lifts.
+Wait for Sam's play of Arenas 5 and 6 and the meter. Open ideas, none asked for: a humanoid caster (R7.1), feel round 6 "a kill frees the hero", Sam's call on the lesson launcher kills vs lifts.
 
 ## Cards the next session needs
 

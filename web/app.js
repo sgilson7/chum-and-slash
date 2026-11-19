@@ -158,8 +158,21 @@ function drawUi(force) {
   if (ui.hud) {
     const items = [meter(ui.hud.health_label, ui.hud.health, "health"), meter(ui.hud.stamina_label, ui.hud.stamina, "stamina")];
     if (ui.hud.lock) items.push(make("span", "lock", `◎ ${ui.hud.lock_label}`));
-    if (ui.hud.style) items.push(make("span", "style", `${ui.hud.style_label} ${ui.hud.style}`));
     hud.replaceChildren(...items);
+  }
+  // the style meter keeps its elements, so its fill eases and its pop
+  // plays once per rank change
+  const style = el("style");
+  const s = ui.hud && ui.hud.style;
+  style.hidden = !s;
+  if (s) {
+    style.dataset.rank = s.rank;
+    style.classList.toggle("rose", s.rose);
+    style.classList.toggle("fell", s.fell);
+    style.querySelector(".style-label").textContent = s.label;
+    style.querySelector(".style-rank").textContent = s.rank;
+    style.querySelector(".style-word").textContent = s.word;
+    style.querySelector(".style-fill").style.width = `${s.fill}%`;
   }
   const tools = el("tools");
   tools.hidden = !(ui.screen === "sandbox" && ui.buttons);

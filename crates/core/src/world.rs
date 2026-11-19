@@ -117,6 +117,51 @@ pub struct EnemySpec {
     pub dies_on_combo: Option<String>,
     #[serde(default)]
     pub injured: bool,
+    /// a caster's bolts (T7); none for a dog that bites
+    #[serde(default)]
+    pub cast: Option<CastSpec>,
+    /// colours of the shared dog model this kind wears instead, by name
+    #[serde(default)]
+    pub recolour: BTreeMap<String, [i32; 3]>,
+}
+
+/// A caster's bolt and its pace (T7): it spits a bolt from its mouth at
+/// the hero's chest, rests `gap` ticks between bolts, and runs at
+/// `flee_mm_s` when the hero comes close.
+#[derive(Debug, Clone, Deserialize)]
+pub struct CastSpec {
+    pub damage: i32,
+    pub speed_mm_s: i32,
+    pub radius_mm: i32,
+    pub life: u32,
+    pub gap: u32,
+    pub flee_mm_s: i32,
+    pub mouth_up_mm: i32,
+    pub mouth_ahead_mm: i32,
+    /// the hero's body, for a bolt's hit: this tall from the feet
+    pub body_mm: i32,
+    pub rgb: [i32; 3],
+}
+
+/// Where a caster's bolt leaves and its charge glows: ahead of and above
+/// its feet, by its size (T7).
+pub fn mouth(c: &CastSpec, at: V3, yaw: i32, scale: i32) -> V3 {
+    let up = fx::mul(model::mm(c.mouth_up_mm), scale);
+    let ahead = fx::mul(model::mm(c.mouth_ahead_mm), scale);
+    at.add(v3(0, up, 0)).add(facing(yaw, 0).scale(ahead))
+}
+
+/// A bolt in flight (T7).
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct Bolt {
+    pub pos: V3,
+    pub prev_pos: V3,
+    pub vel: V3,
+    pub life: u32,
+    pub damage: i32,
+    pub radius: i32,
+    pub body: i32,
+    pub rgb: [i32; 3],
 }
 
 #[derive(Debug, Clone, Deserialize)]
@@ -448,6 +493,7 @@ pub struct World {
     pub rumble_rank: u32,
     /// the pack's attack tokens (M4.4)
     pub pack: pilot::Pack,
+    pub bolts: Vec<Bolt>,
     /// T6: this fight's style
     pub style_rules: StyleSpec,
     pub style: Style,
@@ -506,6 +552,7 @@ impl World {
             rumble_until: 0,
             rumble_rank: 0,
             pack: pilot::Pack::default(),
+            bolts: Vec::new(),
             style_rules: StyleSpec::shipped(),
             style: Style::default(),
             events: Vec::new(),
@@ -616,6 +663,7 @@ impl World {
             self.look_idle = self.look_idle.saturating_add(1);
         }
         self.cam_pitch = (self.cam_pitch + input.look_pitch).clamp(-fx::deg(40), fx::deg(20));
+        self.style.tick(&self.style_rules);
         self.lock_on(pressed);
         self.hero_moves(input, pressed);
         self.hero_motion(input, pressed);
@@ -625,6 +673,7 @@ impl World {
         }
         self.hits();
         self.bites();
+        self.bolts_fly();
         self.prev_knock = self.knock;
         self.knock = ring(self.knock);
     }
@@ -1148,6 +1197,8 @@ impl World {
             Intent::Hold
         };
         let hero_pos = self.hero.pos;
+        let espec = self.rules.enemies[&self.enemies[i].kind].clone();
+        let mut release = None;
         let clips = &self.clips;
         let e = &mut self.enemies[i];
         if e.brain.cooldown > 0 {
@@ -1223,7 +1274,15 @@ impl World {
             State::Idle => {
                 // the tree decides what a dog does (CS-10); `attacks` only
                 // keeps the pack's tokens from a dog that never attacks
-                pilot::act(e, intent, hero_pos, clips, &dm);
+                pilot::act(e, intent, hero_pos, clips, &dm, &espec);
+                // a caster's bolt leaves its mouth on the clip's hit tick (T7)
+                if e.anim.clip == "dog_cast" && !e.bit && clips["dog_cast"].hits_at(e.anim.tick) {
+                    e.bit = true;
+                    release = espec
+                        .cast
+                        .clone()
+                        .map(|c| (c, e.pos, e.yaw, espec.scale_pct * ONE / 100));
+                }
             }
         }
         if e.state != State::Airborne {
@@ -1236,6 +1295,52 @@ impl World {
             let q = p.norm().scale(r);
             e.pos.x = q.x;
             e.pos.z = q.z;
+        }
+        if let Some((c, at, yaw, scale)) = release {
+            self.release_bolt(&c, at, yaw, scale);
+        }
+    }
+
+    /// A bolt leaves the caster's mouth aimed at the middle of the hero's
+    /// body where the hero stands now (T7).
+    fn release_bolt(&mut self, c: &CastSpec, at: V3, yaw: i32, scale: i32) {
+        let from = mouth(c, at, yaw, scale);
+        let body = model::mm(c.body_mm);
+        let target = self.hero.pos.add(v3(0, body / 2, 0));
+        let vel = target.sub(from).norm().scale(per_tick(c.speed_mm_s));
+        self.bolts.push(Bolt {
+            pos: from,
+            prev_pos: from,
+            vel,
+            life: c.life,
+            damage: c.damage,
+            radius: model::mm(c.radius_mm),
+            body,
+            rgb: c.rgb,
+        });
+        self.sound("cast", 0, self.bolts.len() as u32);
+    }
+
+    /// Bolts fly straight; one that reaches the hero's body hurts the
+    /// hero and is spent. A bolt passes under a jump or beside a step
+    /// aside (T7).
+    fn bolts_fly(&mut self) {
+        let hp = self.hero.pos;
+        let mut struck = Vec::new();
+        for b in self.bolts.iter_mut() {
+            b.prev_pos = b.pos;
+            b.pos = b.pos.add(b.vel);
+            b.life = b.life.saturating_sub(1);
+            let beside = b.pos.sub(hp).len_xz() <= b.radius;
+            let level = b.pos.y >= hp.y - b.radius && b.pos.y <= hp.y + b.body + b.radius;
+            if beside && level {
+                struck.push(b.damage);
+                b.life = 0;
+            }
+        }
+        self.bolts.retain(|b| b.life > 0 && b.pos.y > 0);
+        for d in struck {
+            self.hurt("zap", d);
         }
     }
 
@@ -1459,21 +1564,27 @@ impl World {
             }
         }
         for b in bitten {
-            self.style.bitten(&self.style_rules, b);
-            self.hero.health -= b;
-            self.hero.hitstop = 3;
-            self.sound("bite", 0, 7);
-            self.rumble("hurt");
-            if self.hero.act.is_none() {
-                self.hero.anim.play(&self.clips, &self.models["hero"], "hurt", 12);
-            }
-            self.events.push(Event {
-                kind: "bitten",
-                name: "hero".into(),
-                a: b,
-                b: self.hero.health,
-            });
+            self.hurt("bite", b);
         }
+    }
+
+    /// The hero takes a bite or a bolt: health, hit-stop, the sound, the
+    /// rumble, the hurt clip if nothing else plays, and the style meter.
+    fn hurt(&mut self, sound: &str, b: i32) {
+        self.style.bitten(&self.style_rules, b);
+        self.hero.health -= b;
+        self.hero.hitstop = 3;
+        self.sound(sound, 0, 7);
+        self.rumble("hurt");
+        if self.hero.act.is_none() {
+            self.hero.anim.play(&self.clips, &self.models["hero"], "hurt", 12);
+        }
+        self.events.push(Event {
+            kind: "bitten",
+            name: "hero".into(),
+            a: b,
+            b: self.hero.health,
+        });
     }
 
     // ------------------------------------------------------------ words

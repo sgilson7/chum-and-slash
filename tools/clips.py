@@ -284,6 +284,21 @@ def dog():
         d(66, "inout"),
     ), root=[[0, 0, 0], [18, -150, -120], [30, 2600, 300], [36, 3000, 0], [66, 3000, 0]],
         events={"hit": [30, 35], "phases": [18, 36, 46]})
+    # T7, the caster's bolt: it rears with its jaw opening (the telegraph,
+    # 28 ticks), snaps its head forward to spit the bolt (tick 32), and
+    # settles. A hit before tick 32 stuns it and the bolt never leaves.
+    charge = dict(neck=(-40, 0, 0), head=(-15, 0, 0), jaw=(30, 0, 0), fl_hip=(-30, 0, 0), fr_hip=(-30, 0, 0),
+                  fl_knee=(-40, 0, 0), fr_knee=(-40, 0, 0), bl_knee=(-20, 0, 0), br_knee=(-20, 0, 0), tail=(35, 0, 0))
+    thrust = dict(neck=(30, 0, 0), head=(10, 0, 0), jaw=(45, 0, 0), fl_hip=(20, 0, 0), fr_hip=(20, 0, 0),
+                  bl_knee=(-20, 0, 0), br_knee=(-20, 0, 0), tail=(-10, 0, 0))
+    c["dog_cast"] = clip(58, merge(
+        d(0),
+        d(18, "out", **charge),
+        d(28, "inout", **dict(charge, neck=(-45, 0, 0), jaw=(38, 0, 0))),
+        d(32, "linear", **thrust),
+        d(40, "out", **dict(thrust, jaw=(10, 0, 0))),
+        d(58, "inout"),
+    ), events={"hit": [32, 33], "phases": [28, 32, 40]})
     # Round 2 (the animator): the recoil is keyed on the tick of contact and
     # entered as a cut, so the hit-stop holds a dog that has taken the blow
     c["dog_hurt"] = clip(14, merge(d(0, "linear", neck=(-30, 0, 0), head=(-25, 0, 0), chest=(0, 0, 8)), d(14, "out")),

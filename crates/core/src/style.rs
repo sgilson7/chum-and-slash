@@ -22,6 +22,22 @@ pub struct StyleSpec {
     pub air_ticks_per_point: u32,
     pub bitten_times: i32,
     pub grades: Vec<(String, i32)>,
+    pub meter: MeterSpec,
+}
+
+/// The live style meter (T6 follow-up): it fills with the points a hit,
+/// a combo or air time scores, holds for `grace_ticks` after the last
+/// gain, then drains one point every `drain_every` ticks; a bite knocks
+/// `bite_times` its damage off. Its rank is the highest of `ranks` the
+/// gauge has reached.
+#[derive(Debug, Clone, Deserialize)]
+pub struct MeterSpec {
+    pub ranks: Vec<(String, i32)>,
+    pub max: i32,
+    pub grace_ticks: u32,
+    pub drain_every: u32,
+    pub bite_times: i32,
+    pub flash_ticks: u32,
 }
 
 impl StyleSpec {
@@ -55,6 +71,14 @@ pub struct Style {
     pub combos: u32,
     pub bites: u32,
     pub longest_air_chain: u32,
+    /// the live meter: its points, ticks since it last gained, the best
+    /// rank it reached (an index into `meter.ranks`, highest first), and
+    /// ticks left of the flash after a rank rises or falls
+    pub gauge: i32,
+    pub quiet: u32,
+    pub top: Option<usize>,
+    pub rose: u32,
+    pub fell: u32,
 }
 
 impl Style {
@@ -83,6 +107,57 @@ impl Style {
         }
     }
 
+    /// The meter's rank index for a gauge value: the first rank, highest
+    /// first, whose floor the gauge has reached.
+    fn rank_at(spec: &StyleSpec, gauge: i32) -> usize {
+        let r = &spec.meter.ranks;
+        r.iter().position(|(_, at)| gauge >= *at).unwrap_or(r.len() - 1)
+    }
+
+    /// Moves the gauge by `n`, kept in [0, max], and flashes a change of rank.
+    fn gauge_by(&mut self, spec: &StyleSpec, n: i32) {
+        let before = Self::rank_at(spec, self.gauge);
+        self.gauge = (self.gauge + n).clamp(0, spec.meter.max);
+        let after = Self::rank_at(spec, self.gauge);
+        if n > 0 {
+            self.quiet = 0;
+        }
+        if after < before {
+            self.rose = spec.meter.flash_ticks;
+            self.fell = 0;
+            self.top = Some(self.top.map_or(after, |t| t.min(after)));
+        } else if after > before {
+            self.fell = spec.meter.flash_ticks;
+            self.rose = 0;
+        }
+    }
+
+    /// One tick of the fight: the meter holds, then drains.
+    pub fn tick(&mut self, spec: &StyleSpec) {
+        self.quiet = self.quiet.saturating_add(1);
+        self.rose = self.rose.saturating_sub(1);
+        self.fell = self.fell.saturating_sub(1);
+        let m = &spec.meter;
+        if self.quiet > m.grace_ticks && (self.quiet - m.grace_ticks).is_multiple_of(m.drain_every.max(1)) {
+            self.gauge_by(spec, -1);
+        }
+    }
+
+    /// The meter now: its rank's letter, and how far the gauge is from
+    /// that rank's floor to the next rank's (or to the top), in percent.
+    pub fn meter<'a>(&self, spec: &'a StyleSpec) -> (&'a str, i32) {
+        let r = &spec.meter.ranks;
+        let i = Self::rank_at(spec, self.gauge);
+        let lo = r[i].1;
+        let hi = if i == 0 { spec.meter.max } else { r[i - 1].1 };
+        let pct = if hi > lo {
+            (self.gauge - lo) * 100 / (hi - lo)
+        } else {
+            100
+        };
+        (r[i].0.as_str(), pct.clamp(0, 100))
+    }
+
     pub fn hit(&mut self, spec: &StyleSpec, h: &HitKind) {
         let mut pct = spec.base_pct;
         if h.air_move {
@@ -100,7 +175,9 @@ impl Style {
         if self.stale() {
             pct = pct * spec.stale_pct / 100;
         }
-        self.points += h.damage * pct / 100;
+        let scored = h.damage * pct / 100;
+        self.points += scored;
+        self.gauge_by(spec, scored);
         self.dealt += h.damage;
         self.most_at_once = self.most_at_once.max(h.nth_target + 1);
         if h.slam && h.nth_target == 0 {
@@ -111,6 +188,7 @@ impl Style {
     pub fn combo(&mut self, spec: &StyleSpec) {
         self.combos += 1;
         self.points += spec.combo_points;
+        self.gauge_by(spec, spec.combo_points);
     }
 
     /// One tick in the air with an air combo going.
@@ -118,12 +196,14 @@ impl Style {
         self.air_ticks += 1;
         if self.air_ticks.is_multiple_of(spec.air_ticks_per_point.max(1)) {
             self.points += 1;
+            self.gauge_by(spec, 1);
         }
     }
 
     pub fn bitten(&mut self, spec: &StyleSpec, bite: i32) {
         self.bites += 1;
         self.points = (self.points - bite * spec.bitten_times).max(0);
+        self.gauge_by(spec, -bite * spec.meter.bite_times);
     }
 
     /// Points per point of damage dealt, in percent; 0 before any hit.
@@ -238,5 +318,52 @@ mod tests {
         st.bitten(&s, 8);
         assert_eq!(st.points, 74);
         assert_eq!(st.grade(&s), Some("D"));
+    }
+
+    /// The meter by hand from data/style.json's meter: ranks D 0, C 40,
+    /// B 100, A 180, S 280, max 400. A slam of 30 on an airborne dog's
+    /// second target scores 30 x 325% = 97: C, at (97-40)/(100-40) = 95%.
+    /// It holds 90 ticks, then drains 1 every 3 ticks: after 90 + 3 x 57
+    /// ticks it sits at 40 (still C, 0%), and 3 ticks more drop it to D.
+    /// A bite of 10 takes 10 x 5 = 50.
+    #[test]
+    fn the_meter_fills_holds_and_drains() {
+        let s = StyleSpec::shipped();
+        let mut st = Style::default();
+        assert_eq!(st.meter(&s), ("D", 0));
+        st.hit(
+            &s,
+            &HitKind {
+                damage: 30,
+                air_move: true,
+                airborne_target: true,
+                nth_target: 1,
+                slam: true,
+            },
+        );
+        assert_eq!(st.gauge, 97);
+        assert_eq!(st.meter(&s), ("C", 95));
+        assert_eq!(st.rose, s.meter.flash_ticks);
+        assert_eq!(st.top, Some(3));
+        for _ in 0..90 {
+            st.tick(&s);
+        }
+        assert_eq!(st.gauge, 97, "it holds through the grace");
+        for _ in 0..(3 * 57) {
+            st.tick(&s);
+        }
+        assert_eq!(st.meter(&s), ("C", 0));
+        for _ in 0..3 {
+            st.tick(&s);
+        }
+        assert_eq!(st.meter(&s), ("D", 97));
+        assert_eq!(st.fell, s.meter.flash_ticks);
+        assert_eq!(st.top, Some(3), "the best rank stays");
+        st.bitten(&s, 10);
+        assert_eq!(st.gauge, 0);
+        st.gauge = 395;
+        st.combo(&s);
+        assert_eq!(st.gauge, 400, "the gauge stops at its max");
+        assert_eq!(st.meter(&s), ("S", 100));
     }
 }
