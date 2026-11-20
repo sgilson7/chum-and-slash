@@ -1,0 +1,9 @@
+{
+ "_about": "T17: the background music. tracks are the files under web/ the page plays in turn, starting over after the last (T37). build.sh drops a track from dist/ when its file is absent, so the page asks for nothing that is not there. ship false keeps the tracks out of a publish: publish.sh deletes them from the published copy (R17.1, CS-Q27). Since T27 they ship: Sam has the owners' permission for non-monetized use (CS-Q27 B; T37 for the second track), and the files are in git.",
+ "tracks": [
+  "music/theme.mp3"
+ ],
+ "ship": true,
+ "max": 100,
+ "volume": 60
+}

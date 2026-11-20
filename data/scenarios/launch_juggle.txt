@@ -1,0 +1,10 @@
+# Stun, launch, jump, air string.
+spawn dog 0 -1600
+tree 0 big_dog
+press 2 light
+press 30 launcher
+press 62 jump
+press 72 light
+press 84 light
+press 96 heavy
+end 220

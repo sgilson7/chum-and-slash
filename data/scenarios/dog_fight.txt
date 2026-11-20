@@ -1,0 +1,10 @@
+# One dog strafes and lunges; the hero answers with a light string after each lunge.
+spawn dog 0 -5000
+press 120 light
+press 134 light
+press 150 heavy
+press 260 light
+press 274 light
+press 290 light
+press 306 light
+end 420

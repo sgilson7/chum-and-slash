@@ -1,0 +1,6332 @@
+{
+ "_about": "The story's fights by chapter (T14: chapters, map places), and the sandbox. Distances in mm; colours 0-255. Cutscene lines are keys into data/text.json.",
+ "chapters": [
+  {
+   "id": "prologue",
+   "title": "chapter.prologue",
+   "label_at": [
+    255,
+    975
+   ],
+   "world": 1
+  },
+  {
+   "id": "road",
+   "title": "chapter.road",
+   "label_at": [
+    640,
+    760
+   ],
+   "world": 1
+  },
+  {
+   "id": "quarry",
+   "title": "chapter.quarry",
+   "label_at": [
+    610,
+    60
+   ],
+   "world": 1
+  },
+  {
+   "id": "shore",
+   "title": "chapter.shore",
+   "label_at": [
+    250,
+    440
+   ],
+   "world": 1
+  },
+  {
+   "id": "finale",
+   "title": "chapter.finale",
+   "label_at": [
+    200,
+    45
+   ],
+   "world": 1
+  },
+  {
+   "id": "pit",
+   "title": "chapter.pit",
+   "label_at": [
+    260,
+    980
+   ],
+   "world": 2
+  },
+  {
+   "id": "docks",
+   "title": "chapter.docks",
+   "label_at": [
+    560,
+    670
+   ],
+   "world": 2
+  },
+  {
+   "id": "beacon",
+   "title": "chapter.beacon",
+   "label_at": [
+    520,
+    120
+   ],
+   "world": 2
+  },
+  {
+   "id": "training",
+   "title": "chapter.training",
+   "label_at": [
+    400,
+    905
+   ],
+   "world": 1
+  }
+ ],
+ "map": {
+  "side": 1000,
+  "r": 34,
+  "name_below": 72,
+  "mark_right": 58,
+  "drill_r": 21
+ },
+ "arenas": [
+  {
+   "id": "arena1",
+   "title": "arena1.title",
+   "chapter": "prologue",
+   "map": [
+    130,
+    830
+   ],
+   "lines": [
+    "arena1.c1",
+    "arena1.c2",
+    "arena1.c3"
+   ],
+   "spawn": [
+    {
+     "kind": "pup",
+     "x_mm": 0,
+     "z_mm": -9000,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "a1.light",
+     "action": "light",
+     "trigger": "dog_leaps"
+    }
+   ],
+   "strip": [],
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 11,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "arena2",
+   "title": "arena2.title",
+   "chapter": "prologue",
+   "map": [
+    340,
+    790
+   ],
+   "lines": [
+    "arena2.c1",
+    "arena2.c2",
+    "arena2.c3"
+   ],
+   "spawn": [
+    {
+     "kind": "dog",
+     "x_mm": 0,
+     "z_mm": -7000,
+     "tree": "tutorial_dog"
+    },
+    {
+     "kind": "dog",
+     "x_mm": 6000,
+     "z_mm": 3500,
+     "tree": "tutorial_dog"
+    },
+    {
+     "kind": "dog",
+     "x_mm": -6000,
+     "z_mm": 3500,
+     "tree": "tutorial_dog"
+    }
+   ],
+   "beats": [
+    {
+     "id": "a2.whirl",
+     "action": "whirl",
+     "trigger": "dog_leaps",
+     "volley_at": 150
+    }
+   ],
+   "strip": [],
+   "sky": [
+    226,
+    150,
+    150
+   ],
+   "fog": [
+    214,
+    160,
+    170
+   ],
+   "backdrop": {
+    "seed": 23,
+    "city_deg": 30,
+    "city_arc_deg": 60,
+    "grass": [
+     88,
+     140,
+     82
+    ],
+    "hill": [
+     64,
+     108,
+     72
+    ],
+    "water": [
+     56,
+     92,
+     132
+    ],
+    "towers": [
+     [
+      200,
+      190,
+      210
+     ],
+     [
+      160,
+      150,
+      186
+     ],
+     [
+      226,
+      206,
+      196
+     ],
+     [
+      140,
+      136,
+      166
+     ]
+    ],
+    "far_hills": [
+     140,
+     128,
+     166
+    ],
+    "trees": [
+     90,
+     62,
+     50
+    ],
+    "leaves": [
+     120,
+     210,
+     90
+    ],
+    "floor_m": 24,
+    "drop_m": 55,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "arena3",
+   "title": "arena3.title",
+   "chapter": "prologue",
+   "map": [
+    200,
+    620
+   ],
+   "lines": [
+    "arena3.c1",
+    "arena3.c2",
+    "arena3.c3"
+   ],
+   "spawn": [
+    {
+     "kind": "big_dog",
+     "x_mm": 0,
+     "z_mm": -5000,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "a3.start",
+     "action": "light",
+     "trigger": "start"
+    }
+   ],
+   "strip": [
+    "light",
+    "heavy",
+    "light",
+    "light",
+    "heavy",
+    "launcher"
+   ],
+   "sky": [
+    180,
+    130,
+    170
+   ],
+   "fog": [
+    176,
+    140,
+    176
+   ],
+   "backdrop": {
+    "seed": 37,
+    "city_deg": -20,
+    "city_arc_deg": 65,
+    "grass": [
+     80,
+     128,
+     84
+    ],
+    "hill": [
+     58,
+     98,
+     74
+    ],
+    "water": [
+     48,
+     80,
+     124
+    ],
+    "towers": [
+     [
+      190,
+      180,
+      206
+     ],
+     [
+      150,
+      140,
+      180
+     ],
+     [
+      216,
+      196,
+      190
+     ],
+     [
+      130,
+      126,
+      160
+     ]
+    ],
+    "far_hills": [
+     126,
+     116,
+     156
+    ],
+    "trees": [
+     84,
+     58,
+     52
+    ],
+    "leaves": [
+     60,
+     200,
+     180
+    ],
+    "floor_m": 24,
+    "drop_m": 70,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "arena4",
+   "title": "arena4.title",
+   "chapter": "road",
+   "map": [
+    420,
+    560
+   ],
+   "lines": [
+    "arena4.c1",
+    "arena4.c2",
+    "arena4.c3"
+   ],
+   "spawn": [
+    {
+     "kind": "large_dog",
+     "x_mm": 0,
+     "z_mm": -11000,
+     "tree": ""
+    },
+    {
+     "kind": "dog",
+     "x_mm": -5000,
+     "z_mm": -8000,
+     "tree": ""
+    },
+    {
+     "kind": "dog",
+     "x_mm": 5000,
+     "z_mm": -8000,
+     "tree": ""
+    },
+    {
+     "kind": "dog",
+     "x_mm": -8000,
+     "z_mm": -2000,
+     "tree": ""
+    },
+    {
+     "kind": "dog",
+     "x_mm": 8000,
+     "z_mm": -2000,
+     "tree": ""
+    }
+   ],
+   "beats": [],
+   "strip": [],
+   "sky": [
+    150,
+    120,
+    160
+   ],
+   "fog": [
+    150,
+    128,
+    164
+   ],
+   "backdrop": {
+    "seed": 41,
+    "city_deg": 15,
+    "city_arc_deg": 70,
+    "grass": [
+     74,
+     116,
+     82
+    ],
+    "hill": [
+     54,
+     90,
+     72
+    ],
+    "water": [
+     44,
+     72,
+     116
+    ],
+    "towers": [
+     [
+      180,
+      170,
+      200
+     ],
+     [
+      140,
+      130,
+      172
+     ],
+     [
+      206,
+      186,
+      186
+     ],
+     [
+      120,
+      116,
+      152
+     ]
+    ],
+    "far_hills": [
+     112,
+     104,
+     146
+    ],
+    "trees": [
+     80,
+     56,
+     52
+    ],
+    "leaves": [
+     230,
+     150,
+     70
+    ],
+    "floor_m": 24,
+    "drop_m": 85,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "arena5",
+   "title": "arena5.title",
+   "chapter": "road",
+   "map": [
+    640,
+    640
+   ],
+   "lines": [
+    "arena5.c1",
+    "arena5.c2",
+    "arena5.c3"
+   ],
+   "spawn": [
+    {
+     "kind": "caster",
+     "x_mm": 0,
+     "z_mm": -13000,
+     "tree": ""
+    },
+    {
+     "kind": "pup",
+     "x_mm": -4000,
+     "z_mm": -7000,
+     "tree": ""
+    },
+    {
+     "kind": "pup",
+     "x_mm": 4000,
+     "z_mm": -7000,
+     "tree": ""
+    }
+   ],
+   "beats": [],
+   "strip": [],
+   "sky": [
+    96,
+    92,
+    150
+   ],
+   "fog": [
+    110,
+    104,
+    160
+   ],
+   "backdrop": {
+    "seed": 53,
+    "city_deg": -20,
+    "city_arc_deg": 60,
+    "grass": [
+     70,
+     112,
+     96
+    ],
+    "hill": [
+     50,
+     86,
+     80
+    ],
+    "water": [
+     40,
+     66,
+     120
+    ],
+    "towers": [
+     [
+      170,
+      160,
+      214
+     ],
+     [
+      130,
+      124,
+      186
+     ],
+     [
+      200,
+      190,
+      230
+     ],
+     [
+      110,
+      106,
+      160
+     ]
+    ],
+    "far_hills": [
+     96,
+     90,
+     150
+    ],
+    "trees": [
+     70,
+     52,
+     60
+    ],
+    "leaves": [
+     150,
+     110,
+     230
+    ],
+    "floor_m": 24,
+    "drop_m": 1,
+    "setting": "spit"
+   }
+  },
+  {
+   "id": "arena6",
+   "title": "arena6.title",
+   "chapter": "road",
+   "map": [
+    820,
+    500
+   ],
+   "lines": [
+    "arena6.c1",
+    "arena6.c2",
+    "arena6.c3"
+   ],
+   "attackers": 2,
+   "spawn": [
+    {
+     "kind": "caster",
+     "x_mm": 0,
+     "z_mm": -14000,
+     "tree": ""
+    },
+    {
+     "kind": "large_dog",
+     "x_mm": -5000,
+     "z_mm": -8000,
+     "tree": ""
+    },
+    {
+     "kind": "large_dog",
+     "x_mm": 5000,
+     "z_mm": -8000,
+     "tree": ""
+    }
+   ],
+   "beats": [],
+   "strip": [],
+   "sky": [
+    58,
+    50,
+    92
+   ],
+   "fog": [
+    70,
+    60,
+    104
+   ],
+   "backdrop": {
+    "seed": 67,
+    "city_deg": 30,
+    "city_arc_deg": 80,
+    "grass": [
+     60,
+     96,
+     84
+    ],
+    "hill": [
+     44,
+     72,
+     70
+    ],
+    "water": [
+     30,
+     46,
+     92
+    ],
+    "towers": [
+     [
+      230,
+      200,
+      140
+     ],
+     [
+      150,
+      130,
+      190
+     ],
+     [
+      250,
+      220,
+      160
+     ],
+     [
+      110,
+      96,
+      150
+     ]
+    ],
+    "far_hills": [
+     70,
+     62,
+     112
+    ],
+    "trees": [
+     60,
+     44,
+     52
+    ],
+    "leaves": [
+     120,
+     90,
+     200
+    ],
+    "floor_m": 24,
+    "drop_m": 1,
+    "setting": "spit"
+   }
+  },
+  {
+   "id": "arena7",
+   "title": "arena7.title",
+   "chapter": "quarry",
+   "map": [
+    620,
+    340
+   ],
+   "lines": [
+    "arena7.c1",
+    "arena7.c2",
+    "arena7.c3"
+   ],
+   "spawn": [
+    {
+     "kind": "brute",
+     "x_mm": -4000,
+     "z_mm": -10000,
+     "tree": ""
+    },
+    {
+     "kind": "brute",
+     "x_mm": 4000,
+     "z_mm": -11000,
+     "tree": ""
+    },
+    {
+     "kind": "pup",
+     "x_mm": 0,
+     "z_mm": -7000,
+     "tree": ""
+    }
+   ],
+   "beats": [],
+   "strip": [],
+   "sky": [
+    214,
+    170,
+    120
+   ],
+   "fog": [
+    200,
+    164,
+    128
+   ],
+   "backdrop": {
+    "seed": 71,
+    "city_deg": 160,
+    "city_arc_deg": 40,
+    "grass": [
+     118,
+     128,
+     96
+    ],
+    "hill": [
+     120,
+     108,
+     96
+    ],
+    "water": [
+     70,
+     96,
+     120
+    ],
+    "towers": [
+     [
+      200,
+      180,
+      160
+     ],
+     [
+      160,
+      150,
+      170
+     ],
+     [
+      220,
+      200,
+      180
+     ]
+    ],
+    "far_hills": [
+     150,
+     128,
+     120
+    ],
+    "trees": [
+     90,
+     70,
+     56
+    ],
+    "leaves": [
+     230,
+     150,
+     70
+    ],
+    "floor_m": 24,
+    "drop_m": 60,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "arena8",
+   "title": "arena8.title",
+   "chapter": "quarry",
+   "map": [
+    800,
+    160
+   ],
+   "lines": [
+    "arena8.c1",
+    "arena8.c2",
+    "arena8.c3"
+   ],
+   "spawn": [
+    {
+     "kind": "stalker",
+     "x_mm": -5000,
+     "z_mm": -9000,
+     "tree": ""
+    },
+    {
+     "kind": "stalker",
+     "x_mm": 5000,
+     "z_mm": -9000,
+     "tree": ""
+    },
+    {
+     "kind": "brute",
+     "x_mm": 0,
+     "z_mm": -14000,
+     "tree": ""
+    }
+   ],
+   "beats": [],
+   "strip": [],
+   "sky": [
+    40,
+    34,
+    70
+   ],
+   "fog": [
+    52,
+    44,
+    86
+   ],
+   "backdrop": {
+    "seed": 83,
+    "city_deg": 180,
+    "city_arc_deg": 50,
+    "grass": [
+     52,
+     78,
+     76
+    ],
+    "hill": [
+     40,
+     58,
+     64
+    ],
+    "water": [
+     24,
+     36,
+     76
+    ],
+    "towers": [
+     [
+      200,
+      170,
+      230
+     ],
+     [
+      130,
+      110,
+      170
+     ],
+     [
+      240,
+      200,
+      255
+     ]
+    ],
+    "far_hills": [
+     60,
+     52,
+     100
+    ],
+    "trees": [
+     50,
+     40,
+     52
+    ],
+    "leaves": [
+     230,
+     80,
+     150
+    ],
+    "floor_m": 24,
+    "drop_m": 90,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "arena9",
+   "title": "arena9.title",
+   "chapter": "shore",
+   "map": [
+    480,
+    240
+   ],
+   "lines": [
+    "arena9.c1",
+    "arena9.c2",
+    "arena9.c3"
+   ],
+   "spawn": [
+    {
+     "kind": "brute",
+     "x_mm": 0,
+     "z_mm": -9000,
+     "tree": ""
+    },
+    {
+     "kind": "scout",
+     "x_mm": -6000,
+     "z_mm": -7000,
+     "tree": ""
+    },
+    {
+     "kind": "scout",
+     "x_mm": 6000,
+     "z_mm": -7000,
+     "tree": ""
+    },
+    {
+     "kind": "caster",
+     "x_mm": 0,
+     "z_mm": -15000,
+     "tree": ""
+    }
+   ],
+   "beats": [],
+   "strip": [],
+   "sky": [
+    150,
+    190,
+    214
+   ],
+   "fog": [
+    160,
+    188,
+    206
+   ],
+   "backdrop": {
+    "seed": 97,
+    "city_deg": -40,
+    "city_arc_deg": 70,
+    "grass": [
+     84,
+     140,
+     96
+    ],
+    "hill": [
+     60,
+     104,
+     80
+    ],
+    "water": [
+     56,
+     110,
+     150
+    ],
+    "towers": [
+     [
+      210,
+      214,
+      226
+     ],
+     [
+      150,
+      160,
+      190
+     ],
+     [
+      236,
+      226,
+      210
+     ],
+     [
+      120,
+      130,
+      160
+     ]
+    ],
+    "far_hills": [
+     120,
+     140,
+     170
+    ],
+    "trees": [
+     84,
+     62,
+     50
+    ],
+    "leaves": [
+     250,
+     200,
+     90
+    ],
+    "floor_m": 24,
+    "drop_m": 1,
+    "setting": "spit"
+   }
+  },
+  {
+   "id": "arena10",
+   "title": "arena10.title",
+   "chapter": "shore",
+   "map": [
+    300,
+    160
+   ],
+   "lines": [
+    "arena10.c1",
+    "arena10.c2",
+    "arena10.c3"
+   ],
+   "attackers": 2,
+   "spawn": [
+    {
+     "kind": "heavy_brute",
+     "x_mm": 0,
+     "z_mm": -12000,
+     "tree": ""
+    },
+    {
+     "kind": "large_dog",
+     "x_mm": -6000,
+     "z_mm": -8000,
+     "tree": ""
+    },
+    {
+     "kind": "large_dog",
+     "x_mm": 6000,
+     "z_mm": -8000,
+     "tree": ""
+    }
+   ],
+   "beats": [],
+   "strip": [],
+   "sky": [
+    236,
+    140,
+    96
+   ],
+   "fog": [
+    220,
+    150,
+    120
+   ],
+   "backdrop": {
+    "seed": 103,
+    "city_deg": 50,
+    "city_arc_deg": 75,
+    "grass": [
+     104,
+     130,
+     80
+    ],
+    "hill": [
+     80,
+     100,
+     70
+    ],
+    "water": [
+     70,
+     90,
+     130
+    ],
+    "towers": [
+     [
+      230,
+      200,
+      180
+     ],
+     [
+      180,
+      150,
+      160
+     ],
+     [
+      250,
+      220,
+      180
+     ],
+     [
+      140,
+      120,
+      150
+     ]
+    ],
+    "far_hills": [
+     170,
+     120,
+     130
+    ],
+    "trees": [
+     90,
+     60,
+     46
+    ],
+    "leaves": [
+     250,
+     120,
+     60
+    ],
+    "floor_m": 24,
+    "drop_m": 1,
+    "setting": "spit"
+   }
+  },
+  {
+   "id": "arena11",
+   "title": "arena11.title",
+   "chapter": "shore",
+   "map": [
+    130,
+    300
+   ],
+   "lines": [
+    "arena11.c1",
+    "arena11.c2",
+    "arena11.c3"
+   ],
+   "spawn": [
+    {
+     "kind": "heavy_brute",
+     "x_mm": 0,
+     "z_mm": -14000,
+     "tree": ""
+    },
+    {
+     "kind": "scout",
+     "x_mm": -5000,
+     "z_mm": -9000,
+     "tree": ""
+    },
+    {
+     "kind": "scout",
+     "x_mm": 5000,
+     "z_mm": -9000,
+     "tree": ""
+    },
+    {
+     "kind": "caster",
+     "x_mm": 8000,
+     "z_mm": -15000,
+     "tree": ""
+    }
+   ],
+   "beats": [],
+   "strip": [],
+   "sky": [
+    70,
+    40,
+    80
+   ],
+   "fog": [
+    92,
+    54,
+    96
+   ],
+   "backdrop": {
+    "seed": 113,
+    "city_deg": 0,
+    "city_arc_deg": 100,
+    "grass": [
+     56,
+     84,
+     80
+    ],
+    "hill": [
+     40,
+     62,
+     66
+    ],
+    "water": [
+     28,
+     40,
+     84
+    ],
+    "towers": [
+     [
+      255,
+      190,
+      120
+     ],
+     [
+      160,
+      120,
+      200
+     ],
+     [
+      255,
+      230,
+      170
+     ],
+     [
+      110,
+      90,
+      150
+     ]
+    ],
+    "far_hills": [
+     80,
+     56,
+     104
+    ],
+    "trees": [
+     56,
+     40,
+     50
+    ],
+    "leaves": [
+     255,
+     140,
+     90
+    ],
+    "floor_m": 24,
+    "drop_m": 1,
+    "setting": "spit"
+   }
+  },
+  {
+   "id": "arena12",
+   "title": "arena12.title",
+   "chapter": "finale",
+   "map": [
+    110,
+    120
+   ],
+   "lines": [
+    "arena12.c1",
+    "arena12.c2",
+    "arena12.c3"
+   ],
+   "spawn": [
+    {
+     "kind": "warden",
+     "x_mm": 0,
+     "z_mm": -9000,
+     "tree": ""
+    }
+   ],
+   "beats": [],
+   "strip": [],
+   "sky": [
+    34,
+    20,
+    52
+   ],
+   "fog": [
+    52,
+    30,
+    70
+   ],
+   "backdrop": {
+    "seed": 127,
+    "city_deg": -30,
+    "city_arc_deg": 100,
+    "grass": [
+     56,
+     84,
+     80
+    ],
+    "hill": [
+     40,
+     62,
+     66
+    ],
+    "water": [
+     28,
+     40,
+     84
+    ],
+    "towers": [
+     [
+      255,
+      190,
+      120
+     ],
+     [
+      160,
+      120,
+      200
+     ],
+     [
+      255,
+      230,
+      170
+     ],
+     [
+      110,
+      90,
+      150
+     ]
+    ],
+    "far_hills": [
+     80,
+     56,
+     104
+    ],
+    "trees": [
+     56,
+     40,
+     50
+    ],
+    "leaves": [
+     255,
+     84,
+     128
+    ],
+    "floor_m": 24,
+    "drop_m": 1,
+    "setting": "spit"
+   }
+  },
+  {
+   "id": "arena13",
+   "title": "arena13.title",
+   "chapter": "pit",
+   "map": [
+    140,
+    860
+   ],
+   "lines": [
+    "arena13.c1",
+    "arena13.c2",
+    "arena13.c3"
+   ],
+   "spawn": [
+    {
+     "kind": "beast",
+     "x_mm": 0,
+     "z_mm": -9000,
+     "tree": ""
+    },
+    {
+     "kind": "dog",
+     "x_mm": -6000,
+     "z_mm": -6000,
+     "tree": ""
+    },
+    {
+     "kind": "dog",
+     "x_mm": 6000,
+     "z_mm": -6000,
+     "tree": ""
+    }
+   ],
+   "beats": [],
+   "strip": [],
+   "sky": [
+    60,
+    18,
+    26
+   ],
+   "fog": [
+    86,
+    30,
+    36
+   ],
+   "backdrop": {
+    "seed": 131,
+    "city_deg": 20,
+    "city_arc_deg": 100,
+    "grass": [
+     70,
+     70,
+     60
+    ],
+    "hill": [
+     52,
+     48,
+     44
+    ],
+    "water": [
+     46,
+     30,
+     40
+    ],
+    "towers": [
+     [
+      255,
+      190,
+      120
+     ],
+     [
+      160,
+      120,
+      200
+     ],
+     [
+      255,
+      230,
+      170
+     ],
+     [
+      110,
+      90,
+      150
+     ]
+    ],
+    "far_hills": [
+     104,
+     52,
+     60
+    ],
+    "trees": [
+     56,
+     40,
+     50
+    ],
+    "leaves": [
+     255,
+     150,
+     60
+    ],
+    "floor_m": 24,
+    "drop_m": 1,
+    "setting": "spit"
+   }
+  },
+  {
+   "id": "arena14",
+   "title": "arena14.title",
+   "chapter": "docks",
+   "map": [
+    330,
+    780
+   ],
+   "lines": [
+    "arena14.c1",
+    "arena14.c2",
+    "arena14.c3"
+   ],
+   "spawn": [
+    {
+     "kind": "pup",
+     "x_mm": 0,
+     "z_mm": -7000,
+     "tree": ""
+    },
+    {
+     "kind": "pup",
+     "x_mm": 6062,
+     "z_mm": -3500,
+     "tree": ""
+    },
+    {
+     "kind": "pup",
+     "x_mm": 6062,
+     "z_mm": 3500,
+     "tree": ""
+    },
+    {
+     "kind": "pup",
+     "x_mm": 0,
+     "z_mm": 7000,
+     "tree": ""
+    },
+    {
+     "kind": "pup",
+     "x_mm": -6062,
+     "z_mm": 3500,
+     "tree": ""
+    },
+    {
+     "kind": "pup",
+     "x_mm": -6062,
+     "z_mm": -3500,
+     "tree": ""
+    },
+    {
+     "kind": "alpha_dog",
+     "x_mm": 0,
+     "z_mm": -11000,
+     "tree": ""
+    }
+   ],
+   "beats": [],
+   "strip": [],
+   "sky": [
+    236,
+    196,
+    150
+   ],
+   "fog": [
+    230,
+    200,
+    170
+   ],
+   "backdrop": {
+    "seed": 140,
+    "city_deg": 10,
+    "city_arc_deg": 70,
+    "grass": [
+     84,
+     140,
+     96
+    ],
+    "hill": [
+     60,
+     104,
+     80
+    ],
+    "water": [
+     56,
+     110,
+     150
+    ],
+    "towers": [
+     [
+      210,
+      214,
+      226
+     ],
+     [
+      150,
+      160,
+      190
+     ],
+     [
+      236,
+      226,
+      210
+     ],
+     [
+      120,
+      130,
+      160
+     ]
+    ],
+    "far_hills": [
+     120,
+     140,
+     170
+    ],
+    "trees": [
+     84,
+     62,
+     50
+    ],
+    "leaves": [
+     255,
+     200,
+     80
+    ],
+    "floor_m": 24,
+    "drop_m": 1,
+    "setting": "spit"
+   },
+   "attackers": 2
+  },
+  {
+   "id": "arena15",
+   "title": "arena15.title",
+   "chapter": "docks",
+   "map": [
+    520,
+    860
+   ],
+   "lines": [
+    "arena15.c1",
+    "arena15.c2",
+    "arena15.c3"
+   ],
+   "spawn": [
+    {
+     "kind": "beast_whelp",
+     "x_mm": -3000,
+     "z_mm": -9000,
+     "tree": ""
+    },
+    {
+     "kind": "beast_whelp",
+     "x_mm": 3000,
+     "z_mm": -9000,
+     "tree": ""
+    },
+    {
+     "kind": "storm_caster",
+     "x_mm": 0,
+     "z_mm": -16000,
+     "tree": ""
+    }
+   ],
+   "beats": [],
+   "strip": [],
+   "sky": [
+    200,
+    170,
+    210
+   ],
+   "fog": [
+    190,
+    170,
+    206
+   ],
+   "backdrop": {
+    "seed": 151,
+    "city_deg": -20,
+    "city_arc_deg": 75,
+    "grass": [
+     104,
+     130,
+     80
+    ],
+    "hill": [
+     80,
+     100,
+     70
+    ],
+    "water": [
+     70,
+     90,
+     130
+    ],
+    "towers": [
+     [
+      230,
+      200,
+      180
+     ],
+     [
+      180,
+      150,
+      160
+     ],
+     [
+      250,
+      220,
+      180
+     ],
+     [
+      140,
+      120,
+      150
+     ]
+    ],
+    "far_hills": [
+     170,
+     120,
+     130
+    ],
+    "trees": [
+     90,
+     60,
+     46
+    ],
+    "leaves": [
+     250,
+     120,
+     60
+    ],
+    "floor_m": 24,
+    "drop_m": 1,
+    "setting": "spit"
+   }
+  },
+  {
+   "id": "arena16",
+   "title": "arena16.title",
+   "chapter": "docks",
+   "map": [
+    720,
+    800
+   ],
+   "lines": [
+    "arena16.c1",
+    "arena16.c2",
+    "arena16.c3"
+   ],
+   "spawn": [
+    {
+     "kind": "stalker",
+     "x_mm": -8000,
+     "z_mm": 0,
+     "tree": ""
+    },
+    {
+     "kind": "stalker",
+     "x_mm": 8000,
+     "z_mm": 0,
+     "tree": ""
+    },
+    {
+     "kind": "iron_brute",
+     "x_mm": 0,
+     "z_mm": -10000,
+     "tree": ""
+    }
+   ],
+   "beats": [],
+   "strip": [],
+   "sky": [
+    180,
+    150,
+    110
+   ],
+   "fog": [
+    176,
+    150,
+    120
+   ],
+   "backdrop": {
+    "seed": 162,
+    "city_deg": 40,
+    "city_arc_deg": 40,
+    "grass": [
+     118,
+     128,
+     96
+    ],
+    "hill": [
+     120,
+     108,
+     96
+    ],
+    "water": [
+     70,
+     96,
+     120
+    ],
+    "towers": [
+     [
+      200,
+      180,
+      160
+     ],
+     [
+      160,
+      150,
+      170
+     ],
+     [
+      220,
+      200,
+      180
+     ]
+    ],
+    "far_hills": [
+     150,
+     128,
+     120
+    ],
+    "trees": [
+     90,
+     70,
+     56
+    ],
+    "leaves": [
+     230,
+     150,
+     70
+    ],
+    "floor_m": 24,
+    "drop_m": 60,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "arena17",
+   "title": "arena17.title",
+   "chapter": "docks",
+   "map": [
+    860,
+    640
+   ],
+   "lines": [
+    "arena17.c1",
+    "arena17.c2",
+    "arena17.c3"
+   ],
+   "spawn": [
+    {
+     "kind": "elder_beast",
+     "x_mm": 0,
+     "z_mm": -10000,
+     "tree": ""
+    },
+    {
+     "kind": "pup",
+     "x_mm": -2500,
+     "z_mm": 6000,
+     "tree": ""
+    },
+    {
+     "kind": "pup",
+     "x_mm": 2500,
+     "z_mm": 6000,
+     "tree": ""
+    }
+   ],
+   "beats": [],
+   "strip": [],
+   "sky": [
+    90,
+    50,
+    60
+   ],
+   "fog": [
+    110,
+    64,
+    70
+   ],
+   "backdrop": {
+    "seed": 173,
+    "city_deg": -40,
+    "city_arc_deg": 100,
+    "grass": [
+     56,
+     84,
+     80
+    ],
+    "hill": [
+     40,
+     62,
+     66
+    ],
+    "water": [
+     28,
+     40,
+     84
+    ],
+    "towers": [
+     [
+      255,
+      190,
+      120
+     ],
+     [
+      160,
+      120,
+      200
+     ],
+     [
+      255,
+      230,
+      170
+     ],
+     [
+      110,
+      90,
+      150
+     ]
+    ],
+    "far_hills": [
+     80,
+     56,
+     104
+    ],
+    "trees": [
+     56,
+     40,
+     50
+    ],
+    "leaves": [
+     255,
+     140,
+     90
+    ],
+    "floor_m": 24,
+    "drop_m": 1,
+    "setting": "spit"
+   }
+  },
+  {
+   "id": "arena18",
+   "title": "arena18.title",
+   "chapter": "docks",
+   "map": [
+    680,
+    520
+   ],
+   "lines": [
+    "arena18.c1",
+    "arena18.c2",
+    "arena18.c3"
+   ],
+   "spawn": [
+    {
+     "kind": "scout",
+     "x_mm": -6000,
+     "z_mm": -6000,
+     "tree": ""
+    },
+    {
+     "kind": "scout",
+     "x_mm": 0,
+     "z_mm": -8500,
+     "tree": ""
+    },
+    {
+     "kind": "scout",
+     "x_mm": 6000,
+     "z_mm": -6000,
+     "tree": ""
+    },
+    {
+     "kind": "storm_caster",
+     "x_mm": -12000,
+     "z_mm": -14000,
+     "tree": ""
+    },
+    {
+     "kind": "storm_caster",
+     "x_mm": 12000,
+     "z_mm": -14000,
+     "tree": ""
+    }
+   ],
+   "beats": [],
+   "strip": [],
+   "sky": [
+    150,
+    200,
+    230
+   ],
+   "fog": [
+    160,
+    200,
+    226
+   ],
+   "backdrop": {
+    "seed": 184,
+    "city_deg": 0,
+    "city_arc_deg": 70,
+    "grass": [
+     84,
+     140,
+     96
+    ],
+    "hill": [
+     60,
+     104,
+     80
+    ],
+    "water": [
+     56,
+     110,
+     150
+    ],
+    "towers": [
+     [
+      210,
+      214,
+      226
+     ],
+     [
+      150,
+      160,
+      190
+     ],
+     [
+      236,
+      226,
+      210
+     ],
+     [
+      120,
+      130,
+      160
+     ]
+    ],
+    "far_hills": [
+     120,
+     140,
+     170
+    ],
+    "trees": [
+     84,
+     62,
+     50
+    ],
+    "leaves": [
+     250,
+     200,
+     90
+    ],
+    "floor_m": 24,
+    "drop_m": 1,
+    "setting": "spit"
+   },
+   "attackers": 2
+  },
+  {
+   "id": "arena19",
+   "title": "arena19.title",
+   "chapter": "docks",
+   "map": [
+    460,
+    560
+   ],
+   "lines": [
+    "arena19.c1",
+    "arena19.c2",
+    "arena19.c3"
+   ],
+   "spawn": [
+    {
+     "kind": "alpha_dog",
+     "x_mm": -7000,
+     "z_mm": -5000,
+     "tree": ""
+    },
+    {
+     "kind": "alpha_dog",
+     "x_mm": 7000,
+     "z_mm": -5000,
+     "tree": ""
+    },
+    {
+     "kind": "heavy_brute",
+     "x_mm": 0,
+     "z_mm": -11000,
+     "tree": ""
+    },
+    {
+     "kind": "beast_whelp",
+     "x_mm": 0,
+     "z_mm": 8000,
+     "tree": ""
+    }
+   ],
+   "beats": [],
+   "strip": [],
+   "sky": [
+    240,
+    150,
+    100
+   ],
+   "fog": [
+    236,
+    160,
+    120
+   ],
+   "backdrop": {
+    "seed": 195,
+    "city_deg": 25,
+    "city_arc_deg": 75,
+    "grass": [
+     104,
+     130,
+     80
+    ],
+    "hill": [
+     80,
+     100,
+     70
+    ],
+    "water": [
+     70,
+     90,
+     130
+    ],
+    "towers": [
+     [
+      230,
+      200,
+      180
+     ],
+     [
+      180,
+      150,
+      160
+     ],
+     [
+      250,
+      220,
+      180
+     ],
+     [
+      140,
+      120,
+      150
+     ]
+    ],
+    "far_hills": [
+     170,
+     120,
+     130
+    ],
+    "trees": [
+     90,
+     60,
+     46
+    ],
+    "leaves": [
+     250,
+     120,
+     60
+    ],
+    "floor_m": 24,
+    "drop_m": 1,
+    "setting": "spit"
+   }
+  },
+  {
+   "id": "arena20",
+   "title": "arena20.title",
+   "chapter": "docks",
+   "map": [
+    280,
+    420
+   ],
+   "lines": [
+    "arena20.c1",
+    "arena20.c2",
+    "arena20.c3"
+   ],
+   "spawn": [
+    {
+     "kind": "warden",
+     "x_mm": 0,
+     "z_mm": -11000,
+     "tree": ""
+    },
+    {
+     "kind": "beast_whelp",
+     "x_mm": -7000,
+     "z_mm": -7000,
+     "tree": ""
+    },
+    {
+     "kind": "beast_whelp",
+     "x_mm": 7000,
+     "z_mm": -7000,
+     "tree": ""
+    }
+   ],
+   "beats": [],
+   "strip": [],
+   "sky": [
+    30,
+    16,
+    40
+   ],
+   "fog": [
+    48,
+    26,
+    60
+   ],
+   "backdrop": {
+    "seed": 206,
+    "city_deg": -15,
+    "city_arc_deg": 100,
+    "grass": [
+     56,
+     84,
+     80
+    ],
+    "hill": [
+     40,
+     62,
+     66
+    ],
+    "water": [
+     28,
+     40,
+     84
+    ],
+    "towers": [
+     [
+      255,
+      190,
+      120
+     ],
+     [
+      160,
+      120,
+      200
+     ],
+     [
+      255,
+      230,
+      170
+     ],
+     [
+      110,
+      90,
+      150
+     ]
+    ],
+    "far_hills": [
+     80,
+     56,
+     104
+    ],
+    "trees": [
+     56,
+     40,
+     50
+    ],
+    "leaves": [
+     255,
+     84,
+     128
+    ],
+    "floor_m": 24,
+    "drop_m": 1,
+    "setting": "spit"
+   }
+  },
+  {
+   "id": "arena21",
+   "title": "arena21.title",
+   "chapter": "beacon",
+   "map": [
+    520,
+    230
+   ],
+   "lines": [
+    "arena21.c1",
+    "arena21.c2",
+    "arena21.c3"
+   ],
+   "spawn": [
+    {
+     "kind": "keeper",
+     "x_mm": 0,
+     "z_mm": -9000,
+     "tree": ""
+    }
+   ],
+   "beats": [],
+   "strip": [],
+   "sky": [
+    18,
+    22,
+    44
+   ],
+   "fog": [
+    30,
+    40,
+    70
+   ],
+   "backdrop": {
+    "seed": 217,
+    "city_deg": 0,
+    "city_arc_deg": 100,
+    "grass": [
+     56,
+     84,
+     80
+    ],
+    "hill": [
+     40,
+     62,
+     66
+    ],
+    "water": [
+     28,
+     40,
+     84
+    ],
+    "towers": [
+     [
+      255,
+      190,
+      120
+     ],
+     [
+      160,
+      120,
+      200
+     ],
+     [
+      255,
+      230,
+      170
+     ],
+     [
+      110,
+      90,
+      150
+     ]
+    ],
+    "far_hills": [
+     80,
+     56,
+     104
+    ],
+    "trees": [
+     56,
+     40,
+     50
+    ],
+    "leaves": [
+     120,
+     240,
+     255
+    ],
+    "floor_m": 24,
+    "drop_m": 1,
+    "setting": "spit"
+   }
+  },
+  {
+   "id": "drill_footwork",
+   "title": "drill.footwork.title",
+   "chapter": "training",
+   "map": [
+    470,
+    820
+   ],
+   "lines": [
+    "drill.footwork.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "dummy",
+     "x_mm": 700,
+     "z_mm": -6000,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.footwork.1",
+     "action": "move",
+     "trigger": "start"
+    },
+    {
+     "id": "d.footwork.2",
+     "action": "sprint",
+     "trigger": "ready",
+     "gap": 40
+    },
+    {
+     "id": "d.footwork.3",
+     "action": "jump",
+     "trigger": "ready",
+     "gap": 40,
+     "retry_from": "d.footwork.1"
+    }
+   ],
+   "strip": [],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 211,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   },
+   "from": "arena3"
+  },
+  {
+   "id": "drill_lock",
+   "title": "drill.lock.title",
+   "chapter": "training",
+   "map": [
+    516,
+    820
+   ],
+   "lines": [
+    "drill.lock.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "dummy",
+     "x_mm": 700,
+     "z_mm": -4500,
+     "tree": ""
+    },
+    {
+     "kind": "dummy",
+     "x_mm": -3200,
+     "z_mm": -4000,
+     "tree": ""
+    },
+    {
+     "kind": "dummy",
+     "x_mm": 3200,
+     "z_mm": -4000,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.lock.1",
+     "action": "lock",
+     "trigger": "start"
+    },
+    {
+     "id": "d.lock.2",
+     "action": "lock",
+     "trigger": "ready",
+     "gap": 40
+    },
+    {
+     "id": "d.lock.3",
+     "action": "cycle",
+     "trigger": "ready",
+     "gap": 40
+    },
+    {
+     "id": "d.lock.4",
+     "action": "cycle",
+     "trigger": "ready",
+     "gap": 40
+    }
+   ],
+   "strip": [],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 212,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_lights",
+   "title": "drill.lights.title",
+   "chapter": "training",
+   "map": [
+    562,
+    820
+   ],
+   "lines": [
+    "drill.lights.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "dummy",
+     "x_mm": 700,
+     "z_mm": -1600,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.lights.1",
+     "action": "light",
+     "trigger": "start"
+    },
+    {
+     "id": "d.lights.2",
+     "action": "light",
+     "trigger": "ready"
+    },
+    {
+     "id": "d.lights.3",
+     "action": "light",
+     "trigger": "ready"
+    },
+    {
+     "id": "d.lights.4",
+     "action": "light",
+     "trigger": "ready"
+    }
+   ],
+   "strip": [],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 213,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_heavies",
+   "title": "drill.heavies.title",
+   "chapter": "training",
+   "map": [
+    608,
+    820
+   ],
+   "lines": [
+    "drill.heavies.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "dummy",
+     "x_mm": 700,
+     "z_mm": -1600,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.heavies.1",
+     "action": "heavy",
+     "trigger": "start"
+    },
+    {
+     "id": "d.heavies.2",
+     "action": "heavy",
+     "trigger": "ready"
+    },
+    {
+     "id": "d.heavies.3",
+     "action": "heavy",
+     "trigger": "ready"
+    }
+   ],
+   "strip": [],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 214,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_first",
+   "title": "drill.first.title",
+   "chapter": "training",
+   "map": [
+    654,
+    820
+   ],
+   "lines": [
+    "drill.first.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "dummy",
+     "x_mm": 700,
+     "z_mm": -1600,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.first.1",
+     "action": "light",
+     "trigger": "start"
+    },
+    {
+     "id": "d.first.2",
+     "action": "heavy",
+     "trigger": "ready"
+    },
+    {
+     "id": "d.first.3",
+     "action": "light",
+     "trigger": "ready"
+    },
+    {
+     "id": "d.first.4",
+     "action": "light",
+     "trigger": "ready"
+    },
+    {
+     "id": "d.first.5",
+     "action": "heavy",
+     "trigger": "ready"
+    }
+   ],
+   "strip": [
+    "light",
+    "heavy",
+    "light",
+    "light",
+    "heavy"
+   ],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 215,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_launch",
+   "title": "drill.launch.title",
+   "chapter": "training",
+   "map": [
+    700,
+    820
+   ],
+   "lines": [
+    "drill.launch.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "dummy",
+     "x_mm": 700,
+     "z_mm": -1600,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.launch.1",
+     "action": "light",
+     "trigger": "start"
+    },
+    {
+     "id": "d.launch.2",
+     "action": "launcher",
+     "trigger": "stunned",
+     "retry_from": "d.launch.1"
+    }
+   ],
+   "strip": [],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 216,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_first_launch",
+   "title": "drill.first_launch.title",
+   "chapter": "training",
+   "map": [
+    746,
+    820
+   ],
+   "lines": [
+    "drill.first_launch.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "dummy",
+     "x_mm": 700,
+     "z_mm": -1600,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.first_launch.1",
+     "action": "light",
+     "trigger": "start"
+    },
+    {
+     "id": "d.first_launch.2",
+     "action": "heavy",
+     "trigger": "ready"
+    },
+    {
+     "id": "d.first_launch.3",
+     "action": "light",
+     "trigger": "ready"
+    },
+    {
+     "id": "d.first_launch.4",
+     "action": "light",
+     "trigger": "ready"
+    },
+    {
+     "id": "d.first_launch.5",
+     "action": "heavy",
+     "trigger": "ready"
+    },
+    {
+     "id": "d.first_launch.6",
+     "action": "launcher",
+     "trigger": "ready"
+    }
+   ],
+   "strip": [
+    "light",
+    "heavy",
+    "light",
+    "light",
+    "heavy",
+    "launcher"
+   ],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 217,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_pick",
+   "title": "drill.pick.title",
+   "chapter": "training",
+   "map": [
+    792,
+    820
+   ],
+   "lines": [
+    "drill.pick.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "dummy",
+     "x_mm": 700,
+     "z_mm": -1600,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.pick.1",
+     "action": "light",
+     "trigger": "start"
+    },
+    {
+     "id": "d.pick.2",
+     "action": "light",
+     "trigger": "ready"
+    },
+    {
+     "id": "d.pick.3",
+     "action": "heavy",
+     "trigger": "ready"
+    },
+    {
+     "id": "d.pick.4",
+     "action": "heavy",
+     "trigger": "ready"
+    }
+   ],
+   "strip": [
+    "light",
+    "light",
+    "heavy",
+    "heavy"
+   ],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 218,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_whirl",
+   "title": "drill.whirl.title",
+   "chapter": "training",
+   "map": [
+    838,
+    820
+   ],
+   "lines": [
+    "drill.whirl.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "sparring_dog",
+     "x_mm": 0,
+     "z_mm": -6000,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.whirl.1",
+     "action": "whirl",
+     "trigger": "dog_leaps",
+     "retry_from": "d.whirl.1"
+    },
+    {
+     "id": "d.whirl.2",
+     "action": "whirl",
+     "trigger": "dog_leaps",
+     "gap": 60,
+     "retry_from": "d.whirl.1"
+    }
+   ],
+   "strip": [],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 219,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_dash",
+   "title": "drill.dash.title",
+   "chapter": "training",
+   "map": [
+    884,
+    820
+   ],
+   "lines": [
+    "drill.dash.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "dummy",
+     "x_mm": 700,
+     "z_mm": -10000,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.dash.1",
+     "action": "dash",
+     "trigger": "far",
+     "retry_from": "d.dash.1"
+    },
+    {
+     "id": "d.dash.2",
+     "action": "light",
+     "trigger": "ready"
+    }
+   ],
+   "strip": [],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 220,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_air_string",
+   "title": "drill.air_string.title",
+   "chapter": "training",
+   "map": [
+    930,
+    820
+   ],
+   "lines": [
+    "drill.air_string.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "dummy",
+     "x_mm": 700,
+     "z_mm": -1600,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.air_string.1",
+     "action": "light",
+     "trigger": "start"
+    },
+    {
+     "id": "d.air_string.2",
+     "action": "launcher",
+     "trigger": "stunned",
+     "retry_from": "d.air_string.1"
+    },
+    {
+     "id": "d.air_string.3",
+     "action": "jump",
+     "trigger": "ready",
+     "retry_from": "d.air_string.1"
+    },
+    {
+     "id": "d.air_string.4",
+     "action": "air_light",
+     "trigger": "target_air",
+     "retry_from": "d.air_string.1"
+    },
+    {
+     "id": "d.air_string.5",
+     "action": "air_light",
+     "trigger": "target_air",
+     "retry_from": "d.air_string.1"
+    },
+    {
+     "id": "d.air_string.6",
+     "action": "air_light",
+     "trigger": "target_air",
+     "retry_from": "d.air_string.1"
+    }
+   ],
+   "strip": [],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 221,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_air_heavy",
+   "title": "drill.air_heavy.title",
+   "chapter": "training",
+   "map": [
+    470,
+    900
+   ],
+   "lines": [
+    "drill.air_heavy.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "dummy",
+     "x_mm": 700,
+     "z_mm": -1600,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.air_heavy.1",
+     "action": "light",
+     "trigger": "start"
+    },
+    {
+     "id": "d.air_heavy.2",
+     "action": "launcher",
+     "trigger": "stunned",
+     "retry_from": "d.air_heavy.1"
+    },
+    {
+     "id": "d.air_heavy.3",
+     "action": "jump",
+     "trigger": "ready",
+     "retry_from": "d.air_heavy.1"
+    },
+    {
+     "id": "d.air_heavy.4",
+     "action": "air_light",
+     "trigger": "target_air",
+     "retry_from": "d.air_heavy.1"
+    },
+    {
+     "id": "d.air_heavy.5",
+     "action": "air_heavy",
+     "trigger": "target_air",
+     "retry_from": "d.air_heavy.1"
+    },
+    {
+     "id": "d.air_heavy.6",
+     "action": "air_heavy",
+     "trigger": "target_air",
+     "retry_from": "d.air_heavy.1"
+    }
+   ],
+   "strip": [],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 222,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_air_slam",
+   "title": "drill.air_slam.title",
+   "chapter": "training",
+   "map": [
+    516,
+    900
+   ],
+   "lines": [
+    "drill.air_slam.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "dummy",
+     "x_mm": 700,
+     "z_mm": -1600,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.air_slam.1",
+     "action": "light",
+     "trigger": "start"
+    },
+    {
+     "id": "d.air_slam.2",
+     "action": "launcher",
+     "trigger": "stunned",
+     "retry_from": "d.air_slam.1"
+    },
+    {
+     "id": "d.air_slam.3",
+     "action": "jump",
+     "trigger": "ready",
+     "retry_from": "d.air_slam.1"
+    },
+    {
+     "id": "d.air_slam.4",
+     "action": "air_light",
+     "trigger": "target_air",
+     "retry_from": "d.air_slam.1"
+    },
+    {
+     "id": "d.air_slam.5",
+     "action": "slam",
+     "trigger": "target_air",
+     "retry_from": "d.air_slam.1"
+    }
+   ],
+   "strip": [],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 223,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_updraft",
+   "title": "drill.updraft.title",
+   "chapter": "training",
+   "map": [
+    562,
+    900
+   ],
+   "lines": [
+    "drill.updraft.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "dummy",
+     "x_mm": 700,
+     "z_mm": -1600,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.updraft.1",
+     "action": "light",
+     "trigger": "start"
+    },
+    {
+     "id": "d.updraft.2",
+     "action": "launcher",
+     "trigger": "stunned",
+     "retry_from": "d.updraft.1"
+    },
+    {
+     "id": "d.updraft.3",
+     "action": "jump",
+     "trigger": "ready",
+     "retry_from": "d.updraft.1"
+    },
+    {
+     "id": "d.updraft.4",
+     "action": "air_light",
+     "trigger": "target_air",
+     "retry_from": "d.updraft.1"
+    },
+    {
+     "id": "d.updraft.5",
+     "action": "air_lift",
+     "trigger": "target_air",
+     "retry_from": "d.updraft.1"
+    },
+    {
+     "id": "d.updraft.6",
+     "action": "air_light",
+     "trigger": "target_air",
+     "retry_from": "d.updraft.1"
+    }
+   ],
+   "strip": [],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 224,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_air_chain",
+   "title": "drill.air_chain.title",
+   "chapter": "training",
+   "map": [
+    608,
+    900
+   ],
+   "lines": [
+    "drill.air_chain.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "dummy",
+     "x_mm": 700,
+     "z_mm": -1600,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.air_chain.1",
+     "action": "light",
+     "trigger": "start"
+    },
+    {
+     "id": "d.air_chain.2",
+     "action": "launcher",
+     "trigger": "stunned",
+     "retry_from": "d.air_chain.1"
+    },
+    {
+     "id": "d.air_chain.3",
+     "action": "jump",
+     "trigger": "ready",
+     "retry_from": "d.air_chain.1"
+    },
+    {
+     "id": "d.air_chain.4",
+     "action": "air_light",
+     "trigger": "target_air",
+     "retry_from": "d.air_chain.1"
+    },
+    {
+     "id": "d.air_chain.5",
+     "action": "air_light",
+     "trigger": "target_air",
+     "retry_from": "d.air_chain.1"
+    },
+    {
+     "id": "d.air_chain.6",
+     "action": "air_lift",
+     "trigger": "target_air",
+     "retry_from": "d.air_chain.1"
+    },
+    {
+     "id": "d.air_chain.7",
+     "action": "air_light",
+     "trigger": "target_air",
+     "retry_from": "d.air_chain.1"
+    },
+    {
+     "id": "d.air_chain.8",
+     "action": "air_light",
+     "trigger": "target_air",
+     "retry_from": "d.air_chain.1"
+    },
+    {
+     "id": "d.air_chain.9",
+     "action": "air_heavy",
+     "trigger": "target_air",
+     "retry_from": "d.air_chain.1"
+    },
+    {
+     "id": "d.air_chain.10",
+     "action": "slam",
+     "trigger": "target_air",
+     "retry_from": "d.air_chain.1"
+    }
+   ],
+   "strip": [],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 225,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_grab_toss",
+   "title": "drill.grab_toss.title",
+   "chapter": "training",
+   "map": [
+    654,
+    900
+   ],
+   "lines": [
+    "drill.grab_toss.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "dummy",
+     "x_mm": 700,
+     "z_mm": -1600,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.grab_toss.1",
+     "action": "light",
+     "trigger": "start"
+    },
+    {
+     "id": "d.grab_toss.2",
+     "action": "grab",
+     "trigger": "stunned",
+     "retry_from": "d.grab_toss.1"
+    },
+    {
+     "id": "d.grab_toss.3",
+     "action": "toss",
+     "trigger": "holding",
+     "retry_from": "d.grab_toss.1"
+    }
+   ],
+   "strip": [],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 226,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_grab_slam",
+   "title": "drill.grab_slam.title",
+   "chapter": "training",
+   "map": [
+    700,
+    900
+   ],
+   "lines": [
+    "drill.grab_slam.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "dummy",
+     "x_mm": 700,
+     "z_mm": -1600,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.grab_slam.1",
+     "action": "light",
+     "trigger": "start"
+    },
+    {
+     "id": "d.grab_slam.2",
+     "action": "grab",
+     "trigger": "stunned",
+     "retry_from": "d.grab_slam.1"
+    },
+    {
+     "id": "d.grab_slam.3",
+     "action": "slam_throw",
+     "trigger": "holding",
+     "retry_from": "d.grab_slam.1"
+    }
+   ],
+   "strip": [],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 227,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_grab_up",
+   "title": "drill.grab_up.title",
+   "chapter": "training",
+   "map": [
+    746,
+    900
+   ],
+   "lines": [
+    "drill.grab_up.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "dummy",
+     "x_mm": 700,
+     "z_mm": -1600,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.grab_up.1",
+     "action": "light",
+     "trigger": "start"
+    },
+    {
+     "id": "d.grab_up.2",
+     "action": "grab",
+     "trigger": "stunned",
+     "retry_from": "d.grab_up.1"
+    },
+    {
+     "id": "d.grab_up.3",
+     "action": "toss_up",
+     "trigger": "holding",
+     "retry_from": "d.grab_up.1"
+    },
+    {
+     "id": "d.grab_up.4",
+     "action": "jump",
+     "trigger": "ready",
+     "retry_from": "d.grab_up.1"
+    },
+    {
+     "id": "d.grab_up.5",
+     "action": "air_light",
+     "trigger": "target_air",
+     "retry_from": "d.grab_up.1"
+    }
+   ],
+   "strip": [],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 228,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_grab_tap",
+   "title": "drill.grab_tap.title",
+   "chapter": "training",
+   "map": [
+    792,
+    900
+   ],
+   "lines": [
+    "drill.grab_tap.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "dummy",
+     "x_mm": 700,
+     "z_mm": -1600,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.grab_tap.1",
+     "action": "light",
+     "trigger": "start"
+    },
+    {
+     "id": "d.grab_tap.2",
+     "action": "grab_tap",
+     "trigger": "stunned",
+     "retry_from": "d.grab_tap.1"
+    },
+    {
+     "id": "d.grab_tap.3",
+     "action": "toss",
+     "trigger": "holding",
+     "retry_from": "d.grab_tap.1"
+    }
+   ],
+   "strip": [],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 229,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_air_grab",
+   "title": "drill.air_grab.title",
+   "chapter": "training",
+   "map": [
+    838,
+    900
+   ],
+   "lines": [
+    "drill.air_grab.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "dummy",
+     "x_mm": 700,
+     "z_mm": -1600,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.air_grab.1",
+     "action": "light",
+     "trigger": "start"
+    },
+    {
+     "id": "d.air_grab.2",
+     "action": "launcher",
+     "trigger": "stunned",
+     "retry_from": "d.air_grab.1"
+    },
+    {
+     "id": "d.air_grab.3",
+     "action": "jump",
+     "trigger": "ready",
+     "retry_from": "d.air_grab.1"
+    },
+    {
+     "id": "d.air_grab.4",
+     "action": "air_light",
+     "trigger": "target_air",
+     "retry_from": "d.air_grab.1"
+    },
+    {
+     "id": "d.air_grab.5",
+     "action": "grab",
+     "trigger": "target_air",
+     "retry_from": "d.air_grab.1"
+    },
+    {
+     "id": "d.air_grab.6",
+     "action": "slam_throw",
+     "trigger": "holding",
+     "retry_from": "d.air_grab.1"
+    }
+   ],
+   "strip": [],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 230,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_armor",
+   "title": "drill.armor.title",
+   "chapter": "training",
+   "map": [
+    884,
+    900
+   ],
+   "lines": [
+    "drill.armor.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "sparring_dog",
+     "x_mm": 0,
+     "z_mm": -6000,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.armor.1",
+     "action": "heavy",
+     "trigger": "dog_leaps",
+     "retry_from": "d.armor.1"
+    },
+    {
+     "id": "d.armor.2",
+     "action": "heavy",
+     "trigger": "dog_leaps",
+     "gap": 60,
+     "retry_from": "d.armor.1"
+    }
+   ],
+   "strip": [],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 231,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_guard",
+   "title": "drill.guard.title",
+   "chapter": "training",
+   "map": [
+    930,
+    900
+   ],
+   "lines": [
+    "drill.guard.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "dummy_brute",
+     "x_mm": 700,
+     "z_mm": -2600,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.guard.1",
+     "action": "light",
+     "trigger": "start"
+    },
+    {
+     "id": "d.guard.2",
+     "action": "light",
+     "trigger": "ready"
+    },
+    {
+     "id": "d.guard.3",
+     "action": "heavy",
+     "trigger": "ready"
+    },
+    {
+     "id": "d.guard.4",
+     "action": "heavy",
+     "trigger": "ready"
+    },
+    {
+     "id": "d.guard.5",
+     "action": "launcher",
+     "trigger": "stunned",
+     "retry_from": "d.guard.1"
+    }
+   ],
+   "strip": [
+    "light",
+    "light",
+    "heavy",
+    "heavy"
+   ],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 232,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_full_chain",
+   "title": "drill.full_chain.title",
+   "chapter": "training",
+   "map": [
+    470,
+    980
+   ],
+   "lines": [
+    "drill.full_chain.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "dummy",
+     "x_mm": 700,
+     "z_mm": -1600,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.full_chain.1",
+     "action": "light",
+     "trigger": "start"
+    },
+    {
+     "id": "d.full_chain.2",
+     "action": "light",
+     "trigger": "ready"
+    },
+    {
+     "id": "d.full_chain.3",
+     "action": "launcher",
+     "trigger": "stunned",
+     "retry_from": "d.full_chain.1"
+    },
+    {
+     "id": "d.full_chain.4",
+     "action": "jump",
+     "trigger": "ready",
+     "retry_from": "d.full_chain.1"
+    },
+    {
+     "id": "d.full_chain.5",
+     "action": "air_light",
+     "trigger": "target_air",
+     "retry_from": "d.full_chain.1"
+    },
+    {
+     "id": "d.full_chain.6",
+     "action": "air_light",
+     "trigger": "target_air",
+     "retry_from": "d.full_chain.1"
+    },
+    {
+     "id": "d.full_chain.7",
+     "action": "air_lift",
+     "trigger": "target_air",
+     "retry_from": "d.full_chain.1"
+    },
+    {
+     "id": "d.full_chain.8",
+     "action": "air_light",
+     "trigger": "target_air",
+     "retry_from": "d.full_chain.1"
+    },
+    {
+     "id": "d.full_chain.9",
+     "action": "air_heavy",
+     "trigger": "target_air",
+     "retry_from": "d.full_chain.1"
+    },
+    {
+     "id": "d.full_chain.10",
+     "action": "slam",
+     "trigger": "target_air",
+     "retry_from": "d.full_chain.1"
+    },
+    {
+     "id": "d.full_chain.11",
+     "action": "grab",
+     "trigger": "stunned",
+     "retry_from": "d.full_chain.1"
+    },
+    {
+     "id": "d.full_chain.12",
+     "action": "slam_throw",
+     "trigger": "holding",
+     "retry_from": "d.full_chain.1"
+    }
+   ],
+   "strip": [],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 233,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_kick",
+   "title": "drill.kick.title",
+   "chapter": "training",
+   "map": [
+    516,
+    980
+   ],
+   "lines": [
+    "drill.kick.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "dummy",
+     "x_mm": 700,
+     "z_mm": -1600,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.kick.1",
+     "action": "light",
+     "trigger": "start"
+    },
+    {
+     "id": "d.kick.2",
+     "action": "kick",
+     "trigger": "ready"
+    }
+   ],
+   "strip": [],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 300,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_kick_leap",
+   "title": "drill.kick_leap.title",
+   "chapter": "training",
+   "map": [
+    562,
+    980
+   ],
+   "lines": [
+    "drill.kick_leap.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "sparring_dog",
+     "x_mm": 0,
+     "z_mm": -6000,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.kick_leap.1",
+     "action": "kick",
+     "trigger": "dog_leaps",
+     "retry_from": "d.kick_leap.1"
+    },
+    {
+     "id": "d.kick_leap.2",
+     "action": "kick",
+     "trigger": "dog_leaps",
+     "gap": 60,
+     "retry_from": "d.kick_leap.1"
+    }
+   ],
+   "strip": [],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 302,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_air_kick",
+   "title": "drill.air_kick.title",
+   "chapter": "training",
+   "map": [
+    608,
+    980
+   ],
+   "lines": [
+    "drill.air_kick.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "dummy",
+     "x_mm": 700,
+     "z_mm": -1600,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.air_kick.1",
+     "action": "light",
+     "trigger": "start"
+    },
+    {
+     "id": "d.air_kick.2",
+     "action": "launcher",
+     "trigger": "stunned",
+     "retry_from": "d.air_kick.1"
+    },
+    {
+     "id": "d.air_kick.3",
+     "action": "jump",
+     "trigger": "ready",
+     "retry_from": "d.air_kick.1"
+    },
+    {
+     "id": "d.air_kick.4",
+     "action": "air_light",
+     "trigger": "target_air",
+     "retry_from": "d.air_kick.1"
+    },
+    {
+     "id": "d.air_kick.5",
+     "action": "air_kick",
+     "trigger": "target_air",
+     "retry_from": "d.air_kick.1"
+    },
+    {
+     "id": "d.air_kick.6",
+     "action": "air_jump",
+     "trigger": "air_jump",
+     "retry_from": "d.air_kick.1"
+    },
+    {
+     "id": "d.air_kick.7",
+     "action": "air_light",
+     "trigger": "target_air",
+     "retry_from": "d.air_kick.1"
+    }
+   ],
+   "strip": [],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 304,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_kick_chain",
+   "title": "drill.kick_chain.title",
+   "chapter": "training",
+   "map": [
+    654,
+    980
+   ],
+   "lines": [
+    "drill.kick_chain.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "dummy",
+     "x_mm": 700,
+     "z_mm": -1600,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.kick_chain.1",
+     "action": "light",
+     "trigger": "start"
+    },
+    {
+     "id": "d.kick_chain.2",
+     "action": "launcher",
+     "trigger": "stunned",
+     "retry_from": "d.kick_chain.1"
+    },
+    {
+     "id": "d.kick_chain.3",
+     "action": "jump",
+     "trigger": "ready",
+     "retry_from": "d.kick_chain.1"
+    },
+    {
+     "id": "d.kick_chain.4",
+     "action": "air_light",
+     "trigger": "target_air",
+     "retry_from": "d.kick_chain.1"
+    },
+    {
+     "id": "d.kick_chain.5",
+     "action": "air_kick",
+     "trigger": "target_air",
+     "retry_from": "d.kick_chain.1"
+    },
+    {
+     "id": "d.kick_chain.6",
+     "action": "air_jump",
+     "trigger": "air_jump",
+     "retry_from": "d.kick_chain.1"
+    },
+    {
+     "id": "d.kick_chain.7",
+     "action": "air_kick",
+     "trigger": "target_air",
+     "retry_from": "d.kick_chain.1"
+    },
+    {
+     "id": "d.kick_chain.8",
+     "action": "air_jump",
+     "trigger": "air_jump",
+     "retry_from": "d.kick_chain.1"
+    },
+    {
+     "id": "d.kick_chain.9",
+     "action": "air_light",
+     "trigger": "target_air",
+     "retry_from": "d.kick_chain.1"
+    }
+   ],
+   "strip": [],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 306,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_parry",
+   "title": "drill.parry.title",
+   "chapter": "training",
+   "map": [
+    700,
+    980
+   ],
+   "lines": [
+    "drill.parry.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "sparring_dog",
+     "x_mm": 0,
+     "z_mm": -6000,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.parry.1",
+     "action": "parry",
+     "trigger": "dog_leaps",
+     "retry_from": "d.parry.1"
+    },
+    {
+     "id": "d.parry.2",
+     "action": "launcher",
+     "trigger": "stunned",
+     "retry_from": "d.parry.1"
+    },
+    {
+     "id": "d.parry.3",
+     "action": "parry",
+     "trigger": "dog_leaps",
+     "gap": 60,
+     "retry_from": "d.parry.3"
+    },
+    {
+     "id": "d.parry.4",
+     "action": "light",
+     "trigger": "stunned",
+     "retry_from": "d.parry.3"
+    }
+   ],
+   "strip": [],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 302,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_beast",
+   "title": "drill.beast.title",
+   "chapter": "training",
+   "map": [
+    746,
+    980
+   ],
+   "lines": [
+    "drill.beast.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "sparring_beast",
+     "x_mm": 0,
+     "z_mm": -7000,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.beast.1",
+     "action": "parry",
+     "trigger": "dog_leaps",
+     "retry_from": "d.beast.1"
+    },
+    {
+     "id": "d.beast.2",
+     "action": "parry",
+     "trigger": "dog_leaps",
+     "gap": 60,
+     "retry_from": "d.beast.1"
+    },
+    {
+     "id": "d.beast.3",
+     "action": "grab",
+     "trigger": "stunned",
+     "retry_from": "d.beast.1"
+    },
+    {
+     "id": "d.beast.4",
+     "action": "toss_up",
+     "trigger": "holding",
+     "retry_from": "d.beast.1"
+    },
+    {
+     "id": "d.beast.5",
+     "action": "jump",
+     "trigger": "ready",
+     "retry_from": "d.beast.1"
+    },
+    {
+     "id": "d.beast.6",
+     "action": "air_light",
+     "trigger": "target_air",
+     "retry_from": "d.beast.1"
+    }
+   ],
+   "strip": [],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 302,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_dive",
+   "title": "drill.dive.title",
+   "chapter": "training",
+   "map": [
+    792,
+    980
+   ],
+   "lines": [
+    "drill.dive.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "dummy",
+     "x_mm": 700,
+     "z_mm": -1600,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.dive.1",
+     "action": "jump",
+     "trigger": "start"
+    },
+    {
+     "id": "d.dive.2",
+     "action": "dive",
+     "trigger": "apex",
+     "retry_from": "d.dive.1"
+    }
+   ],
+   "strip": [],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 309,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_dive_down",
+   "title": "drill.dive_down.title",
+   "chapter": "training",
+   "map": [
+    838,
+    980
+   ],
+   "lines": [
+    "drill.dive_down.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "dummy",
+     "x_mm": 700,
+     "z_mm": -1600,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.dive_down.1",
+     "action": "light",
+     "trigger": "start"
+    },
+    {
+     "id": "d.dive_down.2",
+     "action": "launcher",
+     "trigger": "stunned",
+     "retry_from": "d.dive_down.1"
+    },
+    {
+     "id": "d.dive_down.3",
+     "action": "jump",
+     "trigger": "ready",
+     "retry_from": "d.dive_down.1"
+    },
+    {
+     "id": "d.dive_down.4",
+     "action": "air_light",
+     "trigger": "target_air",
+     "retry_from": "d.dive_down.1"
+    },
+    {
+     "id": "d.dive_down.5",
+     "action": "dive",
+     "trigger": "target_air",
+     "retry_from": "d.dive_down.1"
+    }
+   ],
+   "strip": [],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 310,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  },
+  {
+   "id": "drill_dive_chain",
+   "title": "drill.dive_chain.title",
+   "chapter": "training",
+   "map": [
+    884,
+    980
+   ],
+   "lines": [
+    "drill.dive_chain.c1"
+   ],
+   "spawn": [
+    {
+     "kind": "dummy",
+     "x_mm": 700,
+     "z_mm": -1600,
+     "tree": ""
+    }
+   ],
+   "beats": [
+    {
+     "id": "d.dive_chain.1",
+     "action": "jump",
+     "trigger": "start"
+    },
+    {
+     "id": "d.dive_chain.2",
+     "action": "air_lift",
+     "trigger": "ready",
+     "retry_from": "d.dive_chain.1"
+    },
+    {
+     "id": "d.dive_chain.3",
+     "action": "dive",
+     "trigger": "apex",
+     "retry_from": "d.dive_chain.1"
+    },
+    {
+     "id": "d.dive_chain.4",
+     "action": "air_kick",
+     "trigger": "dive_hit",
+     "retry_from": "d.dive_chain.1"
+    },
+    {
+     "id": "d.dive_chain.5",
+     "action": "air_jump",
+     "trigger": "air_jump",
+     "retry_from": "d.dive_chain.1"
+    },
+    {
+     "id": "d.dive_chain.6",
+     "action": "air_lift",
+     "trigger": "ready",
+     "retry_from": "d.dive_chain.1"
+    }
+   ],
+   "strip": [],
+   "drill": true,
+   "sky": [
+    246,
+    176,
+    140
+   ],
+   "fog": [
+    236,
+    182,
+    160
+   ],
+   "backdrop": {
+    "seed": 311,
+    "city_deg": 0,
+    "city_arc_deg": 55,
+    "grass": [
+     96,
+     150,
+     78
+    ],
+    "hill": [
+     70,
+     118,
+     70
+    ],
+    "water": [
+     62,
+     104,
+     140
+    ],
+    "towers": [
+     [
+      214,
+      200,
+      206
+     ],
+     [
+      170,
+      160,
+      190
+     ],
+     [
+      236,
+      220,
+      196
+     ],
+     [
+      150,
+      148,
+      170
+     ]
+    ],
+    "far_hills": [
+     150,
+     140,
+     170
+    ],
+    "trees": [
+     92,
+     64,
+     48
+    ],
+    "leaves": [
+     210,
+     90,
+     160
+    ],
+    "floor_m": 24,
+    "drop_m": 40,
+    "setting": "hill"
+   }
+  }
+ ],
+ "sandbox": {
+  "title": "sandbox.title",
+  "sky": [
+   200,
+   200,
+   220
+  ],
+  "fog": [
+   196,
+   200,
+   222
+  ],
+  "backdrop": {
+   "seed": 5,
+   "city_deg": 0,
+   "city_arc_deg": 50,
+   "grass": [
+    92,
+    146,
+    86
+   ],
+   "hill": [
+    66,
+    112,
+    74
+   ],
+   "water": [
+    60,
+    100,
+    138
+   ],
+   "towers": [
+    [
+     206,
+     200,
+     212
+    ],
+    [
+     166,
+     160,
+     188
+    ],
+    [
+     230,
+     216,
+     200
+    ]
+   ],
+   "far_hills": [
+    146,
+    142,
+    172
+   ],
+   "trees": [
+    90,
+    62,
+    48
+   ],
+   "leaves": [
+    200,
+    100,
+    170
+   ],
+   "floor_m": 24,
+   "drop_m": 40
+  }
+ },
+ "worlds": [
+  {
+   "id": 1,
+   "title": "world.1"
+  },
+  {
+   "id": 2,
+   "title": "world.2"
+  }
+ ]
+}

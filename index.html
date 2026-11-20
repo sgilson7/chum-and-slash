@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Reference default. connect-src 'self' keeps fetches on this origin;
+       'wasm-unsafe-eval' lets the page compile its own WebAssembly module;
+       form-action 'none' blocks form posts. A meta policy cannot stop data
+       leaving by navigation, so the browser check still watches requests. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>CHUM MAY CRY</title>
+  <link rel="stylesheet" href="style.css?v=ad3bdac955a3">
+</head>
+<body data-ready="false">
+  <canvas id="view" aria-label="The game"></canvas>
+  <!-- the splash behind the title (from Sam's website's games page; the still where motion is reduced) -->
+  <picture id="splash" aria-hidden="true"><source srcset="art/splash-still.webp" media="(prefers-reduced-motion: reduce)"><img src="art/splash.webp" alt=""></picture>
+  <div id="overlay">
+    <div id="hud" hidden></div>
+    <div id="style" hidden><span class="style-label"></span><b class="style-rank"></b><span class="style-word"></span><span class="style-bar"><span class="style-fill"></span></span></div>
+    <div id="target" hidden><span class="target-name"></span><span class="target-bar"><span class="target-fill"></span></span><span class="target-guard"><span class="target-guard-label"></span><span class="target-guard-bar"><span class="target-guard-fill"></span></span></span><span class="target-lift" hidden><span class="target-lift-label"></span><span class="target-lift-bar"><span class="target-lift-fill"></span></span></span><span class="target-stance" hidden></span></div>
+    <div id="combo" aria-live="polite" hidden><span class="combo-name"></span></div>
+    <div id="finish" role="status" aria-live="polite" hidden></div>
+    <div id="flash" aria-hidden="true"></div>
+    <div id="bars" aria-hidden="true"><span class="bar-top"></span><span class="bar-bottom"></span></div>
+    <div id="tools" hidden></div>
+    <div id="prompt" role="status" aria-live="assertive" hidden></div>
+    <div id="strip" hidden></div>
+    <section id="card" aria-live="polite"></section>
+    <section id="story" aria-label="Story" hidden></section>
+    <div id="music" hidden><span class="music-label"></span><button type="button" class="music-toggle"></button><input class="music-volume" type="range" min="0"><span class="music-missing" hidden></span></div>
+    <p id="message" role="status"></p>
+  </div>
+  <noscript><p>This page needs JavaScript and WebAssembly.</p></noscript>
+  <script type="module" src="app.js?v=ad3bdac955a3"></script>
+</body>
+</html>

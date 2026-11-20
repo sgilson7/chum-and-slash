@@ -1,0 +1,11 @@
+{
+ "_about": "Rumble envelopes for vibrationActuator.playEffect('dual-rumble'), after the controllers review (all its estimates): small for a light hit, more for a heavy hit, most for a launcher hit (cue 104). Duration in ms; magnitudes 0-1.",
+ "light_hit": {"duration": 67, "strong": 0.0, "weak": 0.35},
+ "heavy_hit": {"duration": 117, "strong": 0.55, "weak": 0.45},
+ "launcher_hit": {"duration": 233, "strong": 1.0, "weak": 0.6},
+ "whirl_hit": {"duration": 150, "strong": 0.7, "weak": 0.5},
+ "hurt": {"duration": 160, "strong": 0.6, "weak": 0.3},
+ "parry": {"duration": 140, "strong": 0.8, "weak": 0.7},
+ "fin_clash": {"duration": 300, "strong": 1.0, "weak": 0.8},
+ "fin_slice": {"duration": 450, "strong": 1.0, "weak": 1.0}
+}

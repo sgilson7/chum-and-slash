@@ -1,0 +1,11 @@
+# Arena 2: three dogs on the tutorial tree, a volley, the Whirlwind Strike.
+spawn dog 0 -4000
+spawn dog 3500 2000
+spawn dog -3500 2000
+tree 0 tutorial_dog
+tree 1 tutorial_dog
+tree 2 tutorial_dog
+volley 40
+press 66 mod+light
+hold 66 70 mod
+end 220

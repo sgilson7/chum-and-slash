@@ -1,0 +1,4606 @@
+{
+ "colours": {
+  "black": [
+   24,
+   24,
+   28
+  ],
+  "coat_green": [
+   56,
+   112,
+   60
+  ],
+  "coat_lining": [
+   36,
+   72,
+   40
+  ],
+  "cord_white": [
+   236,
+   230,
+   214
+  ],
+  "cord_brown": [
+   124,
+   86,
+   54
+  ],
+  "skin": [
+   206,
+   158,
+   120
+  ],
+  "hair": [
+   42,
+   30,
+   24
+  ],
+  "shoe": [
+   44,
+   42,
+   46
+  ],
+  "tool_grey": [
+   74,
+   78,
+   84
+  ],
+  "metal": [
+   176,
+   184,
+   192
+  ],
+  "glow_cyan": [
+   130,
+   255,
+   228
+  ],
+  "dog_magenta": [
+   214,
+   64,
+   152
+  ],
+  "dog_belly": [
+   250,
+   168,
+   96
+  ],
+  "leaf_lime": [
+   152,
+   226,
+   64
+  ],
+  "leaf_teal": [
+   40,
+   190,
+   170
+  ],
+  "eye_glow": [
+   255,
+   238,
+   120
+  ],
+  "wound": [
+   120,
+   20,
+   60
+  ],
+  "brute_slate": [
+   58,
+   112,
+   128
+  ],
+  "brute_dark": [
+   30,
+   60,
+   74
+  ],
+  "brute_seam": [
+   255,
+   150,
+   60
+  ],
+  "brute_moss": [
+   152,
+   226,
+   64
+  ],
+  "stalker_skin": [
+   196,
+   178,
+   232
+  ],
+  "stalker_plate": [
+   56,
+   42,
+   104
+  ],
+  "stalker_blade": [
+   236,
+   236,
+   246
+  ],
+  "stalker_edge": [
+   255,
+   90,
+   150
+  ],
+  "beast_hide": [
+   150,
+   40,
+   46
+  ],
+  "beast_dark": [
+   72,
+   22,
+   30
+  ],
+  "beast_plate": [
+   226,
+   208,
+   170
+  ],
+  "beast_claw": [
+   240,
+   232,
+   214
+  ],
+  "beast_edge": [
+   255,
+   196,
+   60
+  ],
+  "keeper_robe": [
+   30,
+   70,
+   78
+  ],
+  "keeper_dark": [
+   14,
+   22,
+   28
+  ],
+  "keeper_mask": [
+   240,
+   236,
+   226
+  ],
+  "keeper_gold": [
+   255,
+   206,
+   110
+  ],
+  "keeper_steel": [
+   206,
+   214,
+   224
+  ],
+  "keeper_glow": [
+   120,
+   240,
+   255
+  ]
+ },
+ "models": {
+  "hero": {
+   "joints": [
+    {
+     "name": "hips",
+     "parent": null,
+     "at": [
+      0,
+      960,
+      0
+     ]
+    },
+    {
+     "name": "chest",
+     "parent": "hips",
+     "at": [
+      0,
+      120,
+      0
+     ]
+    },
+    {
+     "name": "head",
+     "parent": "chest",
+     "at": [
+      0,
+      430,
+      0
+     ]
+    },
+    {
+     "name": "r_shoulder",
+     "parent": "chest",
+     "at": [
+      215,
+      340,
+      0
+     ]
+    },
+    {
+     "name": "r_elbow",
+     "parent": "r_shoulder",
+     "at": [
+      0,
+      -300,
+      0
+     ]
+    },
+    {
+     "name": "tool",
+     "parent": "r_elbow",
+     "at": [
+      0,
+      -290,
+      0
+     ]
+    },
+    {
+     "name": "l_shoulder",
+     "parent": "chest",
+     "at": [
+      -215,
+      340,
+      0
+     ]
+    },
+    {
+     "name": "l_elbow",
+     "parent": "l_shoulder",
+     "at": [
+      0,
+      -300,
+      0
+     ]
+    },
+    {
+     "name": "r_hip",
+     "parent": "hips",
+     "at": [
+      100,
+      -40,
+      0
+     ]
+    },
+    {
+     "name": "r_knee",
+     "parent": "r_hip",
+     "at": [
+      0,
+      -440,
+      0
+     ]
+    },
+    {
+     "name": "l_hip",
+     "parent": "hips",
+     "at": [
+      -100,
+      -40,
+      0
+     ]
+    },
+    {
+     "name": "l_knee",
+     "parent": "l_hip",
+     "at": [
+      0,
+      -440,
+      0
+     ]
+    }
+   ],
+   "parts": [
+    {
+     "joint": "chest",
+     "mesh": "cube",
+     "at": [
+      0,
+      190,
+      0
+     ],
+     "size": [
+      330,
+      400,
+      200
+     ],
+     "colour": "black",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "shirt"
+    },
+    {
+     "joint": "hips",
+     "mesh": "cube",
+     "at": [
+      0,
+      40,
+      0
+     ],
+     "size": [
+      300,
+      160,
+      190
+     ],
+     "colour": "black",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "shirt"
+    },
+    {
+     "joint": "chest",
+     "mesh": "cube",
+     "at": [
+      0,
+      150,
+      115
+     ],
+     "size": [
+      390,
+      560,
+      40
+     ],
+     "colour": "coat_green",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "coat"
+    },
+    {
+     "joint": "chest",
+     "mesh": "cube",
+     "at": [
+      -125,
+      150,
+      -112
+     ],
+     "size": [
+      140,
+      560,
+      36
+     ],
+     "colour": "coat_green",
+     "turn": [
+      0,
+      -8,
+      0
+     ],
+     "role": "coat"
+    },
+    {
+     "joint": "chest",
+     "mesh": "cube",
+     "at": [
+      125,
+      150,
+      -112
+     ],
+     "size": [
+      140,
+      560,
+      36
+     ],
+     "colour": "coat_green",
+     "turn": [
+      0,
+      8,
+      0
+     ],
+     "role": "coat"
+    },
+    {
+     "joint": "chest",
+     "mesh": "cube",
+     "at": [
+      -205,
+      170,
+      0
+     ],
+     "size": [
+      40,
+      520,
+      220
+     ],
+     "colour": "coat_green",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "coat"
+    },
+    {
+     "joint": "chest",
+     "mesh": "cube",
+     "at": [
+      205,
+      170,
+      0
+     ],
+     "size": [
+      40,
+      520,
+      220
+     ],
+     "colour": "coat_green",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "coat"
+    },
+    {
+     "joint": "hips",
+     "mesh": "cube",
+     "at": [
+      0,
+      -60,
+      112
+     ],
+     "size": [
+      380,
+      300,
+      36
+     ],
+     "colour": "coat_green",
+     "turn": [
+      -6,
+      0,
+      0
+     ],
+     "role": "coat"
+    },
+    {
+     "joint": "chest",
+     "mesh": "cube",
+     "at": [
+      0,
+      395,
+      0
+     ],
+     "size": [
+      300,
+      70,
+      230
+     ],
+     "colour": "coat_lining",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "collar"
+    },
+    {
+     "joint": "head",
+     "mesh": "cyl",
+     "at": [
+      0,
+      -40,
+      0
+     ],
+     "size": [
+      110,
+      90,
+      110
+     ],
+     "colour": "skin",
+     "turn": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "joint": "head",
+     "mesh": "sphere",
+     "at": [
+      0,
+      90,
+      0
+     ],
+     "size": [
+      210,
+      240,
+      220
+     ],
+     "colour": "skin",
+     "turn": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "joint": "head",
+     "mesh": "blob",
+     "at": [
+      0,
+      170,
+      20
+     ],
+     "size": [
+      230,
+      110,
+      240
+     ],
+     "colour": "hair",
+     "turn": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "joint": "r_shoulder",
+     "mesh": "cyl",
+     "at": [
+      0,
+      -150,
+      0
+     ],
+     "size": [
+      120,
+      310,
+      120
+     ],
+     "colour": "coat_green",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "coat"
+    },
+    {
+     "joint": "r_elbow",
+     "mesh": "cyl",
+     "at": [
+      0,
+      -130,
+      0
+     ],
+     "size": [
+      100,
+      270,
+      100
+     ],
+     "colour": "coat_green",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "coat"
+    },
+    {
+     "joint": "r_elbow",
+     "mesh": "sphere",
+     "at": [
+      0,
+      -285,
+      0
+     ],
+     "size": [
+      95,
+      95,
+      95
+     ],
+     "colour": "skin",
+     "turn": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "joint": "l_shoulder",
+     "mesh": "cyl",
+     "at": [
+      0,
+      -150,
+      0
+     ],
+     "size": [
+      120,
+      310,
+      120
+     ],
+     "colour": "coat_green",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "coat"
+    },
+    {
+     "joint": "l_elbow",
+     "mesh": "cyl",
+     "at": [
+      0,
+      -130,
+      0
+     ],
+     "size": [
+      100,
+      270,
+      100
+     ],
+     "colour": "coat_green",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "coat"
+    },
+    {
+     "joint": "l_elbow",
+     "mesh": "sphere",
+     "at": [
+      0,
+      -285,
+      0
+     ],
+     "size": [
+      95,
+      95,
+      95
+     ],
+     "colour": "skin",
+     "turn": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "joint": "r_hip",
+     "mesh": "cyl",
+     "at": [
+      0,
+      -220,
+      0
+     ],
+     "size": [
+      155,
+      450,
+      155
+     ],
+     "colour": "cord_white",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "trousers",
+     "style": "stripes"
+    },
+    {
+     "joint": "r_knee",
+     "mesh": "cyl",
+     "at": [
+      0,
+      -200,
+      0
+     ],
+     "size": [
+      138,
+      400,
+      138
+     ],
+     "colour": "cord_white",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "trousers",
+     "style": "stripes"
+    },
+    {
+     "joint": "r_knee",
+     "mesh": "cyl",
+     "at": [
+      0,
+      -385,
+      0
+     ],
+     "size": [
+      160,
+      70,
+      160
+     ],
+     "colour": "cord_brown",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "cuff"
+    },
+    {
+     "joint": "r_knee",
+     "mesh": "cube",
+     "at": [
+      0,
+      -450,
+      -45
+     ],
+     "size": [
+      115,
+      70,
+      250
+     ],
+     "colour": "shoe",
+     "turn": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "joint": "l_hip",
+     "mesh": "cyl",
+     "at": [
+      0,
+      -220,
+      0
+     ],
+     "size": [
+      155,
+      450,
+      155
+     ],
+     "colour": "cord_white",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "trousers",
+     "style": "stripes"
+    },
+    {
+     "joint": "l_knee",
+     "mesh": "cyl",
+     "at": [
+      0,
+      -200,
+      0
+     ],
+     "size": [
+      138,
+      400,
+      138
+     ],
+     "colour": "cord_white",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "trousers",
+     "style": "stripes"
+    },
+    {
+     "joint": "l_knee",
+     "mesh": "cyl",
+     "at": [
+      0,
+      -385,
+      0
+     ],
+     "size": [
+      160,
+      70,
+      160
+     ],
+     "colour": "cord_brown",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "cuff"
+    },
+    {
+     "joint": "l_knee",
+     "mesh": "cube",
+     "at": [
+      0,
+      -450,
+      -45
+     ],
+     "size": [
+      115,
+      70,
+      250
+     ],
+     "colour": "shoe",
+     "turn": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "joint": "tool",
+     "mesh": "cyl",
+     "at": [
+      0,
+      -200,
+      0
+     ],
+     "size": [
+      38,
+      520,
+      38
+     ],
+     "colour": "tool_grey",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "haft"
+    },
+    {
+     "joint": "tool",
+     "mesh": "wedge",
+     "at": [
+      0,
+      -430,
+      -95
+     ],
+     "size": [
+      36,
+      200,
+      170
+     ],
+     "colour": "metal",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "blade"
+    },
+    {
+     "joint": "tool",
+     "mesh": "cube",
+     "at": [
+      0,
+      -430,
+      -182
+     ],
+     "size": [
+      16,
+      200,
+      14
+     ],
+     "colour": "glow_cyan",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "tool_edge",
+     "style": "glow"
+    },
+    {
+     "joint": "tool",
+     "mesh": "cone",
+     "at": [
+      0,
+      -430,
+      75
+     ],
+     "size": [
+      40,
+      150,
+      40
+     ],
+     "colour": "metal",
+     "turn": [
+      90,
+      0,
+      0
+     ],
+     "role": "pick"
+    }
+   ]
+  },
+  "dog": {
+   "joints": [
+    {
+     "name": "hips",
+     "parent": null,
+     "at": [
+      0,
+      640,
+      160
+     ]
+    },
+    {
+     "name": "chest",
+     "parent": "hips",
+     "at": [
+      0,
+      40,
+      -360
+     ]
+    },
+    {
+     "name": "neck",
+     "parent": "chest",
+     "at": [
+      0,
+      110,
+      -170
+     ]
+    },
+    {
+     "name": "head",
+     "parent": "neck",
+     "at": [
+      0,
+      270,
+      -110
+     ]
+    },
+    {
+     "name": "jaw",
+     "parent": "head",
+     "at": [
+      0,
+      -60,
+      -60
+     ]
+    },
+    {
+     "name": "fl_hip",
+     "parent": "chest",
+     "at": [
+      130,
+      -60,
+      -40
+     ]
+    },
+    {
+     "name": "fl_knee",
+     "parent": "fl_hip",
+     "at": [
+      0,
+      -340,
+      0
+     ]
+    },
+    {
+     "name": "fr_hip",
+     "parent": "chest",
+     "at": [
+      -130,
+      -60,
+      -40
+     ]
+    },
+    {
+     "name": "fr_knee",
+     "parent": "fr_hip",
+     "at": [
+      0,
+      -340,
+      0
+     ]
+    },
+    {
+     "name": "bl_hip",
+     "parent": "hips",
+     "at": [
+      130,
+      -40,
+      40
+     ]
+    },
+    {
+     "name": "bl_knee",
+     "parent": "bl_hip",
+     "at": [
+      0,
+      -340,
+      0
+     ]
+    },
+    {
+     "name": "br_hip",
+     "parent": "hips",
+     "at": [
+      -130,
+      -40,
+      40
+     ]
+    },
+    {
+     "name": "br_knee",
+     "parent": "br_hip",
+     "at": [
+      0,
+      -340,
+      0
+     ]
+    },
+    {
+     "name": "tail",
+     "parent": "hips",
+     "at": [
+      0,
+      60,
+      200
+     ]
+    }
+   ],
+   "parts": [
+    {
+     "joint": "hips",
+     "mesh": "facet",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "size": [
+      300,
+      260,
+      420
+     ],
+     "colour": "dog_magenta",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "body"
+    },
+    {
+     "joint": "chest",
+     "mesh": "facet",
+     "at": [
+      0,
+      10,
+      0
+     ],
+     "size": [
+      330,
+      310,
+      380
+     ],
+     "colour": "dog_magenta",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "body"
+    },
+    {
+     "joint": "chest",
+     "mesh": "facet",
+     "at": [
+      0,
+      -90,
+      20
+     ],
+     "size": [
+      240,
+      140,
+      300
+     ],
+     "colour": "dog_belly",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "body"
+    },
+    {
+     "joint": "neck",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      120,
+      -50
+     ],
+     "size": [
+      95,
+      300,
+      95
+     ],
+     "colour": "dog_magenta",
+     "turn": [
+      -25,
+      0,
+      0
+     ],
+     "role": "body"
+    },
+    {
+     "joint": "head",
+     "mesh": "facet",
+     "at": [
+      0,
+      0,
+      -80
+     ],
+     "size": [
+      190,
+      170,
+      290
+     ],
+     "colour": "dog_magenta",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "head"
+    },
+    {
+     "joint": "jaw",
+     "mesh": "wedge",
+     "at": [
+      0,
+      -20,
+      -110
+     ],
+     "size": [
+      150,
+      60,
+      230
+     ],
+     "colour": "dog_belly",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "jaw"
+    },
+    {
+     "joint": "head",
+     "mesh": "sphere",
+     "at": [
+      60,
+      40,
+      -170
+     ],
+     "size": [
+      45,
+      45,
+      45
+     ],
+     "colour": "eye_glow",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "eye",
+     "style": "glow"
+    },
+    {
+     "joint": "head",
+     "mesh": "sphere",
+     "at": [
+      -60,
+      40,
+      -170
+     ],
+     "size": [
+      45,
+      45,
+      45
+     ],
+     "colour": "eye_glow",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "eye",
+     "style": "glow"
+    },
+    {
+     "joint": "head",
+     "mesh": "facetcone",
+     "at": [
+      70,
+      120,
+      20
+     ],
+     "size": [
+      60,
+      220,
+      60
+     ],
+     "colour": "leaf_lime",
+     "turn": [
+      -30,
+      0,
+      -25
+     ],
+     "role": "frond"
+    },
+    {
+     "joint": "head",
+     "mesh": "facetcone",
+     "at": [
+      -70,
+      120,
+      20
+     ],
+     "size": [
+      60,
+      220,
+      60
+     ],
+     "colour": "leaf_lime",
+     "turn": [
+      -30,
+      0,
+      25
+     ],
+     "role": "frond"
+    },
+    {
+     "joint": "chest",
+     "mesh": "facetcone",
+     "at": [
+      0,
+      190,
+      40
+     ],
+     "size": [
+      90,
+      260,
+      90
+     ],
+     "colour": "leaf_teal",
+     "turn": [
+      -35,
+      0,
+      0
+     ],
+     "role": "frond"
+    },
+    {
+     "joint": "hips",
+     "mesh": "facetcone",
+     "at": [
+      0,
+      170,
+      -60
+     ],
+     "size": [
+      80,
+      230,
+      80
+     ],
+     "colour": "leaf_teal",
+     "turn": [
+      -35,
+      0,
+      0
+     ],
+     "role": "frond"
+    },
+    {
+     "joint": "hips",
+     "mesh": "facetcone",
+     "at": [
+      0,
+      150,
+      120
+     ],
+     "size": [
+      70,
+      200,
+      70
+     ],
+     "colour": "leaf_lime",
+     "turn": [
+      -40,
+      0,
+      0
+     ],
+     "role": "frond"
+    },
+    {
+     "joint": "tail",
+     "mesh": "facetcone",
+     "at": [
+      0,
+      40,
+      160
+     ],
+     "size": [
+      70,
+      380,
+      70
+     ],
+     "colour": "leaf_lime",
+     "turn": [
+      -70,
+      0,
+      0
+     ],
+     "role": "tail"
+    },
+    {
+     "joint": "fl_hip",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -170,
+      0
+     ],
+     "size": [
+      62,
+      340,
+      62
+     ],
+     "colour": "dog_magenta",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "leg"
+    },
+    {
+     "joint": "fl_knee",
+     "mesh": "facetcone",
+     "at": [
+      0,
+      -150,
+      0
+     ],
+     "size": [
+      56,
+      300,
+      56
+     ],
+     "colour": "leaf_teal",
+     "turn": [
+      180,
+      0,
+      0
+     ],
+     "role": "leg"
+    },
+    {
+     "joint": "fl_knee",
+     "mesh": "facet",
+     "at": [
+      0,
+      -300,
+      -20
+     ],
+     "size": [
+      80,
+      50,
+      110
+     ],
+     "colour": "leaf_lime",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "foot"
+    },
+    {
+     "joint": "fr_hip",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -170,
+      0
+     ],
+     "size": [
+      62,
+      340,
+      62
+     ],
+     "colour": "dog_magenta",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "leg"
+    },
+    {
+     "joint": "fr_knee",
+     "mesh": "facetcone",
+     "at": [
+      0,
+      -150,
+      0
+     ],
+     "size": [
+      56,
+      300,
+      56
+     ],
+     "colour": "leaf_teal",
+     "turn": [
+      180,
+      0,
+      0
+     ],
+     "role": "leg"
+    },
+    {
+     "joint": "fr_knee",
+     "mesh": "facet",
+     "at": [
+      0,
+      -300,
+      -20
+     ],
+     "size": [
+      80,
+      50,
+      110
+     ],
+     "colour": "leaf_lime",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "foot"
+    },
+    {
+     "joint": "bl_hip",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -170,
+      0
+     ],
+     "size": [
+      62,
+      340,
+      62
+     ],
+     "colour": "dog_magenta",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "leg"
+    },
+    {
+     "joint": "bl_knee",
+     "mesh": "facetcone",
+     "at": [
+      0,
+      -150,
+      0
+     ],
+     "size": [
+      56,
+      300,
+      56
+     ],
+     "colour": "leaf_teal",
+     "turn": [
+      180,
+      0,
+      0
+     ],
+     "role": "leg"
+    },
+    {
+     "joint": "bl_knee",
+     "mesh": "facet",
+     "at": [
+      0,
+      -300,
+      -20
+     ],
+     "size": [
+      80,
+      50,
+      110
+     ],
+     "colour": "leaf_lime",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "foot"
+    },
+    {
+     "joint": "br_hip",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -170,
+      0
+     ],
+     "size": [
+      62,
+      340,
+      62
+     ],
+     "colour": "dog_magenta",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "leg"
+    },
+    {
+     "joint": "br_knee",
+     "mesh": "facetcone",
+     "at": [
+      0,
+      -150,
+      0
+     ],
+     "size": [
+      56,
+      300,
+      56
+     ],
+     "colour": "leaf_teal",
+     "turn": [
+      180,
+      0,
+      0
+     ],
+     "role": "leg"
+    },
+    {
+     "joint": "br_knee",
+     "mesh": "facet",
+     "at": [
+      0,
+      -300,
+      -20
+     ],
+     "size": [
+      80,
+      50,
+      110
+     ],
+     "colour": "leaf_lime",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "foot"
+    }
+   ]
+  },
+  "brute": {
+   "joints": [
+    {
+     "name": "hips",
+     "parent": null,
+     "at": [
+      0,
+      150,
+      0
+     ]
+    },
+    {
+     "name": "chest",
+     "parent": "hips",
+     "at": [
+      0,
+      350,
+      0
+     ]
+    },
+    {
+     "name": "head",
+     "parent": "chest",
+     "at": [
+      0,
+      850,
+      0
+     ]
+    },
+    {
+     "name": "r_shoulder",
+     "parent": "chest",
+     "at": [
+      520,
+      700,
+      0
+     ]
+    },
+    {
+     "name": "r_elbow",
+     "parent": "r_shoulder",
+     "at": [
+      0,
+      -400,
+      0
+     ]
+    },
+    {
+     "name": "l_shoulder",
+     "parent": "chest",
+     "at": [
+      -520,
+      700,
+      0
+     ]
+    },
+    {
+     "name": "l_elbow",
+     "parent": "l_shoulder",
+     "at": [
+      0,
+      -400,
+      0
+     ]
+    }
+   ],
+   "parts": [
+    {
+     "joint": "hips",
+     "mesh": "cube",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "size": [
+      760,
+      140,
+      760
+     ],
+     "colour": "brute_dark",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "skid"
+    },
+    {
+     "joint": "hips",
+     "mesh": "cube",
+     "at": [
+      0,
+      40,
+      0
+     ],
+     "size": [
+      800,
+      30,
+      800
+     ],
+     "colour": "brute_seam",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "skid",
+     "style": "glow"
+    },
+    {
+     "joint": "chest",
+     "mesh": "cube",
+     "at": [
+      0,
+      420,
+      0
+     ],
+     "size": [
+      900,
+      880,
+      800
+     ],
+     "colour": "brute_slate",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "body"
+    },
+    {
+     "joint": "chest",
+     "mesh": "cube",
+     "at": [
+      0,
+      420,
+      -402
+     ],
+     "size": [
+      700,
+      40,
+      10
+     ],
+     "colour": "brute_seam",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "seam",
+     "style": "glow"
+    },
+    {
+     "joint": "chest",
+     "mesh": "cube",
+     "at": [
+      0,
+      200,
+      -402
+     ],
+     "size": [
+      500,
+      30,
+      10
+     ],
+     "colour": "brute_seam",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "seam",
+     "style": "glow"
+    },
+    {
+     "joint": "chest",
+     "mesh": "cube",
+     "at": [
+      0,
+      870,
+      0
+     ],
+     "size": [
+      760,
+      40,
+      660
+     ],
+     "colour": "brute_dark",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "body"
+    },
+    {
+     "joint": "chest",
+     "mesh": "facetcone",
+     "at": [
+      240,
+      930,
+      120
+     ],
+     "size": [
+      90,
+      200,
+      90
+     ],
+     "colour": "brute_moss",
+     "turn": [
+      -20,
+      0,
+      -20
+     ],
+     "role": "frond"
+    },
+    {
+     "joint": "chest",
+     "mesh": "facetcone",
+     "at": [
+      -200,
+      930,
+      160
+     ],
+     "size": [
+      70,
+      160,
+      70
+     ],
+     "colour": "brute_moss",
+     "turn": [
+      -25,
+      0,
+      25
+     ],
+     "role": "frond"
+    },
+    {
+     "joint": "head",
+     "mesh": "cube",
+     "at": [
+      0,
+      140,
+      -60
+     ],
+     "size": [
+      440,
+      340,
+      420
+     ],
+     "colour": "brute_slate",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "head"
+    },
+    {
+     "joint": "head",
+     "mesh": "cube",
+     "at": [
+      0,
+      170,
+      -272
+     ],
+     "size": [
+      300,
+      70,
+      10
+     ],
+     "colour": "brute_dark",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "visor"
+    },
+    {
+     "joint": "head",
+     "mesh": "sphere",
+     "at": [
+      90,
+      170,
+      -278
+     ],
+     "size": [
+      60,
+      60,
+      30
+     ],
+     "colour": "eye_glow",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "eye",
+     "style": "glow"
+    },
+    {
+     "joint": "head",
+     "mesh": "sphere",
+     "at": [
+      -90,
+      170,
+      -278
+     ],
+     "size": [
+      60,
+      60,
+      30
+     ],
+     "colour": "eye_glow",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "eye",
+     "style": "glow"
+    },
+    {
+     "joint": "r_shoulder",
+     "mesh": "cube",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "size": [
+      300,
+      300,
+      300
+     ],
+     "colour": "brute_dark",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "shoulder"
+    },
+    {
+     "joint": "r_shoulder",
+     "mesh": "cube",
+     "at": [
+      0,
+      -200,
+      0
+     ],
+     "size": [
+      220,
+      400,
+      220
+     ],
+     "colour": "brute_slate",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "arm"
+    },
+    {
+     "joint": "r_elbow",
+     "mesh": "cube",
+     "at": [
+      0,
+      -175,
+      0
+     ],
+     "size": [
+      240,
+      350,
+      240
+     ],
+     "colour": "brute_slate",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "arm"
+    },
+    {
+     "joint": "r_elbow",
+     "mesh": "cube",
+     "at": [
+      0,
+      -440,
+      0
+     ],
+     "size": [
+      400,
+      400,
+      400
+     ],
+     "colour": "brute_dark",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "fist"
+    },
+    {
+     "joint": "r_elbow",
+     "mesh": "cube",
+     "at": [
+      0,
+      -440,
+      -202
+     ],
+     "size": [
+      260,
+      60,
+      10
+     ],
+     "colour": "brute_seam",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "knuckle",
+     "style": "glow"
+    },
+    {
+     "joint": "l_shoulder",
+     "mesh": "cube",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "size": [
+      300,
+      300,
+      300
+     ],
+     "colour": "brute_dark",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "shoulder"
+    },
+    {
+     "joint": "l_shoulder",
+     "mesh": "cube",
+     "at": [
+      0,
+      -200,
+      0
+     ],
+     "size": [
+      220,
+      400,
+      220
+     ],
+     "colour": "brute_slate",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "arm"
+    },
+    {
+     "joint": "l_elbow",
+     "mesh": "cube",
+     "at": [
+      0,
+      -175,
+      0
+     ],
+     "size": [
+      240,
+      350,
+      240
+     ],
+     "colour": "brute_slate",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "arm"
+    },
+    {
+     "joint": "l_elbow",
+     "mesh": "cube",
+     "at": [
+      0,
+      -440,
+      0
+     ],
+     "size": [
+      400,
+      400,
+      400
+     ],
+     "colour": "brute_dark",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "fist"
+    },
+    {
+     "joint": "l_elbow",
+     "mesh": "cube",
+     "at": [
+      0,
+      -440,
+      -202
+     ],
+     "size": [
+      260,
+      60,
+      10
+     ],
+     "colour": "brute_seam",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "knuckle",
+     "style": "glow"
+    }
+   ]
+  },
+  "stalker": {
+   "joints": [
+    {
+     "name": "hips",
+     "parent": null,
+     "at": [
+      0,
+      1060,
+      0
+     ]
+    },
+    {
+     "name": "chest",
+     "parent": "hips",
+     "at": [
+      0,
+      150,
+      0
+     ]
+    },
+    {
+     "name": "neck",
+     "parent": "chest",
+     "at": [
+      0,
+      520,
+      -60
+     ]
+    },
+    {
+     "name": "head",
+     "parent": "neck",
+     "at": [
+      0,
+      260,
+      -40
+     ]
+    },
+    {
+     "name": "r_shoulder",
+     "parent": "chest",
+     "at": [
+      210,
+      460,
+      0
+     ]
+    },
+    {
+     "name": "r_elbow",
+     "parent": "r_shoulder",
+     "at": [
+      0,
+      -430,
+      0
+     ]
+    },
+    {
+     "name": "l_shoulder",
+     "parent": "chest",
+     "at": [
+      -210,
+      460,
+      0
+     ]
+    },
+    {
+     "name": "l_elbow",
+     "parent": "l_shoulder",
+     "at": [
+      0,
+      -430,
+      0
+     ]
+    },
+    {
+     "name": "r_hip",
+     "parent": "hips",
+     "at": [
+      130,
+      -40,
+      0
+     ]
+    },
+    {
+     "name": "r_knee",
+     "parent": "r_hip",
+     "at": [
+      0,
+      -520,
+      0
+     ]
+    },
+    {
+     "name": "r_ankle",
+     "parent": "r_knee",
+     "at": [
+      0,
+      -520,
+      0
+     ]
+    },
+    {
+     "name": "l_hip",
+     "parent": "hips",
+     "at": [
+      -130,
+      -40,
+      0
+     ]
+    },
+    {
+     "name": "l_knee",
+     "parent": "l_hip",
+     "at": [
+      0,
+      -520,
+      0
+     ]
+    },
+    {
+     "name": "l_ankle",
+     "parent": "l_knee",
+     "at": [
+      0,
+      -520,
+      0
+     ]
+    }
+   ],
+   "parts": [
+    {
+     "joint": "hips",
+     "mesh": "facet",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "size": [
+      280,
+      180,
+      200
+     ],
+     "colour": "stalker_plate",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "body"
+    },
+    {
+     "joint": "chest",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      220,
+      0
+     ],
+     "size": [
+      190,
+      440,
+      170
+     ],
+     "colour": "stalker_skin",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "body"
+    },
+    {
+     "joint": "chest",
+     "mesh": "facet",
+     "at": [
+      0,
+      400,
+      10
+     ],
+     "size": [
+      400,
+      160,
+      220
+     ],
+     "colour": "stalker_plate",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "body"
+    },
+    {
+     "joint": "chest",
+     "mesh": "facet",
+     "at": [
+      0,
+      200,
+      -70
+     ],
+     "size": [
+      200,
+      260,
+      60
+     ],
+     "colour": "stalker_plate",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "body"
+    },
+    {
+     "joint": "neck",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      130,
+      0
+     ],
+     "size": [
+      80,
+      280,
+      80
+     ],
+     "colour": "stalker_skin",
+     "turn": [
+      -15,
+      0,
+      0
+     ],
+     "role": "body"
+    },
+    {
+     "joint": "head",
+     "mesh": "facet",
+     "at": [
+      0,
+      60,
+      20
+     ],
+     "size": [
+      180,
+      200,
+      420
+     ],
+     "colour": "stalker_skin",
+     "turn": [
+      -20,
+      0,
+      0
+     ],
+     "role": "head"
+    },
+    {
+     "joint": "head",
+     "mesh": "facetcone",
+     "at": [
+      0,
+      160,
+      220
+     ],
+     "size": [
+      120,
+      300,
+      120
+     ],
+     "colour": "stalker_plate",
+     "turn": [
+      -70,
+      0,
+      0
+     ],
+     "role": "crest"
+    },
+    {
+     "joint": "head",
+     "mesh": "sphere",
+     "at": [
+      62,
+      60,
+      -150
+     ],
+     "size": [
+      70,
+      50,
+      70
+     ],
+     "colour": "eye_glow",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "eye",
+     "style": "glow"
+    },
+    {
+     "joint": "head",
+     "mesh": "sphere",
+     "at": [
+      -62,
+      60,
+      -150
+     ],
+     "size": [
+      70,
+      50,
+      70
+     ],
+     "colour": "eye_glow",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "eye",
+     "style": "glow"
+    },
+    {
+     "joint": "r_shoulder",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -215,
+      0
+     ],
+     "size": [
+      80,
+      430,
+      80
+     ],
+     "colour": "stalker_skin",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "arm"
+    },
+    {
+     "joint": "r_elbow",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -180,
+      0
+     ],
+     "size": [
+      70,
+      360,
+      70
+     ],
+     "colour": "stalker_plate",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "arm"
+    },
+    {
+     "joint": "r_elbow",
+     "mesh": "wedge",
+     "at": [
+      0,
+      -720,
+      -40
+     ],
+     "size": [
+      30,
+      760,
+      150
+     ],
+     "colour": "stalker_blade",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "blade"
+    },
+    {
+     "joint": "r_elbow",
+     "mesh": "cube",
+     "at": [
+      0,
+      -720,
+      -118
+     ],
+     "size": [
+      14,
+      740,
+      10
+     ],
+     "colour": "stalker_edge",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "blade_edge",
+     "style": "glow"
+    },
+    {
+     "joint": "l_shoulder",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -215,
+      0
+     ],
+     "size": [
+      80,
+      430,
+      80
+     ],
+     "colour": "stalker_skin",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "arm"
+    },
+    {
+     "joint": "l_elbow",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -200,
+      0
+     ],
+     "size": [
+      70,
+      400,
+      70
+     ],
+     "colour": "stalker_plate",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "arm"
+    },
+    {
+     "joint": "l_elbow",
+     "mesh": "facetcone",
+     "at": [
+      0,
+      -470,
+      0
+     ],
+     "size": [
+      80,
+      180,
+      80
+     ],
+     "colour": "stalker_skin",
+     "turn": [
+      180,
+      0,
+      0
+     ],
+     "role": "claw"
+    },
+    {
+     "joint": "r_hip",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -260,
+      0
+     ],
+     "size": [
+      100,
+      520,
+      100
+     ],
+     "colour": "stalker_skin",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "leg"
+    },
+    {
+     "joint": "r_knee",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -260,
+      0
+     ],
+     "size": [
+      80,
+      520,
+      80
+     ],
+     "colour": "stalker_plate",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "leg"
+    },
+    {
+     "joint": "r_ankle",
+     "mesh": "facet",
+     "at": [
+      0,
+      -20,
+      -80
+     ],
+     "size": [
+      110,
+      60,
+      260
+     ],
+     "colour": "stalker_plate",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "foot"
+    },
+    {
+     "joint": "l_hip",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -260,
+      0
+     ],
+     "size": [
+      100,
+      520,
+      100
+     ],
+     "colour": "stalker_skin",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "leg"
+    },
+    {
+     "joint": "l_knee",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -260,
+      0
+     ],
+     "size": [
+      80,
+      520,
+      80
+     ],
+     "colour": "stalker_plate",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "leg"
+    },
+    {
+     "joint": "l_ankle",
+     "mesh": "facet",
+     "at": [
+      0,
+      -20,
+      -80
+     ],
+     "size": [
+      110,
+      60,
+      260
+     ],
+     "colour": "stalker_plate",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "foot"
+    }
+   ]
+  },
+  "beast": {
+   "joints": [
+    {
+     "name": "hips",
+     "parent": null,
+     "at": [
+      0,
+      1000,
+      0
+     ]
+    },
+    {
+     "name": "chest",
+     "parent": "hips",
+     "at": [
+      0,
+      150,
+      0
+     ]
+    },
+    {
+     "name": "neck",
+     "parent": "chest",
+     "at": [
+      0,
+      640,
+      -120
+     ]
+    },
+    {
+     "name": "head",
+     "parent": "neck",
+     "at": [
+      0,
+      160,
+      -120
+     ]
+    },
+    {
+     "name": "ur_shoulder",
+     "parent": "chest",
+     "at": [
+      400,
+      560,
+      0
+     ]
+    },
+    {
+     "name": "ur_elbow",
+     "parent": "ur_shoulder",
+     "at": [
+      0,
+      -480,
+      0
+     ]
+    },
+    {
+     "name": "ul_shoulder",
+     "parent": "chest",
+     "at": [
+      -400,
+      560,
+      0
+     ]
+    },
+    {
+     "name": "ul_elbow",
+     "parent": "ul_shoulder",
+     "at": [
+      0,
+      -480,
+      0
+     ]
+    },
+    {
+     "name": "lr_shoulder",
+     "parent": "chest",
+     "at": [
+      330,
+      250,
+      -40
+     ]
+    },
+    {
+     "name": "lr_elbow",
+     "parent": "lr_shoulder",
+     "at": [
+      0,
+      -400,
+      0
+     ]
+    },
+    {
+     "name": "ll_shoulder",
+     "parent": "chest",
+     "at": [
+      -330,
+      250,
+      -40
+     ]
+    },
+    {
+     "name": "ll_elbow",
+     "parent": "ll_shoulder",
+     "at": [
+      0,
+      -400,
+      0
+     ]
+    },
+    {
+     "name": "r_hip",
+     "parent": "hips",
+     "at": [
+      190,
+      -40,
+      0
+     ]
+    },
+    {
+     "name": "r_knee",
+     "parent": "r_hip",
+     "at": [
+      0,
+      -480,
+      0
+     ]
+    },
+    {
+     "name": "r_ankle",
+     "parent": "r_knee",
+     "at": [
+      0,
+      -480,
+      0
+     ]
+    },
+    {
+     "name": "l_hip",
+     "parent": "hips",
+     "at": [
+      -190,
+      -40,
+      0
+     ]
+    },
+    {
+     "name": "l_knee",
+     "parent": "l_hip",
+     "at": [
+      0,
+      -480,
+      0
+     ]
+    },
+    {
+     "name": "l_ankle",
+     "parent": "l_knee",
+     "at": [
+      0,
+      -480,
+      0
+     ]
+    }
+   ],
+   "parts": [
+    {
+     "joint": "hips",
+     "mesh": "facet",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "size": [
+      460,
+      260,
+      380
+     ],
+     "colour": "beast_hide",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "body"
+    },
+    {
+     "joint": "chest",
+     "mesh": "facet",
+     "at": [
+      0,
+      330,
+      0
+     ],
+     "size": [
+      680,
+      660,
+      480
+     ],
+     "colour": "beast_hide",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "body"
+    },
+    {
+     "joint": "chest",
+     "mesh": "facet",
+     "at": [
+      0,
+      200,
+      -230
+     ],
+     "size": [
+      400,
+      380,
+      60
+     ],
+     "colour": "beast_dark",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "body"
+    },
+    {
+     "joint": "chest",
+     "mesh": "facet",
+     "at": [
+      0,
+      440,
+      170
+     ],
+     "size": [
+      580,
+      480,
+      120
+     ],
+     "colour": "beast_plate",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "plate"
+    },
+    {
+     "joint": "chest",
+     "mesh": "facetcone",
+     "at": [
+      0,
+      640,
+      200
+     ],
+     "size": [
+      110,
+      260,
+      110
+     ],
+     "colour": "beast_plate",
+     "turn": [
+      -60,
+      0,
+      0
+     ],
+     "role": "spine"
+    },
+    {
+     "joint": "chest",
+     "mesh": "facetcone",
+     "at": [
+      0,
+      470,
+      260
+     ],
+     "size": [
+      100,
+      230,
+      100
+     ],
+     "colour": "beast_plate",
+     "turn": [
+      -70,
+      0,
+      0
+     ],
+     "role": "spine"
+    },
+    {
+     "joint": "hips",
+     "mesh": "facetcone",
+     "at": [
+      0,
+      120,
+      200
+     ],
+     "size": [
+      90,
+      200,
+      90
+     ],
+     "colour": "beast_plate",
+     "turn": [
+      -75,
+      0,
+      0
+     ],
+     "role": "spine"
+    },
+    {
+     "joint": "neck",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      70,
+      -30
+     ],
+     "size": [
+      170,
+      200,
+      170
+     ],
+     "colour": "beast_hide",
+     "turn": [
+      -30,
+      0,
+      0
+     ],
+     "role": "body"
+    },
+    {
+     "joint": "head",
+     "mesh": "facet",
+     "at": [
+      0,
+      0,
+      -110
+     ],
+     "size": [
+      330,
+      240,
+      360
+     ],
+     "colour": "beast_hide",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "head"
+    },
+    {
+     "joint": "head",
+     "mesh": "facetcone",
+     "at": [
+      0,
+      130,
+      60
+     ],
+     "size": [
+      140,
+      260,
+      140
+     ],
+     "colour": "beast_plate",
+     "turn": [
+      -65,
+      0,
+      0
+     ],
+     "role": "crest"
+    },
+    {
+     "joint": "head",
+     "mesh": "wedge",
+     "at": [
+      90,
+      -90,
+      -260
+     ],
+     "size": [
+      40,
+      70,
+      200
+     ],
+     "colour": "beast_plate",
+     "turn": [
+      0,
+      15,
+      0
+     ],
+     "role": "mandible"
+    },
+    {
+     "joint": "head",
+     "mesh": "wedge",
+     "at": [
+      -90,
+      -90,
+      -260
+     ],
+     "size": [
+      40,
+      70,
+      200
+     ],
+     "colour": "beast_plate",
+     "turn": [
+      0,
+      -15,
+      0
+     ],
+     "role": "mandible"
+    },
+    {
+     "joint": "head",
+     "mesh": "sphere",
+     "at": [
+      80,
+      50,
+      -280
+     ],
+     "size": [
+      50,
+      44,
+      40
+     ],
+     "colour": "beast_edge",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "eye",
+     "style": "glow"
+    },
+    {
+     "joint": "head",
+     "mesh": "sphere",
+     "at": [
+      -80,
+      50,
+      -280
+     ],
+     "size": [
+      50,
+      44,
+      40
+     ],
+     "colour": "beast_edge",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "eye",
+     "style": "glow"
+    },
+    {
+     "joint": "head",
+     "mesh": "sphere",
+     "at": [
+      120,
+      -10,
+      -280
+     ],
+     "size": [
+      50,
+      44,
+      40
+     ],
+     "colour": "beast_edge",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "eye",
+     "style": "glow"
+    },
+    {
+     "joint": "head",
+     "mesh": "sphere",
+     "at": [
+      -120,
+      -10,
+      -280
+     ],
+     "size": [
+      50,
+      44,
+      40
+     ],
+     "colour": "beast_edge",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "eye",
+     "style": "glow"
+    },
+    {
+     "joint": "ur_shoulder",
+     "mesh": "facet",
+     "at": [
+      0,
+      20,
+      0
+     ],
+     "size": [
+      260,
+      220,
+      260
+     ],
+     "colour": "beast_plate",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "pauldron"
+    },
+    {
+     "joint": "ur_shoulder",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -240,
+      0
+     ],
+     "size": [
+      140,
+      480,
+      140
+     ],
+     "colour": "beast_hide",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "arm"
+    },
+    {
+     "joint": "ur_elbow",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -200,
+      0
+     ],
+     "size": [
+      115,
+      400,
+      115
+     ],
+     "colour": "beast_dark",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "arm"
+    },
+    {
+     "joint": "ur_elbow",
+     "mesh": "wedge",
+     "at": [
+      0,
+      -590,
+      -40
+     ],
+     "size": [
+      32,
+      420,
+      150
+     ],
+     "colour": "beast_claw",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "claw"
+    },
+    {
+     "joint": "ur_elbow",
+     "mesh": "cube",
+     "at": [
+      0,
+      -590,
+      -118
+     ],
+     "size": [
+      12,
+      400,
+      10
+     ],
+     "colour": "beast_edge",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "claw_edge",
+     "style": "glow"
+    },
+    {
+     "joint": "lr_shoulder",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -200,
+      0
+     ],
+     "size": [
+      115,
+      400,
+      115
+     ],
+     "colour": "beast_hide",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "arm"
+    },
+    {
+     "joint": "lr_elbow",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -180,
+      0
+     ],
+     "size": [
+      95,
+      360,
+      95
+     ],
+     "colour": "beast_dark",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "arm"
+    },
+    {
+     "joint": "lr_elbow",
+     "mesh": "wedge",
+     "at": [
+      0,
+      -510,
+      -30
+     ],
+     "size": [
+      28,
+      340,
+      120
+     ],
+     "colour": "beast_claw",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "claw"
+    },
+    {
+     "joint": "lr_elbow",
+     "mesh": "cube",
+     "at": [
+      0,
+      -510,
+      -92
+     ],
+     "size": [
+      10,
+      320,
+      10
+     ],
+     "colour": "beast_edge",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "claw_edge",
+     "style": "glow"
+    },
+    {
+     "joint": "r_hip",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -240,
+      0
+     ],
+     "size": [
+      170,
+      480,
+      170
+     ],
+     "colour": "beast_hide",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "leg"
+    },
+    {
+     "joint": "r_knee",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -240,
+      0
+     ],
+     "size": [
+      120,
+      480,
+      120
+     ],
+     "colour": "beast_dark",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "leg"
+    },
+    {
+     "joint": "r_ankle",
+     "mesh": "facet",
+     "at": [
+      0,
+      -30,
+      -90
+     ],
+     "size": [
+      200,
+      70,
+      300
+     ],
+     "colour": "beast_plate",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "foot"
+    },
+    {
+     "joint": "ul_shoulder",
+     "mesh": "facet",
+     "at": [
+      0,
+      20,
+      0
+     ],
+     "size": [
+      260,
+      220,
+      260
+     ],
+     "colour": "beast_plate",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "pauldron"
+    },
+    {
+     "joint": "ul_shoulder",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -240,
+      0
+     ],
+     "size": [
+      140,
+      480,
+      140
+     ],
+     "colour": "beast_hide",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "arm"
+    },
+    {
+     "joint": "ul_elbow",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -200,
+      0
+     ],
+     "size": [
+      115,
+      400,
+      115
+     ],
+     "colour": "beast_dark",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "arm"
+    },
+    {
+     "joint": "ul_elbow",
+     "mesh": "wedge",
+     "at": [
+      0,
+      -590,
+      -40
+     ],
+     "size": [
+      32,
+      420,
+      150
+     ],
+     "colour": "beast_claw",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "claw"
+    },
+    {
+     "joint": "ul_elbow",
+     "mesh": "cube",
+     "at": [
+      0,
+      -590,
+      -118
+     ],
+     "size": [
+      12,
+      400,
+      10
+     ],
+     "colour": "beast_edge",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "claw_edge",
+     "style": "glow"
+    },
+    {
+     "joint": "ll_shoulder",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -200,
+      0
+     ],
+     "size": [
+      115,
+      400,
+      115
+     ],
+     "colour": "beast_hide",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "arm"
+    },
+    {
+     "joint": "ll_elbow",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -180,
+      0
+     ],
+     "size": [
+      95,
+      360,
+      95
+     ],
+     "colour": "beast_dark",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "arm"
+    },
+    {
+     "joint": "ll_elbow",
+     "mesh": "wedge",
+     "at": [
+      0,
+      -510,
+      -30
+     ],
+     "size": [
+      28,
+      340,
+      120
+     ],
+     "colour": "beast_claw",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "claw"
+    },
+    {
+     "joint": "ll_elbow",
+     "mesh": "cube",
+     "at": [
+      0,
+      -510,
+      -92
+     ],
+     "size": [
+      10,
+      320,
+      10
+     ],
+     "colour": "beast_edge",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "claw_edge",
+     "style": "glow"
+    },
+    {
+     "joint": "l_hip",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -240,
+      0
+     ],
+     "size": [
+      170,
+      480,
+      170
+     ],
+     "colour": "beast_hide",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "leg"
+    },
+    {
+     "joint": "l_knee",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -240,
+      0
+     ],
+     "size": [
+      120,
+      480,
+      120
+     ],
+     "colour": "beast_dark",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "leg"
+    },
+    {
+     "joint": "l_ankle",
+     "mesh": "facet",
+     "at": [
+      0,
+      -30,
+      -90
+     ],
+     "size": [
+      200,
+      70,
+      300
+     ],
+     "colour": "beast_plate",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "foot"
+    }
+   ]
+  },
+  "keeper": {
+   "joints": [
+    {
+     "name": "hips",
+     "parent": null,
+     "at": [
+      0,
+      1000,
+      0
+     ]
+    },
+    {
+     "name": "chest",
+     "parent": "hips",
+     "at": [
+      0,
+      150,
+      0
+     ]
+    },
+    {
+     "name": "neck",
+     "parent": "chest",
+     "at": [
+      0,
+      640,
+      -120
+     ]
+    },
+    {
+     "name": "head",
+     "parent": "neck",
+     "at": [
+      0,
+      160,
+      -120
+     ]
+    },
+    {
+     "name": "ur_shoulder",
+     "parent": "chest",
+     "at": [
+      400,
+      560,
+      0
+     ]
+    },
+    {
+     "name": "ur_elbow",
+     "parent": "ur_shoulder",
+     "at": [
+      0,
+      -480,
+      0
+     ]
+    },
+    {
+     "name": "ul_shoulder",
+     "parent": "chest",
+     "at": [
+      -400,
+      560,
+      0
+     ]
+    },
+    {
+     "name": "ul_elbow",
+     "parent": "ul_shoulder",
+     "at": [
+      0,
+      -480,
+      0
+     ]
+    },
+    {
+     "name": "lr_shoulder",
+     "parent": "chest",
+     "at": [
+      330,
+      250,
+      -40
+     ]
+    },
+    {
+     "name": "lr_elbow",
+     "parent": "lr_shoulder",
+     "at": [
+      0,
+      -400,
+      0
+     ]
+    },
+    {
+     "name": "ll_shoulder",
+     "parent": "chest",
+     "at": [
+      -330,
+      250,
+      -40
+     ]
+    },
+    {
+     "name": "ll_elbow",
+     "parent": "ll_shoulder",
+     "at": [
+      0,
+      -400,
+      0
+     ]
+    },
+    {
+     "name": "r_hip",
+     "parent": "hips",
+     "at": [
+      190,
+      -40,
+      0
+     ]
+    },
+    {
+     "name": "r_knee",
+     "parent": "r_hip",
+     "at": [
+      0,
+      -480,
+      0
+     ]
+    },
+    {
+     "name": "r_ankle",
+     "parent": "r_knee",
+     "at": [
+      0,
+      -480,
+      0
+     ]
+    },
+    {
+     "name": "l_hip",
+     "parent": "hips",
+     "at": [
+      -190,
+      -40,
+      0
+     ]
+    },
+    {
+     "name": "l_knee",
+     "parent": "l_hip",
+     "at": [
+      0,
+      -480,
+      0
+     ]
+    },
+    {
+     "name": "l_ankle",
+     "parent": "l_knee",
+     "at": [
+      0,
+      -480,
+      0
+     ]
+    }
+   ],
+   "parts": [
+    {
+     "joint": "hips",
+     "mesh": "cone",
+     "at": [
+      0,
+      -430,
+      0
+     ],
+     "size": [
+      760,
+      920,
+      700
+     ],
+     "colour": "keeper_robe",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "robe"
+    },
+    {
+     "joint": "hips",
+     "mesh": "cyl",
+     "at": [
+      0,
+      -870,
+      0
+     ],
+     "size": [
+      780,
+      40,
+      720
+     ],
+     "colour": "keeper_gold",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "hem",
+     "style": "glow"
+    },
+    {
+     "joint": "chest",
+     "mesh": "facet",
+     "at": [
+      0,
+      330,
+      0
+     ],
+     "size": [
+      540,
+      680,
+      400
+     ],
+     "colour": "keeper_robe",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "body"
+    },
+    {
+     "joint": "chest",
+     "mesh": "facet",
+     "at": [
+      0,
+      600,
+      0
+     ],
+     "size": [
+      820,
+      160,
+      460
+     ],
+     "colour": "keeper_dark",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "mantle"
+    },
+    {
+     "joint": "chest",
+     "mesh": "cube",
+     "at": [
+      0,
+      330,
+      -205
+     ],
+     "size": [
+      60,
+      560,
+      10
+     ],
+     "colour": "keeper_gold",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "seam",
+     "style": "glow"
+    },
+    {
+     "joint": "neck",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      80,
+      -20
+     ],
+     "size": [
+      140,
+      200,
+      140
+     ],
+     "colour": "keeper_dark",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "body"
+    },
+    {
+     "joint": "head",
+     "mesh": "sphere",
+     "at": [
+      0,
+      20,
+      -90
+     ],
+     "size": [
+      300,
+      360,
+      280
+     ],
+     "colour": "keeper_mask",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "mask"
+    },
+    {
+     "joint": "head",
+     "mesh": "cube",
+     "at": [
+      70,
+      60,
+      -228
+     ],
+     "size": [
+      70,
+      20,
+      10
+     ],
+     "colour": "keeper_dark",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "slit"
+    },
+    {
+     "joint": "head",
+     "mesh": "cube",
+     "at": [
+      -70,
+      60,
+      -228
+     ],
+     "size": [
+      70,
+      20,
+      10
+     ],
+     "colour": "keeper_dark",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "slit"
+    },
+    {
+     "joint": "head",
+     "mesh": "cyl",
+     "at": [
+      0,
+      60,
+      120
+     ],
+     "size": [
+      620,
+      24,
+      620
+     ],
+     "colour": "keeper_gold",
+     "turn": [
+      90,
+      0,
+      0
+     ],
+     "role": "halo",
+     "style": "glow"
+    },
+    {
+     "joint": "ur_shoulder",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -200,
+      0
+     ],
+     "size": [
+      100,
+      400,
+      100
+     ],
+     "colour": "keeper_robe",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "arm"
+    },
+    {
+     "joint": "ur_elbow",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -180,
+      0
+     ],
+     "size": [
+      80,
+      360,
+      80
+     ],
+     "colour": "keeper_dark",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "arm"
+    },
+    {
+     "joint": "ur_elbow",
+     "mesh": "wedge",
+     "at": [
+      0,
+      -700,
+      -20
+     ],
+     "size": [
+      20,
+      640,
+      90
+     ],
+     "colour": "keeper_steel",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "blade"
+    },
+    {
+     "joint": "ur_elbow",
+     "mesh": "cube",
+     "at": [
+      0,
+      -700,
+      -66
+     ],
+     "size": [
+      8,
+      600,
+      8
+     ],
+     "colour": "keeper_glow",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "blade_edge",
+     "style": "glow"
+    },
+    {
+     "joint": "lr_shoulder",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -200,
+      0
+     ],
+     "size": [
+      85,
+      400,
+      85
+     ],
+     "colour": "keeper_robe",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "arm"
+    },
+    {
+     "joint": "lr_elbow",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -180,
+      0
+     ],
+     "size": [
+      68,
+      360,
+      68
+     ],
+     "colour": "keeper_dark",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "arm"
+    },
+    {
+     "joint": "lr_elbow",
+     "mesh": "wedge",
+     "at": [
+      0,
+      -650,
+      -20
+     ],
+     "size": [
+      20,
+      540,
+      90
+     ],
+     "colour": "keeper_steel",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "blade"
+    },
+    {
+     "joint": "lr_elbow",
+     "mesh": "cube",
+     "at": [
+      0,
+      -650,
+      -66
+     ],
+     "size": [
+      8,
+      500,
+      8
+     ],
+     "colour": "keeper_glow",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "blade_edge",
+     "style": "glow"
+    },
+    {
+     "joint": "r_hip",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -240,
+      0
+     ],
+     "size": [
+      130,
+      480,
+      130
+     ],
+     "colour": "keeper_dark",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "leg"
+    },
+    {
+     "joint": "r_knee",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -240,
+      0
+     ],
+     "size": [
+      100,
+      480,
+      100
+     ],
+     "colour": "keeper_dark",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "leg"
+    },
+    {
+     "joint": "r_ankle",
+     "mesh": "facet",
+     "at": [
+      0,
+      -30,
+      -80
+     ],
+     "size": [
+      160,
+      60,
+      260
+     ],
+     "colour": "keeper_dark",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "foot"
+    },
+    {
+     "joint": "ul_shoulder",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -200,
+      0
+     ],
+     "size": [
+      100,
+      400,
+      100
+     ],
+     "colour": "keeper_robe",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "arm"
+    },
+    {
+     "joint": "ul_elbow",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -180,
+      0
+     ],
+     "size": [
+      80,
+      360,
+      80
+     ],
+     "colour": "keeper_dark",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "arm"
+    },
+    {
+     "joint": "ul_elbow",
+     "mesh": "wedge",
+     "at": [
+      0,
+      -700,
+      -20
+     ],
+     "size": [
+      20,
+      640,
+      90
+     ],
+     "colour": "keeper_steel",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "blade"
+    },
+    {
+     "joint": "ul_elbow",
+     "mesh": "cube",
+     "at": [
+      0,
+      -700,
+      -66
+     ],
+     "size": [
+      8,
+      600,
+      8
+     ],
+     "colour": "keeper_glow",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "blade_edge",
+     "style": "glow"
+    },
+    {
+     "joint": "ll_shoulder",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -200,
+      0
+     ],
+     "size": [
+      85,
+      400,
+      85
+     ],
+     "colour": "keeper_robe",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "arm"
+    },
+    {
+     "joint": "ll_elbow",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -180,
+      0
+     ],
+     "size": [
+      68,
+      360,
+      68
+     ],
+     "colour": "keeper_dark",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "arm"
+    },
+    {
+     "joint": "ll_elbow",
+     "mesh": "wedge",
+     "at": [
+      0,
+      -650,
+      -20
+     ],
+     "size": [
+      20,
+      540,
+      90
+     ],
+     "colour": "keeper_steel",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "blade"
+    },
+    {
+     "joint": "ll_elbow",
+     "mesh": "cube",
+     "at": [
+      0,
+      -650,
+      -66
+     ],
+     "size": [
+      8,
+      500,
+      8
+     ],
+     "colour": "keeper_glow",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "blade_edge",
+     "style": "glow"
+    },
+    {
+     "joint": "l_hip",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -240,
+      0
+     ],
+     "size": [
+      130,
+      480,
+      130
+     ],
+     "colour": "keeper_dark",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "leg"
+    },
+    {
+     "joint": "l_knee",
+     "mesh": "facetcyl",
+     "at": [
+      0,
+      -240,
+      0
+     ],
+     "size": [
+      100,
+      480,
+      100
+     ],
+     "colour": "keeper_dark",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "leg"
+    },
+    {
+     "joint": "l_ankle",
+     "mesh": "facet",
+     "at": [
+      0,
+      -30,
+      -80
+     ],
+     "size": [
+      160,
+      60,
+      260
+     ],
+     "colour": "keeper_dark",
+     "turn": [
+      0,
+      0,
+      0
+     ],
+     "role": "foot"
+    }
+   ]
+  }
+ }
+}

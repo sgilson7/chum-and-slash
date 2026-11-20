@@ -1,0 +1,14 @@
+{
+ "_about": "Controls (CS-Q17, CS-Q18 defaults). Keyboard codes and mouse buttons, and standard-mapping pad button indices, to actions. The core maps them; the page only reports what is pressed.",
+ "keys": {"KeyW": "fwd", "KeyS": "back", "KeyA": "left", "KeyD": "right",
+          "ArrowUp": "fwd", "ArrowDown": "back", "ArrowLeft": "left", "ArrowRight": "right",
+          "Mouse0": "light", "Mouse2": "heavy", "KeyE": "launcher", "Space": "jump",
+          "KeyQ": "mod", "Tab": "cycle", "Mouse1": "lock", "ShiftLeft": "sprint", "ShiftRight": "sprint",
+          "KeyX": "skip", "Enter": "skip", "KeyJ": "light", "KeyK": "heavy", "KeyL": "launcher", "KeyU": "mod", "KeyI": "lock", "KeyF": "parry", "KeyO": "parry"},
+ "pad": {"0": "jump", "1": "launcher", "2": "light", "3": "heavy", "4": "mod", "5": "lock", "6": "parry", "7": "sprint", "9": "skip", "11": "lock",
+         "12": "cycle_back", "13": "cycle", "14": "cycle_back", "15": "cycle"},
+ "dead_zone_pct": 18,
+ "look_px_per_turn": 2400,
+ "stick_look_deg": 3,
+ "skip_hold": 45
+}

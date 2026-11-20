@@ -1,0 +1,1367 @@
+{
+ "about": "Behaviour trees, Vagrancy's format (crates/pilot): an ordered list of rules; the first whose conditions hold runs its move; interrupt rules may break into a running move. Distances in cm. Every tree starts stunned, airborne, idle (CS-6).",
+ "trees": {
+  "dog": {
+   "reaction": 12,
+   "rules": [
+    {
+     "if": [
+      "me_stunned"
+     ],
+     "do": "reel",
+     "interrupt": true
+    },
+    {
+     "if": [
+      "me_airborne"
+     ],
+     "do": "tumble",
+     "interrupt": true
+    },
+    {
+     "if": [
+      {
+       "gap_above": 1800
+      }
+     ],
+     "do": "idle"
+    },
+    {
+     "if": [
+      "has_token",
+      {
+       "gap_below": 450
+      }
+     ],
+     "do": "lunge"
+    },
+    {
+     "if": [
+      "has_token"
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "gap_above": 650
+      }
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "gap_below": 300
+      }
+     ],
+     "do": "back_off"
+    },
+    {
+     "if": [
+      {
+       "chance": 50
+      }
+     ],
+     "do": "strafe_left"
+    },
+    {
+     "do": "strafe_right"
+    }
+   ]
+  },
+  "pup": {
+   "reaction": 18,
+   "rules": [
+    {
+     "if": [
+      "me_stunned"
+     ],
+     "do": "reel",
+     "interrupt": true
+    },
+    {
+     "if": [
+      "me_airborne"
+     ],
+     "do": "tumble",
+     "interrupt": true
+    },
+    {
+     "if": [
+      {
+       "gap_above": 1800
+      }
+     ],
+     "do": "idle"
+    },
+    {
+     "if": [
+      "has_token",
+      {
+       "gap_below": 450
+      }
+     ],
+     "do": "lunge"
+    },
+    {
+     "if": [
+      "has_token"
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "gap_above": 650
+      }
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "gap_below": 300
+      }
+     ],
+     "do": "back_off"
+    },
+    {
+     "if": [
+      {
+       "chance": 50
+      }
+     ],
+     "do": "strafe_left"
+    },
+    {
+     "do": "strafe_right"
+    }
+   ]
+  },
+  "tutorial_dog": {
+   "reaction": 20,
+   "rules": [
+    {
+     "if": [
+      "me_stunned"
+     ],
+     "do": "reel",
+     "interrupt": true
+    },
+    {
+     "if": [
+      "me_airborne"
+     ],
+     "do": "tumble",
+     "interrupt": true
+    },
+    {
+     "if": [
+      {
+       "gap_above": 1800
+      }
+     ],
+     "do": "idle"
+    },
+    {
+     "if": [
+      "volley"
+     ],
+     "do": "lunge",
+     "interrupt": true
+    },
+    {
+     "if": [
+      {
+       "gap_above": 650
+      }
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "gap_below": 300
+      }
+     ],
+     "do": "back_off"
+    },
+    {
+     "if": [
+      {
+       "chance": 50
+      }
+     ],
+     "do": "strafe_left"
+    },
+    {
+     "do": "strafe_right"
+    }
+   ]
+  },
+  "large_dog": {
+   "reaction": 24,
+   "rules": [
+    {
+     "if": [
+      "me_stunned"
+     ],
+     "do": "reel",
+     "interrupt": true
+    },
+    {
+     "if": [
+      "me_airborne"
+     ],
+     "do": "tumble",
+     "interrupt": true
+    },
+    {
+     "if": [
+      {
+       "gap_above": 2400
+      }
+     ],
+     "do": "idle"
+    },
+    {
+     "if": [
+      "has_token",
+      {
+       "gap_below": 700
+      }
+     ],
+     "do": "lunge"
+    },
+    {
+     "if": [
+      "has_token"
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "gap_above": 900
+      }
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "gap_below": 400
+      }
+     ],
+     "do": "back_off"
+    },
+    {
+     "if": [
+      {
+       "chance": 50
+      }
+     ],
+     "do": "strafe_left"
+    },
+    {
+     "do": "strafe_right"
+    }
+   ]
+  },
+  "big_dog": {
+   "reaction": 30,
+   "rules": [
+    {
+     "if": [
+      "me_stunned"
+     ],
+     "do": "reel",
+     "interrupt": true
+    },
+    {
+     "if": [
+      "me_airborne"
+     ],
+     "do": "tumble",
+     "interrupt": true
+    },
+    {
+     "do": "idle"
+    }
+   ]
+  },
+  "brute": {
+   "reaction": 26,
+   "rules": [
+    {
+     "if": [
+      "me_stunned"
+     ],
+     "do": "reel",
+     "interrupt": true
+    },
+    {
+     "if": [
+      "me_airborne"
+     ],
+     "do": "tumble",
+     "interrupt": true
+    },
+    {
+     "if": [
+      {
+       "gap_above": 2400
+      }
+     ],
+     "do": "idle"
+    },
+    {
+     "if": [
+      "has_token",
+      {
+       "gap_below": 420
+      }
+     ],
+     "do": "lunge"
+    },
+    {
+     "if": [
+      "has_token"
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "gap_above": 800
+      }
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "gap_below": 350
+      }
+     ],
+     "do": "back_off"
+    },
+    {
+     "if": [
+      {
+       "chance": 50
+      }
+     ],
+     "do": "strafe_left"
+    },
+    {
+     "do": "strafe_right"
+    }
+   ]
+  },
+  "stalker": {
+   "reaction": 14,
+   "rules": [
+    {
+     "if": [
+      "me_stunned"
+     ],
+     "do": "reel",
+     "interrupt": true
+    },
+    {
+     "if": [
+      "me_airborne"
+     ],
+     "do": "tumble",
+     "interrupt": true
+    },
+    {
+     "if": [
+      {
+       "gap_above": 2400
+      }
+     ],
+     "do": "idle"
+    },
+    {
+     "if": [
+      "has_token",
+      {
+       "gap_below": 450
+      }
+     ],
+     "do": "lunge"
+    },
+    {
+     "if": [
+      "has_token"
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "gap_above": 700
+      }
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "gap_below": 350
+      }
+     ],
+     "do": "back_off"
+    },
+    {
+     "if": [
+      {
+       "chance": 50
+      }
+     ],
+     "do": "strafe_left"
+    },
+    {
+     "do": "strafe_right"
+    }
+   ]
+  },
+  "heavy_brute": {
+   "reaction": 30,
+   "rules": [
+    {
+     "if": [
+      "me_stunned"
+     ],
+     "do": "reel",
+     "interrupt": true
+    },
+    {
+     "if": [
+      "me_airborne"
+     ],
+     "do": "tumble",
+     "interrupt": true
+    },
+    {
+     "if": [
+      {
+       "gap_above": 2400
+      }
+     ],
+     "do": "idle"
+    },
+    {
+     "if": [
+      "has_token",
+      {
+       "gap_below": 450
+      }
+     ],
+     "do": "lunge"
+    },
+    {
+     "if": [
+      "has_token"
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "gap_above": 900
+      }
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "gap_below": 400
+      }
+     ],
+     "do": "back_off"
+    },
+    {
+     "if": [
+      {
+       "chance": 50
+      }
+     ],
+     "do": "strafe_left"
+    },
+    {
+     "do": "strafe_right"
+    }
+   ]
+  },
+  "scout": {
+   "reaction": 10,
+   "rules": [
+    {
+     "if": [
+      "me_stunned"
+     ],
+     "do": "reel",
+     "interrupt": true
+    },
+    {
+     "if": [
+      "me_airborne"
+     ],
+     "do": "tumble",
+     "interrupt": true
+    },
+    {
+     "if": [
+      {
+       "gap_above": 2400
+      }
+     ],
+     "do": "idle"
+    },
+    {
+     "if": [
+      "has_token",
+      {
+       "gap_below": 450
+      }
+     ],
+     "do": "lunge"
+    },
+    {
+     "if": [
+      "has_token"
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "gap_above": 600
+      }
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "gap_below": 350
+      }
+     ],
+     "do": "back_off"
+    },
+    {
+     "if": [
+      {
+       "chance": 50
+      }
+     ],
+     "do": "strafe_left"
+    },
+    {
+     "do": "strafe_right"
+    }
+   ]
+  },
+  "caster": {
+   "reaction": 14,
+   "rules": [
+    {
+     "if": [
+      "me_stunned"
+     ],
+     "do": "reel",
+     "interrupt": true
+    },
+    {
+     "if": [
+      "me_airborne"
+     ],
+     "do": "tumble",
+     "interrupt": true
+    },
+    {
+     "if": [
+      {
+       "gap_above": 2600
+      }
+     ],
+     "do": "idle"
+    },
+    {
+     "if": [
+      {
+       "gap_below": 700
+      }
+     ],
+     "do": "flee",
+     "interrupt": true
+    },
+    {
+     "if": [
+      {
+       "gap_above": 2000
+      }
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      "ready"
+     ],
+     "do": "cast"
+    },
+    {
+     "if": [
+      {
+       "gap_below": 1100
+      }
+     ],
+     "do": "flee"
+    },
+    {
+     "if": [
+      {
+       "chance": 50
+      }
+     ],
+     "do": "strafe_left"
+    },
+    {
+     "do": "strafe_right"
+    }
+   ]
+  },
+  "dummy": {
+   "reaction": 30,
+   "rules": [
+    {
+     "if": [
+      "me_stunned"
+     ],
+     "do": "reel",
+     "interrupt": true
+    },
+    {
+     "if": [
+      "me_airborne"
+     ],
+     "do": "tumble",
+     "interrupt": true
+    },
+    {
+     "do": "idle"
+    }
+   ],
+   "_about": "T28: the dummy's tree, a copy of the big dog's"
+  },
+  "dummy_brute": {
+   "reaction": 30,
+   "rules": [
+    {
+     "if": [
+      "me_stunned"
+     ],
+     "do": "reel",
+     "interrupt": true
+    },
+    {
+     "if": [
+      "me_airborne"
+     ],
+     "do": "tumble",
+     "interrupt": true
+    },
+    {
+     "do": "idle"
+    }
+   ],
+   "_about": "T28: the dummy brute's tree, a copy of the big dog's"
+  },
+  "sparring_dog": {
+   "reaction": 12,
+   "rules": [
+    {
+     "if": [
+      "me_stunned"
+     ],
+     "do": "reel",
+     "interrupt": true
+    },
+    {
+     "if": [
+      "me_airborne"
+     ],
+     "do": "tumble",
+     "interrupt": true
+    },
+    {
+     "if": [
+      {
+       "gap_above": 1800
+      }
+     ],
+     "do": "idle"
+    },
+    {
+     "if": [
+      "has_token",
+      {
+       "gap_below": 450
+      }
+     ],
+     "do": "lunge"
+    },
+    {
+     "if": [
+      "has_token"
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "gap_above": 650
+      }
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "gap_below": 300
+      }
+     ],
+     "do": "back_off"
+    },
+    {
+     "if": [
+      {
+       "chance": 50
+      }
+     ],
+     "do": "strafe_left"
+    },
+    {
+     "do": "strafe_right"
+    }
+   ],
+   "_about": "T28: the sparring dog's tree, a copy of the dog's"
+  },
+  "warden": {
+   "_about": "T30: the warden: it reacts fast, reads the hero's swing and often steps back out of it, leaps from farther, and keeps pressing",
+   "reaction": 8,
+   "rules": [
+    {
+     "if": [
+      "me_stunned"
+     ],
+     "do": "reel",
+     "interrupt": true
+    },
+    {
+     "if": [
+      "me_airborne"
+     ],
+     "do": "tumble",
+     "interrupt": true
+    },
+    {
+     "if": [
+      {
+       "gap_above": 2400
+      }
+     ],
+     "do": "idle"
+    },
+    {
+     "if": [
+      "opp_attacking",
+      {
+       "gap_below": 320
+      },
+      {
+       "chance": 50
+      }
+     ],
+     "do": "back_off",
+     "interrupt": true
+    },
+    {
+     "if": [
+      "has_token",
+      {
+       "gap_below": 550
+      }
+     ],
+     "do": "lunge"
+    },
+    {
+     "if": [
+      "has_token"
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "gap_above": 600
+      }
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "gap_below": 300
+      }
+     ],
+     "do": "back_off"
+    },
+    {
+     "if": [
+      {
+       "chance": 50
+      }
+     ],
+     "do": "strafe_left"
+    },
+    {
+     "do": "strafe_right"
+    }
+   ]
+  },
+  "beast": {
+   "_about": "T31: the beast: it closes steadily and leaps from close in, rarely backing off; between leaps it circles.",
+   "reaction": 12,
+   "rules": [
+    {
+     "if": [
+      "me_stunned"
+     ],
+     "do": "reel",
+     "interrupt": true
+    },
+    {
+     "if": [
+      "me_airborne"
+     ],
+     "do": "tumble",
+     "interrupt": true
+    },
+    {
+     "if": [
+      {
+       "gap_above": 2400
+      }
+     ],
+     "do": "idle"
+    },
+    {
+     "if": [
+      "has_token",
+      {
+       "gap_below": 420
+      }
+     ],
+     "do": "lunge"
+    },
+    {
+     "if": [
+      "has_token"
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "gap_above": 650
+      }
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "chance": 50
+      }
+     ],
+     "do": "strafe_left"
+    },
+    {
+     "do": "strafe_right"
+    }
+   ]
+  },
+  "sparring_beast": {
+   "reaction": 12,
+   "rules": [
+    {
+     "if": [
+      "me_stunned"
+     ],
+     "do": "reel",
+     "interrupt": true
+    },
+    {
+     "if": [
+      "me_airborne"
+     ],
+     "do": "tumble",
+     "interrupt": true
+    },
+    {
+     "if": [
+      {
+       "gap_above": 1800
+      }
+     ],
+     "do": "idle"
+    },
+    {
+     "if": [
+      "has_token",
+      {
+       "gap_below": 450
+      }
+     ],
+     "do": "lunge"
+    },
+    {
+     "if": [
+      "has_token"
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "gap_above": 650
+      }
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "gap_below": 300
+      }
+     ],
+     "do": "back_off"
+    },
+    {
+     "if": [
+      {
+       "chance": 50
+      }
+     ],
+     "do": "strafe_left"
+    },
+    {
+     "do": "strafe_right"
+    }
+   ],
+   "_about": "T31: the sparring beast's tree, a copy of the sparring dog's"
+  },
+  "alpha_dog": {
+   "reaction": 12,
+   "rules": [
+    {
+     "if": [
+      "me_stunned"
+     ],
+     "do": "reel",
+     "interrupt": true
+    },
+    {
+     "if": [
+      "me_airborne"
+     ],
+     "do": "tumble",
+     "interrupt": true
+    },
+    {
+     "if": [
+      {
+       "gap_above": 1800
+      }
+     ],
+     "do": "idle"
+    },
+    {
+     "if": [
+      "has_token",
+      {
+       "gap_below": 450
+      }
+     ],
+     "do": "lunge"
+    },
+    {
+     "if": [
+      "has_token"
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "gap_above": 650
+      }
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "gap_below": 300
+      }
+     ],
+     "do": "back_off"
+    },
+    {
+     "if": [
+      {
+       "chance": 50
+      }
+     ],
+     "do": "strafe_left"
+    },
+    {
+     "do": "strafe_right"
+    }
+   ],
+   "_about": "T32: the dog's tree, for its variant"
+  },
+  "storm_caster": {
+   "reaction": 14,
+   "rules": [
+    {
+     "if": [
+      "me_stunned"
+     ],
+     "do": "reel",
+     "interrupt": true
+    },
+    {
+     "if": [
+      "me_airborne"
+     ],
+     "do": "tumble",
+     "interrupt": true
+    },
+    {
+     "if": [
+      {
+       "gap_above": 2600
+      }
+     ],
+     "do": "idle"
+    },
+    {
+     "if": [
+      {
+       "gap_below": 700
+      }
+     ],
+     "do": "flee",
+     "interrupt": true
+    },
+    {
+     "if": [
+      {
+       "gap_above": 2000
+      }
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      "ready"
+     ],
+     "do": "cast"
+    },
+    {
+     "if": [
+      {
+       "gap_below": 1100
+      }
+     ],
+     "do": "flee"
+    },
+    {
+     "if": [
+      {
+       "chance": 50
+      }
+     ],
+     "do": "strafe_left"
+    },
+    {
+     "do": "strafe_right"
+    }
+   ],
+   "_about": "T32: the caster's tree, for its variant"
+  },
+  "iron_brute": {
+   "reaction": 26,
+   "rules": [
+    {
+     "if": [
+      "me_stunned"
+     ],
+     "do": "reel",
+     "interrupt": true
+    },
+    {
+     "if": [
+      "me_airborne"
+     ],
+     "do": "tumble",
+     "interrupt": true
+    },
+    {
+     "if": [
+      {
+       "gap_above": 2400
+      }
+     ],
+     "do": "idle"
+    },
+    {
+     "if": [
+      "has_token",
+      {
+       "gap_below": 420
+      }
+     ],
+     "do": "lunge"
+    },
+    {
+     "if": [
+      "has_token"
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "gap_above": 800
+      }
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "gap_below": 350
+      }
+     ],
+     "do": "back_off"
+    },
+    {
+     "if": [
+      {
+       "chance": 50
+      }
+     ],
+     "do": "strafe_left"
+    },
+    {
+     "do": "strafe_right"
+    }
+   ],
+   "_about": "T32: the brute's tree, for its variant"
+  },
+  "beast_whelp": {
+   "_about": "T32: the beast's tree, for its variant",
+   "reaction": 12,
+   "rules": [
+    {
+     "if": [
+      "me_stunned"
+     ],
+     "do": "reel",
+     "interrupt": true
+    },
+    {
+     "if": [
+      "me_airborne"
+     ],
+     "do": "tumble",
+     "interrupt": true
+    },
+    {
+     "if": [
+      {
+       "gap_above": 2400
+      }
+     ],
+     "do": "idle"
+    },
+    {
+     "if": [
+      "has_token",
+      {
+       "gap_below": 420
+      }
+     ],
+     "do": "lunge"
+    },
+    {
+     "if": [
+      "has_token"
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "gap_above": 650
+      }
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "chance": 50
+      }
+     ],
+     "do": "strafe_left"
+    },
+    {
+     "do": "strafe_right"
+    }
+   ]
+  },
+  "elder_beast": {
+   "_about": "T32: the beast's tree, for its variant",
+   "reaction": 12,
+   "rules": [
+    {
+     "if": [
+      "me_stunned"
+     ],
+     "do": "reel",
+     "interrupt": true
+    },
+    {
+     "if": [
+      "me_airborne"
+     ],
+     "do": "tumble",
+     "interrupt": true
+    },
+    {
+     "if": [
+      {
+       "gap_above": 2400
+      }
+     ],
+     "do": "idle"
+    },
+    {
+     "if": [
+      "has_token",
+      {
+       "gap_below": 420
+      }
+     ],
+     "do": "lunge"
+    },
+    {
+     "if": [
+      "has_token"
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "gap_above": 650
+      }
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "chance": 50
+      }
+     ],
+     "do": "strafe_left"
+    },
+    {
+     "do": "strafe_right"
+    }
+   ]
+  },
+  "keeper": {
+   "_about": "T33: the keeper: it closes and starts its chain from close in, and circles between chains.",
+   "reaction": 10,
+   "rules": [
+    {
+     "if": [
+      "me_stunned"
+     ],
+     "do": "reel",
+     "interrupt": true
+    },
+    {
+     "if": [
+      "me_airborne"
+     ],
+     "do": "tumble",
+     "interrupt": true
+    },
+    {
+     "if": [
+      {
+       "gap_above": 2400
+      }
+     ],
+     "do": "idle"
+    },
+    {
+     "if": [
+      "has_token",
+      {
+       "gap_below": 380
+      }
+     ],
+     "do": "lunge"
+    },
+    {
+     "if": [
+      "has_token"
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "gap_above": 600
+      }
+     ],
+     "do": "approach"
+    },
+    {
+     "if": [
+      {
+       "chance": 50
+      }
+     ],
+     "do": "strafe_left"
+    },
+    {
+     "do": "strafe_right"
+    }
+   ]
+  }
+ }
+}

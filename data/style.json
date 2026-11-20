@@ -1,0 +1,24 @@
+{
+ "_about": "T6: the style grade for one fight. Every landed hit scores its damage times a percentage built from these bonuses; the grade is the points per point of damage dealt, in percent, so fights of any size grade alike. Worked examples are in crates/core/src/style.rs's tests.",
+ "base_pct": 100,
+ "air_move_pct": 50,
+ "airborne_target_pct": 25,
+ "extra_target_pct": 50,
+ "slam_pct": 100,
+ "stale_pct": 50,
+ "recent_strings": 3,
+ "combo_points": 30,
+ "parry_points": 40,
+ "air_ticks_per_point": 4,
+ "bitten_times": 2,
+ "grades": [["S", 180], ["A", 140], ["B", 110], ["C", 80], ["D", 0]],
+ "meter": {
+  "_about": "The live meter in the HUD: hits, combos and air time fill it with the points they score; it holds grace_ticks after the last gain, then drains a point every drain_every ticks; a bite takes bite_times its damage. Ranks are its floors, highest first.",
+  "ranks": [["S", 280], ["A", 180], ["B", 100], ["C", 40], ["D", 0]],
+  "max": 400,
+  "grace_ticks": 90,
+  "drain_every": 3,
+  "bite_times": 5,
+  "flash_ticks": 30
+ }
+}
